@@ -45,7 +45,12 @@
 			this.PhoneTextBox = new System.Windows.Forms.TextBox();
 			this.HeadOfficeLabel = new System.Windows.Forms.Label();
 			this.HeadOfficeCheckBox = new System.Windows.Forms.CheckBox();
+			this.PhonePanel = new System.Windows.Forms.Panel();
+			this.MorePhonesButton = new System.Windows.Forms.Button();
+			this.PhonesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.ContactInfoPanel.SuspendLayout();
+			this.PhonePanel.SuspendLayout();
+			this.PhonesFlowLayoutPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// CompanyNameTextBox
@@ -67,7 +72,7 @@
 			// CompanyActivityLabel
 			// 
 			this.CompanyActivityLabel.AutoSize = true;
-			this.CompanyActivityLabel.Location = new System.Drawing.Point(12, 225);
+			this.CompanyActivityLabel.Location = new System.Drawing.Point(12, 281);
 			this.CompanyActivityLabel.Name = "CompanyActivityLabel";
 			this.CompanyActivityLabel.Size = new System.Drawing.Size(151, 13);
 			this.CompanyActivityLabel.TabIndex = 2;
@@ -75,7 +80,7 @@
 			// 
 			// AddClientDataButton
 			// 
-			this.AddClientDataButton.Location = new System.Drawing.Point(300, 271);
+			this.AddClientDataButton.Location = new System.Drawing.Point(300, 327);
 			this.AddClientDataButton.Name = "AddClientDataButton";
 			this.AddClientDataButton.Size = new System.Drawing.Size(75, 35);
 			this.AddClientDataButton.TabIndex = 3;
@@ -101,9 +106,10 @@
 			// 
 			// ContactInfoPanel
 			// 
+			this.ContactInfoPanel.AutoSize = true;
+			this.ContactInfoPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.ContactInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.ContactInfoPanel.Controls.Add(this.PhoneTextBox);
-			this.ContactInfoPanel.Controls.Add(this.PhoneLabel);
+			this.ContactInfoPanel.Controls.Add(this.PhonesFlowLayoutPanel);
 			this.ContactInfoPanel.Controls.Add(this.textBox1);
 			this.ContactInfoPanel.Controls.Add(this.AddressLabel);
 			this.ContactInfoPanel.Controls.Add(this.CityTextBox);
@@ -112,7 +118,7 @@
 			this.ContactInfoPanel.Controls.Add(this.CountryLabel);
 			this.ContactInfoPanel.Location = new System.Drawing.Point(395, 12);
 			this.ContactInfoPanel.Name = "ContactInfoPanel";
-			this.ContactInfoPanel.Size = new System.Drawing.Size(292, 176);
+			this.ContactInfoPanel.Size = new System.Drawing.Size(307, 208);
 			this.ContactInfoPanel.TabIndex = 6;
 			// 
 			// CountryLabel
@@ -169,7 +175,7 @@
 			// PhoneLabel
 			// 
 			this.PhoneLabel.AutoSize = true;
-			this.PhoneLabel.Location = new System.Drawing.Point(38, 136);
+			this.PhoneLabel.Location = new System.Drawing.Point(5, 18);
 			this.PhoneLabel.Name = "PhoneLabel";
 			this.PhoneLabel.Size = new System.Drawing.Size(29, 13);
 			this.PhoneLabel.TabIndex = 6;
@@ -177,7 +183,7 @@
 			// 
 			// PhoneTextBox
 			// 
-			this.PhoneTextBox.Location = new System.Drawing.Point(101, 133);
+			this.PhoneTextBox.Location = new System.Drawing.Point(61, 15);
 			this.PhoneTextBox.Name = "PhoneTextBox";
 			this.PhoneTextBox.Size = new System.Drawing.Size(100, 20);
 			this.PhoneTextBox.TabIndex = 7;
@@ -201,11 +207,43 @@
 			this.HeadOfficeCheckBox.Text = " Да";
 			this.HeadOfficeCheckBox.UseVisualStyleBackColor = true;
 			// 
+			// PhonePanel
+			// 
+			this.PhonePanel.Controls.Add(this.MorePhonesButton);
+			this.PhonePanel.Controls.Add(this.PhoneTextBox);
+			this.PhonePanel.Controls.Add(this.PhoneLabel);
+			this.PhonePanel.Location = new System.Drawing.Point(3, 3);
+			this.PhonePanel.Name = "PhonePanel";
+			this.PhonePanel.Size = new System.Drawing.Size(254, 51);
+			this.PhonePanel.TabIndex = 9;
+			this.PhonePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PhonePanel_Paint);
+			// 
+			// MorePhonesButton
+			// 
+			this.MorePhonesButton.Location = new System.Drawing.Point(187, 12);
+			this.MorePhonesButton.Name = "MorePhonesButton";
+			this.MorePhonesButton.Size = new System.Drawing.Size(47, 23);
+			this.MorePhonesButton.TabIndex = 8;
+			this.MorePhonesButton.Text = "Ещё";
+			this.MorePhonesButton.UseVisualStyleBackColor = true;
+			this.MorePhonesButton.Click += new System.EventHandler(this.MorePhonesButton_Click);
+			// 
+			// PhonesFlowLayoutPanel
+			// 
+			this.PhonesFlowLayoutPanel.AutoSize = true;
+			this.PhonesFlowLayoutPanel.Controls.Add(this.PhonePanel);
+			this.PhonesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+			this.PhonesFlowLayoutPanel.Location = new System.Drawing.Point(37, 114);
+			this.PhonesFlowLayoutPanel.Name = "PhonesFlowLayoutPanel";
+			this.PhonesFlowLayoutPanel.Size = new System.Drawing.Size(265, 89);
+			this.PhonesFlowLayoutPanel.TabIndex = 10;
+			// 
 			// AddNewClientForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(724, 389);
+			this.AutoScroll = true;
+			this.ClientSize = new System.Drawing.Size(882, 389);
 			this.Controls.Add(this.HeadOfficeCheckBox);
 			this.Controls.Add(this.HeadOfficeLabel);
 			this.Controls.Add(this.ContactInfoPanel);
@@ -220,6 +258,9 @@
 			this.Load += new System.EventHandler(this.AddNewClientForm_Load);
 			this.ContactInfoPanel.ResumeLayout(false);
 			this.ContactInfoPanel.PerformLayout();
+			this.PhonePanel.ResumeLayout(false);
+			this.PhonePanel.PerformLayout();
+			this.PhonesFlowLayoutPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -244,5 +285,8 @@
 		private System.Windows.Forms.ComboBox CountryComboBox;
 		private System.Windows.Forms.Label HeadOfficeLabel;
 		private System.Windows.Forms.CheckBox HeadOfficeCheckBox;
+		private System.Windows.Forms.FlowLayoutPanel PhonesFlowLayoutPanel;
+		private System.Windows.Forms.Panel PhonePanel;
+		private System.Windows.Forms.Button MorePhonesButton;
 	}
 }
