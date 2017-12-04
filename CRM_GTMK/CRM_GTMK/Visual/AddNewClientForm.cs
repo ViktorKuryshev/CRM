@@ -34,7 +34,12 @@ namespace CRM_GTMK.Visual
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			_controller.AddClientName(CompanyNameTextBox.Text);
+			string[] clientInfo =
+			{
+				CompanyNameTextBox.Text,
+				CompanySiteTextBox.Text
+			};
+			_controller.AddClientName(clientInfo);
 		}
 	}
 }

@@ -22,9 +22,9 @@ namespace CRM_GTMK.Control
 			MyVisual = new MyVisual(this);
 	    }
 
-	    public void AddClientName(string text)
+	    public void AddClientName(string[] clientsInfo)
 	    {
-		    MessageBox.Show("Имя компании:" + text);
+		    new ClientsListForm(clientsInfo).ShowDialog();
 
 	    }
 		

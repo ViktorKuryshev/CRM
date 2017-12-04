@@ -10,12 +10,13 @@ using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual
 {
-	public partial class InfoTestForm : Form
+	public partial class ClientsListForm : Form
 	{
-		public InfoTestForm()
+		public ClientsListForm(string[] clientsInfo)
 		{
 
 			InitializeComponent();
+			ClientsDataGridView.Rows.Add(clientsInfo);
 
 		}
 
