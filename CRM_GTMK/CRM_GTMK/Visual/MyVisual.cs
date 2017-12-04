@@ -7,10 +7,13 @@ using CRM_GTMK.Control;
 
 namespace CRM_GTMK.Visual
 {
-    class MyVisual
+	public class MyVisual
     {
 	    private Controller _controller;
-		
+
+		public AddNewClientForm AddNewClientForm { get; set; }
+
+
 		public MyVisual(Controller controller)
 		{
 			_controller = controller;
@@ -25,7 +28,8 @@ namespace CRM_GTMK.Visual
 
         private void ShowTheStartWindow()
         {
-	        
+	        AddNewClientForm = new AddNewClientForm(_controller);
+	        AddNewClientForm.ShowDialog();
 
 		}
     }

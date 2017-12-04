@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRM_GTMK.Model
 {
-    class MyModel
+	public class MyModel
     {
     }
 }
