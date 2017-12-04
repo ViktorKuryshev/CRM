@@ -18,13 +18,8 @@ namespace CRM_GTMK.Control
 	    public Controller()
 	    {
 		    //MyModel = new MyModel();
-			MyVisual = new MyVisual();
+			MyVisual = new MyVisual(this);
 	    }
-
-	    public void Start()
-	    {
-			MyVisual = new MyVisual();
-		}
-
+		
     }
 }
