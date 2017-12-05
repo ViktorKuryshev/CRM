@@ -177,9 +177,9 @@
 			this.PhoneLabel.AutoSize = true;
 			this.PhoneLabel.Location = new System.Drawing.Point(5, 18);
 			this.PhoneLabel.Name = "PhoneLabel";
-			this.PhoneLabel.Size = new System.Drawing.Size(29, 13);
+			this.PhoneLabel.Size = new System.Drawing.Size(32, 13);
 			this.PhoneLabel.TabIndex = 6;
-			this.PhoneLabel.Text = "Тел:";
+			this.PhoneLabel.Text = "Тел.:";
 			// 
 			// PhoneTextBox
 			// 
