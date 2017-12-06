@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRM_GTMK.Model
 {
-    class Office
+	public class Office
     {
         //true if a head office, false otherwise 
         public bool IsHeadOffice { get; set; }

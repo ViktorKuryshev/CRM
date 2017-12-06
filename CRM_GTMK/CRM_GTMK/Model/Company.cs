@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRM_GTMK.Model
 {
-    class Company
+    public class Company
     {
         public string[] Fields { get; set; }
         public string Name { get; set; }
@@ -16,6 +16,11 @@ namespace CRM_GTMK.Model
         public Office[] offices { get; set; }
 
         public ContactPerson persons { get; set; }
+
+	    public Company()
+	    {
+		    Name = "";
+	    }
 
         //Todo Comments
 

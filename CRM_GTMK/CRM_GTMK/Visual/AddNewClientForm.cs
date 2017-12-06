@@ -22,6 +22,11 @@ namespace CRM_GTMK.Visual
 
 		}
 
+		public TextBox GetCompanyNameTextBox()
+		{
+			return CompanyNameTextBox;
+		}
+
 		private void CompanyActivityLabel_Click(object sender, EventArgs e)
 		{
 
@@ -34,12 +39,13 @@ namespace CRM_GTMK.Visual
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			string[] clientInfo =
+			_controller.AddNewCompanyInfo(this);
+			/*string[] clientInfo =
 			{
 				CompanyNameTextBox.Text,
 				CompanySiteTextBox.Text
 			};
-			_controller.AddClientName(clientInfo);
+			_controller.AddClientName(clientInfo); */
 		}
 
 		private void MorePhonesButton_Click(object sender, EventArgs e)

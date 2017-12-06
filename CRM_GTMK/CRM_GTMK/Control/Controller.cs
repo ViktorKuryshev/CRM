@@ -18,13 +18,22 @@ namespace CRM_GTMK.Control
 
 	    public Controller()
 	    {
-		    //MyModel = new MyModel();
+		    MyModel = new MyModel();
 			MyVisual = new MyVisual(this);
 	    }
 
 	    public void AddClientName(string[] clientsInfo)
 	    {
 		    new ClientsListForm(clientsInfo).ShowDialog();
+
+	    }
+
+	    public void AddNewCompanyInfo(AddNewClientForm form)
+	    {
+			
+		    MyModel.Company.Name = form.GetCompanyNameTextBox().Text;
+			string[] companyName = { MyModel.Company.Name, "1"};
+		    new ClientsListForm(companyName).ShowDialog();
 
 	    }
 		
