@@ -8,5 +8,7 @@ namespace CRM_GTMK.Model
 {
 	public class MyModel
     {
+		public XmlHelper XmlHelper { get; set; } = new XmlHelper();
+
     }
 }

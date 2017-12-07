@@ -12,6 +12,8 @@ namespace CRM_GTMK.Visual
 {
 	public partial class ClientsListForm : Form
 	{
+		
+
 		public ClientsListForm(string[] clientsInfo)
 		{
 
