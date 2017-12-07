@@ -36,15 +36,15 @@ namespace CRM_GTMK.Visual
 		{
 			string[] clientInfo =
 			{
-				CompanyNameTextBox.Text,
-				CompanySiteTextBox.Text
+				companyNameTextBox.Text,
+				companySiteTextBox.Text
 			};
 			_controller.AddClientName(clientInfo);
 		}
 
 		private void MorePhonesButton_Click(object sender, EventArgs e)
 		{
-			PhonesFlowLayoutPanel.Controls.Add(CreateNewPhonePanel());
+			phonesFlowLayoutPanel.Controls.Add(CreateNewPhonePanel());
 		}
 
 		private void PhonePanel_Paint(object sender, PaintEventArgs e)
@@ -105,7 +105,12 @@ namespace CRM_GTMK.Visual
 			NewMorePhonesButton.UseVisualStyleBackColor = true;
 			NewMorePhonesButton.Click += new System.EventHandler(this.MorePhonesButton_Click);
 			return NewMorePhonesButton;
-		}	
+		}
+
+		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+
+		}
 	}
 	
 }
