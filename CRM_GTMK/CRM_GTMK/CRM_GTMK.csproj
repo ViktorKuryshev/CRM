@@ -52,6 +52,7 @@
     <Compile Include="Model\MyModel.cs" />
     <Compile Include="Model\Office.cs" />
     <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\XMLHelper.cs" />
     <Compile Include="StartCRM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Visual\AddNewClientForm.cs">
@@ -78,6 +79,11 @@
     <EmbeddedResource Include="Visual\ClientsListForm.resx">
       <DependentUpon>ClientsListForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\XMLBase\Companies.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
