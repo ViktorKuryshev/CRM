@@ -32,7 +32,7 @@ namespace CRM_GTMK.Control
 	    {
 		    _myModel.NewCompany.Name = form.GetCompanyNameBox().Text;
 
-			_myModel.XmlHelper.AddNewCompanyInfoToBase();
+			_myModel.XmlHelper.AddNewCompanyInfoToBase(_myModel.NewCompany);
 
 	    }
 		

@@ -8,7 +8,8 @@ namespace CRM_GTMK.Model
 {
     public class Company
     {
-        public string[] Fields { get; set; }
+	    public int companyId;
+		public string[] Fields { get; set; }
         public string Name { get; set; }
         public string Sourse { get; set; }
         public string[] WebSites { get; set; }
