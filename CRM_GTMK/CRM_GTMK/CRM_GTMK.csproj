@@ -67,6 +67,15 @@
     <Compile Include="Visual\ClientsListForm.Designer.cs">
       <DependentUpon>ClientsListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Visual\Controls\MyDataActionButtonsPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\Controls\MyOfficesFlowLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\Controls\MySaveCompanyDataButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Visual\MyVisual.cs" />
   </ItemGroup>
   <ItemGroup>

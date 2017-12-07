@@ -8,38 +8,44 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRM_GTMK.Control;
+using CRM_GTMK.Visual.Controls;
 
 namespace CRM_GTMK.Visual
 {
 	public partial class AddNewClientForm : Form
 	{
 		private Controller _controller;
+
+		public MyOfficesFlowLayout MyOfficesFlowLayout;
 		 
 		public AddNewClientForm(Controller controller)
 		{
 			_controller = controller;
 			InitializeComponent();
+			ResetForm();
 
 		}
+
+		public TextBox GetCompanyNameTextBox() { return companyNameTextBox; }
+
+		#region Predefined controls
 
 		private void CompanyActivityLabel_Click(object sender, EventArgs e)
 		{
 
 		}
 
-		private void AddNewClientForm_Load(object sender, EventArgs e)
-		{
-
-		}
-
 		private void button1_Click(object sender, EventArgs e)
 		{
+			
+			/*
 			string[] clientInfo =
 			{
 				companyNameTextBox.Text,
 				companySiteTextBox.Text
 			};
 			_controller.AddClientName(clientInfo);
+			*/
 		}
 
 		private void MorePhonesButton_Click(object sender, EventArgs e)
@@ -52,6 +58,18 @@ namespace CRM_GTMK.Visual
 
 		}
 
+		#endregion
+
+		private void ResetForm()
+		{
+			MyOfficesFlowLayout = new MyOfficesFlowLayout(_controller);
+
+			this.Controls.Remove(officesFlowLayoutPanel);
+			this.Controls.Add(MyOfficesFlowLayout); 
+			
+
+
+		}
 
 		private Panel CreateNewPhonePanel()
 		{

@@ -28,6 +28,11 @@ namespace CRM_GTMK.Control
 			_myModel.XmlHelper.AddNewCompanyInfo();
 
 	    }
-		
-    }
+
+		public void SaveCompanyData()
+		{
+
+		}
+				
+	}
 }

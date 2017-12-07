@@ -33,46 +33,45 @@
 			this.AddClientDataButton = new System.Windows.Forms.Button();
 			this.ContactInfoPanel = new System.Windows.Forms.Panel();
 			this.officesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-			this.addOneMoreOfficeButton = new System.Windows.Forms.Button();
 			this.oneOfficePanel = new System.Windows.Forms.Panel();
-			this.officeCommentsFlowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
+			this.oneOfficeFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.CountryLabel = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.cityTextBox = new System.Windows.Forms.TextBox();
 			this.companySiteTextBox = new System.Windows.Forms.TextBox();
 			this.CityLabel = new System.Windows.Forms.Label();
+			this.companyAddressTextBox = new System.Windows.Forms.TextBox();
 			this.AddressLabel = new System.Windows.Forms.Label();
 			this.countryComboBox = new System.Windows.Forms.ComboBox();
-			this.companyAddressTextBox = new System.Windows.Forms.TextBox();
-			this.CountryLabel = new System.Windows.Forms.Label();
-			this.phonesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-			this.onePhonePanel = new System.Windows.Forms.Panel();
-			this.PhoneLabel = new System.Windows.Forms.Label();
-			this.PhoneTextBox = new System.Windows.Forms.TextBox();
-			this.MorePhonesButton = new System.Windows.Forms.Button();
+			this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.button2 = new System.Windows.Forms.Button();
 			this.ContactPersonsLabel = new System.Windows.Forms.Label();
 			this.contactPersonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-			this.contactPositionLabel = new System.Windows.Forms.Label();
-			this.contctFullNameLinkLabel = new System.Windows.Forms.LinkLabel();
 			this.ContactPhoneLabel = new System.Windows.Forms.Label();
-			this.button2 = new System.Windows.Forms.Button();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-			this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-			this.panel3 = new System.Windows.Forms.Panel();
+			this.contctFullNameLinkLabel = new System.Windows.Forms.LinkLabel();
+			this.contactPositionLabel = new System.Windows.Forms.Label();
+			this.phonesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+			this.onePhonePanel = new System.Windows.Forms.Panel();
+			this.MorePhonesButton = new System.Windows.Forms.Button();
+			this.PhoneTextBox = new System.Windows.Forms.TextBox();
+			this.PhoneLabel = new System.Windows.Forms.Label();
+			this.button3 = new System.Windows.Forms.Button();
+			this.officeCommentsFlowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+			this.dataActionsPanel = new System.Windows.Forms.Panel();
+			this.addOneMoreOfficeButton = new System.Windows.Forms.Button();
 			this.officesFlowLayoutPanel.SuspendLayout();
-			this.phonesFlowLayoutPanel.SuspendLayout();
-			this.onePhonePanel.SuspendLayout();
-			this.contactPersonsTableLayoutPanel.SuspendLayout();
+			this.oneOfficeFlowLayoutPanel.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.panel1.SuspendLayout();
-			this.panel2.SuspendLayout();
 			this.flowLayoutPanel2.SuspendLayout();
-			this.flowLayoutPanel3.SuspendLayout();
-			this.panel3.SuspendLayout();
+			this.panel2.SuspendLayout();
+			this.contactPersonsTableLayoutPanel.SuspendLayout();
+			this.phonesFlowLayoutPanel.SuspendLayout();
+			this.onePhonePanel.SuspendLayout();
+			this.dataActionsPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// companyNameTextBox
@@ -97,7 +96,7 @@
 			this.AddClientDataButton.Name = "AddClientDataButton";
 			this.AddClientDataButton.Size = new System.Drawing.Size(162, 35);
 			this.AddClientDataButton.TabIndex = 3;
-			this.AddClientDataButton.Text = "Сохранить и закрыть";
+			this.AddClientDataButton.Text = "Сохранить";
 			this.AddClientDataButton.UseVisualStyleBackColor = true;
 			this.AddClientDataButton.Click += new System.EventHandler(this.button1_Click);
 			// 
@@ -115,22 +114,13 @@
 			// 
 			this.officesFlowLayoutPanel.AutoSize = true;
 			this.officesFlowLayoutPanel.Controls.Add(this.oneOfficePanel);
-			this.officesFlowLayoutPanel.Controls.Add(this.flowLayoutPanel3);
-			this.officesFlowLayoutPanel.Controls.Add(this.panel3);
+			this.officesFlowLayoutPanel.Controls.Add(this.oneOfficeFlowLayoutPanel);
+			this.officesFlowLayoutPanel.Controls.Add(this.dataActionsPanel);
 			this.officesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
 			this.officesFlowLayoutPanel.Location = new System.Drawing.Point(20, 65);
 			this.officesFlowLayoutPanel.Name = "officesFlowLayoutPanel";
-			this.officesFlowLayoutPanel.Size = new System.Drawing.Size(821, 481);
+			this.officesFlowLayoutPanel.Size = new System.Drawing.Size(821, 494);
 			this.officesFlowLayoutPanel.TabIndex = 11;
-			// 
-			// addOneMoreOfficeButton
-			// 
-			this.addOneMoreOfficeButton.Location = new System.Drawing.Point(500, 19);
-			this.addOneMoreOfficeButton.Name = "addOneMoreOfficeButton";
-			this.addOneMoreOfficeButton.Size = new System.Drawing.Size(107, 23);
-			this.addOneMoreOfficeButton.TabIndex = 12;
-			this.addOneMoreOfficeButton.Text = "Добавить офис";
-			this.addOneMoreOfficeButton.UseVisualStyleBackColor = true;
 			// 
 			// oneOfficePanel
 			// 
@@ -140,31 +130,55 @@
 			this.oneOfficePanel.Size = new System.Drawing.Size(0, 0);
 			this.oneOfficePanel.TabIndex = 13;
 			// 
-			// officeCommentsFlowLayoutPanel1
+			// oneOfficeFlowLayoutPanel
 			// 
-			this.officeCommentsFlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.officeCommentsFlowLayoutPanel1.Location = new System.Drawing.Point(3, 224);
-			this.officeCommentsFlowLayoutPanel1.Name = "officeCommentsFlowLayoutPanel1";
-			this.officeCommentsFlowLayoutPanel1.Size = new System.Drawing.Size(421, 35);
-			this.officeCommentsFlowLayoutPanel1.TabIndex = 1;
+			this.oneOfficeFlowLayoutPanel.AutoSize = true;
+			this.oneOfficeFlowLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.oneOfficeFlowLayoutPanel.Controls.Add(this.flowLayoutPanel1);
+			this.oneOfficeFlowLayoutPanel.Controls.Add(this.phonesFlowLayoutPanel);
+			this.oneOfficeFlowLayoutPanel.Controls.Add(this.button3);
+			this.oneOfficeFlowLayoutPanel.Controls.Add(this.officeCommentsFlowLayoutPanel1);
+			this.oneOfficeFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+			this.oneOfficeFlowLayoutPanel.Location = new System.Drawing.Point(3, 9);
+			this.oneOfficeFlowLayoutPanel.Name = "oneOfficeFlowLayoutPanel";
+			this.oneOfficeFlowLayoutPanel.Size = new System.Drawing.Size(802, 264);
+			this.oneOfficeFlowLayoutPanel.TabIndex = 15;
 			// 
-			// button3
+			// flowLayoutPanel1
 			// 
-			this.button3.Location = new System.Drawing.Point(3, 195);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(123, 23);
-			this.button3.TabIndex = 2;
-			this.button3.Text = "Добавить коммент";
-			this.button3.UseVisualStyleBackColor = true;
+			this.flowLayoutPanel1.AutoSize = true;
+			this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.flowLayoutPanel1.Controls.Add(this.panel1);
+			this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(794, 136);
+			this.flowLayoutPanel1.TabIndex = 14;
 			// 
-			// button4
+			// panel1
 			// 
-			this.button4.Location = new System.Drawing.Point(108, 16);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(164, 35);
-			this.button4.TabIndex = 13;
-			this.button4.Text = "Добавить компанию";
-			this.button4.UseVisualStyleBackColor = true;
+			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel1.Controls.Add(this.CountryLabel);
+			this.panel1.Controls.Add(this.label1);
+			this.panel1.Controls.Add(this.cityTextBox);
+			this.panel1.Controls.Add(this.companySiteTextBox);
+			this.panel1.Controls.Add(this.CityLabel);
+			this.panel1.Controls.Add(this.companyAddressTextBox);
+			this.panel1.Controls.Add(this.AddressLabel);
+			this.panel1.Controls.Add(this.countryComboBox);
+			this.panel1.Location = new System.Drawing.Point(3, 3);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(280, 128);
+			this.panel1.TabIndex = 0;
+			// 
+			// CountryLabel
+			// 
+			this.CountryLabel.AutoSize = true;
+			this.CountryLabel.Location = new System.Drawing.Point(16, 18);
+			this.CountryLabel.Name = "CountryLabel";
+			this.CountryLabel.Size = new System.Drawing.Size(46, 13);
+			this.CountryLabel.TabIndex = 0;
+			this.CountryLabel.Text = "Страна:";
 			// 
 			// label1
 			// 
@@ -198,6 +212,13 @@
 			this.CityLabel.TabIndex = 2;
 			this.CityLabel.Text = "Город:";
 			// 
+			// companyAddressTextBox
+			// 
+			this.companyAddressTextBox.Location = new System.Drawing.Point(83, 70);
+			this.companyAddressTextBox.Name = "companyAddressTextBox";
+			this.companyAddressTextBox.Size = new System.Drawing.Size(170, 20);
+			this.companyAddressTextBox.TabIndex = 5;
+			// 
 			// AddressLabel
 			// 
 			this.AddressLabel.AutoSize = true;
@@ -217,69 +238,35 @@
 			this.countryComboBox.Size = new System.Drawing.Size(170, 21);
 			this.countryComboBox.TabIndex = 1;
 			// 
-			// companyAddressTextBox
+			// flowLayoutPanel2
 			// 
-			this.companyAddressTextBox.Location = new System.Drawing.Point(83, 70);
-			this.companyAddressTextBox.Name = "companyAddressTextBox";
-			this.companyAddressTextBox.Size = new System.Drawing.Size(170, 20);
-			this.companyAddressTextBox.TabIndex = 5;
+			this.flowLayoutPanel2.AutoSize = true;
+			this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.flowLayoutPanel2.Controls.Add(this.panel2);
+			this.flowLayoutPanel2.Controls.Add(this.contactPersonsTableLayoutPanel);
+			this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+			this.flowLayoutPanel2.Location = new System.Drawing.Point(289, 3);
+			this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+			this.flowLayoutPanel2.Size = new System.Drawing.Size(500, 100);
+			this.flowLayoutPanel2.TabIndex = 15;
 			// 
-			// CountryLabel
+			// panel2
 			// 
-			this.CountryLabel.AutoSize = true;
-			this.CountryLabel.Location = new System.Drawing.Point(16, 18);
-			this.CountryLabel.Name = "CountryLabel";
-			this.CountryLabel.Size = new System.Drawing.Size(46, 13);
-			this.CountryLabel.TabIndex = 0;
-			this.CountryLabel.Text = "Страна:";
+			this.panel2.Controls.Add(this.button2);
+			this.panel2.Controls.Add(this.ContactPersonsLabel);
+			this.panel2.Location = new System.Drawing.Point(3, 3);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(492, 46);
+			this.panel2.TabIndex = 1;
 			// 
-			// phonesFlowLayoutPanel
+			// button2
 			// 
-			this.phonesFlowLayoutPanel.AutoSize = true;
-			this.phonesFlowLayoutPanel.Controls.Add(this.onePhonePanel);
-			this.phonesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-			this.phonesFlowLayoutPanel.Location = new System.Drawing.Point(3, 145);
-			this.phonesFlowLayoutPanel.Name = "phonesFlowLayoutPanel";
-			this.phonesFlowLayoutPanel.Size = new System.Drawing.Size(286, 44);
-			this.phonesFlowLayoutPanel.TabIndex = 10;
-			// 
-			// onePhonePanel
-			// 
-			this.onePhonePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.onePhonePanel.Controls.Add(this.MorePhonesButton);
-			this.onePhonePanel.Controls.Add(this.PhoneTextBox);
-			this.onePhonePanel.Controls.Add(this.PhoneLabel);
-			this.onePhonePanel.Location = new System.Drawing.Point(3, 3);
-			this.onePhonePanel.Name = "onePhonePanel";
-			this.onePhonePanel.Size = new System.Drawing.Size(280, 38);
-			this.onePhonePanel.TabIndex = 9;
-			this.onePhonePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PhonePanel_Paint);
-			// 
-			// PhoneLabel
-			// 
-			this.PhoneLabel.AutoSize = true;
-			this.PhoneLabel.Location = new System.Drawing.Point(23, 12);
-			this.PhoneLabel.Name = "PhoneLabel";
-			this.PhoneLabel.Size = new System.Drawing.Size(32, 13);
-			this.PhoneLabel.TabIndex = 6;
-			this.PhoneLabel.Text = "Тел.:";
-			// 
-			// PhoneTextBox
-			// 
-			this.PhoneTextBox.Location = new System.Drawing.Point(83, 9);
-			this.PhoneTextBox.Name = "PhoneTextBox";
-			this.PhoneTextBox.Size = new System.Drawing.Size(100, 20);
-			this.PhoneTextBox.TabIndex = 7;
-			// 
-			// MorePhonesButton
-			// 
-			this.MorePhonesButton.Location = new System.Drawing.Point(206, 6);
-			this.MorePhonesButton.Name = "MorePhonesButton";
-			this.MorePhonesButton.Size = new System.Drawing.Size(47, 23);
-			this.MorePhonesButton.TabIndex = 8;
-			this.MorePhonesButton.Text = "Ещё";
-			this.MorePhonesButton.UseVisualStyleBackColor = true;
-			this.MorePhonesButton.Click += new System.EventHandler(this.MorePhonesButton_Click);
+			this.button2.Location = new System.Drawing.Point(261, 10);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(137, 23);
+			this.button2.TabIndex = 12;
+			this.button2.Text = "Добавить сотрудника";
+			this.button2.UseVisualStyleBackColor = true;
 			// 
 			// ContactPersonsLabel
 			// 
@@ -311,14 +298,14 @@
 			this.contactPersonsTableLayoutPanel.Size = new System.Drawing.Size(429, 40);
 			this.contactPersonsTableLayoutPanel.TabIndex = 11;
 			// 
-			// contactPositionLabel
+			// ContactPhoneLabel
 			// 
-			this.contactPositionLabel.AutoSize = true;
-			this.contactPositionLabel.Location = new System.Drawing.Point(157, 3);
-			this.contactPositionLabel.Name = "contactPositionLabel";
-			this.contactPositionLabel.Size = new System.Drawing.Size(137, 13);
-			this.contactPositionLabel.TabIndex = 13;
-			this.contactPositionLabel.Text = "Менеджер по маркетингу";
+			this.ContactPhoneLabel.AutoSize = true;
+			this.ContactPhoneLabel.Location = new System.Drawing.Point(302, 3);
+			this.ContactPhoneLabel.Name = "ContactPhoneLabel";
+			this.ContactPhoneLabel.Size = new System.Drawing.Size(121, 13);
+			this.ContactPhoneLabel.TabIndex = 14;
+			this.ContactPhoneLabel.Text = "Моб.: +7 903 374 50 30";
 			// 
 			// contctFullNameLinkLabel
 			// 
@@ -331,94 +318,97 @@
 			this.contctFullNameLinkLabel.Text = "Василий Иванович Чапаев";
 			this.contctFullNameLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
 			// 
-			// ContactPhoneLabel
+			// contactPositionLabel
 			// 
-			this.ContactPhoneLabel.AutoSize = true;
-			this.ContactPhoneLabel.Location = new System.Drawing.Point(302, 3);
-			this.ContactPhoneLabel.Name = "ContactPhoneLabel";
-			this.ContactPhoneLabel.Size = new System.Drawing.Size(121, 13);
-			this.ContactPhoneLabel.TabIndex = 14;
-			this.ContactPhoneLabel.Text = "Моб.: +7 903 374 50 30";
+			this.contactPositionLabel.AutoSize = true;
+			this.contactPositionLabel.Location = new System.Drawing.Point(157, 3);
+			this.contactPositionLabel.Name = "contactPositionLabel";
+			this.contactPositionLabel.Size = new System.Drawing.Size(137, 13);
+			this.contactPositionLabel.TabIndex = 13;
+			this.contactPositionLabel.Text = "Менеджер по маркетингу";
 			// 
-			// button2
+			// phonesFlowLayoutPanel
 			// 
-			this.button2.Location = new System.Drawing.Point(261, 10);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(137, 23);
-			this.button2.TabIndex = 12;
-			this.button2.Text = "Добавить сотрудника";
-			this.button2.UseVisualStyleBackColor = true;
+			this.phonesFlowLayoutPanel.AutoSize = true;
+			this.phonesFlowLayoutPanel.Controls.Add(this.onePhonePanel);
+			this.phonesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+			this.phonesFlowLayoutPanel.Location = new System.Drawing.Point(3, 145);
+			this.phonesFlowLayoutPanel.Name = "phonesFlowLayoutPanel";
+			this.phonesFlowLayoutPanel.Size = new System.Drawing.Size(286, 44);
+			this.phonesFlowLayoutPanel.TabIndex = 10;
 			// 
-			// flowLayoutPanel1
+			// onePhonePanel
 			// 
-			this.flowLayoutPanel1.AutoSize = true;
-			this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.flowLayoutPanel1.Controls.Add(this.panel1);
-			this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
-			this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-			this.flowLayoutPanel1.Size = new System.Drawing.Size(794, 136);
-			this.flowLayoutPanel1.TabIndex = 14;
+			this.onePhonePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.onePhonePanel.Controls.Add(this.MorePhonesButton);
+			this.onePhonePanel.Controls.Add(this.PhoneTextBox);
+			this.onePhonePanel.Controls.Add(this.PhoneLabel);
+			this.onePhonePanel.Location = new System.Drawing.Point(3, 3);
+			this.onePhonePanel.Name = "onePhonePanel";
+			this.onePhonePanel.Size = new System.Drawing.Size(280, 38);
+			this.onePhonePanel.TabIndex = 9;
+			this.onePhonePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PhonePanel_Paint);
 			// 
-			// panel1
+			// MorePhonesButton
 			// 
-			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel1.Controls.Add(this.CountryLabel);
-			this.panel1.Controls.Add(this.label1);
-			this.panel1.Controls.Add(this.cityTextBox);
-			this.panel1.Controls.Add(this.companySiteTextBox);
-			this.panel1.Controls.Add(this.CityLabel);
-			this.panel1.Controls.Add(this.companyAddressTextBox);
-			this.panel1.Controls.Add(this.AddressLabel);
-			this.panel1.Controls.Add(this.countryComboBox);
-			this.panel1.Location = new System.Drawing.Point(3, 3);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(280, 128);
-			this.panel1.TabIndex = 0;
+			this.MorePhonesButton.Location = new System.Drawing.Point(206, 6);
+			this.MorePhonesButton.Name = "MorePhonesButton";
+			this.MorePhonesButton.Size = new System.Drawing.Size(47, 23);
+			this.MorePhonesButton.TabIndex = 8;
+			this.MorePhonesButton.Text = "Ещё";
+			this.MorePhonesButton.UseVisualStyleBackColor = true;
+			this.MorePhonesButton.Click += new System.EventHandler(this.MorePhonesButton_Click);
 			// 
-			// panel2
+			// PhoneTextBox
 			// 
-			this.panel2.Controls.Add(this.button2);
-			this.panel2.Controls.Add(this.ContactPersonsLabel);
-			this.panel2.Location = new System.Drawing.Point(3, 3);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(492, 46);
-			this.panel2.TabIndex = 1;
+			this.PhoneTextBox.Location = new System.Drawing.Point(83, 9);
+			this.PhoneTextBox.Name = "PhoneTextBox";
+			this.PhoneTextBox.Size = new System.Drawing.Size(100, 20);
+			this.PhoneTextBox.TabIndex = 7;
 			// 
-			// flowLayoutPanel2
+			// PhoneLabel
 			// 
-			this.flowLayoutPanel2.AutoSize = true;
-			this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.flowLayoutPanel2.Controls.Add(this.panel2);
-			this.flowLayoutPanel2.Controls.Add(this.contactPersonsTableLayoutPanel);
-			this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-			this.flowLayoutPanel2.Location = new System.Drawing.Point(289, 3);
-			this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-			this.flowLayoutPanel2.Size = new System.Drawing.Size(500, 100);
-			this.flowLayoutPanel2.TabIndex = 15;
+			this.PhoneLabel.AutoSize = true;
+			this.PhoneLabel.Location = new System.Drawing.Point(23, 12);
+			this.PhoneLabel.Name = "PhoneLabel";
+			this.PhoneLabel.Size = new System.Drawing.Size(32, 13);
+			this.PhoneLabel.TabIndex = 6;
+			this.PhoneLabel.Text = "Тел.:";
 			// 
-			// flowLayoutPanel3
+			// button3
 			// 
-			this.flowLayoutPanel3.AutoSize = true;
-			this.flowLayoutPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel1);
-			this.flowLayoutPanel3.Controls.Add(this.phonesFlowLayoutPanel);
-			this.flowLayoutPanel3.Controls.Add(this.button3);
-			this.flowLayoutPanel3.Controls.Add(this.officeCommentsFlowLayoutPanel1);
-			this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-			this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 9);
-			this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-			this.flowLayoutPanel3.Size = new System.Drawing.Size(802, 264);
-			this.flowLayoutPanel3.TabIndex = 15;
+			this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+			this.button3.Location = new System.Drawing.Point(338, 195);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(123, 23);
+			this.button3.TabIndex = 2;
+			this.button3.Text = "Добавить коммент";
+			this.button3.UseVisualStyleBackColor = true;
 			// 
-			// panel3
+			// officeCommentsFlowLayoutPanel1
 			// 
-			this.panel3.Controls.Add(this.button4);
-			this.panel3.Controls.Add(this.AddClientDataButton);
-			this.panel3.Location = new System.Drawing.Point(3, 279);
-			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(552, 71);
-			this.panel3.TabIndex = 14;
+			this.officeCommentsFlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.officeCommentsFlowLayoutPanel1.Location = new System.Drawing.Point(3, 224);
+			this.officeCommentsFlowLayoutPanel1.Name = "officeCommentsFlowLayoutPanel1";
+			this.officeCommentsFlowLayoutPanel1.Size = new System.Drawing.Size(421, 35);
+			this.officeCommentsFlowLayoutPanel1.TabIndex = 1;
+			// 
+			// dataActionsPanel
+			// 
+			this.dataActionsPanel.Controls.Add(this.AddClientDataButton);
+			this.dataActionsPanel.Location = new System.Drawing.Point(3, 279);
+			this.dataActionsPanel.Name = "dataActionsPanel";
+			this.dataActionsPanel.Size = new System.Drawing.Size(552, 71);
+			this.dataActionsPanel.TabIndex = 14;
+			// 
+			// addOneMoreOfficeButton
+			// 
+			this.addOneMoreOfficeButton.Location = new System.Drawing.Point(500, 19);
+			this.addOneMoreOfficeButton.Name = "addOneMoreOfficeButton";
+			this.addOneMoreOfficeButton.Size = new System.Drawing.Size(107, 23);
+			this.addOneMoreOfficeButton.TabIndex = 12;
+			this.addOneMoreOfficeButton.Text = "Добавить офис";
+			this.addOneMoreOfficeButton.UseVisualStyleBackColor = true;
 			// 
 			// AddNewClientForm
 			// 
@@ -433,25 +423,24 @@
 			this.Controls.Add(this.companyNameTextBox);
 			this.Name = "AddNewClientForm";
 			this.Text = "AddNewClientForm";
-			this.Load += new System.EventHandler(this.AddNewClientForm_Load);
 			this.officesFlowLayoutPanel.ResumeLayout(false);
 			this.officesFlowLayoutPanel.PerformLayout();
-			this.phonesFlowLayoutPanel.ResumeLayout(false);
-			this.onePhonePanel.ResumeLayout(false);
-			this.onePhonePanel.PerformLayout();
-			this.contactPersonsTableLayoutPanel.ResumeLayout(false);
-			this.contactPersonsTableLayoutPanel.PerformLayout();
+			this.oneOfficeFlowLayoutPanel.ResumeLayout(false);
+			this.oneOfficeFlowLayoutPanel.PerformLayout();
 			this.flowLayoutPanel1.ResumeLayout(false);
 			this.flowLayoutPanel1.PerformLayout();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
 			this.flowLayoutPanel2.ResumeLayout(false);
 			this.flowLayoutPanel2.PerformLayout();
-			this.flowLayoutPanel3.ResumeLayout(false);
-			this.flowLayoutPanel3.PerformLayout();
-			this.panel3.ResumeLayout(false);
+			this.panel2.ResumeLayout(false);
+			this.panel2.PerformLayout();
+			this.contactPersonsTableLayoutPanel.ResumeLayout(false);
+			this.contactPersonsTableLayoutPanel.PerformLayout();
+			this.phonesFlowLayoutPanel.ResumeLayout(false);
+			this.onePhonePanel.ResumeLayout(false);
+			this.onePhonePanel.PerformLayout();
+			this.dataActionsPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -468,8 +457,7 @@
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.FlowLayoutPanel officeCommentsFlowLayoutPanel1;
 		private System.Windows.Forms.Button addOneMoreOfficeButton;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+		private System.Windows.Forms.FlowLayoutPanel oneOfficeFlowLayoutPanel;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Label CountryLabel;
@@ -493,6 +481,6 @@
 		private System.Windows.Forms.Button MorePhonesButton;
 		private System.Windows.Forms.TextBox PhoneTextBox;
 		private System.Windows.Forms.Label PhoneLabel;
-		private System.Windows.Forms.Panel panel3;
+		private System.Windows.Forms.Panel dataActionsPanel;
 	}
 }
