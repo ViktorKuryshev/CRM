@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,6 +28,11 @@ namespace CRM_GTMK.Visual
 		}
 
 		public TextBox GetCompanyNameTextBox() { return companyNameTextBox; }
+
+		public FlowLayoutPanel GetOfficesFlowLayoutPanel()
+		{
+			return officesFlowLayoutPanel;
+		}
 
 		#region Predefined controls
 
@@ -60,9 +66,11 @@ namespace CRM_GTMK.Visual
 
 		#endregion
 
+		
+
 		private void ResetForm()
 		{
-			MyOfficesFlowLayout = new MyOfficesFlowLayout(_controller);
+			MyOfficesFlowLayout = new MyOfficesFlowLayout(_controller, this);
 
 			this.Controls.Remove(officesFlowLayoutPanel);
 			this.Controls.Add(MyOfficesFlowLayout); 
@@ -129,6 +137,9 @@ namespace CRM_GTMK.Visual
 		{
 
 		}
+
+		
 	}
+
 	
 }

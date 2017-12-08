@@ -11,19 +11,21 @@ namespace CRM_GTMK.Visual.Controls
 	public class MyOfficesFlowLayout : FlowLayoutPanel
 	{
 		
-		public MyOfficesFlowLayout(Controller controller) : base()
+		public MyOfficesFlowLayout(Controller controller, AddNewClientForm form) : base()
 		{
-			
-			AutoSize = true;
+
+			FlowLayoutPanel officesFlowLayout = form.GetOfficesFlowLayoutPanel();
+
+			AutoSize = officesFlowLayout.AutoSize;
 			
 			//Controls.Add(this.flowLayoutPanel3);
 			Controls.Add(new MyDataActionButtonsPanel(controller));
 
-			FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-			Location = new System.Drawing.Point(20, 65);
-			Name = "MyOfficesFlowLayout";
-			Size = new System.Drawing.Size(821, 494);
-			TabIndex = 11;
+			FlowDirection = officesFlowLayout.FlowDirection;
+			Location = officesFlowLayout.Location;
+			Name = officesFlowLayout.Name;
+			Size = officesFlowLayout.Size;
+			TabIndex = officesFlowLayout.TabIndex;
 		}
 
 	}
