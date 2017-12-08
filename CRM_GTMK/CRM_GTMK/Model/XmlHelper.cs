@@ -24,7 +24,7 @@ namespace CRM_GTMK.Model
 				path = Path.Combine(TEST_BASE_DIRECTORY, COMPANY_FILE_NAME);
 				xDoc = XDocument.Load(path);
 			}
-			catch (FileNotFoundException)
+			catch (FileNotFoundException) //Todo Directory not found
 			{
 				path = Path.Combine(BASE_DIRECTORY, COMPANY_FILE_NAME);
 				xDoc = XDocument.Load(path);
