@@ -105,7 +105,12 @@ namespace CRM_GTMK.Visual
 			NewMorePhonesButton.UseVisualStyleBackColor = true;
 			NewMorePhonesButton.Click += new System.EventHandler(this.MorePhonesButton_Click);
 			return NewMorePhonesButton;
-		}	
+		}
+
+		private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
 	}
 	
 }
