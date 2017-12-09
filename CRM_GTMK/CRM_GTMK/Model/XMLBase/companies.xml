@@ -3,4 +3,16 @@
   <company />
   <company />
   <company />
+  <company name="test company">
+    <office>
+      <phone>+7 000 000 00 00</phone>
+      <phone>+7 111 111 11 11</phone>
+    </office>
+  </company>
+  <company name="GTMK LLC">
+    <office>
+      <phone>+7 903 000 00 00</phone>
+      <phone>+7(000)000-00-00</phone>
+    </office>
+  </company>
 </companies>

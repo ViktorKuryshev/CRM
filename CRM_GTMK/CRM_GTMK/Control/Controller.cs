@@ -44,7 +44,7 @@ namespace CRM_GTMK.Control
 			_myModel.NewCompany.Offices.Add(newOffice);
 			
 			//new ClientsListForm(clientsInfo).ShowDialog();
-			//_myModel.XmlHelper.AddNewCompanyInfo();
+			_myModel.XmlHelper.AddNewCompanyInfo(_myModel.NewCompany);
 
 
 		}
