@@ -14,30 +14,41 @@ namespace CRM_GTMK.Control
 
     public class Controller
     {
-        private MyModel _myModel { get; set; }
-        private MyVisual _myVisual { get; set; }
+	    private MyModel _myModel;
+	    private MyVisual _myVisual;
 
 	    public Controller()
 	    {
-		    _myModel = new MyModel();
-			_myVisual = new MyVisual(this);
+		    
 	    }
 
-	    public void AddClientName(string[] clientsInfo)
+	    public void Start(MyModel myModel, MyVisual myVisual)
 	    {
-		    new ClientsListForm(clientsInfo).ShowDialog();
-			_myModel.XmlHelper.AddNewCompanyInfo();
+		    _myModel = myModel;
+		    _myVisual = myVisual;
+
+			_myVisual.ShowAddNewCompanyDialog();
 
 	    }
 
-	    public void AddOneMorePhonePanel()
+	    public void SaveNewCompanyData()
 	    {
-		    MyPhonePanel newPhonePanel = new MyPhonePanel(this, _myVisual.AddNewClientForm);
+		    _myModel.NewCompany = new Company();
+		    _myModel.NewCompany.Name = _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text;
+			Office newOffice = new Office();
+		    foreach (MyPhonePanel panel in _myVisual.AddNewClientForm.MyPhonesFlowLayout.MyPhonePanels)
+		    {
+			    newOffice.Phones.Add(panel.MyPhoneTextBox.Text);
+		    }
 
-			_myVisual.AddNewClientForm.MyPhonesFlowLayout
-				.Add(newPhonePanel);
+			_myModel.NewCompany.Offices.Add(newOffice);
+			
+			//new ClientsListForm(clientsInfo).ShowDialog();
+			//_myModel.XmlHelper.AddNewCompanyInfo();
+
 
 		}
-		
+
+	    
     }
 }

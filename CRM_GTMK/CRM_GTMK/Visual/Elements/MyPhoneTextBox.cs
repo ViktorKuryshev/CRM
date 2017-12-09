@@ -10,7 +10,7 @@ namespace CRM_GTMK.Visual.MyPanels
 {
 	public class MyPhoneTextBox : TextBox
 	{
-		public MyPhoneTextBox(Controller controller, AddNewClientForm form)
+		public MyPhoneTextBox(AddNewClientForm form)
 		{
 			TextBox phoneTextBox = form.GetPhoneTextBox();
 

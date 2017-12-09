@@ -17,8 +17,7 @@ namespace CRM_GTMK.Visual
 		public MyVisual(Controller controller)
 		{
 			_controller = controller;
-            SetUpStartWindow();
-            ShowTheStartWindow();
+           
         }
         //TODO открыть стартовое окно
         private void SetUpStartWindow()
@@ -26,7 +25,7 @@ namespace CRM_GTMK.Visual
             //TODO set the properties of the main window
         }
 
-        private void ShowTheStartWindow()
+        public void ShowAddNewCompanyDialog()
         {
 	        AddNewClientForm = new AddNewClientForm(_controller);
 	        AddNewClientForm.ShowDialog();

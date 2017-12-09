@@ -10,7 +10,7 @@ namespace CRM_GTMK.Visual.Elements
 {
 	public class MyPhoneLabel : Label
 	{
-		public MyPhoneLabel(Controller controller, AddNewClientForm form)
+		public MyPhoneLabel(AddNewClientForm form)
 		{
 			Label phoneLabel = form.GetPhoneLabel();
 

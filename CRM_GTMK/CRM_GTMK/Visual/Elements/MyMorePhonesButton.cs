@@ -10,12 +10,12 @@ namespace CRM_GTMK.Visual.Elements
 {
 	public class MyMorePhonesButton : Button
 	{
-		private Controller _controller;
 
-		public MyMorePhonesButton(Controller controller, AddNewClientForm form)
+		private AddNewClientForm _form;
+		public MyMorePhonesButton(AddNewClientForm form)
 		{
 
-			_controller = controller;
+			_form = form;
 			Button morePhonesButton = form.GetMorePhonesButton();
 
 			Location = morePhonesButton.Location;
@@ -30,7 +30,7 @@ namespace CRM_GTMK.Visual.Elements
 
 		public void IsClicked(object sender, EventArgs e)
 		{
-			_controller.AddOneMorePhonePanel();
+			_form.AddOneMorePhonePanel();
 		}
 	}
 }

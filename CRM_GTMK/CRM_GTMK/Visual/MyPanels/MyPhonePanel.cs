@@ -13,7 +13,7 @@ namespace CRM_GTMK.Visual.MyPanels
 	{
 		public MyPhoneTextBox MyPhoneTextBox { get; set; }
 
-		public MyPhonePanel(Controller controller, AddNewClientForm form)
+		public MyPhonePanel(AddNewClientForm form)
 		{
 
 			Panel phonesPanel = form.GetPhonePanel(); 
@@ -23,9 +23,9 @@ namespace CRM_GTMK.Visual.MyPanels
 			Size = phonesPanel.Size;
 			TabIndex = phonesPanel.TabIndex;
 			
-			MyPhoneTextBox = new MyPhoneTextBox(controller, form);
-			MyMorePhonesButton myMorePhonesButton = new MyMorePhonesButton(controller, form);
-			MyPhoneLabel myPhoneLabel = new MyPhoneLabel(controller, form);
+			MyPhoneTextBox = new MyPhoneTextBox(form);
+			MyMorePhonesButton myMorePhonesButton = new MyMorePhonesButton(form);
+			MyPhoneLabel myPhoneLabel = new MyPhoneLabel(form);
 
 			Controls.Add(myMorePhonesButton);
 			Controls.Add(MyPhoneTextBox);

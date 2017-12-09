@@ -17,7 +17,7 @@ namespace CRM_GTMK.Visual
 		private Controller _controller;
 
 		public MyPhonesFlowLayout MyPhonesFlowLayout { get; set; }
-
+		public TextBox NewCompanyNameTextBox;
 
 		public AddNewClientForm(Controller controller)
 		{
@@ -58,12 +58,16 @@ namespace CRM_GTMK.Visual
 
 		private void ResetForms()
 		{
-			MyPhonesFlowLayout = new MyPhonesFlowLayout(_controller, this);
+			MyPhonesFlowLayout = new MyPhonesFlowLayout(this);
 			generalContactFlowLayoutPanel.Controls.Clear();
 			//generalContactFlowLayoutPanel.Controls.Remove(phonesFlowLayoutPanel);
 			generalContactFlowLayoutPanel.Controls.Add(MyPhonesFlowLayout);
 		}
 
+		public void AddOneMorePhonePanel()
+		{
+			MyPhonesFlowLayout.Add(new MyPhonePanel(this));
+		}
 
 		private void CompanyActivityLabel_Click(object sender, EventArgs e)
 		{
@@ -77,12 +81,9 @@ namespace CRM_GTMK.Visual
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			string[] clientInfo =
-			{
-				CompanyNameTextBox.Text,
-				CompanySiteTextBox.Text
-			};
-			_controller.AddClientName(clientInfo);
+
+			NewCompanyNameTextBox = CompanyNameTextBox;
+		_controller.SaveNewCompanyData();
 		}
 
 		private void MorePhonesButton_Click(object sender, EventArgs e)

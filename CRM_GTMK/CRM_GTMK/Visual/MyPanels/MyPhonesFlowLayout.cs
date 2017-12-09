@@ -12,10 +12,11 @@ namespace CRM_GTMK.Visual.MyPanels
 	{
 		public List<MyPhonePanel> MyPhonePanels { get; } = new List<MyPhonePanel>();
 
-		public MyPhonesFlowLayout(Controller controller, AddNewClientForm form)
+		public MyPhonesFlowLayout(AddNewClientForm form)
 		{
 			FlowLayoutPanel flowPanel = form.GetPhonesFlowLayoutPanel();
 
+			AutoSize = true;
 			BorderStyle = flowPanel.BorderStyle;
 			FlowDirection = flowPanel.FlowDirection;
 			Location = flowPanel.Location;
@@ -23,7 +24,7 @@ namespace CRM_GTMK.Visual.MyPanels
 			Size = flowPanel.Size;
 			TabIndex = flowPanel.TabIndex;
 
-			MyPhonePanel MyPhonePanel = new MyPhonePanel(controller, form);
+			MyPhonePanel MyPhonePanel = new MyPhonePanel(form);
 			
 			Add(MyPhonePanel);
 		}
