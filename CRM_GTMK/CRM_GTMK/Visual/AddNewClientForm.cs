@@ -44,7 +44,7 @@ namespace CRM_GTMK.Visual
 
 		private void MorePhonesButton_Click(object sender, EventArgs e)
 		{
-			PhonesFlowLayoutPanel.Controls.Add(CreateNewPhonePanel());
+			phonesFlowLayoutPanel.Controls.Add(CreateNewPhonePanel());
 		}
 
 		private void PhonePanel_Paint(object sender, PaintEventArgs e)

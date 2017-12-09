@@ -34,7 +34,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.CompanySiteTextBox = new System.Windows.Forms.TextBox();
 			this.ContactInfoPanel = new System.Windows.Forms.Panel();
-			this.PhonesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+			this.phonesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.PhonePanel = new System.Windows.Forms.Panel();
 			this.MorePhonesButton = new System.Windows.Forms.Button();
 			this.PhoneTextBox = new System.Windows.Forms.TextBox();
@@ -59,7 +59,7 @@
 			this.allOfficesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.ContactInfoPanel.SuspendLayout();
-			this.PhonesFlowLayoutPanel.SuspendLayout();
+			this.phonesFlowLayoutPanel.SuspendLayout();
 			this.PhonePanel.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -128,15 +128,15 @@
 			this.ContactInfoPanel.Size = new System.Drawing.Size(297, 155);
 			this.ContactInfoPanel.TabIndex = 6;
 			// 
-			// PhonesFlowLayoutPanel
+			// phonesFlowLayoutPanel
 			// 
-			this.PhonesFlowLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.PhonesFlowLayoutPanel.Controls.Add(this.PhonePanel);
-			this.PhonesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-			this.PhonesFlowLayoutPanel.Location = new System.Drawing.Point(3, 164);
-			this.PhonesFlowLayoutPanel.Name = "PhonesFlowLayoutPanel";
-			this.PhonesFlowLayoutPanel.Size = new System.Drawing.Size(297, 65);
-			this.PhonesFlowLayoutPanel.TabIndex = 10;
+			this.phonesFlowLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.phonesFlowLayoutPanel.Controls.Add(this.PhonePanel);
+			this.phonesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+			this.phonesFlowLayoutPanel.Location = new System.Drawing.Point(3, 164);
+			this.phonesFlowLayoutPanel.Name = "phonesFlowLayoutPanel";
+			this.phonesFlowLayoutPanel.Size = new System.Drawing.Size(297, 65);
+			this.phonesFlowLayoutPanel.TabIndex = 10;
 			// 
 			// PhonePanel
 			// 
@@ -238,7 +238,7 @@
 			// flowLayoutPanel1
 			// 
 			this.flowLayoutPanel1.Controls.Add(this.ContactInfoPanel);
-			this.flowLayoutPanel1.Controls.Add(this.PhonesFlowLayoutPanel);
+			this.flowLayoutPanel1.Controls.Add(this.phonesFlowLayoutPanel);
 			this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -378,7 +378,7 @@
 			this.Load += new System.EventHandler(this.AddNewClientForm_Load);
 			this.ContactInfoPanel.ResumeLayout(false);
 			this.ContactInfoPanel.PerformLayout();
-			this.PhonesFlowLayoutPanel.ResumeLayout(false);
+			this.phonesFlowLayoutPanel.ResumeLayout(false);
 			this.PhonePanel.ResumeLayout(false);
 			this.PhonePanel.PerformLayout();
 			this.flowLayoutPanel1.ResumeLayout(false);
@@ -411,7 +411,7 @@
 		private System.Windows.Forms.TextBox CityTextBox;
 		private System.Windows.Forms.Label CityLabel;
 		private System.Windows.Forms.ComboBox CountryComboBox;
-		private System.Windows.Forms.FlowLayoutPanel PhonesFlowLayoutPanel;
+		private System.Windows.Forms.FlowLayoutPanel phonesFlowLayoutPanel;
 		private System.Windows.Forms.Panel PhonePanel;
 		private System.Windows.Forms.Button MorePhonesButton;
 		private System.Windows.Forms.Button addOfficeButton;
