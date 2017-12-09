@@ -67,6 +67,21 @@
     <Compile Include="Visual\ClientsListForm.Designer.cs">
       <DependentUpon>ClientsListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Visual\Elements\MyMorePhonesButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\Elements\MyPhoneLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\MyPanels\MyPhonePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\MyPanels\MyPhonesFlowLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\Elements\MyPhoneTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Visual\MyVisual.cs" />
   </ItemGroup>
   <ItemGroup>

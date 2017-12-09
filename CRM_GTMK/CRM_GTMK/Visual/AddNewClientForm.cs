@@ -8,19 +8,62 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRM_GTMK.Control;
+using CRM_GTMK.Visual.MyPanels;
 
 namespace CRM_GTMK.Visual
 {
 	public partial class AddNewClientForm : Form
 	{
 		private Controller _controller;
-		 
+
+		public MyPhonesFlowLayout MyPhonesFlowLayout { get; set; }
+
+
 		public AddNewClientForm(Controller controller)
 		{
 			_controller = controller;
 			InitializeComponent();
+			ResetForms();
 
 		}
+
+		#region Getters
+
+		public FlowLayoutPanel GetPhonesFlowLayoutPanel()
+		{
+			return phonesFlowLayoutPanel;
+		}
+
+		public Panel GetPhonePanel()
+		{
+			return onePhonePanel;
+		}
+
+		public TextBox GetPhoneTextBox()
+		{
+			return phoneTextBox;
+		}
+
+		public Button GetMorePhonesButton()
+		{
+			return morePhonesButton;
+		}
+
+		public Label GetPhoneLabel()
+		{
+			return phoneLabel;
+		}
+
+		#endregion
+
+		private void ResetForms()
+		{
+			MyPhonesFlowLayout = new MyPhonesFlowLayout(_controller, this);
+			generalContactFlowLayoutPanel.Controls.Clear();
+			//generalContactFlowLayoutPanel.Controls.Remove(phonesFlowLayoutPanel);
+			generalContactFlowLayoutPanel.Controls.Add(MyPhonesFlowLayout);
+		}
+
 
 		private void CompanyActivityLabel_Click(object sender, EventArgs e)
 		{

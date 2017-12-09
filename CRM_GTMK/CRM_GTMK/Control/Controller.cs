@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CRM_GTMK.Visual.MyPanels;
 
 
 namespace CRM_GTMK.Control
@@ -28,6 +29,15 @@ namespace CRM_GTMK.Control
 			_myModel.XmlHelper.AddNewCompanyInfo();
 
 	    }
+
+	    public void AddOneMorePhonePanel()
+	    {
+		    MyPhonePanel newPhonePanel = new MyPhonePanel(this, _myVisual.AddNewClientForm);
+
+			_myVisual.AddNewClientForm.MyPhonesFlowLayout
+				.Add(newPhonePanel);
+
+		}
 		
     }
 }
