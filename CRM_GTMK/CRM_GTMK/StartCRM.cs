@@ -14,7 +14,8 @@ namespace CRM_GTMK
         
         static void Main(string[] args)
         {
-			
+			// Pull request test
+
 			Controller controller = new Controller();
 			MyVisual myVisual = new MyVisual(controller);
 			MyModel myModel = new MyModel(controller);
