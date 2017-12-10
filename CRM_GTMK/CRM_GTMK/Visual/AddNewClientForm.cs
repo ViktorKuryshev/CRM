@@ -130,10 +130,10 @@ namespace CRM_GTMK.Visual
 		    _controller.SaveNewCompanyData();
 			this.Dispose();
 		}
-
-		private void MorePhonesButton_Click(object sender, EventArgs e)
+        // Здесь заменил метод CreateNewPhonePanel() на создание объекта типа MyPhonePanel.
+        private void MorePhonesButton_Click(object sender, EventArgs e)
 		{
-			phonesFlowLayoutPanel.Controls.Add(CreateNewPhonePanel());
+			phonesFlowLayoutPanel.Controls.Add(new MyPhonePanel(this));
 		}
 
 		private void PhonePanel_Paint(object sender, PaintEventArgs e)
@@ -141,7 +141,7 @@ namespace CRM_GTMK.Visual
 
 		}
 
-
+        /*
 		private Panel CreateNewPhonePanel()
 		{
 			Panel PhonePanel = new Panel();
@@ -194,7 +194,7 @@ namespace CRM_GTMK.Visual
 			NewMorePhonesButton.Click += new System.EventHandler(this.MorePhonesButton_Click);
 			return NewMorePhonesButton;
 		}
-
+        */
 		private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
 		{
 
