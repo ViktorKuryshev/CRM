@@ -25,7 +25,6 @@ namespace CRM_GTMK.Visual
 			_controller = controller;
 			InitializeComponent();
 			ResetForms();
-
 		}
 
 		#region Getters
@@ -55,9 +54,54 @@ namespace CRM_GTMK.Visual
 			return phoneLabel;
 		}
 
-		#endregion
+        public Panel GetOfficeContactInfoPanel()
+        {
+            return officeContactInfoPanel;
+        }
 
-		private void ResetForms()
+        public TextBox GetOfficeAddressTextBox()
+        {
+            return officeAddressTextBox;
+        }
+
+        public Label GetOfficeAddressLabel()
+        {
+            return officeAddressLabel;
+        }
+
+        public TextBox GetOfficeCityTextBox()
+        {
+            return officeCityTextBox;
+        }
+
+        public Label GetOfficeCityLabel()
+        {
+            return officeCityLabel;
+        }
+
+        public TextBox GetOfficeSiteTextBox()
+        {
+            return officeSiteTextBox;
+        }
+
+        public Label GetOfficeSiteLabel()
+        {
+            return officeSiteLabel;
+        }
+
+        public ComboBox GetOfficeCountryComboBox()
+        {
+            return officeCountryComboBox;
+        }
+
+        public Label GetOfficeCountryLabel()
+        {
+            return officeCountryLabel;
+        }
+
+        #endregion
+
+        private void ResetForms()
 		{
 			MyPhonesFlowLayout = new MyPhonesFlowLayout(this);
 			
@@ -82,9 +126,8 @@ namespace CRM_GTMK.Visual
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-
-			NewCompanyNameTextBox = CompanyNameTextBox;
-		_controller.SaveNewCompanyData();
+			NewCompanyNameTextBox = companyNameTextBox;
+		    _controller.SaveNewCompanyData();
 			this.Dispose();
 		}
 
@@ -103,17 +146,17 @@ namespace CRM_GTMK.Visual
 		{
 			Panel PhonePanel = new Panel();
 			PhonePanel.Controls.Add(CreateNewMorePhonesButton());
-		PhonePanel.Controls.Add(CreateNewPhoneTextBox());
-		PhonePanel.Controls.Add(CreatePhoneLabel());
-		PhonePanel.Location = new System.Drawing.Point(3, 3);
-		PhonePanel.Name = "PhonePanel";
-		PhonePanel.Size = new System.Drawing.Size(254, 51);
-		PhonePanel.TabIndex = 9;
-		PhonePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PhonePanel_Paint);
+		    PhonePanel.Controls.Add(CreateNewPhoneTextBox());
+		    PhonePanel.Controls.Add(CreatePhoneLabel());
+		    PhonePanel.Location = new System.Drawing.Point(3, 3);
+		    PhonePanel.Name = "PhonePanel";
+		    PhonePanel.Size = new System.Drawing.Size(254, 51);
+		    PhonePanel.TabIndex = 9;
+		    PhonePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PhonePanel_Paint);
 			return PhonePanel;
 		}
 		
-			private Label CreatePhoneLabel()
+		private Label CreatePhoneLabel()
 		{
 			Label PhoneLabel = new Label();
 			PhoneLabel.AutoSize = true;
@@ -138,8 +181,7 @@ namespace CRM_GTMK.Visual
 			NewPhoneTextBox.TabIndex = 7;
 			return NewPhoneTextBox;
 		}
-	
-		 
+
 		private Button CreateNewMorePhonesButton()
 		{
 			Button NewMorePhonesButton = new Button();
@@ -157,6 +199,10 @@ namespace CRM_GTMK.Visual
 		{
 
 		}
-	}
-	
+
+        private void addOfficeButton_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

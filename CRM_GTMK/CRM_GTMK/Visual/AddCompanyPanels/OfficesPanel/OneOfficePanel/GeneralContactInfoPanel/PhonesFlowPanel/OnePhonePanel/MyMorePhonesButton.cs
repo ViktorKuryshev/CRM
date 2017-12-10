@@ -5,11 +5,10 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 {
 	public class MyMorePhonesButton : Button
 	{
-
 		private AddNewCompanyForm _form;
+
 		public MyMorePhonesButton(AddNewCompanyForm form)
 		{
-
 			_form = form;
 			Button morePhonesButton = form.GetMorePhonesButton();
 

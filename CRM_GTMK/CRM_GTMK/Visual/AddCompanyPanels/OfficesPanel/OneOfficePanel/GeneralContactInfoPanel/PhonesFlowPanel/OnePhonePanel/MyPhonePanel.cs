@@ -8,7 +8,6 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 
 		public MyPhonePanel(AddNewCompanyForm form)
 		{
-
 			Panel phonesPanel = form.GetPhonePanel(); 
 
 			Location = phonesPanel.Location;
