@@ -15,4 +15,9 @@
       <phone>+7(000)000-00-00</phone>
     </office>
   </company>
+  <company name="">
+    <office>
+      <phone></phone>
+    </office>
+  </company>
 </companies>

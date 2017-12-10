@@ -27,11 +27,17 @@ namespace CRM_GTMK.Control
 		    _myModel = myModel;
 		    _myVisual = myVisual;
 
-			_myVisual.ShowAddNewCompanyDialog();
+			_myVisual.ShowMainScreenDialog();
 
 	    }
 
-	    public void SaveNewCompanyData()
+	    public void ShowAddNewCompanyDialog()
+	    {
+		    _myVisual.ShowAddNewCompanyDialog();
+	    }
+
+
+		public void SaveNewCompanyData()
 	    {
 		    _myModel.NewCompany = new Company();
 		    _myModel.NewCompany.Name = _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text;

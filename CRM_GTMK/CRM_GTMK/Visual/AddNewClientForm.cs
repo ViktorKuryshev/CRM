@@ -60,8 +60,8 @@ namespace CRM_GTMK.Visual
 		private void ResetForms()
 		{
 			MyPhonesFlowLayout = new MyPhonesFlowLayout(this);
-			generalContactFlowLayoutPanel.Controls.Clear();
-			//generalContactFlowLayoutPanel.Controls.Remove(phonesFlowLayoutPanel);
+			
+			generalContactFlowLayoutPanel.Controls.Remove(phonesFlowLayoutPanel);
 			generalContactFlowLayoutPanel.Controls.Add(MyPhonesFlowLayout);
 		}
 
@@ -85,6 +85,7 @@ namespace CRM_GTMK.Visual
 
 			NewCompanyNameTextBox = CompanyNameTextBox;
 		_controller.SaveNewCompanyData();
+			this.Dispose();
 		}
 
 		private void MorePhonesButton_Click(object sender, EventArgs e)

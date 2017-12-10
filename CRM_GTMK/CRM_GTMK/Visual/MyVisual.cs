@@ -12,6 +12,7 @@ namespace CRM_GTMK.Visual
 	    private Controller _controller;
 
 		public AddNewCompanyForm AddNewClientForm { get; set; }
+		public MainScreenForm MainScreenForm { get; set; }
 
 
 		public MyVisual(Controller controller)
@@ -24,6 +25,12 @@ namespace CRM_GTMK.Visual
         {
             //TODO set the properties of the main window
         }
+
+	    public void ShowMainScreenDialog()
+	    {
+		    MainScreenForm = new MainScreenForm(_controller);
+		    MainScreenForm.ShowDialog();
+	    }
 
         public void ShowAddNewCompanyDialog()
         {
