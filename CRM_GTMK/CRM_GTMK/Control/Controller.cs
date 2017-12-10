@@ -27,7 +27,8 @@ namespace CRM_GTMK.Control
 		    _myModel = myModel;
 		    _myVisual = myVisual;
 
-			_myVisual.ShowAddNewCompanyDialog();
+			_myVisual.ShowMainScreen();
+			//_myVisual.ShowAddNewCompanyDialog();
 
 	    }
 
@@ -43,9 +44,15 @@ namespace CRM_GTMK.Control
 
 			_myModel.NewCompany.Offices.Add(newOffice);
 			
-			//new ClientsListForm(clientsInfo).ShowDialog();
-			_myModel.XmlHelper.AddNewCompanyInfo(_myModel.NewCompany);
+			//Todo проверить уникальность компании
+		    bool companyIsUnique = true;
 
+			if (companyIsUnique)
+		    {
+			    _myModel.XmlHelper.AddNewCompanyInfo(_myModel.NewCompany);
+		    }
+			
+			//todo Добавить задачу связаться с компанией
 
 		}
 
