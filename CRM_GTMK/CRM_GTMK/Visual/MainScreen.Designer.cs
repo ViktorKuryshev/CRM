@@ -36,7 +36,9 @@
             treeNode2,
             treeNode3});
 			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Проекты");
-			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Задачи");
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Список задач");
+			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Задачи", new System.Windows.Forms.TreeNode[] {
+            treeNode6});
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.addNewClientButton = new System.Windows.Forms.Button();
@@ -65,12 +67,14 @@
 			treeNode4.Text = "Клиенты";
 			treeNode5.Name = "ProgectsRoot";
 			treeNode5.Text = "Проекты";
-			treeNode6.Name = "TasksRoot";
-			treeNode6.Text = "Задачи";
+			treeNode6.Name = "TasksListNode";
+			treeNode6.Text = "Список задач";
+			treeNode7.Name = "TasksRoot";
+			treeNode7.Text = "Задачи";
 			this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode5,
-            treeNode6});
+            treeNode7});
 			this.treeView1.Size = new System.Drawing.Size(165, 352);
 			this.treeView1.TabIndex = 0;
 			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -136,7 +140,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(846, 435);
+			this.ClientSize = new System.Drawing.Size(873, 435);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.treeView1);
 			this.Name = "MainScreen";
