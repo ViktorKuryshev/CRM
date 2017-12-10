@@ -55,6 +55,7 @@
     <Compile Include="Model\XmlHelper.cs" />
     <Compile Include="StartCRM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\MyAllOfficesFlowLayout.cs" />
     <Compile Include="Visual\AddNewClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,19 +68,19 @@
     <Compile Include="Visual\ClientsListForm.Designer.cs">
       <DependentUpon>ClientsListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Visual\Elements\MyMorePhonesButton.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\PhonesFlowPanel\OnePhonePanel\MyMorePhonesButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\Elements\MyPhoneLabel.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\PhonesFlowPanel\OnePhonePanel\MyPhoneLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\MyPanels\MyPhonePanel.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\PhonesFlowPanel\OnePhonePanel\MyPhonePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\MyPanels\MyPhonesFlowLayout.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\PhonesFlowPanel\MyPhonesFlowLayout.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\Elements\MyPhoneTextBox.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\PhonesFlowPanel\OnePhonePanel\MyPhoneTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Visual\MyVisual.cs" />
@@ -99,6 +100,10 @@
     <Content Include="Model\XMLBase\companies.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Visual\AddCompanyPanels\OfficesPanel\CompanyDataMenuPanel\" />
+    <Folder Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

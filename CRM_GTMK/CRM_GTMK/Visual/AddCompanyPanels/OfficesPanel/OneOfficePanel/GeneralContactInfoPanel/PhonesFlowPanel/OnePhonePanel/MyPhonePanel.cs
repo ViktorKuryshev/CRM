@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CRM_GTMK.Control;
-using CRM_GTMK.Visual.Elements;
+﻿using System.Windows.Forms;
 
-namespace CRM_GTMK.Visual.MyPanels
+namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel
 {
 	public class MyPhonePanel : Panel
 	{
 		public MyPhoneTextBox MyPhoneTextBox { get; set; }
 
-		public MyPhonePanel(AddNewClientForm form)
+		public MyPhonePanel(AddNewCompanyForm form)
 		{
 
 			Panel phonesPanel = form.GetPhonePanel(); 

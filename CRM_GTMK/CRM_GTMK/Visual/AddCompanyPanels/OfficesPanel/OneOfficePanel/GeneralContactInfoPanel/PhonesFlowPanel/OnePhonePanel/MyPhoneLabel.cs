@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CRM_GTMK.Control;
+﻿using System.Windows.Forms;
 
-namespace CRM_GTMK.Visual.Elements
+namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel
 {
 	public class MyPhoneLabel : Label
 	{
-		public MyPhoneLabel(AddNewClientForm form)
+		public MyPhoneLabel(AddNewCompanyForm form)
 		{
 			Label phoneLabel = form.GetPhoneLabel();
 

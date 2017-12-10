@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CRM_GTMK.Control;
 
-namespace CRM_GTMK.Visual.Elements
+namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel
 {
 	public class MyMorePhonesButton : Button
 	{
 
-		private AddNewClientForm _form;
-		public MyMorePhonesButton(AddNewClientForm form)
+		private AddNewCompanyForm _form;
+		public MyMorePhonesButton(AddNewCompanyForm form)
 		{
 
 			_form = form;

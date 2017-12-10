@@ -1,18 +1,14 @@
-﻿using CRM_GTMK.Control;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel;
 
-namespace CRM_GTMK.Visual.MyPanels
+namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel
 {
 	public class MyPhonesFlowLayout : FlowLayoutPanel
 	{
 		public List<MyPhonePanel> MyPhonePanels { get; } = new List<MyPhonePanel>();
 
-		public MyPhonesFlowLayout(AddNewClientForm form)
+		public MyPhonesFlowLayout(AddNewCompanyForm form)
 		{
 			FlowLayoutPanel flowPanel = form.GetPhonesFlowLayoutPanel();
 

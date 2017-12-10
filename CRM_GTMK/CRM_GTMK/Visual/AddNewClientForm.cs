@@ -8,18 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRM_GTMK.Control;
-using CRM_GTMK.Visual.MyPanels;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel;
 
 namespace CRM_GTMK.Visual
 {
-	public partial class AddNewClientForm : Form
+	public partial class AddNewCompanyForm : Form
 	{
 		private Controller _controller;
 
 		public MyPhonesFlowLayout MyPhonesFlowLayout { get; set; }
 		public TextBox NewCompanyNameTextBox;
 
-		public AddNewClientForm(Controller controller)
+		public AddNewCompanyForm(Controller controller)
 		{
 			_controller = controller;
 			InitializeComponent();

@@ -11,7 +11,7 @@ namespace CRM_GTMK.Visual
     {
 	    private Controller _controller;
 
-		public AddNewClientForm AddNewClientForm { get; set; }
+		public AddNewCompanyForm AddNewClientForm { get; set; }
 
 
 		public MyVisual(Controller controller)
@@ -27,7 +27,7 @@ namespace CRM_GTMK.Visual
 
         public void ShowAddNewCompanyDialog()
         {
-	        AddNewClientForm = new AddNewClientForm(_controller);
+	        AddNewClientForm = new AddNewCompanyForm(_controller);
 	        AddNewClientForm.ShowDialog();
 
 		}
