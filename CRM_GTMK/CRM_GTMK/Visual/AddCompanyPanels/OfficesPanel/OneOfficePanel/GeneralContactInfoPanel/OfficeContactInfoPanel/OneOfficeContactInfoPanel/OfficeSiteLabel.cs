@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.OfficeContactInfoPanel.OneOfficeContactInfoPanel
 {
-    class OfficeSiteLabel : Label
+    public class OfficeSiteLabel : Label
     {
         public OfficeSiteLabel(AddNewCompanyForm form)
         {

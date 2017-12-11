@@ -16,6 +16,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 			BorderStyle = flowPanel.BorderStyle;
 			FlowDirection = flowPanel.FlowDirection;
 			Location = flowPanel.Location;
+			Margin = flowPanel.Margin;
 			Name = flowPanel.Name;
 			Size = flowPanel.Size;
 			TabIndex = flowPanel.TabIndex;
