@@ -99,6 +99,41 @@ namespace CRM_GTMK.Visual
             return officeCountryLabel;
         }
 
+        public Panel GetContactPersonPanel()
+        {
+            return contactPersonPanel;
+        }
+
+        public Label GetContactPersonsLabel()
+        {
+            return contactPersonsLabel;
+        }
+
+        public Button GetContactPersonsButton()
+        {
+            return contactPersonsButton;
+        }
+
+        public TableLayoutPanel GetContactPersonTableLayoutPanel()
+        {
+            return contactPersonTableLayoutPanel;
+        }
+
+        public LinkLabel GetContactPersonLinkLabel()
+        {
+            return contactPersonLinkLabel;
+        }
+
+        public Label GetContactPersonLabel1()
+        {
+            return contactPersonLabel1;
+        }
+
+        public Label GetContactPersonLabel2()
+        {
+            return contactPersonLabel2;
+        }
+
         #endregion
 
         private void ResetForms()
