@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.OfficeContactInfoPanel.OneOfficeContactInfoPanel
 {
-    public class OfficeAddressLabel : Label
+    public class MyOfficeAddressLabel : Label
     {
-        public OfficeAddressLabel(AddNewCompanyForm form)
+        public MyOfficeAddressLabel(AddNewCompanyForm form)
         {
             Label officeAddressLabel = form.GetOfficeAddressLabel();
 

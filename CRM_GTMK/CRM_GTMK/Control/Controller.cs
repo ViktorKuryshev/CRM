@@ -27,11 +27,25 @@ namespace CRM_GTMK.Control
 		    _myModel = myModel;
 		    _myVisual = myVisual;
 
-			_myVisual.ShowMainScreenDialog();
+		    ShowTestStep();
+		    //_myVisual.ShowMainScreenDialog();
 
 	    }
 
-	    public void ShowAddNewCompanyDialog()
+	    private void ShowTestStep()
+	    {
+		    ShowAddNewCompanyDialog();
+
+	    }
+
+	    public void ShowMainScreenDialog()
+	    {
+		    _myVisual.ShowMainScreenDialog();
+
+	    }
+
+
+		public void ShowAddNewCompanyDialog()
 	    {
 		    _myVisual.ShowAddNewCompanyDialog();
 	    }
@@ -40,6 +54,14 @@ namespace CRM_GTMK.Control
 		public void SaveNewCompanyData()
 	    {
 		    _myModel.NewCompany = new Company();
+			//todo Проверить введно ли имя компании
+		    if (IsCompanyNameEntered())
+		    {
+			    MessageBox.Show("Надо ввести название компании");
+			    //return;
+		    }
+			MessageBox.Show("Это сообщение не должно появиться потому что назание не введено"); 
+			//Внесение данных из формы в структуру вынести в метод
 		    _myModel.NewCompany.Name = _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text;
 			Office newOffice = new Office();
 		    foreach (MyPhonePanel panel in _myVisual.AddNewClientForm.MyPhonesFlowLayout.MyPhonePanels)
@@ -51,10 +73,21 @@ namespace CRM_GTMK.Control
 			
 			//new ClientsListForm(clientsInfo).ShowDialog();
 			_myModel.XmlHelper.AddNewCompanyInfo(_myModel.NewCompany);
-
+			//
 
 		}
 
-	    
-    }
+		/// <summary>
+		/// Проверяем введено ли имя компании в форму добавления
+		/// </summary>
+		/// <returns></returns>
+	    private bool IsCompanyNameEntered()
+	    {
+		    return _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text == "";
+
+	    }
+
+
+
+	}
 }

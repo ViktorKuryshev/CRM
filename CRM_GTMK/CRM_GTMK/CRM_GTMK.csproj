@@ -56,31 +56,31 @@
     <Compile Include="StartCRM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\MyAllOfficesFlowLayout.cs" />
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\OfficeAddressLabel.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeAddressLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\OfficeAddressTextBox.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeAddressTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\OfficeCityLabel.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCityLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\OfficeCityTextBox.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCityTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OfficeContactInfoPanel.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\MyOfficeContactInfoPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\OfficeCountryComboBox.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCountryComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\OfficeCountryLabel.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCountryLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\OfficeSiteLabel.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeSiteLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\OfficeSiteTextBox.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeSiteTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Visual\AddNewClientForm.cs">

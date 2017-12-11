@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.OfficeContactInfoPanel.OneOfficeContactInfoPanel
 {
-    public class OfficeCountryComboBox : ComboBox
+    public class MyOfficeCountryComboBox : ComboBox
     {
-        public OfficeCountryComboBox(AddNewCompanyForm form)
+        public MyOfficeCountryComboBox(AddNewCompanyForm form)
         {
             ComboBox officeCountryComboBox = form.GetOfficeCountryComboBox();
 
