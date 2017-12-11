@@ -13,7 +13,9 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
         {
             ComboBox officeCountryComboBox = form.GetOfficeCountryComboBox();
 
-            FormattingEnabled = true;
+            FormattingEnabled = officeCountryComboBox.FormattingEnabled;
+
+            // Здесь необходимо автоматизировать получение количества элементов в списке.
             Items.AddRange(new object[] {"Россия"});
             Location = officeCountryComboBox.Location;
             Name = officeCountryComboBox.Name;

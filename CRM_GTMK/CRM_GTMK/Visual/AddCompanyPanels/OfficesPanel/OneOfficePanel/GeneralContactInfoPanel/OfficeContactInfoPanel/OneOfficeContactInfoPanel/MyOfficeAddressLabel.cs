@@ -13,7 +13,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
         {
             Label officeAddressLabel = form.GetOfficeAddressLabel();
 
-            AutoSize = true;
+            AutoSize = officeAddressLabel.AutoSize;
             Location = officeAddressLabel.Location;
             Name = officeAddressLabel.Name;
             Size = officeAddressLabel.Size;
