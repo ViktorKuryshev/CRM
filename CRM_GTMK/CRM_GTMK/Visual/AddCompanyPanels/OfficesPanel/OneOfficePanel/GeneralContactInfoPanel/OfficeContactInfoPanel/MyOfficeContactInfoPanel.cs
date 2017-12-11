@@ -8,14 +8,14 @@ using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.OfficeContactInfoPanel
 {
-    public class OfficeContactInfoPanel : Panel
+    public class MyOfficeContactInfoPanel : Panel
     {
         public TextBox OfficeAddressTextBox { get; set; }
         public TextBox OfficeCityTextBox { get; set; }
         public TextBox OfficeSiteTextBox { get; set; }
         public ComboBox OfficeCountryComboBox { get; set; }
 
-        public OfficeContactInfoPanel(AddNewCompanyForm form)
+        public MyOfficeContactInfoPanel(AddNewCompanyForm form)
         {
             Panel officeContactInfoPanel = form.GetOfficeContactInfoPanel();
 
@@ -25,14 +25,14 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
             Size = officeContactInfoPanel.Size;
             TabIndex = officeContactInfoPanel.TabIndex;
 
-            OfficeAddressTextBox = new OfficeAddressTextBox(form);
-            OfficeAddressLabel officeAddressLabel = new OfficeAddressLabel(form);
-            OfficeCityTextBox = new OfficeCityTextBox(form);
-            OfficeCityLabel officeCityLabel = new OfficeCityLabel(form);
-            OfficeSiteTextBox = new OfficeSiteTextBox(form);
-            OfficeSiteLabel officeSiteLabel = new OfficeSiteLabel(form);
-            OfficeCountryComboBox = new OfficeCountryComboBox(form);
-            OfficeCountryLabel officeCountryLabel = new OfficeCountryLabel(form);
+            OfficeAddressTextBox = new MyOfficeAddressTextBox(form);
+            MyOfficeAddressLabel officeAddressLabel = new MyOfficeAddressLabel(form);
+            OfficeCityTextBox = new MyOfficeCityTextBox(form);
+            MyOfficeCityLabel officeCityLabel = new MyOfficeCityLabel(form);
+            OfficeSiteTextBox = new MyOfficeSiteTextBox(form);
+            MyOfficeSiteLabel officeSiteLabel = new MyOfficeSiteLabel(form);
+            OfficeCountryComboBox = new MyOfficeCountryComboBox(form);
+            MyOfficeCountryLabel officeCountryLabel = new MyOfficeCountryLabel(form);
 
             Controls.Add(OfficeAddressTextBox);
             Controls.Add(officeAddressLabel);

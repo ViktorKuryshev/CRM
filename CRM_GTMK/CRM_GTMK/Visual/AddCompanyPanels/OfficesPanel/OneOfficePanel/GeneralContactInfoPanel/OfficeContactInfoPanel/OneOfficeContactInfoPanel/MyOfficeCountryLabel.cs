@@ -7,13 +7,13 @@ using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.OfficeContactInfoPanel.OneOfficeContactInfoPanel
 {
-    public class OfficeCountryLabel : Label
+    public class MyOfficeCountryLabel : Label
     {
-        public OfficeCountryLabel(AddNewCompanyForm form)
+        public MyOfficeCountryLabel(AddNewCompanyForm form)
         {
             Label officeCountryLabel = form.GetOfficeCountryLabel();
 
-            AutoSize = true;
+            AutoSize = officeCountryLabel.AutoSize;
             Location = officeCountryLabel.Location;
             Name = officeCountryLabel.Name;
             Size = officeCountryLabel.Size;
