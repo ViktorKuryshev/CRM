@@ -53,38 +53,57 @@ namespace CRM_GTMK.Control
 
 		public void SaveNewCompanyData()
 	    {
-		    _myModel.NewCompany = new Company();
-			//todo Проверить введно ли имя компании
+					
+			//Проверяем введно ли имя компании
 		    if (IsCompanyNameEntered())
 		    {
 			    MessageBox.Show("Надо ввести название компании");
-			    //return;
-		    }
-			MessageBox.Show("Это сообщение не должно появиться потому что назание не введено"); 
-			//Внесение данных из формы в структуру вынести в метод
-		    _myModel.NewCompany.Name = _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text;
-			Office newOffice = new Office();
-		    foreach (MyPhonePanel panel in _myVisual.AddNewClientForm.MyPhonesFlowLayout.MyPhonePanels)
-		    {
-			    newOffice.Phones.Add(panel.MyPhoneTextBox.Text);
+			    return;
 		    }
 
-			_myModel.NewCompany.Offices.Add(newOffice);
+		    _myModel.NewCompany = FetchCompanyDataFromForm();
+	
+		    //Todo проверить есть ли такая компания в базе 
+				//todo поиск компании в базе по параметрам Название || телефон || имейл
+				//todo если совпдение найдено выдать дилог, есть такая компания и данные компании и выбор что делать
+
+		   // if (IsCompanyAlreadyInBase())
+		   // {
+			    
+		   // }
+
+			//ToDo добавить id в новую компанию
+				//todo если есть компании в списке получить самый большой id и добавить 1
 			
-			//new ClientsListForm(clientsInfo).ShowDialog();
+			//Добавляем компанию в базу
 			_myModel.XmlHelper.AddNewCompanyInfo(_myModel.NewCompany);
-			//
-
+			
+			//Закрываем окно 
 		}
 
 		/// <summary>
 		/// Проверяем введено ли имя компании в форму добавления
 		/// </summary>
 		/// <returns></returns>
-	    private bool IsCompanyNameEntered()
+		private bool IsCompanyNameEntered()
 	    {
 		    return _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text == "";
 
+	    }
+
+	    private Company FetchCompanyDataFromForm()
+	    {
+			Company company = new Company();
+			company.Name = _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text;
+
+			Office newOffice = new Office();
+		    foreach (MyPhonePanel panel in _myVisual.AddNewClientForm.MyPhonesFlowLayout.MyPhonePanels)
+		    {
+			    newOffice.Phones.Add(panel.MyPhoneTextBox.Text);
+		    }
+
+		    company.Offices.Add(newOffice);
+		    return company;
 	    }
 
 
