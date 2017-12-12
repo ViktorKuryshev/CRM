@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.OfficeContactInfoPanel.OneOfficeContactInfoPanel
 {
-    public class OfficeSiteTextBox : TextBox
+    public class MyOfficeSiteTextBox : TextBox
     {
-        public OfficeSiteTextBox(AddNewCompanyForm form)
+        public MyOfficeSiteTextBox(AddNewCompanyForm form)
         {
             TextBox officeSiteTextBox = form.GetOfficeSiteTextBox();
 
