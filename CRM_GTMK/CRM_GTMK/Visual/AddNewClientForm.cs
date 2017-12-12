@@ -99,6 +99,71 @@ namespace CRM_GTMK.Visual
             return officeCountryLabel;
         }
 
+        public Panel GetContactPersonPanel()
+        {
+            return contactPersonPanel;
+        }
+
+        public Label GetContactPersonsLabel()
+        {
+            return contactPersonsLabel;
+        }
+
+        public Button GetContactPersonsButton()
+        {
+            return contactPersonsButton;
+        }
+
+        public TableLayoutPanel GetContactPersonTableLayoutPanel()
+        {
+            return contactPersonTableLayoutPanel;
+        }
+
+        public LinkLabel GetContactPersonLinkLabel()
+        {
+            return contactPersonLinkLabel;
+        }
+
+        public Label GetContactPersonLabel1()
+        {
+            return contactPersonLabel1;
+        }
+
+        public Label GetContactPersonLabel2()
+        {
+            return contactPersonLabel2;
+        }
+
+        public FlowLayoutPanel GetContactPersonFlowLayoutPanel()
+        {
+            return contactPersonFlowLayoutPanel;
+        }
+
+        public FlowLayoutPanel GetGeneralContactFlowLayoutPanel()
+        {
+            return generalContactFlowLayoutPanel;
+        }
+
+        public FlowLayoutPanel GetOneOfficeFlowLayoutPanel()
+        {
+            return oneOfficeFlowLayoutPanel;
+        }
+
+        public Panel GetNewCompanyActionMenuPanel()
+        {
+            return newCompanyActionMenuPanel;
+        }
+
+        public Button GetAddClientDataButton()
+        {
+            return addClientDataButton;
+        }
+
+        public FlowLayoutPanel GetAllOfficesFlowLayoutPanel()
+        {
+            return allOfficesFlowLayoutPanel;
+        }
+
         #endregion
 
         private void ResetForms()
@@ -107,11 +172,6 @@ namespace CRM_GTMK.Visual
 			
 			generalContactFlowLayoutPanel.Controls.Remove(phonesFlowLayoutPanel);
 			generalContactFlowLayoutPanel.Controls.Add(MyPhonesFlowLayout);
-		}
-
-		public void AddOneMorePhonePanel()
-		{
-			MyPhonesFlowLayout.Add(new MyPhonePanel(this));
 		}
 
 		private void CompanyActivityLabel_Click(object sender, EventArgs e)
@@ -124,19 +184,32 @@ namespace CRM_GTMK.Visual
 
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
 		{
 			NewCompanyNameTextBox = companyNameTextBox;
 		    _controller.SaveNewCompanyData();
 			this.Dispose();
 		}
+
+        public void AddClientDataButton_Click()
+        {
+            NewCompanyNameTextBox = companyNameTextBox;
+            _controller.SaveNewCompanyData();
+            this.Dispose();
+        }
+
         // Здесь заменил метод CreateNewPhonePanel() на создание объекта типа MyPhonePanel.
         private void MorePhonesButton_Click(object sender, EventArgs e)
 		{
 			phonesFlowLayoutPanel.Controls.Add(new MyPhonePanel(this));
 		}
 
-		private void PhonePanel_Paint(object sender, PaintEventArgs e)
+        public void AddOneMorePhonePanel()
+        {
+            MyPhonesFlowLayout.Add(new MyPhonePanel(this));
+        }
+
+        private void PhonePanel_Paint(object sender, PaintEventArgs e)
 		{
 
 		}
