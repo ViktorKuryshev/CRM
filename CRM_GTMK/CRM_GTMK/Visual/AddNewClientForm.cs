@@ -172,6 +172,9 @@ namespace CRM_GTMK.Visual
 			
 			generalContactFlowLayoutPanel.Controls.Remove(phonesFlowLayoutPanel);
 			generalContactFlowLayoutPanel.Controls.Add(MyPhonesFlowLayout);
+			generalContactFlowLayoutPanel.AutoSize = true;
+			oneOfficeFlowLayoutPanel.AutoSize = true;
+			allOfficesFlowLayoutPanel.AutoSize = true;
 		}
 
 		private void CompanyActivityLabel_Click(object sender, EventArgs e)
