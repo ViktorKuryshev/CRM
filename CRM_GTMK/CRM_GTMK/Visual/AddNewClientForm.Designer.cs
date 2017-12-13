@@ -46,7 +46,6 @@
 			this.phoneTextBox = new System.Windows.Forms.TextBox();
 			this.phoneLabel = new System.Windows.Forms.Label();
 			this.addOfficeButton = new System.Windows.Forms.Button();
-			this.generalContactFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.contactPersonTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.contactPersonLabel1 = new System.Windows.Forms.Label();
 			this.contactPersonLabel2 = new System.Windows.Forms.Label();
@@ -54,20 +53,17 @@
 			this.contactPersonPanel = new System.Windows.Forms.Panel();
 			this.contactPersonsButton = new System.Windows.Forms.Button();
 			this.contactPersonsLabel = new System.Windows.Forms.Label();
-			this.contactPersonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-			this.oneOfficeFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.allOfficesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.newCompanyActionMenuPanel = new System.Windows.Forms.Panel();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.officeContactInfoPanel.SuspendLayout();
 			this.phonesFlowLayoutPanel.SuspendLayout();
 			this.onePhonePanel.SuspendLayout();
-			this.generalContactFlowLayoutPanel.SuspendLayout();
 			this.contactPersonTableLayoutPanel.SuspendLayout();
 			this.contactPersonPanel.SuspendLayout();
-			this.contactPersonFlowLayoutPanel.SuspendLayout();
-			this.oneOfficeFlowLayoutPanel.SuspendLayout();
 			this.allOfficesFlowLayoutPanel.SuspendLayout();
 			this.newCompanyActionMenuPanel.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// companyNameTextBox
@@ -125,6 +121,7 @@
 			this.officeContactInfoPanel.Controls.Add(this.officeCountryLabel);
 			this.officeContactInfoPanel.Location = new System.Drawing.Point(3, 3);
 			this.officeContactInfoPanel.Name = "officeContactInfoPanel";
+			this.tableLayoutPanel1.SetRowSpan(this.officeContactInfoPanel, 2);
 			this.officeContactInfoPanel.Size = new System.Drawing.Size(335, 155);
 			this.officeContactInfoPanel.TabIndex = 6;
 			// 
@@ -237,42 +234,32 @@
 			this.addOfficeButton.UseVisualStyleBackColor = true;
 			this.addOfficeButton.Click += new System.EventHandler(this.addOfficeButton_Click);
 			// 
-			// generalContactFlowLayoutPanel
-			// 
-			this.generalContactFlowLayoutPanel.Controls.Add(this.officeContactInfoPanel);
-			this.generalContactFlowLayoutPanel.Controls.Add(this.phonesFlowLayoutPanel);
-			this.generalContactFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-			this.generalContactFlowLayoutPanel.Location = new System.Drawing.Point(3, 3);
-			this.generalContactFlowLayoutPanel.Name = "generalContactFlowLayoutPanel";
-			this.generalContactFlowLayoutPanel.Size = new System.Drawing.Size(338, 269);
-			this.generalContactFlowLayoutPanel.TabIndex = 11;
-			this.generalContactFlowLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
-			// 
 			// contactPersonTableLayoutPanel
 			// 
 			this.contactPersonTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
 			this.contactPersonTableLayoutPanel.ColumnCount = 3;
-			this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.14286F));
-			this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.85714F));
-			this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.09524F));
+			this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
+			this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
 			this.contactPersonTableLayoutPanel.Controls.Add(this.contactPersonLabel1, 1, 0);
 			this.contactPersonTableLayoutPanel.Controls.Add(this.contactPersonLabel2, 2, 0);
 			this.contactPersonTableLayoutPanel.Controls.Add(this.contactPersonLinkLabel, 0, 0);
-			this.contactPersonTableLayoutPanel.Location = new System.Drawing.Point(3, 46);
+			this.contactPersonTableLayoutPanel.Location = new System.Drawing.Point(376, 46);
 			this.contactPersonTableLayoutPanel.Name = "contactPersonTableLayoutPanel";
 			this.contactPersonTableLayoutPanel.RowCount = 2;
+			this.tableLayoutPanel1.SetRowSpan(this.contactPersonTableLayoutPanel, 2);
 			this.contactPersonTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.contactPersonTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.contactPersonTableLayoutPanel.Size = new System.Drawing.Size(367, 100);
+			this.contactPersonTableLayoutPanel.Size = new System.Drawing.Size(367, 148);
 			this.contactPersonTableLayoutPanel.TabIndex = 12;
 			// 
 			// contactPersonLabel1
 			// 
 			this.contactPersonLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
 			this.contactPersonLabel1.AutoSize = true;
-			this.contactPersonLabel1.Location = new System.Drawing.Point(148, 2);
+			this.contactPersonLabel1.Location = new System.Drawing.Point(153, 2);
 			this.contactPersonLabel1.Name = "contactPersonLabel1";
-			this.contactPersonLabel1.Size = new System.Drawing.Size(75, 47);
+			this.contactPersonLabel1.Size = new System.Drawing.Size(75, 71);
 			this.contactPersonLabel1.TabIndex = 14;
 			this.contactPersonLabel1.Text = "Менеджер по примерам";
 			this.contactPersonLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -281,9 +268,9 @@
 			// 
 			this.contactPersonLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
 			this.contactPersonLabel2.AutoSize = true;
-			this.contactPersonLabel2.Location = new System.Drawing.Point(240, 2);
+			this.contactPersonLabel2.Location = new System.Drawing.Point(251, 2);
 			this.contactPersonLabel2.Name = "contactPersonLabel2";
-			this.contactPersonLabel2.Size = new System.Drawing.Size(121, 47);
+			this.contactPersonLabel2.Size = new System.Drawing.Size(106, 71);
 			this.contactPersonLabel2.TabIndex = 15;
 			this.contactPersonLabel2.Text = "Моб.: +7 900 300 00 00";
 			this.contactPersonLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -292,9 +279,9 @@
 			// 
 			this.contactPersonLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
 			this.contactPersonLinkLabel.AutoSize = true;
-			this.contactPersonLinkLabel.Location = new System.Drawing.Point(11, 2);
+			this.contactPersonLinkLabel.Location = new System.Drawing.Point(13, 2);
 			this.contactPersonLinkLabel.Name = "contactPersonLinkLabel";
-			this.contactPersonLinkLabel.Size = new System.Drawing.Size(113, 47);
+			this.contactPersonLinkLabel.Size = new System.Drawing.Size(113, 71);
 			this.contactPersonLinkLabel.TabIndex = 13;
 			this.contactPersonLinkLabel.TabStop = true;
 			this.contactPersonLinkLabel.Text = "Пример Примерович Примеров";
@@ -304,7 +291,7 @@
 			// 
 			this.contactPersonPanel.Controls.Add(this.contactPersonsButton);
 			this.contactPersonPanel.Controls.Add(this.contactPersonsLabel);
-			this.contactPersonPanel.Location = new System.Drawing.Point(3, 3);
+			this.contactPersonPanel.Location = new System.Drawing.Point(376, 3);
 			this.contactPersonPanel.Name = "contactPersonPanel";
 			this.contactPersonPanel.Size = new System.Drawing.Size(338, 37);
 			this.contactPersonPanel.TabIndex = 13;
@@ -327,50 +314,50 @@
 			this.contactPersonsLabel.TabIndex = 0;
 			this.contactPersonsLabel.Text = "Сотрудники";
 			// 
-			// contactPersonFlowLayoutPanel
-			// 
-			this.contactPersonFlowLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.contactPersonFlowLayoutPanel.Controls.Add(this.contactPersonPanel);
-			this.contactPersonFlowLayoutPanel.Controls.Add(this.contactPersonTableLayoutPanel);
-			this.contactPersonFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-			this.contactPersonFlowLayoutPanel.Location = new System.Drawing.Point(347, 3);
-			this.contactPersonFlowLayoutPanel.Name = "contactPersonFlowLayoutPanel";
-			this.contactPersonFlowLayoutPanel.Size = new System.Drawing.Size(382, 269);
-			this.contactPersonFlowLayoutPanel.TabIndex = 14;
-			// 
-			// oneOfficeFlowLayoutPanel
-			// 
-			this.oneOfficeFlowLayoutPanel.Controls.Add(this.generalContactFlowLayoutPanel);
-			this.oneOfficeFlowLayoutPanel.Controls.Add(this.contactPersonFlowLayoutPanel);
-			this.oneOfficeFlowLayoutPanel.Location = new System.Drawing.Point(3, 3);
-			this.oneOfficeFlowLayoutPanel.Name = "oneOfficeFlowLayoutPanel";
-			this.oneOfficeFlowLayoutPanel.Size = new System.Drawing.Size(744, 300);
-			this.oneOfficeFlowLayoutPanel.TabIndex = 15;
-			// 
 			// allOfficesFlowLayoutPanel
 			// 
-			this.allOfficesFlowLayoutPanel.Controls.Add(this.oneOfficeFlowLayoutPanel);
+			this.allOfficesFlowLayoutPanel.Controls.Add(this.tableLayoutPanel1);
 			this.allOfficesFlowLayoutPanel.Controls.Add(this.newCompanyActionMenuPanel);
 			this.allOfficesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
 			this.allOfficesFlowLayoutPanel.Location = new System.Drawing.Point(12, 56);
 			this.allOfficesFlowLayoutPanel.Name = "allOfficesFlowLayoutPanel";
-			this.allOfficesFlowLayoutPanel.Size = new System.Drawing.Size(761, 402);
+			this.allOfficesFlowLayoutPanel.Size = new System.Drawing.Size(770, 331);
 			this.allOfficesFlowLayoutPanel.TabIndex = 16;
 			// 
 			// newCompanyActionMenuPanel
 			// 
 			this.newCompanyActionMenuPanel.Controls.Add(this.addClientDataButton);
-			this.newCompanyActionMenuPanel.Location = new System.Drawing.Point(3, 309);
+			this.newCompanyActionMenuPanel.Location = new System.Drawing.Point(3, 255);
 			this.newCompanyActionMenuPanel.Name = "newCompanyActionMenuPanel";
 			this.newCompanyActionMenuPanel.Size = new System.Drawing.Size(477, 59);
 			this.newCompanyActionMenuPanel.TabIndex = 17;
+			// 
+			// tableLayoutPanel1
+			// 
+			this.tableLayoutPanel1.AutoSize = true;
+			this.tableLayoutPanel1.ColumnCount = 2;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.Controls.Add(this.phonesFlowLayoutPanel, 0, 2);
+			this.tableLayoutPanel1.Controls.Add(this.contactPersonTableLayoutPanel, 1, 1);
+			this.tableLayoutPanel1.Controls.Add(this.contactPersonPanel, 1, 0);
+			this.tableLayoutPanel1.Controls.Add(this.officeContactInfoPanel, 0, 0);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 4;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(746, 246);
+			this.tableLayoutPanel1.TabIndex = 17;
 			// 
 			// AddNewCompanyForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
-			this.ClientSize = new System.Drawing.Size(789, 702);
+			this.ClientSize = new System.Drawing.Size(795, 702);
 			this.Controls.Add(this.allOfficesFlowLayoutPanel);
 			this.Controls.Add(this.addOfficeButton);
 			this.Controls.Add(this.companyNameLabel);
@@ -383,15 +370,14 @@
 			this.phonesFlowLayoutPanel.ResumeLayout(false);
 			this.onePhonePanel.ResumeLayout(false);
 			this.onePhonePanel.PerformLayout();
-			this.generalContactFlowLayoutPanel.ResumeLayout(false);
 			this.contactPersonTableLayoutPanel.ResumeLayout(false);
 			this.contactPersonTableLayoutPanel.PerformLayout();
 			this.contactPersonPanel.ResumeLayout(false);
 			this.contactPersonPanel.PerformLayout();
-			this.contactPersonFlowLayoutPanel.ResumeLayout(false);
-			this.oneOfficeFlowLayoutPanel.ResumeLayout(false);
 			this.allOfficesFlowLayoutPanel.ResumeLayout(false);
+			this.allOfficesFlowLayoutPanel.PerformLayout();
 			this.newCompanyActionMenuPanel.ResumeLayout(false);
+			this.tableLayoutPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -417,7 +403,6 @@
 		private System.Windows.Forms.Panel onePhonePanel;
 		private System.Windows.Forms.Button morePhonesButton;
 		private System.Windows.Forms.Button addOfficeButton;
-		private System.Windows.Forms.FlowLayoutPanel generalContactFlowLayoutPanel;
 		private System.Windows.Forms.TableLayoutPanel contactPersonTableLayoutPanel;
 		private System.Windows.Forms.Label contactPersonLabel1;
 		private System.Windows.Forms.Label contactPersonLabel2;
@@ -425,9 +410,8 @@
 		private System.Windows.Forms.Panel contactPersonPanel;
 		private System.Windows.Forms.Button contactPersonsButton;
 		private System.Windows.Forms.Label contactPersonsLabel;
-		private System.Windows.Forms.FlowLayoutPanel contactPersonFlowLayoutPanel;
-		private System.Windows.Forms.FlowLayoutPanel oneOfficeFlowLayoutPanel;
 		private System.Windows.Forms.FlowLayoutPanel allOfficesFlowLayoutPanel;
 		private System.Windows.Forms.Panel newCompanyActionMenuPanel;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 	}
 }

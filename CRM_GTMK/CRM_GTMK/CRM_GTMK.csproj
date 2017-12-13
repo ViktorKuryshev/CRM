@@ -85,12 +85,6 @@
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\ContactPersonFlowPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonLinkLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\ContactPersonFlowPanel\MyContactPersonFlowLayoutPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\MyGeneralContactFlowLayoutPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeAddressLabel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -116,9 +110,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\GeneralContactInfoPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeSiteTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\MyOneOfficeFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Visual\AddNewClientForm.cs">

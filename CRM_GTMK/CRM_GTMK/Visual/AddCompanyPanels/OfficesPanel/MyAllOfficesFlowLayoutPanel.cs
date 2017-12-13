@@ -20,12 +20,12 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel
             Name = allOfficesFlowLayoutPanel.Name;
             Size = allOfficesFlowLayoutPanel.Size;
             TabIndex = allOfficesFlowLayoutPanel.TabIndex;
-
+			/*
             MyOneOfficeFlowLayoutPanel oneOfficeFlowLayoutPanel = new MyOneOfficeFlowLayoutPanel(form);
             MyNewCompanyActionMenuPanel newCompanyActionMenuPanel = new MyNewCompanyActionMenuPanel(form);
 
             Controls.Add(oneOfficeFlowLayoutPanel);
-            Controls.Add(newCompanyActionMenuPanel);
+            Controls.Add(newCompanyActionMenuPanel);*/
         }
     }
 }
