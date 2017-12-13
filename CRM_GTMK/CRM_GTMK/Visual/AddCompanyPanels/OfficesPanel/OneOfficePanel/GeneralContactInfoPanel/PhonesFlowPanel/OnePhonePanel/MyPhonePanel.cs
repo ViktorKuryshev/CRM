@@ -6,7 +6,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 	{
 		public MyPhoneTextBox MyPhoneTextBox { get; set; }
 
-		public MyPhonePanel(AddNewCompanyForm form)
+		public MyPhonePanel(AddNewCompanyForm form, MyOneOfficeFlowLayoutPanel myOneOfficeFlowLayoutPanel)
 		{
 			Panel phonesPanel = form.GetPhonePanel();
 
@@ -15,9 +15,12 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 			Name = phonesPanel.Name;
 			Size = phonesPanel.Size;
 			TabIndex = phonesPanel.TabIndex;
-			
-			MyPhoneTextBox = new MyPhoneTextBox(form);
-			MyMorePhonesButton myMorePhonesButton = new MyMorePhonesButton(form);
+            AutoSize = phonesPanel.AutoSize;
+            AutoScroll = phonesPanel.AutoScroll;
+            Anchor = phonesPanel.Anchor;
+
+            MyPhoneTextBox = new MyPhoneTextBox(form);
+			MyMorePhonesButton myMorePhonesButton = new MyMorePhonesButton(form, myOneOfficeFlowLayoutPanel);
 			MyPhoneLabel myPhoneLabel = new MyPhoneLabel(form);
 
 			Controls.Add(myMorePhonesButton);

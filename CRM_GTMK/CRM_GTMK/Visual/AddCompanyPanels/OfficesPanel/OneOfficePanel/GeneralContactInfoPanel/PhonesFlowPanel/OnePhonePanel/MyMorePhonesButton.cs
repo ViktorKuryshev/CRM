@@ -6,11 +6,14 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 	public class MyMorePhonesButton : Button
 	{
 		private AddNewCompanyForm _form;
+        private MyOneOfficeFlowLayoutPanel _myOneOfficeFlowLayoutPanel;
 
-		public MyMorePhonesButton(AddNewCompanyForm form)
+        public MyMorePhonesButton(AddNewCompanyForm form, MyOneOfficeFlowLayoutPanel myOneOfficeFlowLayoutPanel)
 		{
 			_form = form;
-			Button morePhonesButton = form.GetMorePhonesButton();
+            _myOneOfficeFlowLayoutPanel = myOneOfficeFlowLayoutPanel;
+
+            Button morePhonesButton = form.GetMorePhonesButton();
 
 			Location = morePhonesButton.Location;
 			Name = morePhonesButton.Name;
@@ -19,12 +22,13 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 			Text = morePhonesButton.Text;
 			UseVisualStyleBackColor = morePhonesButton.UseVisualStyleBackColor;
 
-			Click += new System.EventHandler(IsClicked);
+			Click += new EventHandler(IsClicked);
+
 		}
 
 		public void IsClicked(object sender, EventArgs e)
 		{
-			_form.AddOneMorePhonePanel();
+			_form.AddOneMorePhonePanel(_myOneOfficeFlowLayoutPanel);
 		}
 	}
 }

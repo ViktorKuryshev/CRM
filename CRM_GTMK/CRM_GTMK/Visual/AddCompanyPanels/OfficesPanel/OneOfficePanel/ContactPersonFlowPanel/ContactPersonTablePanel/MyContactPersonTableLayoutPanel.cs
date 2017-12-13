@@ -16,16 +16,8 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPe
 
             CellBorderStyle = contactPersonTableLayoutPanel.CellBorderStyle;
             ColumnCount = contactPersonTableLayoutPanel.ColumnCount;
-            Location = contactPersonTableLayoutPanel.Location;
-            Name = contactPersonTableLayoutPanel.Name;
-            RowCount = contactPersonTableLayoutPanel.RowCount;
-            Size = contactPersonTableLayoutPanel.Size;
-            TabIndex = contactPersonTableLayoutPanel.TabIndex;
-            ColumnStyles[0] = contactPersonTableLayoutPanel.ColumnStyles[0];
-            ColumnStyles[1] = contactPersonTableLayoutPanel.ColumnStyles[1];
-            ColumnStyles[2] = contactPersonTableLayoutPanel.ColumnStyles[2];
-            RowStyles[0] = contactPersonTableLayoutPanel.RowStyles[0];
-            RowStyles[1] = contactPersonTableLayoutPanel.RowStyles[1];
+
+            GenerateNewColumnStyles(contactPersonTableLayoutPanel);
 
             MyContactPersonLinkLabel contactPersonLinkLabel = new MyContactPersonLinkLabel(form);
             MyContactPersonLabel1 contactPersonLabel1 = new MyContactPersonLabel1(form);
@@ -34,6 +26,31 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPe
             Controls.Add(contactPersonLinkLabel, 0, 0);
             Controls.Add(contactPersonLabel1, 1, 0);
             Controls.Add(contactPersonLabel2, 2, 0);
+
+            Location = contactPersonTableLayoutPanel.Location;
+            Name = contactPersonTableLayoutPanel.Name;
+            RowCount = contactPersonTableLayoutPanel.RowCount;
+
+            GenerateNewRowStyles(contactPersonTableLayoutPanel);
+
+            Size = contactPersonTableLayoutPanel.Size;
+            TabIndex = contactPersonTableLayoutPanel.TabIndex;
+        }
+
+        private void GenerateNewColumnStyles(TableLayoutPanel contactPersonTableLayoutPanel)
+        {
+            for (int i = 0; i < contactPersonTableLayoutPanel.ColumnStyles.Count; i++)
+            {
+                ColumnStyles.Add(new ColumnStyle(SizeType.Percent, contactPersonTableLayoutPanel.ColumnStyles[i].Width));
+            }
+        }
+
+        private void GenerateNewRowStyles(TableLayoutPanel contactPersonTableLayoutPanel)
+        {
+            for (int i = 0; i < contactPersonTableLayoutPanel.RowStyles.Count; i++)
+            {
+                RowStyles.Add(new RowStyle(SizeType.Percent, contactPersonTableLayoutPanel.RowStyles[i].Height));
+            }
         }
     }
 }

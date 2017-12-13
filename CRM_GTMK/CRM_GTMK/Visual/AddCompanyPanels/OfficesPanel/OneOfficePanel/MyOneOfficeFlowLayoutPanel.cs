@@ -11,6 +11,9 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel
 {
     public class MyOneOfficeFlowLayoutPanel : FlowLayoutPanel
     {
+        public MyGeneralContactFlowLayoutPanel MyGeneralContactFlowLayoutPanel { get; set; }
+        public static List<MyOneOfficeFlowLayoutPanel> MyOneOfficeFlowLayoutPanelList { get; set; } = new List<MyOneOfficeFlowLayoutPanel>();
+
         public MyOneOfficeFlowLayoutPanel(AddNewCompanyForm form)
         {
             FlowLayoutPanel oneOfficeFlowLayoutPanel = form.GetOneOfficeFlowLayoutPanel();
@@ -19,12 +22,20 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel
             Name = oneOfficeFlowLayoutPanel.Name;
             Size = oneOfficeFlowLayoutPanel.Size;
             TabIndex = oneOfficeFlowLayoutPanel.TabIndex;
+            AutoScroll = oneOfficeFlowLayoutPanel.AutoScroll;
+            AutoSize = oneOfficeFlowLayoutPanel.AutoSize;
 
-            MyGeneralContactFlowLayoutPanel generalContactFlowLayoutPanel = new MyGeneralContactFlowLayoutPanel(form);
+            MyGeneralContactFlowLayoutPanel generalContactFlowLayoutPanel = new MyGeneralContactFlowLayoutPanel(form, this);
             MyContactPersonFlowLayoutPanel contactPersonFlowLayoutPanel = new MyContactPersonFlowLayoutPanel(form);
 
-            Controls.Add(generalContactFlowLayoutPanel);
+            AddMyGeneralContactFlowLayoutPanel(generalContactFlowLayoutPanel);
             Controls.Add(contactPersonFlowLayoutPanel);
+        }
+
+        private void AddMyGeneralContactFlowLayoutPanel(MyGeneralContactFlowLayoutPanel panel)
+        {
+            Controls.Add(panel);
+            MyGeneralContactFlowLayoutPanel = panel;
         }
     }
 }

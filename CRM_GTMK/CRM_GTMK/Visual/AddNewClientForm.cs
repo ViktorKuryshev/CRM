@@ -10,17 +10,22 @@ using System.Windows.Forms;
 using CRM_GTMK.Control;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.NewCompanyActionMenuPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel;
 
 namespace CRM_GTMK.Visual
 {
 	public partial class AddNewCompanyForm : Form
 	{
 		private Controller _controller;
+        private MyOneOfficeFlowLayoutPanel _myOneOfficeFlowLayoutPanelWhereTheButtonWasClicked;
 
-		public MyPhonesFlowLayout MyPhonesFlowLayout { get; set; }
-		public TextBox NewCompanyNameTextBox;
+        public TextBox NewCompanyNameTextBox;
+        public MyNewCompanyActionMenuPanel MyNewCompanyActionMenuPanel { get; set; }
 
-		public AddNewCompanyForm(Controller controller)
+        public AddNewCompanyForm(Controller controller)
 		{
 			_controller = controller;
 			InitializeComponent();
@@ -168,13 +173,21 @@ namespace CRM_GTMK.Visual
 
         private void ResetForms()
 		{
-			MyPhonesFlowLayout = new MyPhonesFlowLayout(this);
-			
-			generalContactFlowLayoutPanel.Controls.Remove(phonesFlowLayoutPanel);
-			generalContactFlowLayoutPanel.Controls.Add(MyPhonesFlowLayout);
-		}
+            MyOneOfficeFlowLayoutPanel myOneOfficeFlowLayoutPanel = new MyOneOfficeFlowLayoutPanel(this);
 
-		private void CompanyActivityLabel_Click(object sender, EventArgs e)
+            MyOneOfficeFlowLayoutPanel
+                .MyOneOfficeFlowLayoutPanelList
+                .Add(myOneOfficeFlowLayoutPanel);
+
+            MyNewCompanyActionMenuPanel = new MyNewCompanyActionMenuPanel(this);
+
+            allOfficesFlowLayoutPanel.Controls.Clear();
+
+            allOfficesFlowLayoutPanel.Controls.Add(myOneOfficeFlowLayoutPanel);
+            allOfficesFlowLayoutPanel.Controls.Add(MyNewCompanyActionMenuPanel);
+        }
+
+        private void CompanyActivityLabel_Click(object sender, EventArgs e)
 		{
 
 		}
@@ -200,13 +213,35 @@ namespace CRM_GTMK.Visual
 
         // Здесь заменил метод CreateNewPhonePanel() на создание объекта типа MyPhonePanel.
         private void MorePhonesButton_Click(object sender, EventArgs e)
-		{
-			phonesFlowLayoutPanel.Controls.Add(new MyPhonePanel(this));
-		}
-
-        public void AddOneMorePhonePanel()
         {
-            MyPhonesFlowLayout.Add(new MyPhonePanel(this));
+            phonesFlowLayoutPanel.Controls.Add(new MyPhonePanel(this, _myOneOfficeFlowLayoutPanelWhereTheButtonWasClicked));
+        }
+
+        private void addOfficeButton_Click(object sender, EventArgs e)
+        {
+            allOfficesFlowLayoutPanel.Controls.Remove(MyNewCompanyActionMenuPanel);
+
+            MyOneOfficeFlowLayoutPanel myOneOfficeFlowLayoutPanel = new MyOneOfficeFlowLayoutPanel(this);
+
+            MyOneOfficeFlowLayoutPanel.MyOneOfficeFlowLayoutPanelList.Add(myOneOfficeFlowLayoutPanel);
+
+            allOfficesFlowLayoutPanel.Controls.Add(myOneOfficeFlowLayoutPanel);
+            allOfficesFlowLayoutPanel.Controls.Add(MyNewCompanyActionMenuPanel);
+        }
+
+        public void AddOneMorePhonePanel(MyOneOfficeFlowLayoutPanel myOneOfficeFlowLayoutPanelWhereTheButtonWasClicked)
+        {
+            _myOneOfficeFlowLayoutPanelWhereTheButtonWasClicked = myOneOfficeFlowLayoutPanelWhereTheButtonWasClicked;
+
+            int iOfThePanelWhereTheButtonWasClicked = MyOneOfficeFlowLayoutPanel
+                                                        .MyOneOfficeFlowLayoutPanelList
+                                                        .IndexOf(myOneOfficeFlowLayoutPanelWhereTheButtonWasClicked);
+
+            MyOneOfficeFlowLayoutPanel
+                .MyOneOfficeFlowLayoutPanelList[iOfThePanelWhereTheButtonWasClicked]
+                .MyGeneralContactFlowLayoutPanel
+                .MyPhonesFlowLayout
+                .Add(new MyPhonePanel(this, myOneOfficeFlowLayoutPanelWhereTheButtonWasClicked));
         }
 
         private void PhonePanel_Paint(object sender, PaintEventArgs e)
@@ -272,10 +307,5 @@ namespace CRM_GTMK.Visual
 		{
 
 		}
-
-        private void addOfficeButton_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

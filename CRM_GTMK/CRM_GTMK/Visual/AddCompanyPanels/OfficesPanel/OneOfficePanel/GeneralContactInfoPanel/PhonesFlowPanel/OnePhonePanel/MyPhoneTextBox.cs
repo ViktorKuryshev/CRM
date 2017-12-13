@@ -8,7 +8,8 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 		{
 			TextBox phoneTextBox = form.GetPhoneTextBox();
 
-			Location = phoneTextBox.Location;
+            AutoSize = phoneTextBox.AutoSize;
+            Location = phoneTextBox.Location;
 			Name = phoneTextBox.Name;
 			Size = phoneTextBox.Size;
 			TabIndex = phoneTextBox.TabIndex;

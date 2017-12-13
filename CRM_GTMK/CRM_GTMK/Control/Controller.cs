@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel;
-
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel;
 
 namespace CRM_GTMK.Control
 {
@@ -42,19 +42,24 @@ namespace CRM_GTMK.Control
 		    _myModel.NewCompany = new Company();
 		    _myModel.NewCompany.Name = _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text;
 			Office newOffice = new Office();
-		    foreach (MyPhonePanel panel in _myVisual.AddNewClientForm.MyPhonesFlowLayout.MyPhonePanels)
-		    {
-			    newOffice.Phones.Add(panel.MyPhoneTextBox.Text);
-		    }
+
+            foreach (MyOneOfficeFlowLayoutPanel MyOneOfficeFlowLayoutPanel in MyOneOfficeFlowLayoutPanel
+                                                                                .MyOneOfficeFlowLayoutPanelList)
+            {
+                foreach (MyPhonePanel panel in MyOneOfficeFlowLayoutPanel
+                                                .MyGeneralContactFlowLayoutPanel
+                                                .MyPhonesFlowLayout
+                                                .MyPhonePanelList)
+                {
+                    newOffice.Phones.Add(panel.MyPhoneTextBox.Text);
+                }
+            }
 
 			_myModel.NewCompany.Offices.Add(newOffice);
 			
 			//new ClientsListForm(clientsInfo).ShowDialog();
 			_myModel.XmlHelper.AddNewCompanyInfo(_myModel.NewCompany);
 
-
 		}
-
-	    
     }
 }

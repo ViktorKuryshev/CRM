@@ -6,14 +6,16 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 {
 	public class MyPhonesFlowLayout : FlowLayoutPanel
 	{
-		public List<MyPhonePanel> MyPhonePanels { get; } = new List<MyPhonePanel>();
+		public List<MyPhonePanel> MyPhonePanelList { get; } = new List<MyPhonePanel>();
 
-		public MyPhonesFlowLayout(AddNewCompanyForm form)
+		public MyPhonesFlowLayout(AddNewCompanyForm form, MyOneOfficeFlowLayoutPanel myOneOfficeFlowLayoutPanel)
 		{
 			FlowLayoutPanel flowPanel = form.GetPhonesFlowLayoutPanel();
 
-			AutoSize = true;
-			BorderStyle = flowPanel.BorderStyle;
+			AutoSize = flowPanel.AutoSize;
+            AutoScroll = flowPanel.AutoScroll;
+            Anchor = flowPanel.Anchor;
+            BorderStyle = flowPanel.BorderStyle;
 			FlowDirection = flowPanel.FlowDirection;
 			Location = flowPanel.Location;
 			Margin = flowPanel.Margin;
@@ -21,16 +23,15 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 			Size = flowPanel.Size;
 			TabIndex = flowPanel.TabIndex;
 
-			MyPhonePanel MyPhonePanel = new MyPhonePanel(form);
-			
-			Add(MyPhonePanel);
+			MyPhonePanel MyPhonePanel = new MyPhonePanel(form, myOneOfficeFlowLayoutPanel);
+
+            Add(MyPhonePanel);
 		}
 
 		public void Add(MyPhonePanel panel)
 		{
-			MyPhonePanels.Add(panel);
+			MyPhonePanelList.Add(panel);
 			Controls.Add(panel);
 		}
-
 	}
 }
