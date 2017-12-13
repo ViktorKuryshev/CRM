@@ -11,9 +11,14 @@ using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContac
 
 namespace CRM_GTMK.Control
 {
-
+	
     public class Controller
     {
+	    enum TestStep
+	    {
+		    AddCompanyForm,
+			MainScreen
+	    }
 	    private MyModel _myModel;
 	    private MyVisual _myVisual;
 
@@ -27,11 +32,27 @@ namespace CRM_GTMK.Control
 		    _myModel = myModel;
 		    _myVisual = myVisual;
 
-			_myVisual.ShowMainScreenDialog();
+		    switch (TestStep.AddCompanyForm)
+		    {
+				case TestStep.MainScreen:
+					ShowMainScreenDialog();
+					break;
+
+				case TestStep.AddCompanyForm:
+					ShowAddNewCompanyDialog();
+					break;
+
+			}
 
 	    }
 
-	    public void ShowAddNewCompanyDialog()
+	    public void ShowMainScreenDialog()
+	    {
+		    _myVisual.ShowMainScreenDialog();
+	    }
+
+
+		public void ShowAddNewCompanyDialog()
 	    {
 		    _myVisual.ShowAddNewCompanyDialog();
 	    }
@@ -39,22 +60,47 @@ namespace CRM_GTMK.Control
 
 		public void SaveNewCompanyData()
 	    {
-		    _myModel.NewCompany = new Company();
-		    _myModel.NewCompany.Name = _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text;
-			Office newOffice = new Office();
+
+			_myModel.NewCompany = GetCompanyDataGromForm();
+		    if (_myModel.NewCompany.Name.Equals(""))
+		    {
+			    MessageBox.Show("Надо ввести название компании");
+				return;
+		    }
+
+			//Todo в форме добавить возможность вписывать название компании на другом языке
+			//Todo добавить в форму поле email
+			//Todo проверить компанию на уникальность.
+			//Todo проверить компанию по назвнию, по телефону, по имейлу
+
+			//todo присвоить компании уникальный id для получить последний id
+		    _myModel.NewCompany.id = _myModel.XmlHelper.GetBigestCompanyId() + 1;
+			//new ClientsListForm(clientsInfo).ShowDialog();
+			_myModel.XmlHelper.AddNewCompanyInfo(_myModel.NewCompany);
+
+			//Todo Автоматически поставилась задача на проработку компании менеджеру по какойму-то принципу
+
+		    _myVisual.AddNewClientForm.Dispose();
+
+
+		}
+
+	    private Company GetCompanyDataGromForm()
+	    {
+			Company company = new Company();
+		    company.Name = _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text;
+		    Office newOffice = new Office();
 		    foreach (MyPhonePanel panel in _myVisual.AddNewClientForm.MyPhonesFlowLayout.MyPhonePanels)
 		    {
 			    newOffice.Phones.Add(panel.MyPhoneTextBox.Text);
 		    }
 
-			_myModel.NewCompany.Offices.Add(newOffice);
-			
-			//new ClientsListForm(clientsInfo).ShowDialog();
-			_myModel.XmlHelper.AddNewCompanyInfo(_myModel.NewCompany);
+		    company.Offices.Add(newOffice);
+		    return company;
+
+	    }
 
 
-		}
 
-	    
-    }
+	}
 }

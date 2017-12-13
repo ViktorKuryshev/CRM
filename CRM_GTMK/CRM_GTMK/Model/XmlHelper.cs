@@ -15,25 +15,34 @@ namespace CRM_GTMK.Model
 		private const string BASE_DIRECTORY = "Model\\XMLBase";
 		private const string COMPANY_FILE_NAME = "companies.xml";
 
+		public int GetBigestCompanyId()
+		{
+			string path = GetXmlDocumentPath();
+			XDocument xDoc = XDocument.Load(path);
+			int id = 0;
+
+			foreach (var element in xDoc.Element("companies").Elements("company"))
+			{
+				if (id < Int32.Parse(element.Attribute("id").Value))
+				{
+					id = Int32.Parse(element.Attribute("id").Value);
+				}
+			}
+			return id;
+
+		}
+
 		public void AddNewCompanyInfo(Company company)
 		{
 
-			string path = "";
-			XDocument xDoc = new XDocument();
-			try
-			{
-				path = Path.Combine(TEST_BASE_DIRECTORY, COMPANY_FILE_NAME);
-				xDoc = XDocument.Load(path);
-			}
-			catch (DirectoryNotFoundException)
-			{
-				path = Path.Combine(BASE_DIRECTORY, COMPANY_FILE_NAME);
-				xDoc = XDocument.Load(path);
-			}
+			string path = GetXmlDocumentPath();
+			XDocument xDoc = XDocument.Load(path);
 
 			XAttribute companyNameAtribute = new XAttribute("name", company.Name);
+			XAttribute companyIdAttribute = new XAttribute("id", company.id);
 			XElement companyElement = new XElement("company");
 			companyElement.Add(companyNameAtribute);
+			companyElement.Add(companyIdAttribute);
 
 			foreach (Office office in company.Offices)
 			{
@@ -52,6 +61,24 @@ namespace CRM_GTMK.Model
 			xDoc.Element("companies").Add(companyElement);
 
 			xDoc.Save(path);
+		}
+
+		private string GetXmlDocumentPath()
+		{
+			string path = "";
+			XDocument xDoc = new XDocument();
+			try
+			{
+				path = Path.Combine(TEST_BASE_DIRECTORY, COMPANY_FILE_NAME);
+				xDoc = XDocument.Load(path);
+			}
+			catch (DirectoryNotFoundException)
+			{
+				path = Path.Combine(BASE_DIRECTORY, COMPANY_FILE_NAME);
+				xDoc = XDocument.Load(path);
+			}
+
+			return  path;
 		}
 	}
 }
