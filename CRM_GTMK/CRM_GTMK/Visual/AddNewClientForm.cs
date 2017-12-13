@@ -134,22 +134,7 @@ namespace CRM_GTMK.Visual
             return contactPersonLabel2;
         }
 
-        public FlowLayoutPanel GetContactPersonFlowLayoutPanel()
-        {
-            return contactPersonFlowLayoutPanel;
-        }
-
-        public FlowLayoutPanel GetGeneralContactFlowLayoutPanel()
-        {
-            return generalContactFlowLayoutPanel;
-        }
-
-        public FlowLayoutPanel GetOneOfficeFlowLayoutPanel()
-        {
-            return oneOfficeFlowLayoutPanel;
-        }
-
-        public Panel GetNewCompanyActionMenuPanel()
+		public Panel GetNewCompanyActionMenuPanel()
         {
             return newCompanyActionMenuPanel;
         }
@@ -169,11 +154,8 @@ namespace CRM_GTMK.Visual
         private void ResetForms()
 		{
 			MyPhonesFlowLayout = new MyPhonesFlowLayout(this);
-			
-			generalContactFlowLayoutPanel.Controls.Remove(phonesFlowLayoutPanel);
-			generalContactFlowLayoutPanel.Controls.Add(MyPhonesFlowLayout);
-			generalContactFlowLayoutPanel.AutoSize = true;
-			oneOfficeFlowLayoutPanel.AutoSize = true;
+
+			phonesFlowLayoutPanel.AutoSize = true;
 			allOfficesFlowLayoutPanel.AutoSize = true;
 		}
 
