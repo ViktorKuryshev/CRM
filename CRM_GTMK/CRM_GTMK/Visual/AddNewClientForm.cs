@@ -153,8 +153,9 @@ namespace CRM_GTMK.Visual
 
         private void ResetForms()
 		{
+			//todo поменять дефолтные классы на мои и добавить переменные с данными
 			MyPhonesFlowLayout = new MyPhonesFlowLayout(this);
-
+			
 			phonesFlowLayoutPanel.AutoSize = true;
 			allOfficesFlowLayoutPanel.AutoSize = true;
 		}
@@ -173,7 +174,7 @@ namespace CRM_GTMK.Visual
 		{
 			NewCompanyNameTextBox = companyNameTextBox;
 		    _controller.SaveNewCompanyData();
-			this.Dispose();
+			
 		}
 
         public void AddClientDataButton_Click()

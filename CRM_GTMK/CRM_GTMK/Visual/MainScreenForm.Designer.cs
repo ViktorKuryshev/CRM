@@ -28,24 +28,24 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Компании");
-			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Физ. лица");
-			System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Благотворительность");
-			System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Клиенты", new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8,
-            treeNode9});
-			System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Проекты");
-			System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Задачи");
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Компании");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Физ. лица");
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Благотворительность");
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Клиенты", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
+			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Проекты");
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Задачи");
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.addNewCompanyButton = new System.Windows.Forms.Button();
 			this.companiesDefaultListDataGridView = new System.Windows.Forms.DataGridView();
 			this.CompanyNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CompanyCityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CompanyStatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.LastContactDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.AddingDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.addNewCompanyButton = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.companiesDefaultListDataGridView)).BeginInit();
 			this.SuspendLayout();
@@ -54,23 +54,23 @@
 			// 
 			this.treeView1.Location = new System.Drawing.Point(12, 57);
 			this.treeView1.Name = "treeView1";
-			treeNode7.Name = "CompaniesNode";
-			treeNode7.Text = "Компании";
-			treeNode8.Name = "PhisicalPersonsNode";
-			treeNode8.Text = "Физ. лица";
-			treeNode9.Name = "CharityNode";
-			treeNode9.Text = "Благотворительность";
-			treeNode10.Checked = true;
-			treeNode10.Name = "ClientsRoot";
-			treeNode10.Text = "Клиенты";
-			treeNode11.Name = "ProjectsRoot";
-			treeNode11.Text = "Проекты";
-			treeNode12.Name = "TasksRoot";
-			treeNode12.Text = "Задачи";
+			treeNode1.Name = "CompaniesNode";
+			treeNode1.Text = "Компании";
+			treeNode2.Name = "PhisicalPersonsNode";
+			treeNode2.Text = "Физ. лица";
+			treeNode3.Name = "CharityNode";
+			treeNode3.Text = "Благотворительность";
+			treeNode4.Checked = true;
+			treeNode4.Name = "ClientsRoot";
+			treeNode4.Text = "Клиенты";
+			treeNode5.Name = "ProjectsRoot";
+			treeNode5.Text = "Проекты";
+			treeNode6.Name = "TasksRoot";
+			treeNode6.Text = "Задачи";
 			this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode11,
-            treeNode12});
+            treeNode4,
+            treeNode5,
+            treeNode6});
 			this.treeView1.Size = new System.Drawing.Size(165, 350);
 			this.treeView1.TabIndex = 0;
 			// 
@@ -82,16 +82,6 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(555, 350);
 			this.panel1.TabIndex = 1;
-			// 
-			// addNewCompanyButton
-			// 
-			this.addNewCompanyButton.Location = new System.Drawing.Point(210, 22);
-			this.addNewCompanyButton.Name = "addNewCompanyButton";
-			this.addNewCompanyButton.Size = new System.Drawing.Size(135, 23);
-			this.addNewCompanyButton.TabIndex = 0;
-			this.addNewCompanyButton.Text = "Добавить компанию";
-			this.addNewCompanyButton.UseVisualStyleBackColor = true;
-			this.addNewCompanyButton.Click += new System.EventHandler(this.addNewCompanyButton_Click);
 			// 
 			// companiesDefaultListDataGridView
 			// 
@@ -131,6 +121,16 @@
 			// 
 			this.AddingDateColumn.HeaderText = "Дата внесения в базу";
 			this.AddingDateColumn.Name = "AddingDateColumn";
+			// 
+			// addNewCompanyButton
+			// 
+			this.addNewCompanyButton.Location = new System.Drawing.Point(210, 22);
+			this.addNewCompanyButton.Name = "addNewCompanyButton";
+			this.addNewCompanyButton.Size = new System.Drawing.Size(135, 23);
+			this.addNewCompanyButton.TabIndex = 0;
+			this.addNewCompanyButton.Text = "Добавить компанию";
+			this.addNewCompanyButton.UseVisualStyleBackColor = true;
+			this.addNewCompanyButton.Click += new System.EventHandler(this.addNewCompanyButton_Click);
 			// 
 			// MainScreenForm
 			// 
