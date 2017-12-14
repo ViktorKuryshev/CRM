@@ -22,16 +22,27 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 			Size = flowPanel.Size;
 			TabIndex = flowPanel.TabIndex;
 
-			MyPhonePanel myPhonePanel = new MyPhonePanel(form, myOneOfficeContactTableLayoutPanel);
+            MyPhonePanel myPhonePanel = new MyPhonePanel(form, myOneOfficeContactTableLayoutPanel);
 			
 			Add(myPhonePanel);
-		}
 
-		public void Add(MyPhonePanel panel)
-		{
-			MyPhonePanels.Add(panel);
-			Controls.Add(panel);
-		}
+            SetSpans(form, flowPanel, myOneOfficeContactTableLayoutPanel);
+        }
 
-	}
+        public void Add(MyPhonePanel panel)
+        {
+            MyPhonePanels.Add(panel);
+            Controls.Add(panel);
+        }
+
+        private void SetSpans(AddNewCompanyForm form, FlowLayoutPanel flowPanel,
+                              MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
+        {
+            int columnSpan = form.GetOneOfficeContactTableLayoutPanel().GetColumnSpan(flowPanel);
+            myOneOfficeContactTableLayoutPanel.SetColumnSpan(this, columnSpan);
+
+            int rowSpan = form.GetOneOfficeContactTableLayoutPanel().GetRowSpan(flowPanel);
+            myOneOfficeContactTableLayoutPanel.SetRowSpan(this, rowSpan);
+        }   
+    }
 }

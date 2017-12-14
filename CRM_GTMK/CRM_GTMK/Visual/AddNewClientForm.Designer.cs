@@ -122,7 +122,7 @@
             this.officeContactInfoPanel.Location = new System.Drawing.Point(3, 3);
             this.officeContactInfoPanel.Name = "officeContactInfoPanel";
             this.oneOfficeContactTableLayoutPanel.SetRowSpan(this.officeContactInfoPanel, 2);
-            this.officeContactInfoPanel.Size = new System.Drawing.Size(335, 155);
+            this.officeContactInfoPanel.Size = new System.Drawing.Size(335, 154);
             this.officeContactInfoPanel.TabIndex = 6;
             // 
             // officeAddressTextBox
@@ -178,12 +178,13 @@
             // 
             // phonesFlowLayoutPanel
             // 
+            this.phonesFlowLayoutPanel.AutoSize = true;
             this.phonesFlowLayoutPanel.Controls.Add(this.onePhonePanel);
             this.phonesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.phonesFlowLayoutPanel.Location = new System.Drawing.Point(0, 161);
+            this.phonesFlowLayoutPanel.Location = new System.Drawing.Point(0, 160);
             this.phonesFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.phonesFlowLayoutPanel.Name = "phonesFlowLayoutPanel";
-            this.phonesFlowLayoutPanel.Size = new System.Drawing.Size(338, 65);
+            this.phonesFlowLayoutPanel.Size = new System.Drawing.Size(341, 46);
             this.phonesFlowLayoutPanel.TabIndex = 10;
             // 
             // onePhonePanel
@@ -238,9 +239,9 @@
             // 
             this.contactPersonTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.contactPersonTableLayoutPanel.ColumnCount = 3;
-            this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.09524F));
-            this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.57143F));
-            this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.94305F));
+            this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.95728F));
+            this.contactPersonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.09968F));
             this.contactPersonTableLayoutPanel.Controls.Add(this.contactPersonLabel1, 1, 0);
             this.contactPersonTableLayoutPanel.Controls.Add(this.contactPersonLabel2, 2, 0);
             this.contactPersonTableLayoutPanel.Controls.Add(this.contactPersonLinkLabel, 0, 0);
@@ -321,11 +322,12 @@
             this.allOfficesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.allOfficesFlowLayoutPanel.Location = new System.Drawing.Point(12, 56);
             this.allOfficesFlowLayoutPanel.Name = "allOfficesFlowLayoutPanel";
-            this.allOfficesFlowLayoutPanel.Size = new System.Drawing.Size(770, 331);
+            this.allOfficesFlowLayoutPanel.Size = new System.Drawing.Size(770, 388);
             this.allOfficesFlowLayoutPanel.TabIndex = 16;
             // 
             // oneOfficeContactTableLayoutPanel
             // 
+            this.oneOfficeContactTableLayoutPanel.AutoScroll = true;
             this.oneOfficeContactTableLayoutPanel.AutoSize = true;
             this.oneOfficeContactTableLayoutPanel.ColumnCount = 2;
             this.oneOfficeContactTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -340,14 +342,15 @@
             this.oneOfficeContactTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.oneOfficeContactTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.oneOfficeContactTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.oneOfficeContactTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.oneOfficeContactTableLayoutPanel.Size = new System.Drawing.Size(746, 246);
+            this.oneOfficeContactTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.oneOfficeContactTableLayoutPanel.Size = new System.Drawing.Size(746, 206);
             this.oneOfficeContactTableLayoutPanel.TabIndex = 17;
+            this.oneOfficeContactTableLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.oneOfficeContactTableLayoutPanel_Paint);
             // 
             // newCompanyActionMenuPanel
             // 
             this.newCompanyActionMenuPanel.Controls.Add(this.addClientDataButton);
-            this.newCompanyActionMenuPanel.Location = new System.Drawing.Point(3, 255);
+            this.newCompanyActionMenuPanel.Location = new System.Drawing.Point(3, 215);
             this.newCompanyActionMenuPanel.Name = "newCompanyActionMenuPanel";
             this.newCompanyActionMenuPanel.Size = new System.Drawing.Size(477, 59);
             this.newCompanyActionMenuPanel.TabIndex = 17;
@@ -357,7 +360,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(795, 702);
+            this.ClientSize = new System.Drawing.Size(795, 481);
             this.Controls.Add(this.allOfficesFlowLayoutPanel);
             this.Controls.Add(this.addOfficeButton);
             this.Controls.Add(this.companyNameLabel);
@@ -377,6 +380,7 @@
             this.allOfficesFlowLayoutPanel.ResumeLayout(false);
             this.allOfficesFlowLayoutPanel.PerformLayout();
             this.oneOfficeContactTableLayoutPanel.ResumeLayout(false);
+            this.oneOfficeContactTableLayoutPanel.PerformLayout();
             this.newCompanyActionMenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

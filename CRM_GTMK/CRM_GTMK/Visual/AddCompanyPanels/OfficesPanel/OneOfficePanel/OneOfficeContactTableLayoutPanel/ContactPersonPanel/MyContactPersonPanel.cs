@@ -1,4 +1,5 @@
 ﻿using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPersonFlowPanel.ContactPersonPanel.OneContactPersonPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPe
 {
     public class MyContactPersonPanel : Panel
     {
-        public MyContactPersonPanel(AddNewCompanyForm form)
+        public MyContactPersonPanel(AddNewCompanyForm form, MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
         {
             Panel panel = form.GetContactPersonPanel();
 
@@ -24,6 +25,18 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPe
 
             Controls.Add(contactPersonsLabel);
             Controls.Add(contactPersonsButton);
+
+            SetSpans(form, panel, myOneOfficeContactTableLayoutPanel);
+        }
+
+        private void SetSpans(AddNewCompanyForm form, Panel panel, 
+                              MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
+        {
+            int columnSpan = form.GetOneOfficeContactTableLayoutPanel().GetColumnSpan(panel);
+            myOneOfficeContactTableLayoutPanel.SetColumnSpan(this, columnSpan);
+
+            int rowSpan = form.GetOneOfficeContactTableLayoutPanel().GetRowSpan(panel);
+            myOneOfficeContactTableLayoutPanel.SetRowSpan(this, rowSpan);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 			Name = phonesPanel.Name;
 			Size = phonesPanel.Size;
 			TabIndex = phonesPanel.TabIndex;
+            Anchor = phonesPanel.Anchor;
 			
 			MyPhoneTextBox = new MyPhoneTextBox(form);
 			MyMorePhonesButton myMorePhonesButton = new MyMorePhonesButton(form, myOneOfficeContactTableLayoutPanel);

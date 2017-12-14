@@ -13,7 +13,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
 {
     public class MyOneOfficeContactTableLayoutPanel : TableLayoutPanel
     {
-        private MyPhonesFlowLayout _phonesFlowLayoutPanel;
+        public MyPhonesFlowLayout MyPhonesFlowLayoutPanel { get; set; }
 
         public MyOneOfficeContactTableLayoutPanel(AddNewCompanyForm form)
         {
@@ -21,9 +21,18 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
 
             AutoSize = tableLayoutPanel.AutoSize;
             ColumnCount = tableLayoutPanel.ColumnCount;
-
             AssignColumnStyles(tableLayoutPanel);
             
+            MyPhonesFlowLayout phonesFlowLayoutPanel = new MyPhonesFlowLayout(form, this);
+            MyContactPersonTableLayoutPanel contactPersonTableLayoutPanel = new MyContactPersonTableLayoutPanel(form, this);
+            MyContactPersonPanel contactPersonPanel = new MyContactPersonPanel(form, this);
+            MyOfficeContactInfoPanel officeContactInfoPanel = new MyOfficeContactInfoPanel(form, this);
+
+            AddMyPhonesFlowLayout(phonesFlowLayoutPanel);
+            Controls.Add(contactPersonTableLayoutPanel, 1, 1);
+            Controls.Add(contactPersonPanel, 1, 0);
+            Controls.Add(officeContactInfoPanel, 0, 0);
+
             Location = tableLayoutPanel.Location;
             Name = tableLayoutPanel.Name;
             RowCount = tableLayoutPanel.RowCount;
@@ -32,23 +41,15 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
 
             Size = tableLayoutPanel.Size;
             TabIndex = tableLayoutPanel.TabIndex;
-
-            MyPhonesFlowLayout phonesFlowLayoutPanel = new MyPhonesFlowLayout(form, this);
-            MyContactPersonTableLayoutPanel contactPersonTableLayoutPanel = new MyContactPersonTableLayoutPanel(form);
-            MyContactPersonPanel contactPersonPanel = new MyContactPersonPanel(form);
-            MyOfficeContactInfoPanel officeContactInfoPanel = new MyOfficeContactInfoPanel(form);
-
-            Controls.Add(phonesFlowLayoutPanel, 0, 2);
-            Controls.Add(contactPersonTableLayoutPanel, 1, 1);
-            Controls.Add(contactPersonPanel, 1, 0);
-            Controls.Add(officeContactInfoPanel, 0, 0);
+            GrowStyle = tableLayoutPanel.GrowStyle;
+            AutoScroll = tableLayoutPanel.AutoScroll;
         }
 
         private void AssignColumnStyles(TableLayoutPanel panel)
         {
             for (int i = 0; i < panel.ColumnStyles.Count; i++)
             {
-                ColumnStyles.Add(new ColumnStyle(SizeType.Percent, panel.ColumnStyles[i].Width));
+                ColumnStyles.Add(new ColumnStyle(panel.ColumnStyles[i].SizeType, panel.ColumnStyles[i].Width));
             }
         }
 
@@ -56,8 +57,15 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
         {
             for (int i = 0; i < panel.RowStyles.Count; i++)
             {
-                RowStyles.Add(new RowStyle(SizeType.Absolute, panel.RowStyles[i].Height));
+                RowStyles.Add(new RowStyle(panel.RowStyles[i].SizeType, panel.RowStyles[i].Height));
+                
             }
+        }
+
+        private void AddMyPhonesFlowLayout(MyPhonesFlowLayout panel)
+        {
+            MyPhonesFlowLayoutPanel = panel;
+            Controls.Add(panel, 0, 2);
         }
     }
 }

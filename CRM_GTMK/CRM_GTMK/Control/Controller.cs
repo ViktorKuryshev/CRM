@@ -90,10 +90,14 @@ namespace CRM_GTMK.Control
 			Company company = new Company();
 		    company.Name = _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text;
 
-            foreach (MyOneOfficeContactTableLayoutPanel tableLayoutPanel in _myVisual.AddNewClientForm.MyOneOfficeContactTableLayoutPanelList)
+            foreach (MyOneOfficeContactTableLayoutPanel tableLayoutPanel in _myVisual
+                                                                                .AddNewClientForm
+                                                                                .MyOneOfficeContactTableLayoutPanelList)
             {
                 Office newOffice = new Office();
-                foreach (MyPhonePanel panel in tableLayoutPanel.My)
+                foreach (MyPhonePanel panel in tableLayoutPanel
+                                                .MyPhonesFlowLayoutPanel
+                                                .MyPhonePanels)
                 {
                     newOffice.Phones.Add(panel.MyPhoneTextBox.Text);
                 }

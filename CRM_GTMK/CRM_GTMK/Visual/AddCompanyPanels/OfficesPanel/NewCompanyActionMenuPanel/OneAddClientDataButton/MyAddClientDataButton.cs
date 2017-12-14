@@ -13,6 +13,8 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.NewCompanyActionMenuPane
 
         public MyAddClientDataButton(AddNewCompanyForm form)
         {
+            _form = form;
+
             Button addClientDataButton = form.GetAddClientDataButton();
 
             Location = addClientDataButton.Location;
