@@ -13,13 +13,13 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel
 	{
         public MyAllOfficesFlowLayoutPanel(AddNewCompanyForm form)
         {
-            FlowLayoutPanel allOfficesFlowLayoutPanel = form.GetAllOfficesFlowLayoutPanel();
+            FlowLayoutPanel flowLayoutPanel = form.GetAllOfficesFlowLayoutPanel();
 
-            FlowDirection = allOfficesFlowLayoutPanel.FlowDirection;
-            Location = allOfficesFlowLayoutPanel.Location;
-            Name = allOfficesFlowLayoutPanel.Name;
-            Size = allOfficesFlowLayoutPanel.Size;
-            TabIndex = allOfficesFlowLayoutPanel.TabIndex;
+            FlowDirection = flowLayoutPanel.FlowDirection;
+            Location = flowLayoutPanel.Location;
+            Name = flowLayoutPanel.Name;
+            Size = flowLayoutPanel.Size;
+            TabIndex = flowLayoutPanel.TabIndex;
 			/*
             MyOneOfficeFlowLayoutPanel oneOfficeFlowLayoutPanel = new MyOneOfficeFlowLayoutPanel(form);
             MyNewCompanyActionMenuPanel newCompanyActionMenuPanel = new MyNewCompanyActionMenuPanel(form);

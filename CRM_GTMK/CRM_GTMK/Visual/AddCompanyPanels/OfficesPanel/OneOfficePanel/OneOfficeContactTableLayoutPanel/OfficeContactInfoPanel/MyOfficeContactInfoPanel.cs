@@ -17,13 +17,13 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 
         public MyOfficeContactInfoPanel(AddNewCompanyForm form)
         {
-            Panel officeContactInfoPanel = form.GetOfficeContactInfoPanel();
+            Panel panel = form.GetOfficeContactInfoPanel();
 
-            BorderStyle = officeContactInfoPanel.BorderStyle;
-            Location = officeContactInfoPanel.Location;
-            Name = officeContactInfoPanel.Name;
-            Size = officeContactInfoPanel.Size;
-            TabIndex = officeContactInfoPanel.TabIndex;
+            BorderStyle = panel.BorderStyle;
+            Location = panel.Location;
+            Name = panel.Name;
+            Size = panel.Size;
+            TabIndex = panel.TabIndex;
 
             OfficeAddressTextBox = new MyOfficeAddressTextBox(form);
             MyOfficeAddressLabel officeAddressLabel = new MyOfficeAddressLabel(form);

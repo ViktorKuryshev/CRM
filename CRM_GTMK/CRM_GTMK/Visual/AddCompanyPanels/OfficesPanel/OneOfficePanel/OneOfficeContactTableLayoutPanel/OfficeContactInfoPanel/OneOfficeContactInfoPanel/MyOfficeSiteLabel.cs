@@ -11,14 +11,14 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
     {
         public MyOfficeSiteLabel(AddNewCompanyForm form)
         {
-            Label officeSiteLabel = form.GetOfficeSiteLabel();
+            Label label = form.GetOfficeSiteLabel();
 
-            AutoSize = officeSiteLabel.AutoSize;
-            Location = officeSiteLabel.Location;
-            Name = officeSiteLabel.Name;
-            Size = officeSiteLabel.Size;
-            TabIndex = officeSiteLabel.TabIndex;
-            Text = officeSiteLabel.Text;
+            AutoSize = label.AutoSize;
+            Location = label.Location;
+            Name = label.Name;
+            Size = label.Size;
+            TabIndex = label.TabIndex;
+            Text = label.Text;
         }
     }
 }

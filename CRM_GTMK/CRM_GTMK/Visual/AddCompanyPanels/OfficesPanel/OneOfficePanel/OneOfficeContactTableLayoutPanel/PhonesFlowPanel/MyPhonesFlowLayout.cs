@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel
 {
@@ -8,11 +9,11 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 	{
 		public List<MyPhonePanel> MyPhonePanels { get; } = new List<MyPhonePanel>();
 
-		public MyPhonesFlowLayout(AddNewCompanyForm form)
+		public MyPhonesFlowLayout(AddNewCompanyForm form, MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
 		{
 			FlowLayoutPanel flowPanel = form.GetPhonesFlowLayoutPanel();
 
-			AutoSize = true;
+			AutoSize = flowPanel.AutoSize;
 			BorderStyle = flowPanel.BorderStyle;
 			FlowDirection = flowPanel.FlowDirection;
 			Location = flowPanel.Location;
@@ -21,9 +22,9 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 			Size = flowPanel.Size;
 			TabIndex = flowPanel.TabIndex;
 
-			MyPhonePanel MyPhonePanel = new MyPhonePanel(form);
+			MyPhonePanel myPhonePanel = new MyPhonePanel(form, myOneOfficeContactTableLayoutPanel);
 			
-			Add(MyPhonePanel);
+			Add(myPhonePanel);
 		}
 
 		public void Add(MyPhonePanel panel)

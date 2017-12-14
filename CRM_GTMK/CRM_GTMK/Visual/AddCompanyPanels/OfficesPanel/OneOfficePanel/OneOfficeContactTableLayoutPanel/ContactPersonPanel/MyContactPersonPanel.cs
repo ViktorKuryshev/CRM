@@ -12,12 +12,12 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPe
     {
         public MyContactPersonPanel(AddNewCompanyForm form)
         {
-            Panel contactPersonPanel = form.GetContactPersonPanel();
+            Panel panel = form.GetContactPersonPanel();
 
-            Location = contactPersonPanel.Location;
-            Name = contactPersonPanel.Name;
-            Size = contactPersonPanel.Size;
-            TabIndex = contactPersonPanel.TabIndex;
+            Location = panel.Location;
+            Name = panel.Name;
+            Size = panel.Size;
+            TabIndex = panel.TabIndex;
 
             MyContactPersonsLabel contactPersonsLabel = new MyContactPersonsLabel(form);
             MyContactPersonsButton contactPersonsButton = new MyContactPersonsButton(form);

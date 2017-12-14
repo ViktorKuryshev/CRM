@@ -11,16 +11,16 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
     {
         public MyOfficeCountryComboBox(AddNewCompanyForm form)
         {
-            ComboBox officeCountryComboBox = form.GetOfficeCountryComboBox();
+            ComboBox comboBox = form.GetOfficeCountryComboBox();
 
-            FormattingEnabled = officeCountryComboBox.FormattingEnabled;
+            FormattingEnabled = comboBox.FormattingEnabled;
 
             // Здесь необходимо автоматизировать получение количества элементов в списке.
             Items.AddRange(new object[] {"Россия"});
-            Location = officeCountryComboBox.Location;
-            Name = officeCountryComboBox.Name;
-            Size = officeCountryComboBox.Size;
-            TabIndex = officeCountryComboBox.TabIndex;
+            Location = comboBox.Location;
+            Name = comboBox.Name;
+            Size = comboBox.Size;
+            TabIndex = comboBox.TabIndex;
         }
     }
 }

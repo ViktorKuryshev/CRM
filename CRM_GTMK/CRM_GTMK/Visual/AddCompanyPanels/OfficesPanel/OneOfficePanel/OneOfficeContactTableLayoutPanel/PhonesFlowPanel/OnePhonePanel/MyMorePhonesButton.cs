@@ -1,15 +1,18 @@
-﻿using System;
+﻿using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
+using System;
 using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel
 {
 	public class MyMorePhonesButton : Button
 	{
-		private AddNewCompanyForm _form;
+        private MyOneOfficeContactTableLayoutPanel _myOneOfficeContactTableLayoutPanel;
+        private AddNewCompanyForm _form;
 
-		public MyMorePhonesButton(AddNewCompanyForm form)
+		public MyMorePhonesButton(AddNewCompanyForm form, MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
 		{
-			_form = form;
+            _myOneOfficeContactTableLayoutPanel = myOneOfficeContactTableLayoutPanel;
+            _form = form;
 			Button morePhonesButton = form.GetMorePhonesButton();
 
 			Location = morePhonesButton.Location;
@@ -24,7 +27,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 
 		public void IsClicked(object sender, EventArgs e)
 		{
-			_form.AddOneMorePhonePanel();
+			_form.AddOneMorePhonePanel(_myOneOfficeContactTableLayoutPanel);
 		}
 	}
 }
