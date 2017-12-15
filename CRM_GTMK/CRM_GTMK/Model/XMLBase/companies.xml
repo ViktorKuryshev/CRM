@@ -10,25 +10,22 @@
       <phone></phone>
     </office>
   </company>
-  <company name="Super New Company" id="3">
-    <office>
+  <company name="Coding Company" id="9">
+    <office id="1">
+      <county>Россия</county>
+      <city>City1</city>
+      <address>Address1</address>
+      <site>Site1</site>
       <phone>11</phone>
       <phone>12</phone>
-      <phone>13</phone>
     </office>
-    <office>
+    <office id="2">
+      <county>USA</county>
+      <city>City2</city>
+      <address>Address2</address>
+      <site>Site2</site>
       <phone>22</phone>
       <phone>23</phone>
-    </office>
-    <office>
-      <phone>33</phone>
-    </office>
-    <office>
-      <phone>41</phone>
-      <phone>42</phone>
-      <phone></phone>
-      <phone>43</phone>
-      <phone>44</phone>
     </office>
   </company>
 </companies>

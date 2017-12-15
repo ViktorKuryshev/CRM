@@ -11,10 +11,11 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 {
     public class MyOfficeContactInfoPanel : Panel
     {
-        public TextBox OfficeAddressTextBox { get; set; }
-        public TextBox OfficeCityTextBox { get; set; }
-        public TextBox OfficeSiteTextBox { get; set; }
-        public ComboBox OfficeCountryComboBox { get; set; }
+        public ComboBox MyOfficeCountryComboBox { get; set; }
+        public TextBox MyOfficeCityTextBox { get; set; }
+        public TextBox MyOfficeAddressTextBox { get; set; }
+        public TextBox MyOfficeSiteTextBox { get; set; }
+        
 
         public MyOfficeContactInfoPanel(AddNewCompanyForm form, MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
         {
@@ -26,22 +27,22 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
             Size = panel.Size;
             TabIndex = panel.TabIndex;
 
-            OfficeAddressTextBox = new MyOfficeAddressTextBox(form);
+            MyOfficeAddressTextBox = new MyOfficeAddressTextBox(form);
             MyOfficeAddressLabel officeAddressLabel = new MyOfficeAddressLabel(form);
-            OfficeCityTextBox = new MyOfficeCityTextBox(form);
+            MyOfficeCityTextBox = new MyOfficeCityTextBox(form);
             MyOfficeCityLabel officeCityLabel = new MyOfficeCityLabel(form);
-            OfficeSiteTextBox = new MyOfficeSiteTextBox(form);
+            MyOfficeSiteTextBox = new MyOfficeSiteTextBox(form);
             MyOfficeSiteLabel officeSiteLabel = new MyOfficeSiteLabel(form);
-            OfficeCountryComboBox = new MyOfficeCountryComboBox(form);
+            MyOfficeCountryComboBox = new MyOfficeCountryComboBox(form);
             MyOfficeCountryLabel officeCountryLabel = new MyOfficeCountryLabel(form);
 
-            Controls.Add(OfficeAddressTextBox);
+            Controls.Add(MyOfficeAddressTextBox);
             Controls.Add(officeAddressLabel);
-            Controls.Add(OfficeCityTextBox);
+            Controls.Add(MyOfficeCityTextBox);
             Controls.Add(officeCityLabel);
-            Controls.Add(OfficeSiteTextBox);
+            Controls.Add(MyOfficeSiteTextBox);
             Controls.Add(officeSiteLabel);
-            Controls.Add(OfficeCountryComboBox);
+            Controls.Add(MyOfficeCountryComboBox);
             Controls.Add(officeCountryLabel);
 
             SetSpans(form, panel, myOneOfficeContactTableLayoutPanel);

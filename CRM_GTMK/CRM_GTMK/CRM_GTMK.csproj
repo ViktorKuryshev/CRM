@@ -115,6 +115,9 @@
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeSiteTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeNumberLabel\MyOfficeNumberLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Visual\AddNewClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
