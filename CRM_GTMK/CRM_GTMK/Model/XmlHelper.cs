@@ -29,12 +29,10 @@ namespace CRM_GTMK.Model
 				}
 			}
 			return id;
-
 		}
 
 		public void AddNewCompanyInfo(Company company)
 		{
-
 			string path = GetXmlDocumentPath();
 			XDocument xDoc = XDocument.Load(path);
 
@@ -44,24 +42,32 @@ namespace CRM_GTMK.Model
 			companyElement.Add(companyNameAtribute);
 			companyElement.Add(companyIdAttribute);
 
-			foreach (Office office in company.Offices)
-			{
-				XElement officeElement = new XElement("office");
-				foreach (string phone in office.Phones)
-				{
-					XElement phoneElement = new XElement("phone", phone);
-					officeElement.Add(phoneElement);
-				}
+            AddNewOfficeInfo(company, companyElement);
 
-				companyElement.Add(officeElement);
-
-			}
-			 
-
-			xDoc.Element("companies").Add(companyElement);
+            xDoc.Element("companies").Add(companyElement);
 
 			xDoc.Save(path);
 		}
+
+        private void AddNewOfficeInfo(Company company, XElement companyElement)
+        {
+            foreach (Office office in company.Offices)
+            {
+                XElement officeElement = new XElement("office");
+                officeElement.Add(new XAttribute("id", office.Id));
+
+                officeElement.Add(new XElement("county", office.Country));
+                officeElement.Add(new XElement("city", office.City));
+                officeElement.Add(new XElement("address", office.Address));
+                officeElement.Add(new XElement("site", office.Site));
+
+                foreach (string phone in office.Phones)
+                {
+                    officeElement.Add(new XElement("phone", phone));
+                }
+                companyElement.Add(officeElement);
+            }
+        }
 
 		private string GetXmlDocumentPath()
 		{
@@ -77,7 +83,6 @@ namespace CRM_GTMK.Model
 				path = Path.Combine(BASE_DIRECTORY, COMPANY_FILE_NAME);
 				xDoc = XDocument.Load(path);
 			}
-
 			return  path;
 		}
 	}

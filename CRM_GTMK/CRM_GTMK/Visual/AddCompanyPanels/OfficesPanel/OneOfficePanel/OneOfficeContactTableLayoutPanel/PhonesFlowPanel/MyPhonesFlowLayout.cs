@@ -14,6 +14,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 			FlowLayoutPanel flowPanel = form.GetPhonesFlowLayoutPanel();
 
 			AutoSize = flowPanel.AutoSize;
+            AutoScroll = flowPanel.AutoScroll;
 			BorderStyle = flowPanel.BorderStyle;
 			FlowDirection = flowPanel.FlowDirection;
 			Location = flowPanel.Location;

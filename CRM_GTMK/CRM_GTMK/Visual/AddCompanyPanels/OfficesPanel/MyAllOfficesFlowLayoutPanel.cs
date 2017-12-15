@@ -1,5 +1,6 @@
 ﻿using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.NewCompanyActionMenuPanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,10 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel
 {
 	public class MyAllOfficesFlowLayoutPanel : FlowLayoutPanel
 	{
+        public List<MyOneOfficeContactTableLayoutPanel> MyOneOfficeContactTableLayoutPanelList
+        { get; set; } = new List<MyOneOfficeContactTableLayoutPanel>();
+        public MyNewCompanyActionMenuPanel MyNewCompanyActionMenuPanel { get; set; }
+
         public MyAllOfficesFlowLayoutPanel(AddNewCompanyForm form)
         {
             FlowLayoutPanel flowLayoutPanel = form.GetAllOfficesFlowLayoutPanel();
@@ -20,12 +25,25 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel
             Name = flowLayoutPanel.Name;
             Size = flowLayoutPanel.Size;
             TabIndex = flowLayoutPanel.TabIndex;
-			/*
-            MyOneOfficeFlowLayoutPanel oneOfficeFlowLayoutPanel = new MyOneOfficeFlowLayoutPanel(form);
+            AutoSize = flowLayoutPanel.AutoSize;
+
+            MyOneOfficeContactTableLayoutPanel oneOfficeContactTableLayoutPanel = new MyOneOfficeContactTableLayoutPanel(form);
             MyNewCompanyActionMenuPanel newCompanyActionMenuPanel = new MyNewCompanyActionMenuPanel(form);
 
-            Controls.Add(oneOfficeFlowLayoutPanel);
-            Controls.Add(newCompanyActionMenuPanel);*/
+            AddTableLayoutPanel(oneOfficeContactTableLayoutPanel);
+            AddActionMenuPanel(newCompanyActionMenuPanel);
+        }
+
+        private void AddTableLayoutPanel(MyOneOfficeContactTableLayoutPanel tableLayoutPanel)
+        {
+            MyOneOfficeContactTableLayoutPanelList.Add(tableLayoutPanel);
+            Controls.Add(tableLayoutPanel);
+        }
+
+        private void AddActionMenuPanel(MyNewCompanyActionMenuPanel actionMenuPanel)
+        {
+            MyNewCompanyActionMenuPanel = actionMenuPanel;
+            Controls.Add(actionMenuPanel);
         }
     }
 }

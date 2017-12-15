@@ -61,7 +61,7 @@ namespace CRM_GTMK.Control
 		public void SaveNewCompanyData()
 	    {
 
-			_myModel.NewCompany = GetCompanyDataGromForm();
+			_myModel.NewCompany = GetCompanyDataFromForm();
 		    if (_myModel.NewCompany.Name.Equals(""))
 		    {
 			    MessageBox.Show("Надо ввести название компании");
@@ -81,29 +81,56 @@ namespace CRM_GTMK.Control
 			//Todo Автоматически поставилась задача на проработку компании менеджеру по какойму-то принципу
 
 		    _myVisual.AddNewClientForm.Dispose();
-
-
 		}
 
-	    private Company GetCompanyDataGromForm()
+	    private Company GetCompanyDataFromForm()
 	    {
 			Company company = new Company();
 		    company.Name = _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text;
+            GetOfficeDataFromForm(company);
+            return company;
+	    }
 
-            foreach (MyOneOfficeContactTableLayoutPanel tableLayoutPanel in _myVisual
-                                                                                .AddNewClientForm
-                                                                                .MyOneOfficeContactTableLayoutPanelList)
+        private void GetOfficeDataFromForm(Company company)
+        {
+            var officeList = _myVisual
+                                .AddNewClientForm
+                                .MyAllOfficesFlowLayoutPanel
+                                .MyOneOfficeContactTableLayoutPanelList;
+
+            for (int i = 0; i < officeList.Count; i++)
             {
                 Office newOffice = new Office();
-                foreach (MyPhonePanel panel in tableLayoutPanel
-                                                .MyPhonesFlowLayoutPanel
-                                                .MyPhonePanels)
-                {
-                    newOffice.Phones.Add(panel.MyPhoneTextBox.Text);
-                }
+                newOffice.Id = i + 1;
+
+                GetOfficeContactInfoFromForm(newOffice, i, officeList);
+                GetOfficePhonesFromForm(newOffice, i, officeList);
+
                 company.Offices.Add(newOffice);
             }
-		    return company;
-	    }
-	}
+        }
+
+        private void GetOfficeContactInfoFromForm(Office office, 
+                                                  int i, 
+                                                  List<MyOneOfficeContactTableLayoutPanel> officeList)
+        {
+            office.Country = officeList[i].MyOfficeContactInfoPanel.MyOfficeCountryComboBox.Text;
+            office.City = officeList[i].MyOfficeContactInfoPanel.MyOfficeCityTextBox.Text;
+            office.Address = officeList[i].MyOfficeContactInfoPanel.MyOfficeAddressTextBox.Text;
+            office.Site = officeList[i].MyOfficeContactInfoPanel.MyOfficeSiteTextBox.Text;
+        }
+
+        private void GetOfficePhonesFromForm(Office office,
+                                             int i,
+                                             List<MyOneOfficeContactTableLayoutPanel> officeList)
+        {
+            foreach (MyPhonePanel panel in officeList[i]
+                                .MyPhonesFlowLayoutPanel
+                                .MyPhonePanels)
+            {
+                if (panel.MyPhoneTextBox.Text != "")
+                    office.Phones.Add(panel.MyPhoneTextBox.Text);
+            }
+        }
+    }
 }
