@@ -10,14 +10,20 @@ using System.Windows.Forms;
 using CRM_GTMK.Control;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.NewCompanyActionMenuPanel;
 
 namespace CRM_GTMK.Visual
 {
 	public partial class AddNewCompanyForm : Form
 	{
 		private Controller _controller;
+        private MyOneOfficeContactTableLayoutPanel _myOneOfficeContactTableLayoutPanel;
+        private MyNewCompanyActionMenuPanel _myNewCompanyActionMenuPanel;
+        public List<MyOneOfficeContactTableLayoutPanel> MyOneOfficeContactTableLayoutPanelList
+        { get; set; } = new List<MyOneOfficeContactTableLayoutPanel>();
 
-		public MyPhonesFlowLayout MyPhonesFlowLayout { get; set; }
+        public MyPhonesFlowLayout MyPhonesFlowLayout { get; set; }
 		public TextBox NewCompanyNameTextBox;
 
 		public AddNewCompanyForm(Controller controller)
@@ -149,15 +155,28 @@ namespace CRM_GTMK.Visual
             return allOfficesFlowLayoutPanel;
         }
 
+        public TableLayoutPanel GetOneOfficeContactTableLayoutPanel()
+        {
+            return oneOfficeContactTableLayoutPanel;
+        }
+
         #endregion
 
         private void ResetForms()
 		{
-			//todo поменять дефолтные классы на мои и добавить переменные с данными
-			MyPhonesFlowLayout = new MyPhonesFlowLayout(this);
-			
-			phonesFlowLayoutPanel.AutoSize = true;
-			allOfficesFlowLayoutPanel.AutoSize = true;
+            //todo поменять дефолтные классы на мои и добавить переменные с данными
+            MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel = new MyOneOfficeContactTableLayoutPanel(this);
+            MyNewCompanyActionMenuPanel myNewCompanyActionMenuPanel = new MyNewCompanyActionMenuPanel(this);
+
+            MyOneOfficeContactTableLayoutPanelList.Add(myOneOfficeContactTableLayoutPanel);
+            _myNewCompanyActionMenuPanel = myNewCompanyActionMenuPanel;
+
+            allOfficesFlowLayoutPanel.Controls.Clear();
+
+            allOfficesFlowLayoutPanel.Controls.Add(myOneOfficeContactTableLayoutPanel);
+            allOfficesFlowLayoutPanel.Controls.Add(myNewCompanyActionMenuPanel);
+
+            allOfficesFlowLayoutPanel.AutoSize = true;
 		}
 
 		private void CompanyActivityLabel_Click(object sender, EventArgs e)
@@ -187,12 +206,28 @@ namespace CRM_GTMK.Visual
         // Здесь заменил метод CreateNewPhonePanel() на создание объекта типа MyPhonePanel.
         private void MorePhonesButton_Click(object sender, EventArgs e)
 		{
-			phonesFlowLayoutPanel.Controls.Add(new MyPhonePanel(this));
+			phonesFlowLayoutPanel.Controls.Add(new MyPhonePanel(this, _myOneOfficeContactTableLayoutPanel));
 		}
 
-        public void AddOneMorePhonePanel()
+        public void AddOneMorePhonePanel(MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
         {
-            MyPhonesFlowLayout.Add(new MyPhonePanel(this));
+            _myOneOfficeContactTableLayoutPanel = myOneOfficeContactTableLayoutPanel;
+
+            myOneOfficeContactTableLayoutPanel
+                .MyPhonesFlowLayoutPanel
+                .Add(new MyPhonePanel(this, myOneOfficeContactTableLayoutPanel));
+        }
+
+        private void addOfficeButton_Click(object sender, EventArgs e)
+        {
+            allOfficesFlowLayoutPanel.Controls.Remove(_myNewCompanyActionMenuPanel);
+
+            MyOneOfficeContactTableLayoutPanel tableLayoutPanel = new MyOneOfficeContactTableLayoutPanel(this);
+
+            MyOneOfficeContactTableLayoutPanelList.Add(tableLayoutPanel);
+
+            allOfficesFlowLayoutPanel.Controls.Add(tableLayoutPanel);
+            allOfficesFlowLayoutPanel.Controls.Add(_myNewCompanyActionMenuPanel);
         }
 
         private void PhonePanel_Paint(object sender, PaintEventArgs e)
@@ -259,7 +294,7 @@ namespace CRM_GTMK.Visual
 
 		}
 
-        private void addOfficeButton_Click(object sender, EventArgs e)
+        private void oneOfficeContactTableLayoutPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

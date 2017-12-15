@@ -11,14 +11,14 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPe
     {
         public MyContactPersonsLabel(AddNewCompanyForm form)
         {
-            Label contactPersonsLabel = form.GetContactPersonsLabel();
+            Label label = form.GetContactPersonsLabel();
 
-            AutoSize = contactPersonsLabel.AutoSize;
-            Location = contactPersonsLabel.Location;
-            Name = contactPersonsLabel.Name;
-            Size = contactPersonsLabel.Size;
-            TabIndex = contactPersonsLabel.TabIndex;
-            Text = contactPersonsLabel.Text;
+            AutoSize = label.AutoSize;
+            Location = label.Location;
+            Name = label.Name;
+            Size = label.Size;
+            TabIndex = label.TabIndex;
+            Text = label.Text;
         }
     }
 }

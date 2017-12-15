@@ -11,12 +11,12 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
     {
         public MyOfficeSiteTextBox(AddNewCompanyForm form)
         {
-            TextBox officeSiteTextBox = form.GetOfficeSiteTextBox();
+            TextBox textBox = form.GetOfficeSiteTextBox();
 
-            Location = officeSiteTextBox.Location;
-            Name = officeSiteTextBox.Name;
-            Size = officeSiteTextBox.Size;
-            TabIndex = officeSiteTextBox.TabIndex;
+            Location = textBox.Location;
+            Name = textBox.Name;
+            Size = textBox.Size;
+            TabIndex = textBox.TabIndex;
         }
     }
 }

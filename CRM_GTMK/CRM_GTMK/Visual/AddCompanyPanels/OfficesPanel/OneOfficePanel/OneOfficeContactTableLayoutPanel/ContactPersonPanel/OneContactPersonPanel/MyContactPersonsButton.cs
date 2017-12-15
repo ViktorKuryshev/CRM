@@ -11,14 +11,14 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPe
     {
         public MyContactPersonsButton(AddNewCompanyForm form)
         {
-            Button contactPersonsButton = form.GetContactPersonsButton();
+            Button button = form.GetContactPersonsButton();
 
-            Location = contactPersonsButton.Location;
-            Name = contactPersonsButton.Name;
-            Size = contactPersonsButton.Size;
-            TabIndex = contactPersonsButton.TabIndex;
-            Text = contactPersonsButton.Text;
-            UseVisualStyleBackColor = contactPersonsButton.UseVisualStyleBackColor;
+            Location = button.Location;
+            Name = button.Name;
+            Size = button.Size;
+            TabIndex = button.TabIndex;
+            Text = button.Text;
+            UseVisualStyleBackColor = button.UseVisualStyleBackColor;
         }
     }
 }
