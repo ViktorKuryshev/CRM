@@ -33,9 +33,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.2.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.2.0\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,12 +59,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\Controller.cs" />
+    <Compile Include="Model\ApiClient.cs" />
     <Compile Include="Model\Company.cs" />
     <Compile Include="Model\ContactPerson.cs" />
     <Compile Include="Model\DataBase\XMLDBSimulator.cs" />
+    <Compile Include="Model\Freelancer.cs" />
+    <Compile Include="Model\FreelancerSearchParameters.cs" />
     <Compile Include="Model\MyModel.cs" />
     <Compile Include="Model\Office.cs" />
     <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Projects.cs" />
+    <Compile Include="Model\TranslationMemory.cs" />
     <Compile Include="Model\XmlHelper.cs" />
     <Compile Include="StartCRM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Visual\AddNewClientForm.resx">
