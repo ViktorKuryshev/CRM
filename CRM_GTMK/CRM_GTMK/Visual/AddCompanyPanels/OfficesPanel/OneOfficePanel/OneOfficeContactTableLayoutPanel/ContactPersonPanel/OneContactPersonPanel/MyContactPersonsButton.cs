@@ -9,8 +9,11 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPe
 {
     public class MyContactPersonsButton : Button
     {
+        private AddNewCompanyForm _form;
+
         public MyContactPersonsButton(AddNewCompanyForm form)
         {
+            _form = form;
             Button button = form.GetContactPersonsButton();
 
             Location = button.Location;
@@ -19,6 +22,13 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPe
             TabIndex = button.TabIndex;
             Text = button.Text;
             UseVisualStyleBackColor = button.UseVisualStyleBackColor;
+
+            Click += MyContactPersonsButton_Click;
+        }
+
+        private void MyContactPersonsButton_Click(object sender, EventArgs e)
+        {
+            _form.AddNewContactPerson();
         }
     }
 }

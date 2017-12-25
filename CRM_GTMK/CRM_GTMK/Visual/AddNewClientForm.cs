@@ -225,6 +225,11 @@ namespace CRM_GTMK.Visual
                                                          .MyNewCompanyActionMenuPanel);
         }
 
+        public void AddNewContactPerson()
+        {
+            _controller.ShowAddNewContactPersonDialog();
+        }
+
         private void PhonePanel_Paint(object sender, PaintEventArgs e)
 		{
 

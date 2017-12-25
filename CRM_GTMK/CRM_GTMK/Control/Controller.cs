@@ -57,7 +57,6 @@ namespace CRM_GTMK.Control
 						Console.WriteLine(project.name);
 							}
 					break;
-
 			}
 
 	    }
@@ -104,10 +103,20 @@ namespace CRM_GTMK.Control
 			return allProjects;
 		}
 
-		/// <summary>
-		/// Добавляем данные по комании в базу
-		/// </summary>
-		public void SaveNewCompanyData()
+        public void ShowAddNewCompanyDialog()
+        {
+            MainScreenForm.ShowAddNewCompanyDialog();
+        }
+
+        public void ShowAddNewContactPersonDialog()
+        {
+            MainScreenForm.ShowAddNewContactPersonDialog();
+        }
+
+        /// <summary>
+        /// Добавляем данные по комании в базу
+        /// </summary>
+        public void SaveNewCompanyData()
 	    {
 
 			_myModel.NewCompany = GetCompanyDataFromForm();

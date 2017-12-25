@@ -20,9 +20,10 @@ namespace CRM_GTMK.Visual
 		//Формы диалогов
 		public NewProjectForm NewProjectForm { get; set; }
 		public AddNewCompanyForm AddNewClientForm { get; set; }
-		
-		//Панели 
-		public MyAllProjectsFlowLayoutPanel MyAllProjectsFlowLayoutPanel { get; set; }
+        public AddNewContactPersonForm ContactPersonForm { get; set; }
+
+        //Панели 
+        public MyAllProjectsFlowLayoutPanel MyAllProjectsFlowLayoutPanel { get; set; }
 		public MyClientsPanel MyClientsPanel { get; set; }
 
 		public Panel CurrentPanel { get; set; }
@@ -51,12 +52,18 @@ namespace CRM_GTMK.Visual
 
 		}
 
-		
-		#region NewProjectInicialize
-		/// <summary>
-		/// Создаем форму добавления проекта
-		/// </summary>
-		public void AddNewProject()
+        public void ShowAddNewContactPersonDialog()
+        {
+            ContactPersonForm = new AddNewContactPersonForm(_controller);
+            ContactPersonForm.ShowDialog();
+        }
+
+
+        #region NewProjectInicialize
+        /// <summary>
+        /// Создаем форму добавления проекта
+        /// </summary>
+        public void AddNewProject()
 		{
 			//Такой тане с бубнами нужен чтобы зарегистрировать DragDrop в противном случае Exception
 			Thread t = new Thread(new ThreadStart(DragDropValidating));

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual
 {
-    public partial class AddNewContactPerson : Form
+    public partial class AddNewContactPersonPhoneForm : Form
     {
-        public AddNewContactPerson()
+        public AddNewContactPersonPhoneForm()
         {
             InitializeComponent();
         }
