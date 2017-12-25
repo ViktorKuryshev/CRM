@@ -41,7 +41,6 @@ namespace CRM_GTMK.Control
 				case TestStep.AddCompanyForm:
 					ShowAddNewCompanyDialog();
 					break;
-
 			}
 
 	    }
@@ -56,6 +55,11 @@ namespace CRM_GTMK.Control
 	    {
 		    _myVisual.ShowAddNewCompanyDialog();
 	    }
+
+        public void ShowAddNewContactPersonDialog()
+        {
+            _myVisual.ShowAddNewContactPersonDialog();
+        }
 
 
 		public void SaveNewCompanyData()

@@ -13,9 +13,9 @@ namespace CRM_GTMK.Visual
 
 		public AddNewCompanyForm AddNewClientForm { get; set; }
 		public MainScreenForm MainScreenForm { get; set; }
+        public AddNewContactPersonForm ContactPersonForm { get; set; }
 
-
-		public MyVisual(Controller controller)
+        public MyVisual(Controller controller)
 		{
 			_controller = controller;
            
@@ -38,5 +38,11 @@ namespace CRM_GTMK.Visual
 	        AddNewClientForm.ShowDialog();
 
 		}
+
+        public void ShowAddNewContactPersonDialog()
+        {
+            ContactPersonForm = new AddNewContactPersonForm(_controller);
+            ContactPersonForm.ShowDialog();
+        }
     }
 }
