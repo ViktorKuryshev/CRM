@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.OneCommentPanel.CommentPanelElements
+namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel.CommentPanelElements
 {
-    public class MyCommentRichTextBox : RichTextBox
+    public class MyRichTextBox : RichTextBox
     {
-        public MyCommentRichTextBox(AddNewContactPersonForm form)
+        public MyRichTextBox(AddNewContactPersonForm form)
         {
             RichTextBox commentRichTextBox = form.GetCommentRichTextBox();
 

@@ -1,5 +1,4 @@
-﻿using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPersonFlowPanel.ContactPersonPanel.OneContactPersonPanel;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
+﻿using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.ContactPersonPanel.OneContactPersonPanel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPersonFlowPanel.ContactPersonPanel
+namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.ContactPersonPanel
 {
     public class MyContactPersonPanel : Panel
     {
@@ -21,7 +20,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.ContactPe
             TabIndex = panel.TabIndex;
 
             MyContactPersonsLabel contactPersonsLabel = new MyContactPersonsLabel(form);
-            MyContactPersonsButton contactPersonsButton = new MyContactPersonsButton(form);
+            MyContactPersonsButton contactPersonsButton = new MyContactPersonsButton(form, myOneOfficeContactTableLayoutPanel);
 
             Controls.Add(contactPersonsLabel);
             Controls.Add(contactPersonsButton);

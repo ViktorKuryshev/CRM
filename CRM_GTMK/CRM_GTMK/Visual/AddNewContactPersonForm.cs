@@ -1,16 +1,9 @@
 ﻿using CRM_GTMK.Control;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentPanel;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel.OnePhonePanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel.OneContactPersonPhonePanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel.OneContactPersonPhonePanel.ContactPersonPhonePanelElements;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual
@@ -18,32 +11,30 @@ namespace CRM_GTMK.Visual
     public partial class AddNewContactPersonForm : Form
     {
         private Controller _controller;
-        private MyPhonesContactPersonFlowLayoutPanel _myPhonesFlowLayoutPanel;
-        private MyCommentsContactPersonFlowLayoutPanel _myCommentsFlowLayoutPanel;
 
-        public List<MyCommentPanel> MyCommentPanel { get; set; } = new List<MyCommentPanel>();
-        public List<MyPhonePanel> MyPhonePanel { get; set; } = new List<MyPhonePanel>();
+        public int OfficeNumber { get; set; }
+        public List<AddNewContactPersonPhoneForm> MyContactPersonPhoneFormList { get; set; } = new List<AddNewContactPersonPhoneForm>();
+        public List<MyCommentPanel> MyCommentPanelList { get; set; } = new List<MyCommentPanel>();
 
-        public AddNewContactPersonForm(Controller controller)
+        public string LastnameContactPerson { get; set; }
+        public string FirstnameContactPerson { get; set; }
+        public string MiddleNameContactPerson { get; set; }
+        public string PositionContactPerson { get; set; }
+        public string[] EmailContactPerson { get; set; } = new string[] { "", "", "" };
+
+        public AddNewContactPersonForm(Controller controller, int officeNumber)
         {
             _controller = controller;
+            OfficeNumber = officeNumber;
             InitializeComponent();
             ResetForms();
         }
 
         private void ResetForms()
         {
-            Controls.Remove(phonesContactPersonFlowLayoutPanel);
-            Controls.Remove(commentsContactPersonFlowLayoutPanel);
-
-            MyPhonesContactPersonFlowLayoutPanel myPhonesFlowLayoutPanel = new MyPhonesContactPersonFlowLayoutPanel(this);
-            MyCommentsContactPersonFlowLayoutPanel myCommentsFlowLayoutPanel = new MyCommentsContactPersonFlowLayoutPanel(this);
-
-            _myPhonesFlowLayoutPanel = myPhonesFlowLayoutPanel;
-            _myCommentsFlowLayoutPanel = myCommentsFlowLayoutPanel;
-
-            Controls.Add(myPhonesFlowLayoutPanel);
-            Controls.Add(myCommentsFlowLayoutPanel);
+            phonesContactPersonFlowLayoutPanel.Controls.Remove(phoneContactPersonPanel);
+            commentsInnerFlowLayoutPanel.Controls.Remove(commentPanel);
+            emailContactPersonComboBox.SelectedIndex = 0;
         }
 
         #region Getters
@@ -75,7 +66,7 @@ namespace CRM_GTMK.Visual
 
         public Panel GetPhonePanel()
         {
-            return phonePanel;
+            return phoneContactPersonPanel;
         }
 
         public TextBox GetPhoneCommentTextBox()
@@ -93,20 +84,81 @@ namespace CRM_GTMK.Visual
             return phoneTypeLabel;
         }
 
+        public FlowLayoutPanel GetCommentsInnerFlowLayoutPanel()
+        {
+            return commentsInnerFlowLayoutPanel;
+        }
+
         #endregion
 
         private void addNewCommentContactPersonButton_Click(object sender, EventArgs e)
         {
             MyCommentPanel newCommentPanel = new MyCommentPanel(this);
-            MyCommentPanel.Add(newCommentPanel);
-            _myCommentsFlowLayoutPanel.Controls.Add(newCommentPanel);
+            MyCommentPanelList.Add(newCommentPanel);
+            commentsInnerFlowLayoutPanel.Controls.Add(newCommentPanel);
         }
 
         private void addNewContactPersonPhoneButton_Click(object sender, EventArgs e)
         {
-            MyPhonePanel newPhonePanel = new MyPhonePanel(this);
-            MyPhonePanel.Add(newPhonePanel);
-            _myPhonesFlowLayoutPanel.Controls.Add(newPhonePanel);
+            _controller.ShowAddNewContactPersonPhoneForm(this);
+        }
+
+        public void AddAndDisplayNewContactPersonPanel(AddNewContactPersonPhoneForm form)
+        {
+            MyContactPersonPhonePanel contactPersonPhonePanel = new MyContactPersonPhonePanel(this);
+            contactPersonPhonePanel.MyPhoneTypeLabel.Text = form.NewPhoneType;
+            contactPersonPhonePanel.MyPhoneNumberLabel.Text = form.NewPhoneNumber;
+            contactPersonPhonePanel.MyPhoneCommentTextBox.Text = form.NewPhoneComment;
+
+            phonesContactPersonFlowLayoutPanel.Controls.Add(contactPersonPhonePanel);
+        }
+
+        private void saveNewContactPersonButton_Click(object sender, EventArgs e)
+        {
+            LastnameContactPerson = lastnameContactPersonTextBox.Text;
+            FirstnameContactPerson = firstnameContactPersonTextBox.Text;
+            MiddleNameContactPerson = middleNameContactPersonTextBox.Text;
+            PositionContactPerson = positionContactPersonTextBox.Text;
+            if (EmailContactPerson[0].Equals(""))
+                EmailContactPerson[0] = emailContactPersonTextBox.Text;
+        }
+
+        private void emailContactPersonComboBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            int chosenItem = emailContactPersonComboBox
+                            .Items.IndexOf(emailContactPersonComboBox.SelectedItem);
+
+            switch (chosenItem)
+            {
+                case 0:
+                    EmailContactPerson[0] = emailContactPersonTextBox.Text;
+                    break;
+                case 1:
+                    EmailContactPerson[1] = emailContactPersonTextBox.Text;
+                    break;
+                default:
+                    EmailContactPerson[2] = emailContactPersonTextBox.Text;
+                    break;
+            }
+        }
+
+        private void emailContactPersonComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            int chosenItem = emailContactPersonComboBox
+                            .Items.IndexOf(emailContactPersonComboBox.SelectedItem);
+
+            switch (chosenItem)
+            {
+                case 0:
+                    emailContactPersonTextBox.Text = EmailContactPerson[0];
+                    break;
+                case 1:
+                    emailContactPersonTextBox.Text = EmailContactPerson[1];
+                    break;
+                default:
+                    emailContactPersonTextBox.Text = EmailContactPerson[2];
+                    break;
+            }
         }
     }
 }

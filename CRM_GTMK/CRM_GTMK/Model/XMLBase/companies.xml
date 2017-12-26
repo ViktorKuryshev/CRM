@@ -28,4 +28,21 @@
       <phone>23</phone>
     </office>
   </company>
+  <company name="qwrqwerqwe" id="10">
+    <office id="1">
+      <county></county>
+      <city></city>
+      <address></address>
+      <site></site>
+      <phone>1234</phone>
+    </office>
+    <office id="2">
+      <county>Россия</county>
+      <city></city>
+      <address></address>
+      <site></site>
+      <phone>124</phone>
+      <phone>5465</phone>
+    </office>
+  </company>
 </companies>

@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRM_GTMK.Control;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
 
 namespace CRM_GTMK.Visual
 {
@@ -22,7 +22,7 @@ namespace CRM_GTMK.Visual
         public int OfficeNumber { get; set; }
         public TextBox NewCompanyNameTextBox;
 
-		public AddNewCompanyForm(Controller controller)
+        public AddNewCompanyForm(Controller controller)
 		{
 			_controller = controller;
 			InitializeComponent();
@@ -183,13 +183,6 @@ namespace CRM_GTMK.Visual
 
 		}
 
-        private void button1_Click(object sender, EventArgs e)
-		{
-			NewCompanyNameTextBox = companyNameTextBox;
-		    _controller.SaveNewCompanyData();
-			
-		}
-
         public void AddClientDataButton_Click()
         {
             NewCompanyNameTextBox = companyNameTextBox;
@@ -206,15 +199,15 @@ namespace CRM_GTMK.Visual
         public void AddOneMorePhonePanel(MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
         {
             myOneOfficeContactTableLayoutPanel
-                .MyPhonesFlowLayoutPanel
-                .Add(new MyPhonePanel(this, myOneOfficeContactTableLayoutPanel));
+           .MyPhonesFlowLayoutPanel
+           .Add(new MyPhonePanel(this, myOneOfficeContactTableLayoutPanel));
         }
 
         private void addOfficeButton_Click(object sender, EventArgs e)
         {
             OfficeNumber++;
             MyAllOfficesFlowLayoutPanel.Controls.Remove(MyAllOfficesFlowLayoutPanel
-                                                            .MyNewCompanyActionMenuPanel);
+                                                       .MyNewCompanyActionMenuPanel);
 
             MyOneOfficeContactTableLayoutPanel tableLayoutPanel = new MyOneOfficeContactTableLayoutPanel(this);
 
@@ -222,12 +215,12 @@ namespace CRM_GTMK.Visual
 
             MyAllOfficesFlowLayoutPanel.Controls.Add(tableLayoutPanel);
             MyAllOfficesFlowLayoutPanel.Controls.Add(MyAllOfficesFlowLayoutPanel
-                                                         .MyNewCompanyActionMenuPanel);
+                                                    .MyNewCompanyActionMenuPanel);
         }
 
-        public void AddNewContactPerson()
+        public void AddNewContactPerson(MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
         {
-            _controller.ShowAddNewContactPersonDialog();
+            _controller.ShowAddNewContactPersonDialog(myOneOfficeContactTableLayoutPanel);
         }
 
         private void PhonePanel_Paint(object sender, PaintEventArgs e)

@@ -91,7 +91,6 @@
             this.addClientDataButton.TabIndex = 3;
             this.addClientDataButton.Text = "Сохранить данные";
             this.addClientDataButton.UseVisualStyleBackColor = true;
-            this.addClientDataButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // officeSiteLabel
             // 

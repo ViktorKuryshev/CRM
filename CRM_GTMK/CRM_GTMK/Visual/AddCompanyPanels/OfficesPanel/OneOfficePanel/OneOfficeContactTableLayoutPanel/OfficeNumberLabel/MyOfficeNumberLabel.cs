@@ -10,8 +10,12 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
 {
     public class MyOfficeNumberLabel : Label
     {
+        public int OfficeNumber { get; set; }
+
         public MyOfficeNumberLabel(AddNewCompanyForm form, MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
         {
+            OfficeNumber = form.OfficeNumber;
+
             Label officeNumberLabel = form.GetOfficeNumberLabel();
 
             Anchor = officeNumberLabel.Anchor;
