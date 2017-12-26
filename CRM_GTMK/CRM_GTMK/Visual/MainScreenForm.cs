@@ -35,10 +35,16 @@ namespace CRM_GTMK.Visual
 			{
 				this.Controls.Remove(panel1);
 
-				MyAllProjectsTableLayoutPanel = new MyAllProjectsTableLayoutPanel(this);
-				
+				if (MyAllProjectsTableLayoutPanel == null)
+				{
+					MyAllProjectsTableLayoutPanel = new MyAllProjectsTableLayoutPanel(this);
+					this.Controls.Add(MyAllProjectsTableLayoutPanel);
+					_controller.SetProjectsList();
+				}
+
+
 				this.Controls.Add(MyAllProjectsTableLayoutPanel);
-				_controller.SetProjectsList();
+
 			}
 		}
 	}

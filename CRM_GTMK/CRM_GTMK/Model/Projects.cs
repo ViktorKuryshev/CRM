@@ -8,7 +8,7 @@ namespace CRM_GTMK.Model
 {
 
 
-	public class Project
+	public class Project : IComparable<Project>
 	{
 		public string id { get; set; }
 		public string name { get; set; }
@@ -24,6 +24,11 @@ namespace CRM_GTMK.Model
 		public string clientId { get; set; }
 		public Workflowstage[] workflowStages { get; set; }
 		public Document[] documents { get; set; }
+
+		public int CompareTo(Project that)
+		{
+			return this.creationDate.CompareTo(that.creationDate)*-1;
+		}
 	}
 
 	public class Workflowstage

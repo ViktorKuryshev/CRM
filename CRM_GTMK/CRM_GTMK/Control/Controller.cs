@@ -77,14 +77,22 @@ namespace CRM_GTMK.Control
 
 		public void SetProjectsList()
 		{
-			_myModel.CurrentProjects = _myModel.ApiClient.GetCurrentProjects();
+			if (_myModel.CurrentProjects == null)
+			{
+				_myModel.CurrentProjects = _myModel.ApiClient.GetCurrentProjects();
+				_myModel.CurrentProjects.Sort();
+			}
+			
+			
 			_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.SuspendLayout();
-			foreach(var project in _myModel.CurrentProjects)
+
+			foreach (var project in _myModel.CurrentProjects)
 			{
 				
 				ProjectControls projectControls = new ProjectControls();
 				
 				projectControls.ProjectName.Text = project.name;
+				
 
 				projectControls.ProjectDeadLine.Text = project.deadline.ToString();
 				_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.AddOneProject(projectControls);

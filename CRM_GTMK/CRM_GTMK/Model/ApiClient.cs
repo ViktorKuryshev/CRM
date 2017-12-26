@@ -17,8 +17,8 @@ namespace CRM_GTMK.Model
 
 	public class ApiClient
 	{
-		private const string accountId = "";
-		private const string ApiKey = "";
+		private const string accountId = "a86b2ca9-1e91-4658-b77b-44ec2b2333a7";
+		private const string ApiKey = "2_8Zt4FYNBGjZjkYeJgCBpM19Uk";
 
 		public static string ProjectsListUrl { get; private set; } = "https://smartcat.ai/api/integration/v1/project/list";
 
