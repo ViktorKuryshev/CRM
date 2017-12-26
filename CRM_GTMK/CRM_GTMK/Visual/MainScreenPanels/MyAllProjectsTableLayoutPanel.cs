@@ -19,7 +19,7 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 			CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
 			ColumnCount = 4;
 			ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+			ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
 			ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
 			ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
 			Location = new System.Drawing.Point(211, 57);
@@ -27,7 +27,7 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 			RowCount = 1;
 			RowStyles.Add(new System.Windows.Forms.RowStyle());
 			
-			Size = new System.Drawing.Size(555, 350);
+			Size = new System.Drawing.Size(1075, 515);
 			TabIndex = 2;
 			AutoScroll = true;
 			

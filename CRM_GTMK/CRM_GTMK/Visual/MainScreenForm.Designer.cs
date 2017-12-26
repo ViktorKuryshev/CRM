@@ -71,7 +71,7 @@
             treeNode4,
             treeNode5,
             treeNode6});
-			this.navigationTreeView.Size = new System.Drawing.Size(165, 350);
+			this.navigationTreeView.Size = new System.Drawing.Size(165, 517);
 			this.navigationTreeView.TabIndex = 0;
 			this.navigationTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.navigationTreeView_AfterSelect);
 			// 
@@ -81,7 +81,7 @@
 			this.panel1.Controls.Add(this.addNewCompanyButton);
 			this.panel1.Location = new System.Drawing.Point(211, 57);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(555, 350);
+			this.panel1.Size = new System.Drawing.Size(1075, 517);
 			this.panel1.TabIndex = 1;
 			// 
 			// companiesDefaultListDataGridView
@@ -137,7 +137,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(789, 434);
+			this.ClientSize = new System.Drawing.Size(1298, 586);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.navigationTreeView);
 			this.Name = "MainScreenForm";
