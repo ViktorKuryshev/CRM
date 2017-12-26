@@ -37,7 +37,7 @@
             this.phoneNumberLabel = new System.Windows.Forms.Label();
             this.phoneCommentLabel = new System.Windows.Forms.Label();
             this.phoneCommentRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.phoneButton = new System.Windows.Forms.Button();
+            this.savePhoneButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // phoneTypeComboBox
@@ -59,6 +59,7 @@
             this.phoneCountryCodeTextBox.Name = "phoneCountryCodeTextBox";
             this.phoneCountryCodeTextBox.Size = new System.Drawing.Size(76, 20);
             this.phoneCountryCodeTextBox.TabIndex = 2;
+            this.phoneCountryCodeTextBox.Text = "+";
             // 
             // phoneCountryCodeLabel
             // 
@@ -118,14 +119,15 @@
             this.phoneCommentRichTextBox.TabIndex = 9;
             this.phoneCommentRichTextBox.Text = "";
             // 
-            // phoneButton
+            // savePhoneButton
             // 
-            this.phoneButton.Location = new System.Drawing.Point(97, 227);
-            this.phoneButton.Name = "phoneButton";
-            this.phoneButton.Size = new System.Drawing.Size(75, 35);
-            this.phoneButton.TabIndex = 10;
-            this.phoneButton.Text = "Сохранить и закрыть";
-            this.phoneButton.UseVisualStyleBackColor = true;
+            this.savePhoneButton.Location = new System.Drawing.Point(97, 227);
+            this.savePhoneButton.Name = "savePhoneButton";
+            this.savePhoneButton.Size = new System.Drawing.Size(75, 35);
+            this.savePhoneButton.TabIndex = 10;
+            this.savePhoneButton.Text = "Сохранить и закрыть";
+            this.savePhoneButton.UseVisualStyleBackColor = true;
+            this.savePhoneButton.Click += new System.EventHandler(this.savePhoneButton_Click);
             // 
             // AddNewContactPersonPhoneForm
             // 
@@ -133,7 +135,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(263, 274);
-            this.Controls.Add(this.phoneButton);
+            this.Controls.Add(this.savePhoneButton);
             this.Controls.Add(this.phoneCommentRichTextBox);
             this.Controls.Add(this.phoneCommentLabel);
             this.Controls.Add(this.phoneNumberLabel);
@@ -143,6 +145,7 @@
             this.Controls.Add(this.phoneCountryCodeLabel);
             this.Controls.Add(this.phoneCountryCodeTextBox);
             this.Controls.Add(this.phoneTypeComboBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "AddNewContactPersonPhoneForm";
             this.Text = "Добавить телефон";
             this.ResumeLayout(false);
@@ -161,6 +164,6 @@
         private System.Windows.Forms.Label phoneNumberLabel;
         private System.Windows.Forms.Label phoneCommentLabel;
         private System.Windows.Forms.RichTextBox phoneCommentRichTextBox;
-        private System.Windows.Forms.Button phoneButton;
+        private System.Windows.Forms.Button savePhoneButton;
     }
 }

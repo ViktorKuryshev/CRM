@@ -10,14 +10,14 @@ namespace CRM_GTMK.Model
 	public class MyModel
 	{
 		private Controller _controller;
-		public Company NewCompany;
+		public Company NewCompany { get; set; }
 
 		public ApiClient ApiClient { get; } = new ApiClient(); 
 
 		public List<Project> CurrentProjects { get; set; }
 
 
-		public MyModel(Controller controller)
+        public MyModel(Controller controller)
 		{
 			_controller = controller;
 

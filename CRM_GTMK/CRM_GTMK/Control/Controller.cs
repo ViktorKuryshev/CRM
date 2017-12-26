@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using CRM_GTMK.Visual.MainScreenPanels;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
 
 namespace CRM_GTMK.Control
 {
@@ -108,17 +108,19 @@ namespace CRM_GTMK.Control
             MainScreenForm.ShowAddNewCompanyDialog();
         }
 
-        public void ShowAddNewContactPersonDialog()
+        public void ShowAddNewContactPersonDialog(MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
         {
-            MainScreenForm.ShowAddNewContactPersonDialog();
+            MainScreenForm.ShowAddNewContactPersonDialog(myOneOfficeContactTableLayoutPanel);
         }
-
+        public void ShowAddNewContactPersonPhoneForm(AddNewContactPersonForm form)
+        {
+            MainScreenForm.ShowAddNewContactPersonPhoneForm(form);
+        }
         /// <summary>
         /// Добавляем данные по комании в базу
         /// </summary>
         public void SaveNewCompanyData()
 	    {
-
 			_myModel.NewCompany = GetCompanyDataFromForm();
 		    if (_myModel.NewCompany.Name.Equals(""))
 		    {
@@ -186,6 +188,18 @@ namespace CRM_GTMK.Control
                 if (panel.MyPhoneTextBox.Text != "")
                     office.Phones.Add(panel.MyPhoneTextBox.Text);
             }
+        }
+
+        public void SaveNewContactPersonPhone()
+        {
+
+            //_myModel.NewPersonList.Add(new Person());
+
+            //PersonPhoneData newPersonPhoneData = new PersonPhoneData();
+            //newPersonPhoneData.PhoneType = _myVisual.ContactPersonPhoneForm.NewPhoneTypeComboBox.Text;
+            //newPersonPhoneData.PhoneNumber = _myVisual.ContactPersonPhoneForm.NewPhoneNumber;
+            //newPersonPhoneData.PhoneComment = _myVisual.ContactPersonPhoneForm.NewPhoneCommentRichTextBox.Text;
+            //_myModel.NewPerson.
         }
     }
 }

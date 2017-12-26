@@ -28,140 +28,139 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.companyNameTextBox = new System.Windows.Forms.TextBox();
-			this.companyNameLabel = new System.Windows.Forms.Label();
-			this.addClientDataButton = new System.Windows.Forms.Button();
-			this.officeSiteLabel = new System.Windows.Forms.Label();
-			this.officeSiteTextBox = new System.Windows.Forms.TextBox();
-			this.officeContactInfoPanel = new System.Windows.Forms.Panel();
-			this.officeAddressTextBox = new System.Windows.Forms.TextBox();
-			this.officeAddressLabel = new System.Windows.Forms.Label();
-			this.officeCityTextBox = new System.Windows.Forms.TextBox();
-			this.officeCityLabel = new System.Windows.Forms.Label();
-			this.officeCountryComboBox = new System.Windows.Forms.ComboBox();
-			this.officeCountryLabel = new System.Windows.Forms.Label();
-			this.addOfficeButton = new System.Windows.Forms.Button();
-			this.contactPersonTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-			this.contactPersonLabel1 = new System.Windows.Forms.Label();
-			this.contactPersonLabel2 = new System.Windows.Forms.Label();
-			this.contactPersonLinkLabel = new System.Windows.Forms.LinkLabel();
-			this.contactPersonPanel = new System.Windows.Forms.Panel();
-			this.contactPersonsButton = new System.Windows.Forms.Button();
-			this.contactPersonsLabel = new System.Windows.Forms.Label();
-			this.allOfficesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-			this.oneOfficeContactTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-			this.phonesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-			this.onePhonePanel = new System.Windows.Forms.Panel();
-			this.morePhonesButton = new System.Windows.Forms.Button();
-			this.phoneTextBox = new System.Windows.Forms.TextBox();
-			this.phoneLabel = new System.Windows.Forms.Label();
-			this.officeNumberLabel = new System.Windows.Forms.Label();
-			this.newCompanyActionMenuPanel = new System.Windows.Forms.Panel();
-			this.officeContactInfoPanel.SuspendLayout();
-			this.contactPersonTableLayoutPanel.SuspendLayout();
-			this.contactPersonPanel.SuspendLayout();
-			this.allOfficesFlowLayoutPanel.SuspendLayout();
-			this.oneOfficeContactTableLayoutPanel.SuspendLayout();
-			this.phonesFlowLayoutPanel.SuspendLayout();
-			this.onePhonePanel.SuspendLayout();
-			this.newCompanyActionMenuPanel.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// companyNameTextBox
-			// 
-			this.companyNameTextBox.Location = new System.Drawing.Point(324, 17);
-			this.companyNameTextBox.Name = "companyNameTextBox";
-			this.companyNameTextBox.Size = new System.Drawing.Size(165, 20);
-			this.companyNameTextBox.TabIndex = 0;
-			// 
-			// companyNameLabel
-			// 
-			this.companyNameLabel.AutoSize = true;
-			this.companyNameLabel.Location = new System.Drawing.Point(186, 20);
-			this.companyNameLabel.Name = "companyNameLabel";
-			this.companyNameLabel.Size = new System.Drawing.Size(113, 13);
-			this.companyNameLabel.TabIndex = 1;
-			this.companyNameLabel.Text = "Название компании:";
-			// 
-			// addClientDataButton
-			// 
-			this.addClientDataButton.Location = new System.Drawing.Point(349, 12);
-			this.addClientDataButton.Name = "addClientDataButton";
-			this.addClientDataButton.Size = new System.Drawing.Size(75, 35);
-			this.addClientDataButton.TabIndex = 3;
-			this.addClientDataButton.Text = "Сохранить данные";
-			this.addClientDataButton.UseVisualStyleBackColor = true;
-			this.addClientDataButton.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// officeSiteLabel
-			// 
-			this.officeSiteLabel.AutoSize = true;
-			this.officeSiteLabel.Location = new System.Drawing.Point(38, 121);
-			this.officeSiteLabel.Name = "officeSiteLabel";
-			this.officeSiteLabel.Size = new System.Drawing.Size(34, 13);
-			this.officeSiteLabel.TabIndex = 4;
-			this.officeSiteLabel.Text = "Сайт:";
-			// 
-			// officeSiteTextBox
-			// 
-			this.officeSiteTextBox.Location = new System.Drawing.Point(101, 118);
-			this.officeSiteTextBox.Name = "officeSiteTextBox";
-			this.officeSiteTextBox.Size = new System.Drawing.Size(161, 20);
-			this.officeSiteTextBox.TabIndex = 5;
-			// 
-			// officeContactInfoPanel
-			// 
-			this.officeContactInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.officeContactInfoPanel.Controls.Add(this.officeAddressTextBox);
-			this.officeContactInfoPanel.Controls.Add(this.officeAddressLabel);
-			this.officeContactInfoPanel.Controls.Add(this.officeCityTextBox);
-			this.officeContactInfoPanel.Controls.Add(this.officeSiteTextBox);
-			this.officeContactInfoPanel.Controls.Add(this.officeCityLabel);
-			this.officeContactInfoPanel.Controls.Add(this.officeSiteLabel);
-			this.officeContactInfoPanel.Controls.Add(this.officeCountryComboBox);
-			this.officeContactInfoPanel.Controls.Add(this.officeCountryLabel);
-			this.officeContactInfoPanel.Location = new System.Drawing.Point(3, 26);
-			this.officeContactInfoPanel.Name = "officeContactInfoPanel";
-			this.oneOfficeContactTableLayoutPanel.SetRowSpan(this.officeContactInfoPanel, 2);
-			this.officeContactInfoPanel.Size = new System.Drawing.Size(335, 154);
-			this.officeContactInfoPanel.TabIndex = 6;
-			// 
-			// officeAddressTextBox
-			// 
-			this.officeAddressTextBox.Location = new System.Drawing.Point(101, 83);
-			this.officeAddressTextBox.Name = "officeAddressTextBox";
-			this.officeAddressTextBox.Size = new System.Drawing.Size(161, 20);
-			this.officeAddressTextBox.TabIndex = 5;
-			// 
-			// officeAddressLabel
-			// 
-			this.officeAddressLabel.AutoSize = true;
-			this.officeAddressLabel.Location = new System.Drawing.Point(32, 86);
-			this.officeAddressLabel.Name = "officeAddressLabel";
-			this.officeAddressLabel.Size = new System.Drawing.Size(41, 13);
-			this.officeAddressLabel.TabIndex = 4;
-			this.officeAddressLabel.Text = "Адрес:";
-			// 
-			// officeCityTextBox
-			// 
-			this.officeCityTextBox.Location = new System.Drawing.Point(101, 44);
-			this.officeCityTextBox.Name = "officeCityTextBox";
-			this.officeCityTextBox.Size = new System.Drawing.Size(161, 20);
-			this.officeCityTextBox.TabIndex = 3;
-			// 
-			// officeCityLabel
-			// 
-			this.officeCityLabel.AutoSize = true;
-			this.officeCityLabel.Location = new System.Drawing.Point(32, 50);
-			this.officeCityLabel.Name = "officeCityLabel";
-			this.officeCityLabel.Size = new System.Drawing.Size(40, 13);
-			this.officeCityLabel.TabIndex = 2;
-			this.officeCityLabel.Text = "Город:";
-			// 
-			// officeCountryComboBox
-			// 
-			this.officeCountryComboBox.FormattingEnabled = true;
-			this.officeCountryComboBox.Items.AddRange(new object[] {
+            this.companyNameTextBox = new System.Windows.Forms.TextBox();
+            this.companyNameLabel = new System.Windows.Forms.Label();
+            this.addClientDataButton = new System.Windows.Forms.Button();
+            this.officeSiteLabel = new System.Windows.Forms.Label();
+            this.officeSiteTextBox = new System.Windows.Forms.TextBox();
+            this.officeContactInfoPanel = new System.Windows.Forms.Panel();
+            this.officeAddressTextBox = new System.Windows.Forms.TextBox();
+            this.officeAddressLabel = new System.Windows.Forms.Label();
+            this.officeCityTextBox = new System.Windows.Forms.TextBox();
+            this.officeCityLabel = new System.Windows.Forms.Label();
+            this.officeCountryComboBox = new System.Windows.Forms.ComboBox();
+            this.officeCountryLabel = new System.Windows.Forms.Label();
+            this.addOfficeButton = new System.Windows.Forms.Button();
+            this.contactPersonTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.contactPersonLabel1 = new System.Windows.Forms.Label();
+            this.contactPersonLabel2 = new System.Windows.Forms.Label();
+            this.contactPersonLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.contactPersonPanel = new System.Windows.Forms.Panel();
+            this.contactPersonsButton = new System.Windows.Forms.Button();
+            this.contactPersonsLabel = new System.Windows.Forms.Label();
+            this.allOfficesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.oneOfficeContactTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.phonesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.onePhonePanel = new System.Windows.Forms.Panel();
+            this.morePhonesButton = new System.Windows.Forms.Button();
+            this.phoneTextBox = new System.Windows.Forms.TextBox();
+            this.phoneLabel = new System.Windows.Forms.Label();
+            this.officeNumberLabel = new System.Windows.Forms.Label();
+            this.newCompanyActionMenuPanel = new System.Windows.Forms.Panel();
+            this.officeContactInfoPanel.SuspendLayout();
+            this.contactPersonTableLayoutPanel.SuspendLayout();
+            this.contactPersonPanel.SuspendLayout();
+            this.allOfficesFlowLayoutPanel.SuspendLayout();
+            this.oneOfficeContactTableLayoutPanel.SuspendLayout();
+            this.phonesFlowLayoutPanel.SuspendLayout();
+            this.onePhonePanel.SuspendLayout();
+            this.newCompanyActionMenuPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // companyNameTextBox
+            // 
+            this.companyNameTextBox.Location = new System.Drawing.Point(324, 17);
+            this.companyNameTextBox.Name = "companyNameTextBox";
+            this.companyNameTextBox.Size = new System.Drawing.Size(165, 20);
+            this.companyNameTextBox.TabIndex = 0;
+            // 
+            // companyNameLabel
+            // 
+            this.companyNameLabel.AutoSize = true;
+            this.companyNameLabel.Location = new System.Drawing.Point(186, 20);
+            this.companyNameLabel.Name = "companyNameLabel";
+            this.companyNameLabel.Size = new System.Drawing.Size(113, 13);
+            this.companyNameLabel.TabIndex = 1;
+            this.companyNameLabel.Text = "Название компании:";
+            // 
+            // addClientDataButton
+            // 
+            this.addClientDataButton.Location = new System.Drawing.Point(349, 12);
+            this.addClientDataButton.Name = "addClientDataButton";
+            this.addClientDataButton.Size = new System.Drawing.Size(75, 35);
+            this.addClientDataButton.TabIndex = 3;
+            this.addClientDataButton.Text = "Сохранить данные";
+            this.addClientDataButton.UseVisualStyleBackColor = true;
+            // 
+            // officeSiteLabel
+            // 
+            this.officeSiteLabel.AutoSize = true;
+            this.officeSiteLabel.Location = new System.Drawing.Point(38, 121);
+            this.officeSiteLabel.Name = "officeSiteLabel";
+            this.officeSiteLabel.Size = new System.Drawing.Size(34, 13);
+            this.officeSiteLabel.TabIndex = 4;
+            this.officeSiteLabel.Text = "Сайт:";
+            // 
+            // officeSiteTextBox
+            // 
+            this.officeSiteTextBox.Location = new System.Drawing.Point(101, 118);
+            this.officeSiteTextBox.Name = "officeSiteTextBox";
+            this.officeSiteTextBox.Size = new System.Drawing.Size(161, 20);
+            this.officeSiteTextBox.TabIndex = 5;
+            // 
+            // officeContactInfoPanel
+            // 
+            this.officeContactInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.officeContactInfoPanel.Controls.Add(this.officeAddressTextBox);
+            this.officeContactInfoPanel.Controls.Add(this.officeAddressLabel);
+            this.officeContactInfoPanel.Controls.Add(this.officeCityTextBox);
+            this.officeContactInfoPanel.Controls.Add(this.officeSiteTextBox);
+            this.officeContactInfoPanel.Controls.Add(this.officeCityLabel);
+            this.officeContactInfoPanel.Controls.Add(this.officeSiteLabel);
+            this.officeContactInfoPanel.Controls.Add(this.officeCountryComboBox);
+            this.officeContactInfoPanel.Controls.Add(this.officeCountryLabel);
+            this.officeContactInfoPanel.Location = new System.Drawing.Point(3, 26);
+            this.officeContactInfoPanel.Name = "officeContactInfoPanel";
+            this.oneOfficeContactTableLayoutPanel.SetRowSpan(this.officeContactInfoPanel, 2);
+            this.officeContactInfoPanel.Size = new System.Drawing.Size(335, 154);
+            this.officeContactInfoPanel.TabIndex = 6;
+            // 
+            // officeAddressTextBox
+            // 
+            this.officeAddressTextBox.Location = new System.Drawing.Point(101, 83);
+            this.officeAddressTextBox.Name = "officeAddressTextBox";
+            this.officeAddressTextBox.Size = new System.Drawing.Size(161, 20);
+            this.officeAddressTextBox.TabIndex = 5;
+            // 
+            // officeAddressLabel
+            // 
+            this.officeAddressLabel.AutoSize = true;
+            this.officeAddressLabel.Location = new System.Drawing.Point(32, 86);
+            this.officeAddressLabel.Name = "officeAddressLabel";
+            this.officeAddressLabel.Size = new System.Drawing.Size(41, 13);
+            this.officeAddressLabel.TabIndex = 4;
+            this.officeAddressLabel.Text = "Адрес:";
+            // 
+            // officeCityTextBox
+            // 
+            this.officeCityTextBox.Location = new System.Drawing.Point(101, 44);
+            this.officeCityTextBox.Name = "officeCityTextBox";
+            this.officeCityTextBox.Size = new System.Drawing.Size(161, 20);
+            this.officeCityTextBox.TabIndex = 3;
+            // 
+            // officeCityLabel
+            // 
+            this.officeCityLabel.AutoSize = true;
+            this.officeCityLabel.Location = new System.Drawing.Point(32, 50);
+            this.officeCityLabel.Name = "officeCityLabel";
+            this.officeCityLabel.Size = new System.Drawing.Size(40, 13);
+            this.officeCityLabel.TabIndex = 2;
+            this.officeCityLabel.Text = "Город:";
+            // 
+            // officeCountryComboBox
+            // 
+            this.officeCountryComboBox.FormattingEnabled = true;
+            this.officeCountryComboBox.Items.AddRange(new object[] {
             "Россия"});
 			this.officeCountryComboBox.Location = new System.Drawing.Point(101, 11);
 			this.officeCountryComboBox.Name = "officeCountryComboBox";

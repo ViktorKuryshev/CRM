@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CRM_GTMK.Control;
 using CRM_GTMK.Visual.MainScreenPanels;
 using System.Threading;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 
 namespace CRM_GTMK.Visual
 {
@@ -52,10 +53,20 @@ namespace CRM_GTMK.Visual
 
 		}
 
-        public void ShowAddNewContactPersonDialog()
+        public void ShowAddNewContactPersonDialog(MyOneOfficeContactTableLayoutPanel panel)
         {
-            ContactPersonForm = new AddNewContactPersonForm(_controller);
-            ContactPersonForm.ShowDialog();
+            AddNewContactPersonForm newContactPersonForm = new AddNewContactPersonForm(_controller,
+                                                            panel.MyOfficeNumberLabel.OfficeNumber);
+
+            panel.MyContactPersonFormList.Add(newContactPersonForm);
+            newContactPersonForm.ShowDialog();
+        }
+
+        public void ShowAddNewContactPersonPhoneForm(AddNewContactPersonForm form)
+        {
+            AddNewContactPersonPhoneForm newContactPersonPhoneForm = new AddNewContactPersonPhoneForm(_controller, form);
+            form.MyContactPersonPhoneFormList.Add(newContactPersonPhoneForm);
+            newContactPersonPhoneForm.ShowDialog();
         }
 
 

@@ -33,7 +33,7 @@
             this.firstnameContactPersonLabel = new System.Windows.Forms.Label();
             this.firstnameContactPersonTextBox = new System.Windows.Forms.TextBox();
             this.patronymicContactPersonLabel = new System.Windows.Forms.Label();
-            this.patronymicContactPersonTextBox = new System.Windows.Forms.TextBox();
+            this.middleNameContactPersonTextBox = new System.Windows.Forms.TextBox();
             this.positionContactPersonLabel = new System.Windows.Forms.Label();
             this.positionContactPersonTextBox = new System.Windows.Forms.TextBox();
             this.emailContactPersonComboBox = new System.Windows.Forms.ComboBox();
@@ -42,9 +42,10 @@
             this.commentRichTextBox = new System.Windows.Forms.RichTextBox();
             this.commentPanel = new System.Windows.Forms.Panel();
             this.commentsContactPersonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.commentsInnerFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.addNewCommentContactPersonButton = new System.Windows.Forms.Button();
-            this.addNewContactPersonButton = new System.Windows.Forms.Button();
-            this.phonePanel = new System.Windows.Forms.Panel();
+            this.saveNewContactPersonButton = new System.Windows.Forms.Button();
+            this.phoneContactPersonPanel = new System.Windows.Forms.Panel();
             this.phoneCommentTextBox = new System.Windows.Forms.TextBox();
             this.phoneNumberLabel = new System.Windows.Forms.Label();
             this.phoneTypeLabel = new System.Windows.Forms.Label();
@@ -52,7 +53,8 @@
             this.phonesContactPersonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.commentPanel.SuspendLayout();
             this.commentsContactPersonFlowLayoutPanel.SuspendLayout();
-            this.phonePanel.SuspendLayout();
+            this.commentsInnerFlowLayoutPanel.SuspendLayout();
+            this.phoneContactPersonPanel.SuspendLayout();
             this.phonesContactPersonFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,12 +99,12 @@
             this.patronymicContactPersonLabel.TabIndex = 4;
             this.patronymicContactPersonLabel.Text = "Отчетсво:";
             // 
-            // patronymicContactPersonTextBox
+            // middleNameContactPersonTextBox
             // 
-            this.patronymicContactPersonTextBox.Location = new System.Drawing.Point(115, 103);
-            this.patronymicContactPersonTextBox.Name = "patronymicContactPersonTextBox";
-            this.patronymicContactPersonTextBox.Size = new System.Drawing.Size(150, 20);
-            this.patronymicContactPersonTextBox.TabIndex = 5;
+            this.middleNameContactPersonTextBox.Location = new System.Drawing.Point(115, 103);
+            this.middleNameContactPersonTextBox.Name = "middleNameContactPersonTextBox";
+            this.middleNameContactPersonTextBox.Size = new System.Drawing.Size(150, 20);
+            this.middleNameContactPersonTextBox.TabIndex = 5;
             // 
             // positionContactPersonLabel
             // 
@@ -131,7 +133,8 @@
             this.emailContactPersonComboBox.Name = "emailContactPersonComboBox";
             this.emailContactPersonComboBox.Size = new System.Drawing.Size(87, 21);
             this.emailContactPersonComboBox.TabIndex = 8;
-            this.emailContactPersonComboBox.Text = " Эл. почта 1";
+            this.emailContactPersonComboBox.DropDownClosed += new System.EventHandler(this.emailContactPersonComboBox_DropDownClosed);
+            this.emailContactPersonComboBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.emailContactPersonComboBox_MouseClick);
             // 
             // emailContactPersonTextBox
             // 
@@ -159,6 +162,7 @@
             // 
             // commentPanel
             // 
+            this.commentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.commentPanel.Controls.Add(this.commentRichTextBox);
             this.commentPanel.Controls.Add(this.dateLabel);
             this.commentPanel.Location = new System.Drawing.Point(3, 3);
@@ -168,17 +172,31 @@
             // 
             // commentsContactPersonFlowLayoutPanel
             // 
+            this.commentsContactPersonFlowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.commentsContactPersonFlowLayoutPanel.AutoScroll = true;
-            this.commentsContactPersonFlowLayoutPanel.Controls.Add(this.commentPanel);
+            this.commentsContactPersonFlowLayoutPanel.Controls.Add(this.commentsInnerFlowLayoutPanel);
             this.commentsContactPersonFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.commentsContactPersonFlowLayoutPanel.Location = new System.Drawing.Point(415, 51);
+            this.commentsContactPersonFlowLayoutPanel.Location = new System.Drawing.Point(408, 51);
             this.commentsContactPersonFlowLayoutPanel.Name = "commentsContactPersonFlowLayoutPanel";
-            this.commentsContactPersonFlowLayoutPanel.Size = new System.Drawing.Size(359, 368);
+            this.commentsContactPersonFlowLayoutPanel.Size = new System.Drawing.Size(366, 368);
             this.commentsContactPersonFlowLayoutPanel.TabIndex = 33;
             this.commentsContactPersonFlowLayoutPanel.WrapContents = false;
             // 
+            // commentsInnerFlowLayoutPanel
+            // 
+            this.commentsInnerFlowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.commentsInnerFlowLayoutPanel.AutoSize = true;
+            this.commentsInnerFlowLayoutPanel.Controls.Add(this.commentPanel);
+            this.commentsInnerFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
+            this.commentsInnerFlowLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.commentsInnerFlowLayoutPanel.Name = "commentsInnerFlowLayoutPanel";
+            this.commentsInnerFlowLayoutPanel.Size = new System.Drawing.Size(341, 96);
+            this.commentsInnerFlowLayoutPanel.TabIndex = 33;
+            this.commentsInnerFlowLayoutPanel.WrapContents = false;
+            // 
             // addNewCommentContactPersonButton
             // 
+            this.addNewCommentContactPersonButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.addNewCommentContactPersonButton.Location = new System.Drawing.Point(554, 9);
             this.addNewCommentContactPersonButton.Name = "addNewCommentContactPersonButton";
             this.addNewCommentContactPersonButton.Size = new System.Drawing.Size(105, 36);
@@ -187,29 +205,32 @@
             this.addNewCommentContactPersonButton.UseVisualStyleBackColor = true;
             this.addNewCommentContactPersonButton.Click += new System.EventHandler(this.addNewCommentContactPersonButton_Click);
             // 
-            // addNewContactPersonButton
+            // saveNewContactPersonButton
             // 
-            this.addNewContactPersonButton.Location = new System.Drawing.Point(356, 425);
-            this.addNewContactPersonButton.Name = "addNewContactPersonButton";
-            this.addNewContactPersonButton.Size = new System.Drawing.Size(76, 35);
-            this.addNewContactPersonButton.TabIndex = 35;
-            this.addNewContactPersonButton.Text = "Сохранить и закрыть";
-            this.addNewContactPersonButton.UseVisualStyleBackColor = true;
+            this.saveNewContactPersonButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.saveNewContactPersonButton.Location = new System.Drawing.Point(356, 425);
+            this.saveNewContactPersonButton.Name = "saveNewContactPersonButton";
+            this.saveNewContactPersonButton.Size = new System.Drawing.Size(76, 35);
+            this.saveNewContactPersonButton.TabIndex = 35;
+            this.saveNewContactPersonButton.Text = "Сохранить и закрыть";
+            this.saveNewContactPersonButton.UseVisualStyleBackColor = true;
+            this.saveNewContactPersonButton.Click += new System.EventHandler(this.saveNewContactPersonButton_Click);
             // 
-            // phonePanel
+            // phoneContactPersonPanel
             // 
-            this.phonePanel.Controls.Add(this.phoneCommentTextBox);
-            this.phonePanel.Controls.Add(this.phoneNumberLabel);
-            this.phonePanel.Controls.Add(this.phoneTypeLabel);
-            this.phonePanel.Location = new System.Drawing.Point(3, 3);
-            this.phonePanel.Name = "phonePanel";
-            this.phonePanel.Size = new System.Drawing.Size(334, 40);
-            this.phonePanel.TabIndex = 36;
+            this.phoneContactPersonPanel.AutoSize = true;
+            this.phoneContactPersonPanel.Controls.Add(this.phoneCommentTextBox);
+            this.phoneContactPersonPanel.Controls.Add(this.phoneNumberLabel);
+            this.phoneContactPersonPanel.Controls.Add(this.phoneTypeLabel);
+            this.phoneContactPersonPanel.Location = new System.Drawing.Point(3, 3);
+            this.phoneContactPersonPanel.Name = "phoneContactPersonPanel";
+            this.phoneContactPersonPanel.Size = new System.Drawing.Size(337, 25);
+            this.phoneContactPersonPanel.TabIndex = 36;
             // 
             // phoneCommentTextBox
             // 
             this.phoneCommentTextBox.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.phoneCommentTextBox.Location = new System.Drawing.Point(187, 9);
+            this.phoneCommentTextBox.Location = new System.Drawing.Point(187, 2);
             this.phoneCommentTextBox.Name = "phoneCommentTextBox";
             this.phoneCommentTextBox.ReadOnly = true;
             this.phoneCommentTextBox.Size = new System.Drawing.Size(147, 20);
@@ -218,7 +239,7 @@
             // phoneNumberLabel
             // 
             this.phoneNumberLabel.AutoSize = true;
-            this.phoneNumberLabel.Location = new System.Drawing.Point(71, 12);
+            this.phoneNumberLabel.Location = new System.Drawing.Point(71, 5);
             this.phoneNumberLabel.Name = "phoneNumberLabel";
             this.phoneNumberLabel.Size = new System.Drawing.Size(97, 13);
             this.phoneNumberLabel.TabIndex = 1;
@@ -227,7 +248,7 @@
             // phoneTypeLabel
             // 
             this.phoneTypeLabel.AutoSize = true;
-            this.phoneTypeLabel.Location = new System.Drawing.Point(3, 12);
+            this.phoneTypeLabel.Location = new System.Drawing.Point(3, 5);
             this.phoneTypeLabel.Name = "phoneTypeLabel";
             this.phoneTypeLabel.Size = new System.Drawing.Size(49, 13);
             this.phoneTypeLabel.TabIndex = 0;
@@ -246,7 +267,7 @@
             // phonesContactPersonFlowLayoutPanel
             // 
             this.phonesContactPersonFlowLayoutPanel.AutoScroll = true;
-            this.phonesContactPersonFlowLayoutPanel.Controls.Add(this.phonePanel);
+            this.phonesContactPersonFlowLayoutPanel.Controls.Add(this.phoneContactPersonPanel);
             this.phonesContactPersonFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.phonesContactPersonFlowLayoutPanel.Location = new System.Drawing.Point(18, 247);
             this.phonesContactPersonFlowLayoutPanel.Name = "phonesContactPersonFlowLayoutPanel";
@@ -259,9 +280,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(786, 472);
-            this.Controls.Add(this.addNewContactPersonButton);
+            this.Controls.Add(this.saveNewContactPersonButton);
             this.Controls.Add(this.phonesContactPersonFlowLayoutPanel);
             this.Controls.Add(this.addNewContactPersonPhoneButton);
             this.Controls.Add(this.addNewCommentContactPersonButton);
@@ -270,21 +290,25 @@
             this.Controls.Add(this.emailContactPersonComboBox);
             this.Controls.Add(this.positionContactPersonTextBox);
             this.Controls.Add(this.positionContactPersonLabel);
-            this.Controls.Add(this.patronymicContactPersonTextBox);
+            this.Controls.Add(this.middleNameContactPersonTextBox);
             this.Controls.Add(this.patronymicContactPersonLabel);
             this.Controls.Add(this.firstnameContactPersonTextBox);
             this.Controls.Add(this.firstnameContactPersonLabel);
             this.Controls.Add(this.lastnameContactPersonTextBox);
             this.Controls.Add(this.lastnameContactPersonLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "AddNewContactPersonForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddNewContactPerson";
+            this.Text = "Добавить нового сотрудника";
             this.commentPanel.ResumeLayout(false);
             this.commentPanel.PerformLayout();
             this.commentsContactPersonFlowLayoutPanel.ResumeLayout(false);
-            this.phonePanel.ResumeLayout(false);
-            this.phonePanel.PerformLayout();
+            this.commentsContactPersonFlowLayoutPanel.PerformLayout();
+            this.commentsInnerFlowLayoutPanel.ResumeLayout(false);
+            this.phoneContactPersonPanel.ResumeLayout(false);
+            this.phoneContactPersonPanel.PerformLayout();
             this.phonesContactPersonFlowLayoutPanel.ResumeLayout(false);
+            this.phonesContactPersonFlowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,22 +321,23 @@
         private System.Windows.Forms.Label firstnameContactPersonLabel;
         private System.Windows.Forms.TextBox firstnameContactPersonTextBox;
         private System.Windows.Forms.Label patronymicContactPersonLabel;
-        private System.Windows.Forms.TextBox patronymicContactPersonTextBox;
+        private System.Windows.Forms.TextBox middleNameContactPersonTextBox;
         private System.Windows.Forms.Label positionContactPersonLabel;
         private System.Windows.Forms.TextBox positionContactPersonTextBox;
-        private System.Windows.Forms.ComboBox emailContactPersonComboBox;
         private System.Windows.Forms.TextBox emailContactPersonTextBox;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.RichTextBox commentRichTextBox;
         private System.Windows.Forms.Panel commentPanel;
         private System.Windows.Forms.FlowLayoutPanel commentsContactPersonFlowLayoutPanel;
         private System.Windows.Forms.Button addNewCommentContactPersonButton;
-        private System.Windows.Forms.Button addNewContactPersonButton;
-        private System.Windows.Forms.Panel phonePanel;
+        private System.Windows.Forms.Button saveNewContactPersonButton;
+        private System.Windows.Forms.Panel phoneContactPersonPanel;
         private System.Windows.Forms.TextBox phoneCommentTextBox;
         private System.Windows.Forms.Label phoneNumberLabel;
         private System.Windows.Forms.Label phoneTypeLabel;
         private System.Windows.Forms.Button addNewContactPersonPhoneButton;
         private System.Windows.Forms.FlowLayoutPanel phonesContactPersonFlowLayoutPanel;
+        private System.Windows.Forms.FlowLayoutPanel commentsInnerFlowLayoutPanel;
+        private System.Windows.Forms.ComboBox emailContactPersonComboBox;
     }
 }

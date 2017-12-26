@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CRM_GTMK.Control;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 
 namespace CRM_GTMK.Visual
 {
@@ -11,14 +12,12 @@ namespace CRM_GTMK.Visual
     {
 	    private Controller _controller;
 
-		public AddNewCompanyForm AddNewClientForm { get; set; }
-		public MainScreenForm MainScreenForm { get; set; }
-        public AddNewContactPersonForm ContactPersonForm { get; set; }
-
+        public MainScreenForm MainScreenForm { get; set; }
+        public AddNewCompanyForm NewClientForm { get; set; }
+        
         public MyVisual(Controller controller)
 		{
 			_controller = controller;
-           
         }
         //TODO открыть стартовое окно
         private void SetUpStartWindow()
@@ -34,15 +33,24 @@ namespace CRM_GTMK.Visual
 
         public void ShowAddNewCompanyDialog()
         {
-	        AddNewClientForm = new AddNewCompanyForm(_controller);
-	        AddNewClientForm.ShowDialog();
-
+	        NewClientForm = new AddNewCompanyForm(_controller);
+	        NewClientForm.ShowDialog();
 		}
 
-        public void ShowAddNewContactPersonDialog()
+        public void ShowAddNewContactPersonDialog(MyOneOfficeContactTableLayoutPanel panel)
         {
-            ContactPersonForm = new AddNewContactPersonForm(_controller);
-            ContactPersonForm.ShowDialog();
+            AddNewContactPersonForm newContactPersonForm = new AddNewContactPersonForm(_controller, 
+                                                            panel.MyOfficeNumberLabel.OfficeNumber);
+
+            panel.MyContactPersonFormList.Add(newContactPersonForm);
+            newContactPersonForm.ShowDialog();
+        }
+
+        public void ShowAddNewContactPersonPhoneForm(AddNewContactPersonForm form)
+        {
+            AddNewContactPersonPhoneForm newContactPersonPhoneForm = new AddNewContactPersonPhoneForm(_controller, form);
+            form.MyContactPersonPhoneFormList.Add(newContactPersonPhoneForm);
+            newContactPersonPhoneForm.ShowDialog();
         }
     }
 }
