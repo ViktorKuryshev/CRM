@@ -55,6 +55,36 @@
     <Compile Include="Model\XmlHelper.cs" />
     <Compile Include="StartCRM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\CommentsContactPersonFlowLayoutPanel\CommentsInnerFlowLayoutPanel\OneCommentPanel\CommentPanelElements\MyDateLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\CommentsContactPersonFlowLayoutPanel\CommentsInnerFlowLayoutPanel\OneCommentPanel\CommentPanelElements\MyRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\CommentsContactPersonFlowLayoutPanel\CommentsInnerFlowLayoutPanel\OneCommentPanel\MyCommentPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\CommentsContactPersonFlowLayoutPanel\CommentsInnerFlowLayoutPanel\MyCommentsInnerFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\CommentsContactPersonFlowLayoutPanel\MyCommentsContactPersonFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\PhonesContactPersonFlowLayoutPanel\MyPhonesContactPersonFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\PhonesContactPersonFlowLayoutPanel\OneContactPersonPhonePanel\MyContactPersonPhonePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\PhonesContactPersonFlowLayoutPanel\OneContactPersonPhonePanel\ContactPersonPhonePanelElements\MyPhoneCommentTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\PhonesContactPersonFlowLayoutPanel\OneContactPersonPhonePanel\ContactPersonPhonePanelElements\MyPhoneNumberLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\PhonesContactPersonFlowLayoutPanel\OneContactPersonPhonePanel\ContactPersonPhonePanelElements\MyPhoneTypeLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\MyAllOfficesFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -124,6 +154,18 @@
     <Compile Include="Visual\AddNewClientForm.Designer.cs">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Visual\AddNewContactPersonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\AddNewContactPersonForm.Designer.cs">
+      <DependentUpon>AddNewContactPersonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Visual\AddNewContactPersonPhoneForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\AddNewContactPersonPhoneForm.Designer.cs">
+      <DependentUpon>AddNewContactPersonPhoneForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Visual\ClientsListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +201,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Visual\AddNewClientForm.resx">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\AddNewContactPersonForm.resx">
+      <DependentUpon>AddNewContactPersonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\AddNewContactPersonPhoneForm.resx">
+      <DependentUpon>AddNewContactPersonPhoneForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visual\ClientsListForm.resx">
       <DependentUpon>ClientsListForm.cs</DependentUpon>

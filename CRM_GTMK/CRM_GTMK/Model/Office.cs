@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM_GTMK.Visual;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,5 +21,7 @@ namespace CRM_GTMK.Model
         public string Address { get; set; }
         public string[] Email { get; set; }
         public List<string> Phones { get; set; } = new List<string>();
+
+        public List<Person> NewContactPersonList { get; set; } = new List<Person>();
     }
 }
