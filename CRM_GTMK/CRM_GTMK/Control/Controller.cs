@@ -77,6 +77,7 @@ namespace CRM_GTMK.Control
 
 		public void SetProjectsList()
 		{
+			//Если список проектов пуст получаем его с сайта
 			if (_myModel.CurrentProjects == null)
 			{
 				_myModel.CurrentProjects = _myModel.ApiClient.GetCurrentProjects();
@@ -86,6 +87,7 @@ namespace CRM_GTMK.Control
 			
 			_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.SuspendLayout();
 
+			int numberOfShownProjects = 30; 
 			foreach (var project in _myModel.CurrentProjects)
 			{
 				
@@ -96,7 +98,8 @@ namespace CRM_GTMK.Control
 
 				projectControls.ProjectDeadLine.Text = project.deadline.ToString();
 				_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.AddOneProject(projectControls);
-				
+				numberOfShownProjects--;
+				if (numberOfShownProjects < 0) break;
 
 			}
 			_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.ResumeLayout(false);

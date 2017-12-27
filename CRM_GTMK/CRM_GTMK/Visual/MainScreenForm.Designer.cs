@@ -38,7 +38,7 @@
 			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Проекты");
 			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Задачи");
 			this.navigationTreeView = new System.Windows.Forms.TreeView();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.clientsPanel = new System.Windows.Forms.Panel();
 			this.companiesDefaultListDataGridView = new System.Windows.Forms.DataGridView();
 			this.CompanyNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CompanyCityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +46,7 @@
 			this.LastContactDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.AddingDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.addNewCompanyButton = new System.Windows.Forms.Button();
-			this.panel1.SuspendLayout();
+			this.clientsPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.companiesDefaultListDataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -75,14 +75,14 @@
 			this.navigationTreeView.TabIndex = 0;
 			this.navigationTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.navigationTreeView_AfterSelect);
 			// 
-			// panel1
+			// clientsPanel
 			// 
-			this.panel1.Controls.Add(this.companiesDefaultListDataGridView);
-			this.panel1.Controls.Add(this.addNewCompanyButton);
-			this.panel1.Location = new System.Drawing.Point(211, 57);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(1075, 517);
-			this.panel1.TabIndex = 1;
+			this.clientsPanel.Controls.Add(this.companiesDefaultListDataGridView);
+			this.clientsPanel.Controls.Add(this.addNewCompanyButton);
+			this.clientsPanel.Location = new System.Drawing.Point(211, 57);
+			this.clientsPanel.Name = "clientsPanel";
+			this.clientsPanel.Size = new System.Drawing.Size(1075, 517);
+			this.clientsPanel.TabIndex = 1;
 			// 
 			// companiesDefaultListDataGridView
 			// 
@@ -138,11 +138,11 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1298, 586);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.clientsPanel);
 			this.Controls.Add(this.navigationTreeView);
 			this.Name = "MainScreenForm";
 			this.Text = "MainScreenForm";
-			this.panel1.ResumeLayout(false);
+			this.clientsPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.companiesDefaultListDataGridView)).EndInit();
 			this.ResumeLayout(false);
 
@@ -151,7 +151,7 @@
 		#endregion
 
 		private System.Windows.Forms.TreeView navigationTreeView;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel clientsPanel;
 		private System.Windows.Forms.DataGridView companiesDefaultListDataGridView;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CompanyNameColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CompanyCityColumn;

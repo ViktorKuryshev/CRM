@@ -17,11 +17,27 @@ namespace CRM_GTMK.Visual
 		private Controller _controller;
 
 		public MyAllProjectsTableLayoutPanel MyAllProjectsTableLayoutPanel { get; set; }
+		public MyClientsPanel MyClientsPanel { get; set; }
+
+		public Panel CurrentPanel { get; set; }
 
 		public MainScreenForm(Controller controller)
 		{
 			_controller = controller;
 			InitializeComponent();
+
+			//Заменяем дефолтные данные нашими
+			MyClientsPanel = new MyClientsPanel(this);
+			this.Controls.Remove(clientsPanel);
+			clientsPanel = MyClientsPanel;
+			this.Controls.Add(clientsPanel);
+
+			CurrentPanel = clientsPanel;
+		}
+
+		public void addNewCompanyButton_Click()
+		{
+			_controller.ShowAddNewCompanyDialog();
 		}
 
 		private void addNewCompanyButton_Click(object sender, EventArgs e)
@@ -31,20 +47,41 @@ namespace CRM_GTMK.Visual
 
 		private void navigationTreeView_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			if (e.Node.Name== "ProjectsRoot")
+			switch(e.Node.Name)
 			{
-				this.Controls.Remove(panel1);
+				case "ProjectsRoot":
+					SwitchToProjectsPanel();
+					break;
+				case "CompaniesNode":
+					SwitchToCompaniesPanel();
+					break;
+			}
+			
+		}
+		private void SwitchToCompaniesPanel()
+		{
+			CurrentPanel.Visible = false;
+			CurrentPanel = MyClientsPanel;
+			CurrentPanel.Visible = true;
 
-				if (MyAllProjectsTableLayoutPanel == null)
-				{
-					MyAllProjectsTableLayoutPanel = new MyAllProjectsTableLayoutPanel(this);
-					this.Controls.Add(MyAllProjectsTableLayoutPanel);
-					_controller.SetProjectsList();
-				}
+		}
 
+		private void SwitchToProjectsPanel()
+		{
+			CurrentPanel.Visible = false;
 
+			if (MyAllProjectsTableLayoutPanel == null)
+			{
+				MyAllProjectsTableLayoutPanel = new MyAllProjectsTableLayoutPanel(this);
 				this.Controls.Add(MyAllProjectsTableLayoutPanel);
-
+				_controller.SetProjectsList();
+				CurrentPanel = MyAllProjectsTableLayoutPanel;
+				CurrentPanel.Visible = true;
+			}
+			else
+			{
+				CurrentPanel = MyAllProjectsTableLayoutPanel;
+				CurrentPanel.Visible = true;
 			}
 		}
 	}
