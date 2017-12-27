@@ -178,6 +178,9 @@
     <Compile Include="Visual\MainScreenPanels\MyAllProjectsTableLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Visual\MainScreenPanels\MyClientsPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Visual\ModifiedComponents\MenuButton.cs">
       <SubType>Component</SubType>
     </Compile>
