@@ -14,6 +14,8 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
         {
             TableLayoutPanel tableLayoutPanel = form.GetContactPersonTableLayoutPanel();
 
+            MinimumSize = new System.Drawing.Size(tableLayoutPanel.MinimumSize.Width, tableLayoutPanel.MinimumSize.Height);
+            AutoSize = tableLayoutPanel.AutoSize;
             CellBorderStyle = tableLayoutPanel.CellBorderStyle;
             ColumnCount = tableLayoutPanel.ColumnCount;
             Location = tableLayoutPanel.Location;
@@ -25,13 +27,13 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
             AssignColumnStyles(tableLayoutPanel);
             AssignRowStyles(tableLayoutPanel);
 
-            MyContactPersonLinkLabel contactPersonLinkLabel = new MyContactPersonLinkLabel(form);
-            MyContactPersonLabel1 contactPersonLabel1 = new MyContactPersonLabel1(form);
-            MyContactPersonLabel2 contactPersonLabel2 = new MyContactPersonLabel2(form);
+            MyFullnameLabel fullnameLabel = new MyFullnameLabel(form);
+            MyContactPersonPositionLabel positionLabelLabel  = new MyContactPersonPositionLabel(form);
+            MyContactPersonPhoneLabel phoneLabel = new MyContactPersonPhoneLabel(form);
 
-            Controls.Add(contactPersonLinkLabel, 0, 0);
-            Controls.Add(contactPersonLabel1, 1, 0);
-            Controls.Add(contactPersonLabel2, 2, 0);
+            Controls.Add(fullnameLabel, 0, 0);
+            Controls.Add(positionLabelLabel, 1, 0);
+            Controls.Add(phoneLabel, 2, 0);
 
             SetSpans(form, tableLayoutPanel, myOneOfficeContactTableLayoutPanel);
         }

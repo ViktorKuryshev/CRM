@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using CRM_GTMK.Visual.MainScreenPanels;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
 
 namespace CRM_GTMK.Control
 {
@@ -37,7 +38,7 @@ namespace CRM_GTMK.Control
 			MainScreenForm = mainScreenForm;
 
 			//Выбираем тестовый шаг
-		    switch (TestStep.NewProjectForm)
+		    switch (TestStep.MainScreen)
 		    {
 				case TestStep.MainScreen:
 					ShowMainScreenDialog();
@@ -108,14 +109,19 @@ namespace CRM_GTMK.Control
             MainScreenForm.ShowAddNewCompanyDialog();
         }
 
-        public void ShowAddNewContactPersonDialog(MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
+        public void ShowAddNewContactPersonDialog(MyOneOfficeContactTableLayoutPanel panel)
         {
-            MainScreenForm.ShowAddNewContactPersonDialog(myOneOfficeContactTableLayoutPanel);
+            MainScreenForm.ShowAddNewContactPersonDialog(panel);
         }
         public void ShowAddNewContactPersonPhoneForm(AddNewContactPersonForm form)
         {
             MainScreenForm.ShowAddNewContactPersonPhoneForm(form);
         }
+        public void AddAndDisplayNewContactPerson(AddNewContactPersonForm form, int officeNumber)
+        {
+            MainScreenForm.NewClientForm.AddAndDisplayNewContactPerson(form, officeNumber);
+        }
+
         /// <summary>
         /// Добавляем данные по комании в базу
         /// </summary>
@@ -134,19 +140,19 @@ namespace CRM_GTMK.Control
 			//Todo проверить компанию по назвнию, по телефону, по имейлу
 
 			//todo присвоить компании уникальный id для получить последний id
-		    _myModel.NewCompany.id = _myModel.XmlHelper.GetBigestCompanyId() + 1;
+		    _myModel.NewCompany.Id = _myModel.XmlHelper.GetBigestCompanyId() + 1;
 			//new ClientsListForm(clientsInfo).ShowDialog();
 			_myModel.XmlHelper.AddNewCompanyInfo(_myModel.NewCompany);
 
 			//Todo Автоматически поставилась задача на проработку компании менеджеру по какойму-то принципу
 
-			MainScreenForm.AddNewClientForm.Dispose();
+			MainScreenForm.NewClientForm.Dispose();
 		}
 
 	    private Company GetCompanyDataFromForm()
 	    {
 			Company company = new Company();
-		    company.Name = MainScreenForm.AddNewClientForm.NewCompanyNameTextBox.Text;
+		    company.Name = MainScreenForm.NewClientForm.NewCompanyNameTextBox.Text;
             GetOfficeDataFromForm(company);
             return company;
 	    }
@@ -154,7 +160,7 @@ namespace CRM_GTMK.Control
         private void GetOfficeDataFromForm(Company company)
         {
             var officeList = MainScreenForm
-								.AddNewClientForm
+								.NewClientForm
                                 .MyAllOfficesFlowLayoutPanel
                                 .MyOneOfficeContactTableLayoutPanelList;
 
@@ -164,6 +170,7 @@ namespace CRM_GTMK.Control
 				newOffice.Id = i + 1;
 
 				GetOfficeContactInfoFromForm(newOffice, officeList[i]);
+                getOfficeContactPersonInfoFromForm(newOffice, i, officeList);
                 GetOfficePhonesFromForm(newOffice, officeList[i]);
 
                 company.Offices.Add(newOffice);
@@ -178,8 +185,55 @@ namespace CRM_GTMK.Control
             office.Site = officeList.MyOfficeContactInfoPanel.MyOfficeSiteTextBox.Text;
         }
 
+        private void getOfficeContactPersonInfoFromForm(Office office,
+                                                    int officeNumberInTheList,
+                                                    List<MyOneOfficeContactTableLayoutPanel> officeList)
+        {
+            for (int i = 0; i < officeList[officeNumberInTheList]
+                               .MyContactPersonFormList.Count; i++)
+            {
+                var form = officeList[officeNumberInTheList].MyContactPersonFormList[i];
+                Person person = new Person();
+                person.LastName = form.LastnameContactPerson;
+                person.FirstName = form.FirstnameContactPerson;
+                person.MiddleName = form.MiddleNameContactPerson;
+                person.Email = form.EmailContactPerson;
+                person.Position = form.PositionContactPerson;
+                person.Id = i + 1;
+                getContactPersonPhonesFromForm(form, person);
+                getContactPersonCommentsFromForm(form, person);
+                office.ContactPersonList.Add(person);
+            }
+        }
+
+        private void getContactPersonPhonesFromForm(AddNewContactPersonForm form, Person person)
+        {
+            foreach (AddNewContactPersonPhoneForm phoneForm in form.MyContactPersonPhoneFormList)
+            {
+                PersonPhoneData personPhoneData = new PersonPhoneData();
+                personPhoneData.PhoneType = phoneForm.NewPhoneType;
+                personPhoneData.PhoneNumber = phoneForm.NewPhoneNumber;
+                personPhoneData.PhoneComment = phoneForm.NewPhoneComment;
+                person.PersonPhonesList.Add(personPhoneData);
+            }
+        }
+
+        private void getContactPersonCommentsFromForm(AddNewContactPersonForm form, Person person)
+        {
+            foreach (MyCommentPanel panel in form.MyCommentPanelList)
+            {
+                if (panel.MyCommentRichTextBox.Text != "")
+                {
+                    PersonComment personComment = new PersonComment();
+                    personComment.Date = panel.MyDateLabel.Text;
+                    personComment.Comment = panel.MyCommentRichTextBox.Text;
+                    person.PersonCommentList.Add(personComment);
+                }
+            }
+        }
+
         private void GetOfficePhonesFromForm(Office office,
-											 MyOneOfficeContactTableLayoutPanel officeList)
+                                             MyOneOfficeContactTableLayoutPanel officeList)
         {
             foreach (MyPhonePanel panel in officeList
                                 .MyPhonesFlowLayoutPanel
@@ -188,18 +242,6 @@ namespace CRM_GTMK.Control
                 if (panel.MyPhoneTextBox.Text != "")
                     office.Phones.Add(panel.MyPhoneTextBox.Text);
             }
-        }
-
-        public void SaveNewContactPersonPhone()
-        {
-
-            //_myModel.NewPersonList.Add(new Person());
-
-            //PersonPhoneData newPersonPhoneData = new PersonPhoneData();
-            //newPersonPhoneData.PhoneType = _myVisual.ContactPersonPhoneForm.NewPhoneTypeComboBox.Text;
-            //newPersonPhoneData.PhoneNumber = _myVisual.ContactPersonPhoneForm.NewPhoneNumber;
-            //newPersonPhoneData.PhoneComment = _myVisual.ContactPersonPhoneForm.NewPhoneCommentRichTextBox.Text;
-            //_myModel.NewPerson.
         }
     }
 }

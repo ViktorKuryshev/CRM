@@ -26,10 +26,10 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
             Text = button.Text;
             UseVisualStyleBackColor = button.UseVisualStyleBackColor;
 
-            Click += MyContactPersonsButton_Click;
+            Click += new EventHandler(IsClicked);
         }
 
-        private void MyContactPersonsButton_Click(object sender, EventArgs e)
+        private void IsClicked(object sender, EventArgs e)
         {
             _form.AddNewContactPerson(_myOneOfficeContactTableLayoutPanel);
         }

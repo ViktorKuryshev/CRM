@@ -42,6 +42,7 @@
             // 
             // phoneTypeComboBox
             // 
+            this.phoneTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.phoneTypeComboBox.FormattingEnabled = true;
             this.phoneTypeComboBox.Items.AddRange(new object[] {
             "Рабочий",
@@ -51,7 +52,6 @@
             this.phoneTypeComboBox.Name = "phoneTypeComboBox";
             this.phoneTypeComboBox.Size = new System.Drawing.Size(76, 21);
             this.phoneTypeComboBox.TabIndex = 1;
-            this.phoneTypeComboBox.Text = "Рабочий";
             // 
             // phoneCountryCodeTextBox
             // 

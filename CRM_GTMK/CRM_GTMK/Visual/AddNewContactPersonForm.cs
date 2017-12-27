@@ -1,9 +1,11 @@
 ﻿using CRM_GTMK.Control;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel.CommentPanelElements;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel.OneContactPersonPhonePanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel.OneContactPersonPhonePanel.ContactPersonPhonePanelElements;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual
@@ -11,26 +13,30 @@ namespace CRM_GTMK.Visual
     public partial class AddNewContactPersonForm : Form
     {
         private Controller _controller;
+        private AddNewCompanyForm _form;
 
         public int OfficeNumber { get; set; }
-        public List<AddNewContactPersonPhoneForm> MyContactPersonPhoneFormList { get; set; } = new List<AddNewContactPersonPhoneForm>();
+        public List<AddNewContactPersonPhoneForm> MyContactPersonPhoneFormList
+        { get; set; } = new List<AddNewContactPersonPhoneForm>();
         public List<MyCommentPanel> MyCommentPanelList { get; set; } = new List<MyCommentPanel>();
 
+        public string NameContactPerson { get; set; }
         public string LastnameContactPerson { get; set; }
         public string FirstnameContactPerson { get; set; }
         public string MiddleNameContactPerson { get; set; }
         public string PositionContactPerson { get; set; }
         public string[] EmailContactPerson { get; set; } = new string[] { "", "", "" };
 
-        public AddNewContactPersonForm(Controller controller, int officeNumber)
+        public AddNewContactPersonForm(Controller controller, int officeNumber, AddNewCompanyForm form)
         {
             _controller = controller;
+            _form = form;
             OfficeNumber = officeNumber;
             InitializeComponent();
-            ResetForms();
+            resetForms();
         }
 
-        private void ResetForms()
+        private void resetForms()
         {
             phonesContactPersonFlowLayoutPanel.Controls.Remove(phoneContactPersonPanel);
             commentsInnerFlowLayoutPanel.Controls.Remove(commentPanel);
@@ -103,7 +109,7 @@ namespace CRM_GTMK.Visual
             _controller.ShowAddNewContactPersonPhoneForm(this);
         }
 
-        public void AddAndDisplayNewContactPersonPanel(AddNewContactPersonPhoneForm form)
+        public void AddAndDisplayNewContactPersonPhone(AddNewContactPersonPhoneForm form)
         {
             MyContactPersonPhonePanel contactPersonPhonePanel = new MyContactPersonPhonePanel(this);
             contactPersonPhonePanel.MyPhoneTypeLabel.Text = form.NewPhoneType;
@@ -115,32 +121,101 @@ namespace CRM_GTMK.Visual
 
         private void saveNewContactPersonButton_Click(object sender, EventArgs e)
         {
+            emailContactPersonComboBox_DropDown(sender, e);
+
+            setContactPersonNameParts();
+
+            if (checkIfInputValid())
+                return;
+
+            NameContactPerson = lastnameContactPersonTextBox.Text + " " +
+                                firstnameContactPersonTextBox.Text + " " +
+                                middleNameContactPersonTextBox.Text;
+            PositionContactPerson = positionContactPersonTextBox.Text;
+            
+            _controller.AddAndDisplayNewContactPerson(this, OfficeNumber);
+
+            this.Close();
+        }
+
+        private void setContactPersonNameParts()
+        {
             LastnameContactPerson = lastnameContactPersonTextBox.Text;
             FirstnameContactPerson = firstnameContactPersonTextBox.Text;
             MiddleNameContactPerson = middleNameContactPersonTextBox.Text;
-            PositionContactPerson = positionContactPersonTextBox.Text;
-            if (EmailContactPerson[0].Equals(""))
-                EmailContactPerson[0] = emailContactPersonTextBox.Text;
         }
 
-        private void emailContactPersonComboBox_MouseClick(object sender, MouseEventArgs e)
+        #region Checkers
+        private bool checkIfInputValid()
         {
-            int chosenItem = emailContactPersonComboBox
-                            .Items.IndexOf(emailContactPersonComboBox.SelectedItem);
+            if (checkNameAndPosiotionInputWithoutDigits())
+                return true;
+            if (checkNameAndPosiotionInputWasMade())
+                return true;
+            if (checkEmailInput())
+                return true;
+            if (checkPhoneInput())
+                return true;
 
-            switch (chosenItem)
-            {
-                case 0:
-                    EmailContactPerson[0] = emailContactPersonTextBox.Text;
-                    break;
-                case 1:
-                    EmailContactPerson[1] = emailContactPersonTextBox.Text;
-                    break;
-                default:
-                    EmailContactPerson[2] = emailContactPersonTextBox.Text;
-                    break;
-            }
+            return false;
         }
+
+        private bool checkNameAndPosiotionInputWasMade()
+        {
+            if (lastnameContactPersonTextBox.Text == "" ||
+                firstnameContactPersonTextBox.Text == "" ||
+                positionContactPersonTextBox.Text == "")
+            {
+                MessageBox.Show("Необходимо заполнить поля \"Фамилия\", \"Имя\" и \"Должность\".");
+                return true;
+            }
+            return false;
+        }
+
+        private bool checkNameAndPosiotionInputWithoutDigits()
+        {
+            if (lastnameContactPersonTextBox.Text.Any(char.IsDigit) ||
+                firstnameContactPersonTextBox.Text.Any(char.IsDigit) ||
+                middleNameContactPersonTextBox.Text.Any(char.IsDigit) ||
+                positionContactPersonTextBox.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("Поля \"Фамилия\", \"Имя\", \"Отчество\" " +
+                                "и \"Должность\" не должны содержать цифр.");
+                return true;
+            }
+            return false;
+        }
+
+        private bool checkEmailInput()
+        {
+            if (EmailContactPerson.All(email => email == ""))//Need to change it to match all the cases
+            {
+                MessageBox.Show("Необходимо ввести хотя бы один адрес эл. почты.");
+                return true;
+            }
+            foreach (string email in EmailContactPerson)
+            {
+                if (email == "")
+                    continue;
+                else if (!email.Contains("@"))
+                {
+                    MessageBox.Show("Адрес эл. почты обязательно должен содержать символ \"@\".");
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool checkPhoneInput()
+        {
+            if (MyContactPersonPhoneFormList.Count == 0)
+            {
+                MessageBox.Show("Необходимо ввести хотя бы один номер телефона.");
+                return true;
+            }
+            return false;
+        }
+        #endregion
 
         private void emailContactPersonComboBox_DropDownClosed(object sender, EventArgs e)
         {
@@ -157,6 +232,25 @@ namespace CRM_GTMK.Visual
                     break;
                 default:
                     emailContactPersonTextBox.Text = EmailContactPerson[2];
+                    break;
+            }
+        }
+
+        private void emailContactPersonComboBox_DropDown(object sender, EventArgs e)
+        {
+            int chosenItem = emailContactPersonComboBox
+                .Items.IndexOf(emailContactPersonComboBox.SelectedItem);
+
+            switch (chosenItem)
+            {
+                case 0:
+                    EmailContactPerson[0] = emailContactPersonTextBox.Text;
+                    break;
+                case 1:
+                    EmailContactPerson[1] = emailContactPersonTextBox.Text;
+                    break;
+                default:
+                    EmailContactPerson[2] = emailContactPersonTextBox.Text;
                     break;
             }
         }

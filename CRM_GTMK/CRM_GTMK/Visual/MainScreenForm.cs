@@ -20,7 +20,7 @@ namespace CRM_GTMK.Visual
 
 		//Формы диалогов
 		public NewProjectForm NewProjectForm { get; set; }
-		public AddNewCompanyForm AddNewClientForm { get; set; }
+        public AddNewCompanyForm NewClientForm { get; set; }
         public AddNewContactPersonForm ContactPersonForm { get; set; }
 
         //Панели 
@@ -48,15 +48,16 @@ namespace CRM_GTMK.Visual
 		/// </summary>
 		public void ShowAddNewCompanyDialog()
 		{
-			AddNewClientForm = new AddNewCompanyForm(_controller);
-			AddNewClientForm.ShowDialog();
+            NewClientForm = new AddNewCompanyForm(_controller);
+            NewClientForm.ShowDialog();
 
 		}
 
         public void ShowAddNewContactPersonDialog(MyOneOfficeContactTableLayoutPanel panel)
         {
             AddNewContactPersonForm newContactPersonForm = new AddNewContactPersonForm(_controller,
-                                                            panel.MyOfficeNumberLabel.OfficeNumber);
+                                                            panel.MyOfficeNumberLabel.OfficeNumber,
+                                                            NewClientForm);
 
             panel.MyContactPersonFormList.Add(newContactPersonForm);
             newContactPersonForm.ShowDialog();

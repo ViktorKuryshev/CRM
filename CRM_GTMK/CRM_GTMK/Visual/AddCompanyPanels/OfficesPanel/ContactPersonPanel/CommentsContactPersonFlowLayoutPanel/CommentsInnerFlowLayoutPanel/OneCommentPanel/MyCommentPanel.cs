@@ -10,8 +10,8 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.Comme
 {
     public class MyCommentPanel : Panel
     {
-        public List<MyRichTextBox> MyCommentRichTextBox { get; set; } = new List<MyRichTextBox>();
-        public List<MyDateLabel> MyDateLabel { get; set; } = new List<MyDateLabel>();
+        public MyRichTextBox MyCommentRichTextBox { get; set; }
+        public MyDateLabel MyDateLabel { get; set; }
 
         public MyCommentPanel(AddNewContactPersonForm form)
         {
@@ -23,23 +23,11 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.Comme
             Size = commentPanel.Size;
             TabIndex = commentPanel.TabIndex;
 
-            MyRichTextBox commentRichTextBox = new MyRichTextBox(form);
-            MyDateLabel dateLabel = new MyDateLabel(form);
+            MyCommentRichTextBox = new MyRichTextBox(form);
+            MyDateLabel = new MyDateLabel(form);
 
-            AddCommentRichTextBox(commentRichTextBox);
-            AddDateLabel(dateLabel);
-        }
-
-        private void AddCommentRichTextBox(MyRichTextBox richTextBox)
-        {
-            MyCommentRichTextBox.Add(richTextBox);
-            Controls.Add(richTextBox);
-        }
-
-        private void AddDateLabel(MyDateLabel label)
-        {
-            MyDateLabel.Add(label);
-            Controls.Add(label);
+            Controls.Add(MyCommentRichTextBox);
+            Controls.Add(MyDateLabel);
         }
     }
 }

@@ -22,6 +22,6 @@ namespace CRM_GTMK.Model
         public string[] Email { get; set; }
         public List<string> Phones { get; set; } = new List<string>();
 
-        public List<Person> NewContactPersonList { get; set; } = new List<Person>();
+        public List<Person> ContactPersonList { get; set; } = new List<Person>();
     }
 }

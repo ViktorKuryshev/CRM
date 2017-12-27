@@ -22,7 +22,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
 			Text = morePhonesButton.Text;
 			UseVisualStyleBackColor = morePhonesButton.UseVisualStyleBackColor;
 
-			Click += new System.EventHandler(IsClicked);
+			Click += new EventHandler(IsClicked);
 		}
 
 		public void IsClicked(object sender, EventArgs e)

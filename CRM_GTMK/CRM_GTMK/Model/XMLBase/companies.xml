@@ -1,48 +1,238 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <companies>
-  <company name="1231" id="1">
-    <office>
-      <phone></phone>
-    </office>
-  </company>
-  <company name="sdfsdf" id="2">
-    <office>
-      <phone></phone>
-    </office>
-  </company>
-  <company name="Coding Company" id="9">
+  <company name="Companeeeeee" id="1">
     <office id="1">
-      <county>Россия</county>
-      <city>City1</city>
-      <address>Address1</address>
-      <site>Site1</site>
+      <country>Россия</country>
+      <city>qqqqqq</city>
+      <address>qqqqq</address>
+      <site>qqqqq</site>
+      <phone>11</phone>
+      <contact_person id="1">
+        <lastname>aaaaaaa</lastname>
+        <firstname>aaaaaa</firstname>
+        <middlename>aaaaaa</middlename>
+        <position>aaaaaa</position>
+        <email>aaa@</email>
+        <email></email>
+        <email></email>
+        <phone_data type="Рабочий">
+          <phone_number>+1 (1) --1</phone_number>
+          <phone_comment>11</phone_comment>
+        </phone_data>
+        <phone_data type="Рабочий">
+          <phone_number>+2 (2) --2</phone_number>
+          <phone_comment />
+        </phone_data>
+        <person_comment>
+          <data>28.12.2017 1:41
+Добавил Вася</data>
+          <comment>aaaa</comment>
+        </person_comment>
+        <person_comment>
+          <data>28.12.2017 1:42
+Добавил Вася</data>
+          <comment>aaaa11</comment>
+        </person_comment>
+        <person_comment>
+          <data>28.12.2017 1:42
+Добавил Вася</data>
+          <comment>aaa1</comment>
+        </person_comment>
+      </contact_person>
+      <contact_person id="2">
+        <lastname>bbbbbb</lastname>
+        <firstname>bbbbbbbb</firstname>
+        <middlename>bbbbbbbbb</middlename>
+        <position>bbbbbbb</position>
+        <email></email>
+        <email>bbbb@</email>
+        <email></email>
+        <phone_data type="Рабочий">
+          <phone_number>+3 (3) --3</phone_number>
+          <phone_comment />
+        </phone_data>
+        <phone_data type="Рабочий">
+          <phone_number>+4 (4) --4</phone_number>
+          <phone_comment>4</phone_comment>
+        </phone_data>
+        <person_comment>
+          <data>28.12.2017 1:43
+Добавил Вася</data>
+          <comment>bbbbb</comment>
+        </person_comment>
+        <person_comment>
+          <data>28.12.2017 1:43
+Добавил Вася</data>
+          <comment>bbb111</comment>
+        </person_comment>
+      </contact_person>
+    </office>
+    <office id="2">
+      <country>wwww</country>
+      <city>www</city>
+      <address>www</address>
+      <site>www</site>
+      <phone>22</phone>
+      <contact_person id="1">
+        <lastname>ccccccc</lastname>
+        <firstname>ccccccc</firstname>
+        <middlename>cccccccc</middlename>
+        <position>ccccccc</position>
+        <email>cccccc@</email>
+        <email></email>
+        <email></email>
+        <phone_data type="Рабочий">
+          <phone_number>+5 (5) --5</phone_number>
+          <phone_comment>5</phone_comment>
+        </phone_data>
+        <phone_data type="Рабочий">
+          <phone_number>+6 (6) --6</phone_number>
+          <phone_comment />
+        </phone_data>
+        <person_comment>
+          <data>28.12.2017 1:43
+Добавил Вася</data>
+          <comment>ccccccccc</comment>
+        </person_comment>
+        <person_comment>
+          <data>28.12.2017 1:43
+Добавил Вася</data>
+          <comment>cccccccc111</comment>
+        </person_comment>
+        <person_comment>
+          <data>28.12.2017 1:43
+Добавил Вася</data>
+          <comment>cccccccccc222</comment>
+        </person_comment>
+      </contact_person>
+      <contact_person id="2">
+        <lastname>ddddddd</lastname>
+        <firstname>ddddd</firstname>
+        <middlename>ddddddd</middlename>
+        <position>dddddd</position>
+        <email>dddddddd@</email>
+        <email></email>
+        <email></email>
+        <phone_data type="Рабочий">
+          <phone_number>+7 (7) --7</phone_number>
+          <phone_comment>777</phone_comment>
+        </phone_data>
+        <phone_data type="Рабочий">
+          <phone_number>+88 (8) --8</phone_number>
+          <phone_comment>88</phone_comment>
+        </phone_data>
+        <phone_data type="Рабочий">
+          <phone_number>+9 (9) --9</phone_number>
+          <phone_comment />
+        </phone_data>
+        <person_comment>
+          <data>28.12.2017 1:44
+Добавил Вася</data>
+          <comment>ddddd</comment>
+        </person_comment>
+        <person_comment>
+          <data>28.12.2017 1:44
+Добавил Вася</data>
+          <comment>ddddddd11</comment>
+        </person_comment>
+      </contact_person>
+    </office>
+  </company>
+  <company name="Neeeeeew Company" id="2">
+    <office id="1">
+      <country>Russia</country>
+      <city>Moscow</city>
+      <address>Arbat St.</address>
+      <site>www.moscow.com</site>
       <phone>11</phone>
       <phone>12</phone>
+      <contact_person id="1">
+        <lastname>Beliakov</lastname>
+        <firstname>Vladimir</firstname>
+        <middlename>Alekseevich</middlename>
+        <position>Translator</position>
+        <email>1@vladmail.com</email>
+        <email>3@vladmail.com</email>
+        <phone_data type="Рабочий">
+          <phone_number>+1 (123) 123-12-31</phone_number>
+          <phone_comment>Vlad's phone</phone_comment>
+        </phone_data>
+        <phone_data type="Домашний">
+          <phone_number>+1 (234) 666-66-66</phone_number>
+        </phone_data>
+        <person_comment>
+          <data>28.12.2017 1:54
+Добавил Вася</data>
+          <comment>Vlad's comment 1</comment>
+        </person_comment>
+        <person_comment>
+          <data>28.12.2017 1:54
+Добавил Вася</data>
+          <comment>Vlad's comment 1</comment>
+        </person_comment>
+      </contact_person>
+      <contact_person id="2">
+        <lastname>Kurishev</lastname>
+        <firstname>Victor</firstname>
+        <middlename></middlename>
+        <position>Director</position>
+        <email>2@victormail.com</email>
+        <phone_data type="Рабочий">
+          <phone_number>+1 (1) --1</phone_number>
+        </phone_data>
+        <phone_data type="Мобильный">
+          <phone_number>+2 (435) 222-22-22</phone_number>
+          <phone_comment>Victor's mob phone</phone_comment>
+        </phone_data>
+        <person_comment>
+          <data>28.12.2017 1:55
+Добавил Вася</data>
+          <comment>Victor's comment2</comment>
+        </person_comment>
+      </contact_person>
     </office>
     <office id="2">
-      <county>USA</county>
-      <city>City2</city>
-      <address>Address2</address>
-      <site>Site2</site>
+      <country>USA</country>
+      <city>New York</city>
+      <address>Manhattan</address>
+      <site>www.usa.com</site>
+      <phone>21</phone>
       <phone>22</phone>
-      <phone>23</phone>
-    </office>
-  </company>
-  <company name="qwrqwerqwe" id="10">
-    <office id="1">
-      <county></county>
-      <city></city>
-      <address></address>
-      <site></site>
-      <phone>1234</phone>
-    </office>
-    <office id="2">
-      <county>Россия</county>
-      <city></city>
-      <address></address>
-      <site></site>
-      <phone>124</phone>
-      <phone>5465</phone>
+      <contact_person id="1">
+        <lastname>Smith</lastname>
+        <firstname>John</firstname>
+        <middlename></middlename>
+        <position>Engineer</position>
+        <email>3@johnmail.com</email>
+        <phone_data type="Рабочий">
+          <phone_number>+1 (2) --3</phone_number>
+        </phone_data>
+        <phone_data type="Рабочий">
+          <phone_number>+1 (999) 90-90-90</phone_number>
+          <phone_comment>Jonh's home phone </phone_comment>
+        </phone_data>
+        <person_comment>
+          <data>28.12.2017 1:57
+Добавил Вася</data>
+          <comment>Jonh's comment1</comment>
+        </person_comment>
+      </contact_person>
+      <contact_person id="2">
+        <lastname>Dow</lastname>
+        <firstname>Joe</firstname>
+        <middlename></middlename>
+        <position>Programmer</position>
+        <email>1@joemail.com</email>
+        <phone_data type="Рабочий">
+          <phone_number>+0 (000) --</phone_number>
+          <phone_comment> Joe's mob phone.</phone_comment>
+        </phone_data>
+        <person_comment>
+          <data>28.12.2017 1:57
+Добавил Вася</data>
+          <comment> Joe's comment1</comment>
+        </person_comment>
+      </contact_person>
     </office>
   </company>
 </companies>
