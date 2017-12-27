@@ -7,7 +7,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
 	{
 		public MyPhoneTextBox MyPhoneTextBox { get; set; }
 
-		public MyPhonePanel(AddNewCompanyForm form, MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
+        public MyPhonePanel(AddNewCompanyForm form, MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
 		{
 			Panel phonesPanel = form.GetPhonePanel();
 
@@ -20,7 +20,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
 			
 			MyPhoneTextBox = new MyPhoneTextBox(form);
 			MyMorePhonesButton myMorePhonesButton = new MyMorePhonesButton(form, myOneOfficeContactTableLayoutPanel);
-			MyPhoneLabel myPhoneLabel = new MyPhoneLabel(form);
+            MyPhoneLabel myPhoneLabel = new MyPhoneLabel(form);
 
 			Controls.Add(myMorePhonesButton);
 			Controls.Add(MyPhoneTextBox);

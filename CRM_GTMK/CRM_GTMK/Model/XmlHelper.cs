@@ -37,7 +37,7 @@ namespace CRM_GTMK.Model
 			XDocument xDoc = XDocument.Load(path);
 
 			XAttribute companyNameAtribute = new XAttribute("name", company.Name);
-			XAttribute companyIdAttribute = new XAttribute("id", company.id);
+			XAttribute companyIdAttribute = new XAttribute("id", company.Id);
 			XElement companyElement = new XElement("company");
 			companyElement.Add(companyNameAtribute);
 			companyElement.Add(companyIdAttribute);
@@ -56,7 +56,7 @@ namespace CRM_GTMK.Model
                 XElement officeElement = new XElement("office");
                 officeElement.Add(new XAttribute("id", office.Id));
 
-                officeElement.Add(new XElement("county", office.Country));
+                officeElement.Add(new XElement("country", office.Country));
                 officeElement.Add(new XElement("city", office.City));
                 officeElement.Add(new XElement("address", office.Address));
                 officeElement.Add(new XElement("site", office.Site));
@@ -65,11 +65,63 @@ namespace CRM_GTMK.Model
                 {
                     officeElement.Add(new XElement("phone", phone));
                 }
+
+                addNewContactPerson(office, officeElement);
+
                 companyElement.Add(officeElement);
             }
         }
 
-		private string GetXmlDocumentPath()
+        private void addNewContactPerson(Office office, XElement officeElement)
+        {
+            foreach (Person person in office.ContactPersonList)
+            {
+                XElement contactPersonElement = new XElement("contact_person");
+                contactPersonElement.Add(new XAttribute("id", person.Id));
+                contactPersonElement.Add(new XElement("lastname", person.LastName));
+                contactPersonElement.Add(new XElement("firstname", person.FirstName));
+                if (person.MiddleName != "")
+                    contactPersonElement.Add(new XElement("middlename", person.MiddleName));
+                contactPersonElement.Add(new XElement("position", person.Position));
+
+                foreach (string email in person.Email)
+                {
+                    if (email != "")
+                    contactPersonElement.Add(new XElement("email", email));
+                }
+
+                AddNewContactPersonPhoneData(person, contactPersonElement);
+                AddNewContactPersonComment(person, contactPersonElement);
+
+                officeElement.Add(contactPersonElement);
+            }
+        }
+
+        private void AddNewContactPersonPhoneData(Person person, XElement contactPersonElement)
+        {
+            foreach (PersonPhoneData phoneData in person.PersonPhonesList)
+            {
+                XElement phoneDataElement = new XElement("phone_data");
+                phoneDataElement.Add(new XAttribute("type", phoneData.PhoneType));
+                phoneDataElement.Add(new XElement("phone_number", phoneData.PhoneNumber));
+                if (phoneData.PhoneComment != "")
+                    phoneDataElement.Add(new XElement("phone_comment", phoneData.PhoneComment));
+                contactPersonElement.Add(phoneDataElement);
+            }
+        }
+
+        private void AddNewContactPersonComment(Person person, XElement contactPersonElement)
+        {
+            foreach (PersonComment personComment in person.PersonCommentList)
+            {
+                XElement personCommentElement = new XElement("person_comment");
+                personCommentElement.Add(new XElement("data", personComment.Date));
+                personCommentElement.Add(new XElement("comment", personComment.Comment));
+                contactPersonElement.Add(personCommentElement);
+            }
+        }
+
+        private string GetXmlDocumentPath()
 		{
 			string path = "";
 			XDocument xDoc = new XDocument();

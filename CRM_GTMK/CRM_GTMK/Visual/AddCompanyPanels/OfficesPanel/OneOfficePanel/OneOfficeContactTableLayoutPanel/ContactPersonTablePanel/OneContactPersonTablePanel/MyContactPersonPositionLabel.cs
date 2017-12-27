@@ -7,12 +7,13 @@ using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.ContactPersonTablePanel.OneContactPersonTablePanel
 {
-    public class MyContactPersonLabel2 : Label
+    public class MyContactPersonPositionLabel : Label
     {
-        public MyContactPersonLabel2(AddNewCompanyForm form)
+        public MyContactPersonPositionLabel(AddNewCompanyForm form)
         {
-            Label label = form.GetContactPersonLabel2();
+            Label label = form.GetContactPersonPositionLabel();
 
+            MaximumSize = label.MaximumSize;
             Anchor = label.Anchor;
             AutoSize = label.AutoSize;
             Location = label.Location;

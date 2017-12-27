@@ -124,6 +124,7 @@
             // 
             // emailContactPersonComboBox
             // 
+            this.emailContactPersonComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.emailContactPersonComboBox.FormattingEnabled = true;
             this.emailContactPersonComboBox.Items.AddRange(new object[] {
             "Эл. почта 1",
@@ -133,8 +134,8 @@
             this.emailContactPersonComboBox.Name = "emailContactPersonComboBox";
             this.emailContactPersonComboBox.Size = new System.Drawing.Size(87, 21);
             this.emailContactPersonComboBox.TabIndex = 8;
+            this.emailContactPersonComboBox.DropDown += new System.EventHandler(this.emailContactPersonComboBox_DropDown);
             this.emailContactPersonComboBox.DropDownClosed += new System.EventHandler(this.emailContactPersonComboBox_DropDownClosed);
-            this.emailContactPersonComboBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.emailContactPersonComboBox_MouseClick);
             // 
             // emailContactPersonTextBox
             // 

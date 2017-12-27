@@ -106,13 +106,16 @@
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\MyContactPersonTableLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonLabel1.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonPositionLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonLabel2.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonPhoneLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonLinkLabel.cs">
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonFullnameLinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyFullnameLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\MyOneOfficeContactTableLayoutPanel.cs">
@@ -218,6 +221,7 @@
   <ItemGroup>
     <Content Include="Model\XMLBase\companies.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup />

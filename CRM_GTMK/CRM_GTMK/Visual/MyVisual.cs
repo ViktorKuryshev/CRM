@@ -40,7 +40,8 @@ namespace CRM_GTMK.Visual
         public void ShowAddNewContactPersonDialog(MyOneOfficeContactTableLayoutPanel panel)
         {
             AddNewContactPersonForm newContactPersonForm = new AddNewContactPersonForm(_controller, 
-                                                            panel.MyOfficeNumberLabel.OfficeNumber);
+                                                            panel.MyOfficeNumberLabel.OfficeNumber,
+                                                            NewClientForm);
 
             panel.MyContactPersonFormList.Add(newContactPersonForm);
             newContactPersonForm.ShowDialog();
