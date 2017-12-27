@@ -13,6 +13,7 @@ namespace CRM_GTMK.Visual
 
 		public AddNewCompanyForm AddNewClientForm { get; set; }
 		public MainScreenForm MainScreenForm { get; set; }
+		public AllProjectsForm AllProjectsForm { get; set; }
 
 
 		public MyVisual(Controller controller)
@@ -38,5 +39,11 @@ namespace CRM_GTMK.Visual
 	        AddNewClientForm.ShowDialog();
 
 		}
-    }
+
+		internal void ShowAllProjectsForm()
+		{
+			AllProjectsForm = new AllProjectsForm();
+			AllProjectsForm.ShowDialog();
+		}
+	}
 }

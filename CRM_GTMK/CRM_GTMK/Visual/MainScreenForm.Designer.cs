@@ -37,7 +37,7 @@
             treeNode3});
 			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Проекты");
 			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Задачи");
-			this.treeView1 = new System.Windows.Forms.TreeView();
+			this.navigationTreeView = new System.Windows.Forms.TreeView();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.companiesDefaultListDataGridView = new System.Windows.Forms.DataGridView();
 			this.CompanyNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,10 +50,10 @@
 			((System.ComponentModel.ISupportInitialize)(this.companiesDefaultListDataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// treeView1
+			// navigationTreeView
 			// 
-			this.treeView1.Location = new System.Drawing.Point(12, 57);
-			this.treeView1.Name = "treeView1";
+			this.navigationTreeView.Location = new System.Drawing.Point(12, 57);
+			this.navigationTreeView.Name = "navigationTreeView";
 			treeNode1.Name = "CompaniesNode";
 			treeNode1.Text = "Компании";
 			treeNode2.Name = "PhisicalPersonsNode";
@@ -67,12 +67,13 @@
 			treeNode5.Text = "Проекты";
 			treeNode6.Name = "TasksRoot";
 			treeNode6.Text = "Задачи";
-			this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+			this.navigationTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode5,
             treeNode6});
-			this.treeView1.Size = new System.Drawing.Size(165, 350);
-			this.treeView1.TabIndex = 0;
+			this.navigationTreeView.Size = new System.Drawing.Size(165, 517);
+			this.navigationTreeView.TabIndex = 0;
+			this.navigationTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.navigationTreeView_AfterSelect);
 			// 
 			// panel1
 			// 
@@ -80,7 +81,7 @@
 			this.panel1.Controls.Add(this.addNewCompanyButton);
 			this.panel1.Location = new System.Drawing.Point(211, 57);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(555, 350);
+			this.panel1.Size = new System.Drawing.Size(1075, 517);
 			this.panel1.TabIndex = 1;
 			// 
 			// companiesDefaultListDataGridView
@@ -136,9 +137,9 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(789, 434);
+			this.ClientSize = new System.Drawing.Size(1298, 586);
 			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.treeView1);
+			this.Controls.Add(this.navigationTreeView);
 			this.Name = "MainScreenForm";
 			this.Text = "MainScreenForm";
 			this.panel1.ResumeLayout(false);
@@ -149,7 +150,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.TreeView treeView1;
+		private System.Windows.Forms.TreeView navigationTreeView;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.DataGridView companiesDefaultListDataGridView;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CompanyNameColumn;

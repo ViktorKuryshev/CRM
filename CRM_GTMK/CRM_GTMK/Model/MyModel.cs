@@ -12,6 +12,10 @@ namespace CRM_GTMK.Model
 		private Controller _controller;
 		public Company NewCompany;
 
+		public ApiClient ApiClient { get; } = new ApiClient(); 
+
+		public List<Project> CurrentProjects { get; set; }
+
 
 		public MyModel(Controller controller)
 		{

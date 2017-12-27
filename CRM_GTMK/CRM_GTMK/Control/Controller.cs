@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
+using CRM_GTMK.Visual.MainScreenPanels;
 
 namespace CRM_GTMK.Control
 {
@@ -18,8 +19,9 @@ namespace CRM_GTMK.Control
 	    {
 		    AddCompanyForm,
 			MainScreen,
-			API
-	    }
+			API,
+			AllProjectsForm
+		}
 	    private MyModel _myModel;
 	    private MyVisual _myVisual;
 
@@ -33,7 +35,7 @@ namespace CRM_GTMK.Control
 		    _myModel = myModel;
 		    _myVisual = myVisual;
 
-		    switch (TestStep.API)
+		    switch (TestStep.MainScreen)
 		    {
 				case TestStep.MainScreen:
 					ShowMainScreenDialog();
@@ -41,6 +43,9 @@ namespace CRM_GTMK.Control
 
 				case TestStep.AddCompanyForm:
 					ShowAddNewCompanyDialog();
+					break;
+				case TestStep.AllProjectsForm:
+					ShowAllProjectsForm();
 					break;
 				case TestStep.API:
 					ApiClient client = new ApiClient();
@@ -54,7 +59,12 @@ namespace CRM_GTMK.Control
 
 	    }
 
-	    public void ShowMainScreenDialog()
+		public void ShowAllProjectsForm()
+		{
+			_myVisual.ShowAllProjectsForm();
+		}
+
+		public void ShowMainScreenDialog()
 	    {
 		    _myVisual.ShowMainScreenDialog();
 	    }
@@ -65,6 +75,27 @@ namespace CRM_GTMK.Control
 		    _myVisual.ShowAddNewCompanyDialog();
 	    }
 
+		public void SetProjectsList()
+		{
+			_myModel.CurrentProjects = _myModel.ApiClient.GetCurrentProjects();
+			_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.SuspendLayout();
+			foreach(var project in _myModel.CurrentProjects)
+			{
+				
+				ProjectControls projectControls = new ProjectControls();
+				
+				projectControls.ProjectName.Text = project.name;
+
+				projectControls.ProjectDeadLine.Text = project.deadline.ToString();
+				_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.AddOneProject(projectControls);
+				
+
+			}
+			_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.ResumeLayout(false);
+			_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.PerformLayout();
+
+
+		}
 
 		public void SaveNewCompanyData()
 	    {
