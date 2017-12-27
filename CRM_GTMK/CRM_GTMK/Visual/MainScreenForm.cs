@@ -16,7 +16,7 @@ namespace CRM_GTMK.Visual
 	{
 		private Controller _controller;
 
-		public MyAllProjectsTableLayoutPanel MyAllProjectsTableLayoutPanel { get; set; }
+		public MyAllProjectsFlowLayoutPanel MyAllProjectsFlowLayoutPanel { get; set; }
 		public MyClientsPanel MyClientsPanel { get; set; }
 
 		public Panel CurrentPanel { get; set; }
@@ -44,7 +44,9 @@ namespace CRM_GTMK.Visual
 		{
 			_controller.ShowAddNewCompanyDialog();
 		}
-
+		/// <summary>
+		/// Навигация по дереву
+		/// </summary>
 		private void navigationTreeView_AfterSelect(object sender, TreeViewEventArgs e)
 		{
 			switch(e.Node.Name)
@@ -58,6 +60,10 @@ namespace CRM_GTMK.Visual
 			}
 			
 		}
+
+		/// <summary>
+		/// Переключение на панель "Компании"
+		/// </summary>
 		private void SwitchToCompaniesPanel()
 		{
 			CurrentPanel.Visible = false;
@@ -66,23 +72,29 @@ namespace CRM_GTMK.Visual
 
 		}
 
+		/// <summary>
+		/// Переключение на панель "Проекты"
+		/// </summary>
 		private void SwitchToProjectsPanel()
 		{
 			CurrentPanel.Visible = false;
 
-			if (MyAllProjectsTableLayoutPanel == null)
+			if (MyAllProjectsFlowLayoutPanel == null)
 			{
-				MyAllProjectsTableLayoutPanel = new MyAllProjectsTableLayoutPanel(this);
-				this.Controls.Add(MyAllProjectsTableLayoutPanel);
+				MyAllProjectsFlowLayoutPanel = new MyAllProjectsFlowLayoutPanel(this);
+				this.Controls.Add(MyAllProjectsFlowLayoutPanel);
 				_controller.SetProjectsList();
-				CurrentPanel = MyAllProjectsTableLayoutPanel;
+				CurrentPanel = MyAllProjectsFlowLayoutPanel;
 				CurrentPanel.Visible = true;
 			}
 			else
 			{
-				CurrentPanel = MyAllProjectsTableLayoutPanel;
+				CurrentPanel = MyAllProjectsFlowLayoutPanel;
 				CurrentPanel.Visible = true;
 			}
 		}
+			
+
+		
 	}
 }

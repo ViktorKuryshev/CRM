@@ -48,13 +48,13 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.button4 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
-			this.menuButton1 = new CRM_GTMK.Visual.ModifiedComponents.MenuButton();
 			this.button2 = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
+			this.LoadButton = new System.Windows.Forms.Button();
 			this.progressBar1 = new System.Windows.Forms.ProgressBar();
 			this.label2 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
 			this.label12 = new System.Windows.Forms.Label();
+			this.menuButton1 = new CRM_GTMK.Visual.ModifiedComponents.MenuButton();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -70,21 +70,22 @@
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 498F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 526F));
 			this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.checkBox1, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.progressBar1, 2, 0);
 			this.tableLayoutPanel1.Controls.Add(this.label2, 3, 0);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(41, 291);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(41, 238);
+			this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 4;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(743, 184);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(743, 237);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// tableLayoutPanel2
@@ -264,7 +265,7 @@
 			this.panel1.Controls.Add(this.button3);
 			this.panel1.Controls.Add(this.menuButton1);
 			this.panel1.Controls.Add(this.button2);
-			this.panel1.Controls.Add(this.button1);
+			this.panel1.Controls.Add(this.LoadButton);
 			this.panel1.Location = new System.Drawing.Point(5, 40);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(695, 29);
@@ -289,16 +290,6 @@
 			this.button3.Text = "Удалить";
 			this.button3.UseVisualStyleBackColor = true;
 			// 
-			// menuButton1
-			// 
-			this.menuButton1.Location = new System.Drawing.Point(250, 4);
-			this.menuButton1.Name = "menuButton1";
-			this.menuButton1.ShowMenuUnderCursor = true;
-			this.menuButton1.Size = new System.Drawing.Size(93, 23);
-			this.menuButton1.TabIndex = 3;
-			this.menuButton1.Text = "Скачать\r\nОригинал\r\nПеревод\r\ntmx\r\nДвуязычный Doc";
-			this.menuButton1.UseVisualStyleBackColor = true;
-			// 
 			// button2
 			// 
 			this.button2.Location = new System.Drawing.Point(85, 4);
@@ -308,14 +299,14 @@
 			this.button2.Text = "Назначить исполнителей";
 			this.button2.UseVisualStyleBackColor = true;
 			// 
-			// button1
+			// LoadButton
 			// 
-			this.button1.Location = new System.Drawing.Point(4, 4);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 0;
-			this.button1.Text = "Загрузить";
-			this.button1.UseVisualStyleBackColor = true;
+			this.LoadButton.Location = new System.Drawing.Point(4, 4);
+			this.LoadButton.Name = "LoadButton";
+			this.LoadButton.Size = new System.Drawing.Size(75, 23);
+			this.LoadButton.TabIndex = 0;
+			this.LoadButton.Text = "Загрузить";
+			this.LoadButton.UseVisualStyleBackColor = true;
 			// 
 			// progressBar1
 			// 
@@ -363,6 +354,16 @@
 			this.label12.TabIndex = 0;
 			this.label12.Text = "Название";
 			// 
+			// menuButton1
+			// 
+			this.menuButton1.Location = new System.Drawing.Point(250, 4);
+			this.menuButton1.Name = "menuButton1";
+			this.menuButton1.ShowMenuUnderCursor = true;
+			this.menuButton1.Size = new System.Drawing.Size(93, 23);
+			this.menuButton1.TabIndex = 3;
+			this.menuButton1.Text = "Скачать\r\nОригинал\r\nПеревод\r\ntmx\r\nДвуязычный Doc";
+			this.menuButton1.UseVisualStyleBackColor = true;
+			// 
 			// AllProjectsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,7 +394,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button LoadButton;
 		private ModifiedComponents.MenuButton menuButton1;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Button button3;

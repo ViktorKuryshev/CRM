@@ -85,25 +85,36 @@ namespace CRM_GTMK.Control
 			}
 			
 			
-			_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.SuspendLayout();
+			_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.SuspendLayout();
 
-			int numberOfShownProjects = 30; 
+			int numberOfShownProjects = 10; 
 			foreach (var project in _myModel.CurrentProjects)
 			{
 				
-				ProjectControls projectControls = new ProjectControls();
+				ProjectControls projectControls = new ProjectControls(_myVisual.MainScreenForm);
 				
+				//Устанавливаем контрольки для документов по проекту
+				foreach (var document in project.documents)
+				{
+					DocumentControls documentControls = new DocumentControls(_myVisual.MainScreenForm);
+					documentControls.DocumentName.Text = "**" + document.name;
+					documentControls.DocumentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204))); 
+					projectControls.AllDocuments.Add(documentControls);
+				}
+				
+				//устанавливаем контрольки для проекта
 				projectControls.ProjectName.Text = project.name;
 				
-
 				projectControls.ProjectDeadLine.Text = project.deadline.ToString();
-				_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.AddOneProject(projectControls);
+				_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.AllProjects.Add(projectControls);
 				numberOfShownProjects--;
 				if (numberOfShownProjects < 0) break;
 
 			}
-			_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.ResumeLayout(false);
-			_myVisual.MainScreenForm.MyAllProjectsTableLayoutPanel.PerformLayout();
+			//рисуем проекти и документы
+			_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.ShowProjectsList();
+			_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.ResumeLayout(false);
+			_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.PerformLayout();
 
 
 		}
