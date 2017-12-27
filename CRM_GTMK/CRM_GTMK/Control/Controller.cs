@@ -17,7 +17,8 @@ namespace CRM_GTMK.Control
 	    enum TestStep
 	    {
 		    AddCompanyForm,
-			MainScreen
+			MainScreen,
+			API
 	    }
 	    private MyModel _myModel;
 	    private MyVisual _myVisual;
@@ -32,7 +33,7 @@ namespace CRM_GTMK.Control
 		    _myModel = myModel;
 		    _myVisual = myVisual;
 
-		    switch (TestStep.AddCompanyForm)
+		    switch (TestStep.API)
 		    {
 				case TestStep.MainScreen:
 					ShowMainScreenDialog();
@@ -40,6 +41,13 @@ namespace CRM_GTMK.Control
 
 				case TestStep.AddCompanyForm:
 					ShowAddNewCompanyDialog();
+					break;
+				case TestStep.API:
+					ApiClient client = new ApiClient();
+					foreach (var project in client.GetCurrentProjects())
+					{
+						Console.WriteLine(project.name);
+							}
 					break;
 
 			}
