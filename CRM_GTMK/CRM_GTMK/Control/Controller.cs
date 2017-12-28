@@ -75,6 +75,7 @@ namespace CRM_GTMK.Control
 		    _myVisual.ShowAddNewCompanyDialog();
 	    }
 
+		//Todo - refactor - get list of projects from controller
 		public void SetProjectsList()
 		{
 			//Если список проектов пуст получаем его с сайта
@@ -111,7 +112,7 @@ namespace CRM_GTMK.Control
 				if (numberOfShownProjects < 0) break;
 
 			}
-			//рисуем проекти и документы
+			//рисуем проекты и документы
 			_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.ShowProjectsList();
 			_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.ResumeLayout(false);
 			_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.PerformLayout();

@@ -16,6 +16,7 @@ namespace CRM_GTMK.Visual
 		public AllProjectsForm AllProjectsForm { get; set; }
 
 
+
 		public MyVisual(Controller controller)
 		{
 			_controller = controller;

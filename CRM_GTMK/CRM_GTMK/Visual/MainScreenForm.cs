@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRM_GTMK.Control;
 using CRM_GTMK.Visual.MainScreenPanels;
+using System.Threading;
 
 namespace CRM_GTMK.Visual
 {
@@ -38,22 +39,42 @@ namespace CRM_GTMK.Visual
 
 			CurrentPanel = clientsPanel;
 		}
-
+		
+		/// <summary>
+		/// 
+		/// </summary>
 		public void addNewCompanyButton_Click()
 		{
 			_controller.ShowAddNewCompanyDialog();
 		}
 
+		#region NewProjectInicialize
+		/// <summary>
+		/// Создаем форму добавления проекта
+		/// </summary>
 		public void AddNewProject()
+		{
+			//Такой тане с бубнами нужен чтобы зарегистрировать DragDrop в противном случае Exception
+			Thread t = new Thread(new ThreadStart(DragDropValidating));
+			t.SetApartmentState(ApartmentState.STA);
+			t.Start();
+			
+		}
+
+		private void DragDropValidating()
 		{
 			NewProjectForm = new NewProjectForm();
 			NewProjectForm.ShowDialog();
 		}
+		#endregion
 
+		#region Unused
 		private void addNewCompanyButton_Click(object sender, EventArgs e)
 		{
 			_controller.ShowAddNewCompanyDialog();
 		}
+		#endregion
+
 		/// <summary>
 		/// Навигация по дереву
 		/// </summary>
@@ -93,7 +114,9 @@ namespace CRM_GTMK.Visual
 			{
 				MyAllProjectsFlowLayoutPanel = new MyAllProjectsFlowLayoutPanel(this);
 				this.Controls.Add(MyAllProjectsFlowLayoutPanel);
+
 				_controller.SetProjectsList();
+
 				CurrentPanel = MyAllProjectsFlowLayoutPanel;
 				CurrentPanel.Visible = true;
 			}
