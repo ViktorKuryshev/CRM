@@ -17,8 +17,10 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 		public MyAllProjectsFlowLayoutPanel(MainScreenForm form) : base()
 		{
 			_form = form;
-			
+
+			Controls.Add(new CreateNewProjectButton(form));
 			Controls.Add(new MyOneProjectTableLayoutPanel(form));
+			
 			FlowDirection = FlowDirection.TopDown;
 			Location = new System.Drawing.Point(211, 57);
 			Name = "ProjectsFlowLayoutPanel";
@@ -68,6 +70,26 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 				}
 			}
 
+		}
+	}
+
+	public class CreateNewProjectButton : Button
+	{
+		private MainScreenForm _form;
+		public CreateNewProjectButton(MainScreenForm form)
+		{
+			_form = form;
+
+			this.Text = "Создать проект";
+			this.Click += new EventHandler(CreateNewProjectButton_isClicked);
+			this.Size = new System.Drawing.Size(175, 27);
+			this.BackColor = System.Drawing.Color.Purple;
+			this.ForeColor = System.Drawing.Color.White;
+		}
+
+		private void CreateNewProjectButton_isClicked(object sender, EventArgs e)
+		{
+			_form.AddNewProject();		
 		}
 	}
 

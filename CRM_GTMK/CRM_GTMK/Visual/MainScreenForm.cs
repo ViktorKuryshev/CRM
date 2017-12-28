@@ -16,6 +16,10 @@ namespace CRM_GTMK.Visual
 	{
 		private Controller _controller;
 
+		//Формы диалогов
+		public NewProjectForm NewProjectForm { get; set; }
+
+		//Панели 
 		public MyAllProjectsFlowLayoutPanel MyAllProjectsFlowLayoutPanel { get; set; }
 		public MyClientsPanel MyClientsPanel { get; set; }
 
@@ -38,6 +42,12 @@ namespace CRM_GTMK.Visual
 		public void addNewCompanyButton_Click()
 		{
 			_controller.ShowAddNewCompanyDialog();
+		}
+
+		public void AddNewProject()
+		{
+			NewProjectForm = new NewProjectForm();
+			NewProjectForm.ShowDialog();
 		}
 
 		private void addNewCompanyButton_Click(object sender, EventArgs e)
