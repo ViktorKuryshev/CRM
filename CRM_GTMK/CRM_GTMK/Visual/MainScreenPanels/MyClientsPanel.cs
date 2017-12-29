@@ -94,7 +94,7 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 
 		private void IsClicked(object sender, EventArgs e)
 		{
-			_form.addNewCompanyButton_Click();
+			_form.ShowAddNewCompanyDialog();
 		}
 	}
 		

@@ -19,7 +19,8 @@ namespace CRM_GTMK.Visual
 
 		//Формы диалогов
 		public NewProjectForm NewProjectForm { get; set; }
-
+		public AddNewCompanyForm AddNewClientForm { get; set; }
+		
 		//Панели 
 		public MyAllProjectsFlowLayoutPanel MyAllProjectsFlowLayoutPanel { get; set; }
 		public MyClientsPanel MyClientsPanel { get; set; }
@@ -39,15 +40,18 @@ namespace CRM_GTMK.Visual
 
 			CurrentPanel = clientsPanel;
 		}
-		
+
 		/// <summary>
-		/// 
+		/// Открываем диалог добавления компании
 		/// </summary>
-		public void addNewCompanyButton_Click()
+		public void ShowAddNewCompanyDialog()
 		{
-			_controller.ShowAddNewCompanyDialog();
+			AddNewClientForm = new AddNewCompanyForm(_controller);
+			AddNewClientForm.ShowDialog();
+
 		}
 
+		
 		#region NewProjectInicialize
 		/// <summary>
 		/// Создаем форму добавления проекта
@@ -71,7 +75,7 @@ namespace CRM_GTMK.Visual
 		#region Unused
 		private void addNewCompanyButton_Click(object sender, EventArgs e)
 		{
-			_controller.ShowAddNewCompanyDialog();
+			ShowAddNewCompanyDialog();
 		}
 		#endregion
 
@@ -113,12 +117,18 @@ namespace CRM_GTMK.Visual
 			if (MyAllProjectsFlowLayoutPanel == null)
 			{
 				MyAllProjectsFlowLayoutPanel = new MyAllProjectsFlowLayoutPanel(this);
+				MyAllProjectsFlowLayoutPanel.SuspendLayout();
 				this.Controls.Add(MyAllProjectsFlowLayoutPanel);
 
-				_controller.SetProjectsList();
+				MyAllProjectsFlowLayoutPanel.AllProjects = _controller.GetProjectsList();
+
+				MyAllProjectsFlowLayoutPanel.ShowProjectsList();
 
 				CurrentPanel = MyAllProjectsFlowLayoutPanel;
 				CurrentPanel.Visible = true;
+
+				MyAllProjectsFlowLayoutPanel.ResumeLayout(false);
+				MyAllProjectsFlowLayoutPanel.PerformLayout();
 			}
 			else
 			{

@@ -30,12 +30,7 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 			WrapContents = false;
 			AutoScroll = true;
 			
-			
 			AutoScrollMinSize = new System.Drawing.Size(0, 0);
-
-
-
-
 		}
 
 		public void ShowProjectsList()
@@ -148,7 +143,6 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 
 			Visible = false;
 
-
 		}
 	}
 
@@ -169,6 +163,7 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 
 	public class ProjectControls
 	{
+		public string Id { get; set; }
 		public CheckBox ShowProjectDetails { get; set; } = new CheckBox();
 		public Label ProjectName { get; set; } = new Label();
 		public ProgressBar ProjectPogress { get; set; } = new ProgressBar();
@@ -179,12 +174,17 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 		public List<DocumentControls> AllDocuments { get; set; } = new List<DocumentControls>();
 		public List<MyOneDocumentTableLayoutPanel> DocumentPanels { get; set; } = new List<MyOneDocumentTableLayoutPanel>();
 
-		public ProjectControls(MainScreenForm form)
+		public ProjectControls(MainScreenForm form, string name, string deadline, string id)
 		{
+			Id = id;
+
 			ProjectName.AutoSize = true;
 			ProjectName.Padding = new Padding(5, 10, 0, 0);
+			ProjectName.Text = name;
 			ProjectDeadLine.AutoSize = true;
 			ProjectDeadLine.Padding = new Padding(5, 10, 0, 0);
+			ProjectDeadLine.Text = deadline;
+
 
 			LoadNewFilesButton = SetNewLoadNewFilesButton();
 			MyProjectMenuPanel.Controls.Add(LoadNewFilesButton);
@@ -229,16 +229,21 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 
 	public class DocumentControls
 	{
+		public string Id { get; set; }
 		public CheckBox DocumentSelected { get; set; } = new CheckBox();
 		public Label DocumentName { get; set; } = new Label();
 		public ProgressBar DocumentPogress { get; set; } = new ProgressBar();
 		
 
-		public DocumentControls(MainScreenForm form)
+		public DocumentControls(MainScreenForm form, string name, string id)
 		{
+			Id = id;
+
 			DocumentName.AutoSize = true;
 			DocumentName.Padding = new Padding(15, 10, 0, 0);
-
+			DocumentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			DocumentName.Text = name;
+			
 		}
 
 	}

@@ -17,7 +17,7 @@ namespace CRM_GTMK
 			// Pull request test
 
 			Controller controller = new Controller();
-			MyVisual myVisual = new MyVisual(controller);
+			MainScreenForm myVisual = new MainScreenForm(controller);
 			MyModel myModel = new MyModel(controller);
 	        controller.Start(myModel, myVisual);
         }

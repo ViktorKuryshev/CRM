@@ -185,7 +185,6 @@
     <Compile Include="Visual\ModifiedComponents\MenuButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Visual\MyVisual.cs" />
     <Compile Include="Visual\NewProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>

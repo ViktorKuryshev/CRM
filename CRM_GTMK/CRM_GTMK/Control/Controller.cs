@@ -23,18 +23,19 @@ namespace CRM_GTMK.Control
 			AllProjectsForm
 		}
 	    private MyModel _myModel;
-	    private MyVisual _myVisual;
+	    private MainScreenForm MainScreenForm;
 
 	    public Controller()
 	    {
 		    
 	    }
 
-	    public void Start(MyModel myModel, MyVisual myVisual)
+	    public void Start(MyModel myModel, MainScreenForm mainScreenForm)
 	    {
 		    _myModel = myModel;
-		    _myVisual = myVisual;
+			MainScreenForm = mainScreenForm;
 
+			//Выбираем тестовый шаг
 		    switch (TestStep.MainScreen)
 		    {
 				case TestStep.MainScreen:
@@ -42,11 +43,9 @@ namespace CRM_GTMK.Control
 					break;
 
 				case TestStep.AddCompanyForm:
-					ShowAddNewCompanyDialog();
+					MainScreenForm.ShowAddNewCompanyDialog();
 					break;
-				case TestStep.AllProjectsForm:
-					ShowAllProjectsForm();
-					break;
+				
 				case TestStep.API:
 					ApiClient client = new ApiClient();
 					foreach (var project in client.GetCurrentProjects())
@@ -59,24 +58,18 @@ namespace CRM_GTMK.Control
 
 	    }
 
-		public void ShowAllProjectsForm()
+		/// <summary>
+		/// Показываем главный экран
+		/// </summary>
+		public void ShowMainScreenDialog()
 		{
-			_myVisual.ShowAllProjectsForm();
+			MainScreenForm.ShowDialog();
 		}
 
-		public void ShowMainScreenDialog()
-	    {
-		    _myVisual.ShowMainScreenDialog();
-	    }
-
-
-		public void ShowAddNewCompanyDialog()
-	    {
-		    _myVisual.ShowAddNewCompanyDialog();
-	    }
-
-		//Todo - refactor - get list of projects from controller
-		public void SetProjectsList()
+		/// <summary>
+		/// Получаем список проектов
+		/// </summary>
+		public List<ProjectControls> GetProjectsList()
 		{
 			//Если список проектов пуст получаем его с сайта
 			if (_myModel.CurrentProjects == null)
@@ -84,40 +77,27 @@ namespace CRM_GTMK.Control
 				_myModel.CurrentProjects = _myModel.ApiClient.GetCurrentProjects();
 				_myModel.CurrentProjects.Sort();
 			}
-			
-			
-			_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.SuspendLayout();
 
-			int numberOfShownProjects = 10; 
+			int numberOfShownProjects = 10; //Сколько проектов показываем
+
+			List<ProjectControls> allProjects = new List<ProjectControls>();
+
 			foreach (var project in _myModel.CurrentProjects)
 			{
-				
-				ProjectControls projectControls = new ProjectControls(_myVisual.MainScreenForm);
-				
-				//Устанавливаем контрольки для документов по проекту
+				ProjectControls projectControls = new ProjectControls(MainScreenForm, project.name, project.deadline.ToString(), project.id);
+				allProjects.Add(projectControls);
+				//Создаем список документов
 				foreach (var document in project.documents)
 				{
-					DocumentControls documentControls = new DocumentControls(_myVisual.MainScreenForm);
-					documentControls.DocumentName.Text = "**" + document.name;
-					documentControls.DocumentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204))); 
+					DocumentControls documentControls = new DocumentControls(MainScreenForm, "**" + document.name, document.id);
 					projectControls.AllDocuments.Add(documentControls);
 				}
-				
-				//устанавливаем контрольки для проекта
-				projectControls.ProjectName.Text = project.name;
-				
-				projectControls.ProjectDeadLine.Text = project.deadline.ToString();
-				_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.AllProjects.Add(projectControls);
+	
 				numberOfShownProjects--;
 				if (numberOfShownProjects < 0) break;
 
 			}
-			//рисуем проекты и документы
-			_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.ShowProjectsList();
-			_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.ResumeLayout(false);
-			_myVisual.MainScreenForm.MyAllProjectsFlowLayoutPanel.PerformLayout();
-
-
+			return allProjects;
 		}
 
 		public void SaveNewCompanyData()
@@ -142,21 +122,21 @@ namespace CRM_GTMK.Control
 
 			//Todo Автоматически поставилась задача на проработку компании менеджеру по какойму-то принципу
 
-		    _myVisual.AddNewClientForm.Dispose();
+			MainScreenForm.AddNewClientForm.Dispose();
 		}
 
 	    private Company GetCompanyDataFromForm()
 	    {
 			Company company = new Company();
-		    company.Name = _myVisual.AddNewClientForm.NewCompanyNameTextBox.Text;
+		    company.Name = MainScreenForm.AddNewClientForm.NewCompanyNameTextBox.Text;
             GetOfficeDataFromForm(company);
             return company;
 	    }
 
         private void GetOfficeDataFromForm(Company company)
         {
-            var officeList = _myVisual
-                                .AddNewClientForm
+            var officeList = MainScreenForm
+								.AddNewClientForm
                                 .MyAllOfficesFlowLayoutPanel
                                 .MyOneOfficeContactTableLayoutPanelList;
 
