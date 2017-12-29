@@ -1,6 +1,6 @@
 ﻿namespace CRM_GTMK.Visual
 {
-	partial class AllProjectsForm
+	partial class TestFormProject
 	{
 		/// <summary>
 		/// Required designer variable.

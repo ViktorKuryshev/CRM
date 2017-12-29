@@ -143,17 +143,11 @@
     <Compile Include="Visual\AddNewClientForm.Designer.cs">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Visual\AllProjectsForm.cs">
+    <Compile Include="Visual\TestFormProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Visual\AllProjectsForm.Designer.cs">
-      <DependentUpon>AllProjectsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Visual\ClientsListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Visual\ClientsListForm.Designer.cs">
-      <DependentUpon>ClientsListForm.cs</DependentUpon>
+    <Compile Include="Visual\TestFormProject.Designer.cs">
+      <DependentUpon>TestFormProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\PhonesFlowPanel\OnePhonePanel\MyMorePhonesButton.cs">
       <SubType>Component</SubType>
@@ -200,11 +194,8 @@
     <EmbeddedResource Include="Visual\AddNewClientForm.resx">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Visual\AllProjectsForm.resx">
-      <DependentUpon>AllProjectsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Visual\ClientsListForm.resx">
-      <DependentUpon>ClientsListForm.cs</DependentUpon>
+    <EmbeddedResource Include="Visual\TestFormProject.resx">
+      <DependentUpon>TestFormProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visual\MainScreenForm.resx">
       <DependentUpon>MainScreenForm.cs</DependentUpon>

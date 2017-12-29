@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual
 {
-	public partial class AllProjectsForm : Form
+	public partial class TestFormProject : Form
 	{
-		public AllProjectsForm()
+		public TestFormProject()
 		{
 			InitializeComponent();
 			ResetControls();

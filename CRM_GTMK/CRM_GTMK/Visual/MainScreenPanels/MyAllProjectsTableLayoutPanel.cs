@@ -1,4 +1,5 @@
 ﻿using CRM_GTMK.Control;
+using CRM_GTMK.Visual.ModifiedComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -169,6 +170,7 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 		public ProgressBar ProjectPogress { get; set; } = new ProgressBar();
 		public Label ProjectDeadLine { get; set; } = new Label();
 		public Button LoadNewFilesButton { get; set; } = new Button();
+		public MenuButton GetTranslationButton { get; set; } = new MenuButton();
 		public MyProjectMenuPanel MyProjectMenuPanel { get; set; } = new MyProjectMenuPanel();
 
 		public List<DocumentControls> AllDocuments { get; set; } = new List<DocumentControls>();
@@ -188,6 +190,8 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 
 			LoadNewFilesButton = SetNewLoadNewFilesButton();
 			MyProjectMenuPanel.Controls.Add(LoadNewFilesButton);
+			GetTranslationButton = GetTranslation();
+			MyProjectMenuPanel.Controls.Add(GetTranslationButton);
 
 			ShowProjectDetails.CheckedChanged += new System.EventHandler(ShowProjectDetails_CheckedChanged);
 		}
@@ -212,12 +216,29 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 			}
 		}
 
+		private MenuButton GetTranslation()
+		{
+			MenuButton menuButton1 = new MenuButton();
+			menuButton1.Text = "Скачать";
+			menuButton1.BackColor = System.Drawing.Color.Green;
+			menuButton1.ForeColor = System.Drawing.Color.White;
+
+			menuButton1.Menu = new ContextMenuStrip();
+			menuButton1.Menu.Items.Add("Оригинал");
+			menuButton1.Menu.Items.Add("Перевод");
+			menuButton1.Menu.Items.Add("tmx");
+			menuButton1.Menu.Items.Add("Двуязычный doc");
+
+			return menuButton1;
+		}
 		private Button SetNewLoadNewFilesButton()
 		{
 			Button button = new Button();
 			button.Location = new System.Drawing.Point(4, 4);
 			button.Name = "LoadButton";
-			
+			button.BackColor = System.Drawing.Color.Green;
+			button.ForeColor = System.Drawing.Color.White;
+
 			button.Size = new System.Drawing.Size(75, 23);
 			button.TabIndex = 0;
 			button.Text = "Загрузить";
@@ -248,7 +269,7 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 
 	}
 
-	public class MyProjectMenuPanel : Panel
+	public class MyProjectMenuPanel : FlowLayoutPanel
 	{
 		public MyProjectMenuPanel()
 		{

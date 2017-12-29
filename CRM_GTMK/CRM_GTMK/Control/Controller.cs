@@ -100,6 +100,9 @@ namespace CRM_GTMK.Control
 			return allProjects;
 		}
 
+		/// <summary>
+		/// Добавляем данные по комании в базу
+		/// </summary>
 		public void SaveNewCompanyData()
 	    {
 
@@ -140,33 +143,30 @@ namespace CRM_GTMK.Control
                                 .MyAllOfficesFlowLayoutPanel
                                 .MyOneOfficeContactTableLayoutPanelList;
 
-            for (int i = 0; i < officeList.Count; i++)
-            {
-                Office newOffice = new Office();
-                newOffice.Id = i + 1;
+			for (int i = 0; i < officeList.Count; i++)
+			{
+				Office newOffice = new Office();
+				newOffice.Id = i + 1;
 
-                GetOfficeContactInfoFromForm(newOffice, i, officeList);
-                GetOfficePhonesFromForm(newOffice, i, officeList);
+				GetOfficeContactInfoFromForm(newOffice, officeList[i]);
+                GetOfficePhonesFromForm(newOffice, officeList[i]);
 
                 company.Offices.Add(newOffice);
             }
         }
 
-        private void GetOfficeContactInfoFromForm(Office office, 
-                                                  int i, 
-                                                  List<MyOneOfficeContactTableLayoutPanel> officeList)
+        private void GetOfficeContactInfoFromForm(Office office, MyOneOfficeContactTableLayoutPanel officeList)
         {
-            office.Country = officeList[i].MyOfficeContactInfoPanel.MyOfficeCountryComboBox.Text;
-            office.City = officeList[i].MyOfficeContactInfoPanel.MyOfficeCityTextBox.Text;
-            office.Address = officeList[i].MyOfficeContactInfoPanel.MyOfficeAddressTextBox.Text;
-            office.Site = officeList[i].MyOfficeContactInfoPanel.MyOfficeSiteTextBox.Text;
+            office.Country = officeList.MyOfficeContactInfoPanel.MyOfficeCountryComboBox.Text;
+            office.City = officeList.MyOfficeContactInfoPanel.MyOfficeCityTextBox.Text;
+            office.Address = officeList.MyOfficeContactInfoPanel.MyOfficeAddressTextBox.Text;
+            office.Site = officeList.MyOfficeContactInfoPanel.MyOfficeSiteTextBox.Text;
         }
 
         private void GetOfficePhonesFromForm(Office office,
-                                             int i,
-                                             List<MyOneOfficeContactTableLayoutPanel> officeList)
+											 MyOneOfficeContactTableLayoutPanel officeList)
         {
-            foreach (MyPhonePanel panel in officeList[i]
+            foreach (MyPhonePanel panel in officeList
                                 .MyPhonesFlowLayoutPanel
                                 .MyPhonePanels)
             {
