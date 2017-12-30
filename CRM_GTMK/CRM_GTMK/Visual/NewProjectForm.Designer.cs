@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.button1 = new System.Windows.Forms.Button();
+			this.selectFilesButton = new System.Windows.Forms.Button();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
@@ -46,14 +46,14 @@
 			this.flowLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragDrop);
 			this.flowLayoutPanel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragEnter);
 			// 
-			// button1
+			// selectFilesButton
 			// 
-			this.button1.Location = new System.Drawing.Point(28, 77);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(81, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "Выбрать";
-			this.button1.UseVisualStyleBackColor = true;
+			this.selectFilesButton.Location = new System.Drawing.Point(28, 77);
+			this.selectFilesButton.Name = "selectFilesButton";
+			this.selectFilesButton.Size = new System.Drawing.Size(81, 23);
+			this.selectFilesButton.TabIndex = 1;
+			this.selectFilesButton.Text = "Выбрать";
+			this.selectFilesButton.UseVisualStyleBackColor = true;
 			// 
 			// checkBox1
 			// 
@@ -71,7 +71,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(678, 394);
 			this.Controls.Add(this.checkBox1);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.selectFilesButton);
 			this.Controls.Add(this.flowLayoutPanel1);
 			this.Name = "NewProjectForm";
 			this.Text = "NewProjectForm";
@@ -83,7 +83,7 @@
 		#endregion
 
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button selectFilesButton;
 		private System.Windows.Forms.CheckBox checkBox1;
 	}
 }

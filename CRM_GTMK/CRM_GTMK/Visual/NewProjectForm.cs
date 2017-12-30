@@ -20,7 +20,69 @@ namespace CRM_GTMK.Visual
 				.WrapContents = false; //если не добавить панель расишряется вправо не зависимо от заданного направления
 			flowLayoutPanel1
 				.AutoScroll = true;
+
+			this.Controls.Remove(selectFilesButton);
+			this.Controls.Add(GetAddFilesButton());
+			this.Controls.Add(GetAddFolderButton());
+
 		}
+
+		public Button GetAddFilesButton()
+		{
+			Button button = new Button();
+			button.Location = new System.Drawing.Point(28, 77);
+			button.Name = "SelectFilesButton";
+			//button.Size = new System.Drawing.Size(81, 23);
+			button.AutoSize = true;
+			button.TabIndex = 1;
+			button.Text = "Добавить файлы";
+			button.UseVisualStyleBackColor = true;
+			button.Click += new EventHandler(AddFiles);
+
+			return button;
+		}
+
+		private void AddFiles(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			ofd.Multiselect = true;
+			if(ofd.ShowDialog() == DialogResult.OK)
+			{
+				List<string> fielNames = ofd.FileNames.ToList<string>();
+				ShowDirectoriesAndFiles(fielNames);
+				
+			}
+			
+		}
+
+		public Button GetAddFolderButton()
+		{
+			Button button = new Button();
+			button.Location = new System.Drawing.Point(28, 127);
+			button.Name = "SelectFolderButton";
+			//button.Size = new System.Drawing.Size(81, 23);
+			button.AutoSize = true;
+			button.TabIndex = 1;
+			button.Text = "Добавить папку";
+			button.UseVisualStyleBackColor = true;
+			button.Click += new EventHandler(AddFolder);
+
+			return button;
+		}
+
+		private void AddFolder(object sender, EventArgs e)
+		{
+			FolderBrowserDialog fbd = new FolderBrowserDialog();
+			
+			if (fbd.ShowDialog() == DialogResult.OK)
+			{
+				List<string> foldersAndFiles = Directory.GetFiles(fbd.SelectedPath).ToList<string>();
+				ShowDirectoriesAndFiles(foldersAndFiles);
+
+			}
+
+		}
+
 
 		private void flowLayoutPanel1_DragDrop(object sender, DragEventArgs e)
 		{

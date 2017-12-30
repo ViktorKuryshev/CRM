@@ -20,7 +20,8 @@ namespace CRM_GTMK.Control
 		    AddCompanyForm,
 			MainScreen,
 			API,
-			AllProjectsForm
+			AllProjectsForm,
+			NewProjectForm
 		}
 	    private MyModel _myModel;
 	    private MainScreenForm MainScreenForm;
@@ -36,10 +37,13 @@ namespace CRM_GTMK.Control
 			MainScreenForm = mainScreenForm;
 
 			//Выбираем тестовый шаг
-		    switch (TestStep.MainScreen)
+		    switch (TestStep.NewProjectForm)
 		    {
 				case TestStep.MainScreen:
 					ShowMainScreenDialog();
+					break;
+				case TestStep.NewProjectForm:
+					MainScreenForm.AddNewProject();
 					break;
 
 				case TestStep.AddCompanyForm:
