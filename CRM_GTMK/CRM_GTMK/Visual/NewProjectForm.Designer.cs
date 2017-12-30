@@ -32,6 +32,7 @@
 			this.selectFilesButton = new System.Windows.Forms.Button();
 			this.showFoldersCheckBox = new System.Windows.Forms.CheckBox();
 			this.showDeletedCheckBox = new System.Windows.Forms.CheckBox();
+			this.NextStepButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// flowLayoutPanel1
@@ -78,16 +79,27 @@
 			this.showDeletedCheckBox.UseVisualStyleBackColor = true;
 			this.showDeletedCheckBox.CheckedChanged += new System.EventHandler(this.showDeletedCheckBox_CheckedChanged);
 			// 
-			// NewProjectForm
+			// NextStepButton
+			// 
+			this.NextStepButton.Location = new System.Drawing.Point(28, 298);
+			this.NextStepButton.Name = "NextStepButton";
+			this.NextStepButton.Size = new System.Drawing.Size(75, 23);
+			this.NextStepButton.TabIndex = 4;
+			this.NextStepButton.Text = "Далее";
+			this.NextStepButton.UseVisualStyleBackColor = true;
+			this.NextStepButton.Click += new System.EventHandler(this.NextStepButton_Click);
+			// 
+			// newProjectForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(923, 394);
+			this.Controls.Add(this.NextStepButton);
 			this.Controls.Add(this.showDeletedCheckBox);
 			this.Controls.Add(this.showFoldersCheckBox);
 			this.Controls.Add(this.selectFilesButton);
 			this.Controls.Add(this.flowLayoutPanel1);
-			this.Name = "NewProjectForm";
+			this.Name = "newProjectForm";
 			this.Text = "NewProjectForm";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -100,5 +112,6 @@
 		private System.Windows.Forms.Button selectFilesButton;
 		private System.Windows.Forms.CheckBox showFoldersCheckBox;
 		private System.Windows.Forms.CheckBox showDeletedCheckBox;
+		private System.Windows.Forms.Button NextStepButton;
 	}
 }

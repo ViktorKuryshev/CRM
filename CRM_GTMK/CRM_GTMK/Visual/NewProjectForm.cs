@@ -13,6 +13,8 @@ namespace CRM_GTMK.Visual
 {
 	public partial class NewProjectForm : Form
 	{
+		public NewProjectSettingsForm NewProjectSettingsForm { get; set; }
+
 		public MyFilesAndFoldersFlowLayout MyFilesAndFoldersFlowLayout { get; set; }
 
 		public List<DirectoryOrFile> DirectoryOrFiles { get; set; } = new List<DirectoryOrFile>();
@@ -132,6 +134,8 @@ namespace CRM_GTMK.Visual
 		/// </summary>
 		public void DrawDirectoriesAndFiles()
 		{
+			//Убираем ранее добавленные панели, список будет выведен заново
+			MyFilesAndFoldersFlowLayout.FiledAndFolders = new List<FilesContainterPanel>();
 			//Убираем ранее выведенные панели, список будет выведен заново
 			MyFilesAndFoldersFlowLayout.Controls.Clear();
 			DrawDirectoriesAndFiles(DirectoryOrFiles);
@@ -139,6 +143,7 @@ namespace CRM_GTMK.Visual
 
 		/// <summary>
 		/// Отрисовывает список папок и файлов. Добавляет в панель ссылку на каждый элемент списка.
+		/// Добавляем панели последовательно в список. Дальше буду обрабатывать его чтобы не делать миллион рекурсий.
 		/// </summary>
 		/// <param name="DirectoryOrFiles"></param>
 		private void DrawDirectoriesAndFiles(List<DirectoryOrFile> DirectoryOrFiles)
@@ -159,7 +164,7 @@ namespace CRM_GTMK.Visual
 						fileContainerPanel.Visible = true;
 					}
 					MyFilesAndFoldersFlowLayout.Controls.Add(fileContainerPanel);
-
+					MyFilesAndFoldersFlowLayout.FiledAndFolders.Add(fileContainerPanel);
 				}
 				//Если папка то выводим ее на панель и рекурсивно вызываем метод повторно для отрисовки содержащихся
 				//в ней файлов или папок
@@ -175,6 +180,7 @@ namespace CRM_GTMK.Visual
 						fileContainerPanel.Visible = true;
 					}
 					MyFilesAndFoldersFlowLayout.Controls.Add(fileContainerPanel);
+					MyFilesAndFoldersFlowLayout.FiledAndFolders.Add(fileContainerPanel);
 					DrawDirectoriesAndFiles(directoryOrFile.DirectoryOrFiles);
 				}
 			}
@@ -188,6 +194,13 @@ namespace CRM_GTMK.Visual
 		private void showDeletedCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
 			DrawDirectoriesAndFiles();
+		}
+
+		private void NextStepButton_Click(object sender, EventArgs e)
+		{
+			NewProjectSettingsForm = new NewProjectSettingsForm(this);
+			NewProjectSettingsForm.ShowDialog();
+
 		}
 	}
 
@@ -293,6 +306,8 @@ namespace CRM_GTMK.Visual
 	public class MyFilesAndFoldersFlowLayout : FlowLayoutPanel
 	{
 		private NewProjectForm _form;
+		public List<FilesContainterPanel> FiledAndFolders { get; set; } = new List<FilesContainterPanel>();
+
 		public MyFilesAndFoldersFlowLayout(NewProjectForm form)
 		{
 			_form = form;
