@@ -30,7 +30,8 @@
 		{
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
 			this.selectFilesButton = new System.Windows.Forms.Button();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.showFoldersCheckBox = new System.Windows.Forms.CheckBox();
+			this.showDeleteCheckBox = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// flowLayoutPanel1
@@ -41,10 +42,8 @@
 			this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(173, 12);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-			this.flowLayoutPanel1.Size = new System.Drawing.Size(493, 370);
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(744, 416);
 			this.flowLayoutPanel1.TabIndex = 0;
-			this.flowLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragDrop);
-			this.flowLayoutPanel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragEnter);
 			// 
 			// selectFilesButton
 			// 
@@ -55,22 +54,39 @@
 			this.selectFilesButton.Text = "Выбрать";
 			this.selectFilesButton.UseVisualStyleBackColor = true;
 			// 
-			// checkBox1
+			// showFoldersCheckBox
 			// 
-			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point(28, 12);
-			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(122, 17);
-			this.checkBox1.TabIndex = 2;
-			this.checkBox1.Text = "Показывать папки";
-			this.checkBox1.UseVisualStyleBackColor = true;
+			this.showFoldersCheckBox.AutoSize = true;
+			this.showFoldersCheckBox.Checked = true;
+			this.showFoldersCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.showFoldersCheckBox.Location = new System.Drawing.Point(12, 21);
+			this.showFoldersCheckBox.Name = "showFoldersCheckBox";
+			this.showFoldersCheckBox.Size = new System.Drawing.Size(122, 17);
+			this.showFoldersCheckBox.TabIndex = 2;
+			this.showFoldersCheckBox.Text = "Показывать папки";
+			this.showFoldersCheckBox.UseVisualStyleBackColor = true;
+			this.showFoldersCheckBox.CheckedChanged += new System.EventHandler(this.showFoldersCheckBox_CheckedChanged);
+			// 
+			// showDeleteCheckBox
+			// 
+			this.showDeleteCheckBox.AutoSize = true;
+			this.showDeleteCheckBox.Checked = true;
+			this.showDeleteCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.showDeleteCheckBox.Location = new System.Drawing.Point(12, 45);
+			this.showDeleteCheckBox.Name = "showDeleteCheckBox";
+			this.showDeleteCheckBox.Size = new System.Drawing.Size(133, 17);
+			this.showDeleteCheckBox.TabIndex = 3;
+			this.showDeleteCheckBox.Text = "Показать удаленные";
+			this.showDeleteCheckBox.UseVisualStyleBackColor = true;
+			this.showDeleteCheckBox.CheckedChanged += new System.EventHandler(this.showDeleteCheckBox_CheckedChanged);
 			// 
 			// NewProjectForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(678, 394);
-			this.Controls.Add(this.checkBox1);
+			this.ClientSize = new System.Drawing.Size(929, 440);
+			this.Controls.Add(this.showDeleteCheckBox);
+			this.Controls.Add(this.showFoldersCheckBox);
 			this.Controls.Add(this.selectFilesButton);
 			this.Controls.Add(this.flowLayoutPanel1);
 			this.Name = "NewProjectForm";
@@ -84,6 +100,7 @@
 
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
 		private System.Windows.Forms.Button selectFilesButton;
-		private System.Windows.Forms.CheckBox checkBox1;
+		private System.Windows.Forms.CheckBox showFoldersCheckBox;
+		private System.Windows.Forms.CheckBox showDeleteCheckBox;
 	}
 }
