@@ -23,8 +23,11 @@ namespace CRM_GTMK.Control
 			AllProjectsForm,
 			NewProjectForm
 		}
+
 	    private MyModel _myModel;
 	    private MainScreenForm MainScreenForm;
+
+		private bool stepsTesting = true;
 
 	    public Controller()
 	    {
@@ -36,31 +39,37 @@ namespace CRM_GTMK.Control
 		    _myModel = myModel;
 			MainScreenForm = mainScreenForm;
 
-			//Выбираем тестовый шаг
-		    switch (TestStep.NewProjectForm)
-		    {
-				case TestStep.MainScreen:
-					ShowMainScreenDialog();
-					break;
-				case TestStep.NewProjectForm:
-					MainScreenForm.AddNewProject();
-					break;
+			//Если тестируем определенный шаг.
+			if (stepsTesting) { 
+				//Выбираем тестовый шаг
+				switch (TestStep.NewProjectForm)
+				{
+					case TestStep.MainScreen:
+						ShowMainScreenDialog();
+						break;
+					case TestStep.NewProjectForm:
+						MainScreenForm.AddNewProject();
+						break;
 
-				case TestStep.AddCompanyForm:
-					MainScreenForm.ShowAddNewCompanyDialog();
-					break;
+					case TestStep.AddCompanyForm:
+						MainScreenForm.ShowAddNewCompanyDialog();
+						break;
 				
-				case TestStep.API:
-					ApiClient client = new ApiClient();
-					foreach (var project in client.GetCurrentProjects())
-					{
-						Console.WriteLine(project.name);
-							}
-					break;
-
+					case TestStep.API:
+						ApiClient client = new ApiClient();
+						foreach (var project in client.GetCurrentProjects())
+						{
+							Console.WriteLine(project.name);
+								}
+						break;
+				}
 			}
 
-	    }
+			//Создаем окружение
+			//Todo Сформировать окружение. т.е. проверить есть ли таблицы с данными, если есть, то зарузить локальные переменные
+			//, загрузить данные из API и сравнить с таблицами, если с Данные с АПИ новее то обновить данные в базе
+
+		}
 
 		/// <summary>
 		/// Показываем главный экран
