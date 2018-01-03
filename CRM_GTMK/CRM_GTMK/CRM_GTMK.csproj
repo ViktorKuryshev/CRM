@@ -188,6 +188,12 @@
     <Compile Include="Visual\AddNewContactPersonPhoneForm.Designer.cs">
       <DependentUpon>AddNewContactPersonPhoneForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Visual\NewProjectSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visual\NewProjectSettingsForm.Designer.cs">
+      <DependentUpon>NewProjectSettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Visual\TestFormProject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Visual\AddNewContactPersonPhoneForm.resx">
       <DependentUpon>AddNewContactPersonPhoneForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visual\NewProjectSettingsForm.resx">
+      <DependentUpon>NewProjectSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visual\TestFormProject.resx">
       <DependentUpon>TestFormProject.cs</DependentUpon>
