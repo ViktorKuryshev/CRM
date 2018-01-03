@@ -204,6 +204,11 @@ namespace CRM_GTMK.Visual
 			ShowDelete = showDeleteCheckBox.Checked;
 			DrawFilesAndFolders();
 		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			new NewProjectSettingsForm().ShowDialog();
+		}
 	}
 
 	public class FileOrFolder
