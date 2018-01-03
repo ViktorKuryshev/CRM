@@ -70,6 +70,16 @@
     <Compile Include="Model\Office.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Projects.cs" />
+    <Compile Include="Model\TestApi\ApiClient.cs" />
+    <Compile Include="Model\TestApi\BilingualFileImportSetings.cs" />
+    <Compile Include="Model\TestApi\Client.cs" />
+    <Compile Include="Model\TestApi\CreateProject.cs" />
+    <Compile Include="Model\TestApi\DocumentProperties.cs" />
+    <Compile Include="Model\TestApi\EnumExtensions.cs" />
+    <Compile Include="Model\TestApi\Language.cs" />
+    <Compile Include="Model\TestApi\Tmx.cs" />
+    <Compile Include="Model\TestApi\TranslationMemory.cs" />
+    <Compile Include="Model\TestApi\WorkflowTask.cs" />
     <Compile Include="Model\TranslationMemory.cs" />
     <Compile Include="Model\XmlHelper.cs" />
     <Compile Include="StartCRM.cs" />
@@ -270,7 +280,9 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\AutoBrowser\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
