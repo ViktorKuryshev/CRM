@@ -107,7 +107,6 @@
 			this.comboBox1.Size = new System.Drawing.Size(327, 21);
 			this.comboBox1.TabIndex = 6;
 			this.comboBox1.TextUpdate += new System.EventHandler(this.comboBox1_TextUpdate);
-			this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
 			// 
 			// label4
 			// 
@@ -186,6 +185,7 @@
 			this.goBackButton.TabIndex = 16;
 			this.goBackButton.Text = "Вернуться";
 			this.goBackButton.UseVisualStyleBackColor = true;
+			this.goBackButton.Click += new System.EventHandler(this.goBackButton_Click);
 			// 
 			// goOnButton
 			// 
@@ -195,6 +195,7 @@
 			this.goOnButton.TabIndex = 17;
 			this.goOnButton.Text = "Далее";
 			this.goOnButton.UseVisualStyleBackColor = true;
+			this.goOnButton.Click += new System.EventHandler(this.goOnButton_Click);
 			// 
 			// tabPage2
 			// 

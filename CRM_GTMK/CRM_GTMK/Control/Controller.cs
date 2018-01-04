@@ -22,7 +22,8 @@ namespace CRM_GTMK.Control
 			MainScreen,
 			API,
 			AllProjectsForm,
-			NewProjectForm
+			NewProjectForm,
+			AutoBrowser
 		}
 
 		private MyModel _myModel;
@@ -55,7 +56,11 @@ namespace CRM_GTMK.Control
 					case TestStep.AddCompanyForm:
 						MainScreenForm.ShowAddNewCompanyDialog();
 						break;
-				
+
+					case TestStep.AutoBrowser:
+						new BrowserPult().ShowDialog();
+						break;
+
 					case TestStep.API:
 						ApiClient client = new ApiClient();
 						foreach (var project in client.GetCurrentProjects())

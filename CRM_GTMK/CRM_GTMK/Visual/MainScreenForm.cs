@@ -86,7 +86,7 @@ namespace CRM_GTMK.Visual
 
 		private void DragDropValidating()
 		{
-			NewProjectForm = new NewProjectForm();
+			NewProjectForm = new NewProjectForm(this);
 			NewProjectForm.ShowDialog();
 		}
 		#endregion

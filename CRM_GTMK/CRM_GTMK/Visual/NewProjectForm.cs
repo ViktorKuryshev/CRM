@@ -14,15 +14,27 @@ namespace CRM_GTMK.Visual
 	public partial class NewProjectForm : Form
 	{
 
+		public NewProjectSettingsForm NewProjectSettingsForm { get; set; }
+		public WorkFlowsForm WorkFlowsForm { get; set; }
+
+		//Древовидный список для отрисовки наполнения данными
 		public List<FileOrFolder> FilesOrFolders { get; set; } = new List<FileOrFolder>();
+		//Последовательный список для отрисовки и возврата
+		public List<FileOrFolderContainer> FilesAndFoldersPlainList { get; set; } = new List<FileOrFolderContainer>();
 
 		public MyFilesAndFoldersFlowLayout MyFilesAndFoldersFlowLayout { get; set; }
+
+
+		private MainScreenForm _form;
 
 		public bool ShowFolders { get; set; }
 		public bool ShowDelete { get; set; }
 
-		public NewProjectForm()
+		//Конструктов
+		public NewProjectForm(MainScreenForm form)
 		{
+			_form = form;
+
 			InitializeComponent();
 
 			ShowFolders = showFoldersCheckBox.Checked;
@@ -39,6 +51,7 @@ namespace CRM_GTMK.Visual
 
 		}
 
+		//Кнопка добавления файлов
 		public Button GetAddFilesButton()
 		{
 			Button button = new Button();
@@ -54,6 +67,7 @@ namespace CRM_GTMK.Visual
 			return button;
 		}
 
+		//EventHandler добавления файлов
 		private void AddFiles(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
@@ -67,6 +81,7 @@ namespace CRM_GTMK.Visual
 
 		}
 
+		//Кнопка добавления папок
 		public Button GetAddFolderButton()
 		{
 			Button button = new Button();
@@ -82,6 +97,7 @@ namespace CRM_GTMK.Visual
 			return button;
 		}
 
+		//EventHandler добавления папок
 		private void AddFolder(object sender, EventArgs e)
 		{
 			FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -102,6 +118,7 @@ namespace CRM_GTMK.Visual
 			DrawFilesAndFolders();
 		}
 
+		//Формируем дерево файлов
 		public void GenerateListOfDirectoriesAndFiles(List<string> paths, List<FileOrFolder> FilesOrFolders)
 		{
 			foreach (var path in paths)
@@ -115,12 +132,6 @@ namespace CRM_GTMK.Visual
 					file.isShown = true;
 					FilesOrFolders.Add(file);
 
-					/*
-					FileOrFolderContainer filePanel = new FileOrFolderContainer(file);
-					MyFilesAndFoldersFlowLayout.FilesAndFolders.Add(filePanel);
-					MyFilesAndFoldersFlowLayout.Controls.Add(filePanel);
-					Console.WriteLine("Это файл");
-					*/
 				}
 				else if (System.IO.Directory.Exists(path))
 				{
@@ -130,11 +141,7 @@ namespace CRM_GTMK.Visual
 					folder.isFolder = true;
 					folder.isShown = true;
 					FilesOrFolders.Add(folder);
-					/*
-					FileOrFolderContainer filePanel = new FileOrFolderContainer(folder);
-					MyFilesAndFoldersFlowLayout.FilesAndFolders.Add(filePanel);
-					MyFilesAndFoldersFlowLayout.Controls.Add(filePanel);
-					*/
+					
 					List<string> newDirectories = Directory.GetDirectories(path).ToList();
 					List<string> newFiles = Directory.GetFiles(path).ToList();
 					List<string> newPaths = new List<string>();
@@ -146,13 +153,15 @@ namespace CRM_GTMK.Visual
 			}
 		}
 
+
 		public void DrawFilesAndFolders()
 		{
 			MyFilesAndFoldersFlowLayout.Controls.Clear();
-			MyFilesAndFoldersFlowLayout.FilesAndFolders = new List<FileOrFolderContainer>();
+			FilesAndFoldersPlainList = new List<FileOrFolderContainer>();
 			DrawFilesAndFolders(FilesOrFolders);
 		}
-
+		
+		//Отрисовываем файлы и папки формируем линейный список файлов
 		public void DrawFilesAndFolders(List<FileOrFolder> filesOrFolders)
 		{
 			foreach(var fileOrFolder in filesOrFolders)
@@ -170,7 +179,7 @@ namespace CRM_GTMK.Visual
 						filePanel.Visible = true;
 					}
 						
-					MyFilesAndFoldersFlowLayout.FilesAndFolders.Add(filePanel);
+					FilesAndFoldersPlainList.Add(filePanel);
 					MyFilesAndFoldersFlowLayout.Controls.Add(filePanel);
 					
 				}
@@ -186,7 +195,7 @@ namespace CRM_GTMK.Visual
 						filePanel.Visible = true;
 					}
 					
-					MyFilesAndFoldersFlowLayout.FilesAndFolders.Add(filePanel);
+					FilesAndFoldersPlainList.Add(filePanel);
 					MyFilesAndFoldersFlowLayout.Controls.Add(filePanel);
 					DrawFilesAndFolders(fileOrFolder.FilesOrFolders);
 				}
@@ -205,10 +214,44 @@ namespace CRM_GTMK.Visual
 			DrawFilesAndFolders();
 		}
 
+		//Навигация по 3м формам
+		#region FormsNavigation
 		private void button1_Click(object sender, EventArgs e)
 		{
-			new NewProjectSettingsForm().ShowDialog();
+			this.Visible = false;
+			if (NewProjectSettingsForm == null)
+			{
+				NewProjectSettingsForm = new NewProjectSettingsForm(this);
+				NewProjectSettingsForm.ShowDialog();
+			} else
+			{
+				NewProjectSettingsForm.ShowDialog(); 
+			}
+		
 		}
+
+		public void ShowWorkflowForm()
+		{
+			NewProjectSettingsForm.Visible = false;
+			if (WorkFlowsForm == null)
+			{
+				WorkFlowsForm = new WorkFlowsForm(this);
+				WorkFlowsForm.ShowDialog();
+			} else
+			{
+				WorkFlowsForm.ShowDialog();
+			}
+		}
+
+		public void BackToProjectSettings()
+		{
+			WorkFlowsForm.Visible = false;
+			NewProjectSettingsForm.Visible = true;
+		}
+		#endregion
+
+
+
 	}
 
 	public class FileOrFolder
@@ -290,8 +333,6 @@ namespace CRM_GTMK.Visual
 	public class MyFilesAndFoldersFlowLayout : FlowLayoutPanel
 	{
 		private NewProjectForm _form;
-
-		public List<FileOrFolderContainer> FilesAndFolders { get; set; } = new List<FileOrFolderContainer>();
 
 		public MyFilesAndFoldersFlowLayout(NewProjectForm form)
 		{
