@@ -20,11 +20,11 @@ namespace CRM_GTMK.Visual
 
 		//Формы диалогов
 		public NewProjectForm NewProjectForm { get; set; }
-        public AddNewCompanyForm NewClientForm { get; set; }
-        public AddNewContactPersonForm ContactPersonForm { get; set; }
+		public AddNewCompanyForm NewClientForm { get; set; }
+		public AddNewContactPersonForm ContactPersonForm { get; set; }
 
-        //Панели 
-        public MyAllProjectsFlowLayoutPanel MyAllProjectsFlowLayoutPanel { get; set; }
+		//Панели 
+		public MyAllProjectsFlowLayoutPanel MyAllProjectsFlowLayoutPanel { get; set; }
 		public MyClientsPanel MyClientsPanel { get; set; }
 
 		public Panel CurrentPanel { get; set; }
@@ -48,34 +48,34 @@ namespace CRM_GTMK.Visual
 		/// </summary>
 		public void ShowAddNewCompanyDialog()
 		{
-            NewClientForm = new AddNewCompanyForm(_controller);
-            NewClientForm.ShowDialog();
+			NewClientForm = new AddNewCompanyForm(_controller);
+			NewClientForm.ShowDialog();
 
 		}
 
-        public void ShowAddNewContactPersonDialog(MyOneOfficeContactTableLayoutPanel panel)
-        {
-            AddNewContactPersonForm newContactPersonForm = new AddNewContactPersonForm(_controller,
-                                                            panel.MyOfficeNumberLabel.OfficeNumber,
-                                                            NewClientForm);
+		public void ShowAddNewContactPersonDialog(MyOneOfficeContactTableLayoutPanel panel)
+		{
+			AddNewContactPersonForm newContactPersonForm = new AddNewContactPersonForm(_controller,
+															panel.MyOfficeNumberLabel.OfficeNumber,
+															NewClientForm);
 
-            panel.MyContactPersonFormList.Add(newContactPersonForm);
-            newContactPersonForm.ShowDialog();
-        }
+			panel.MyContactPersonFormList.Add(newContactPersonForm);
+			newContactPersonForm.ShowDialog();
+		}
 
-        public void ShowAddNewContactPersonPhoneForm(AddNewContactPersonForm form)
-        {
-            AddNewContactPersonPhoneForm newContactPersonPhoneForm = new AddNewContactPersonPhoneForm(_controller, form);
-            form.MyContactPersonPhoneFormList.Add(newContactPersonPhoneForm);
-            newContactPersonPhoneForm.ShowDialog();
-        }
+		public void ShowAddNewContactPersonPhoneForm(AddNewContactPersonForm form)
+		{
+			AddNewContactPersonPhoneForm newContactPersonPhoneForm = new AddNewContactPersonPhoneForm(_controller, form);
+			form.MyContactPersonPhoneFormList.Add(newContactPersonPhoneForm);
+			newContactPersonPhoneForm.ShowDialog();
+		}
 
 
-        #region NewProjectInicialize
-        /// <summary>
-        /// Создаем форму добавления проекта
-        /// </summary>
-        public void AddNewProject()
+		#region NewProjectInicialize
+		/// <summary>
+		/// Создаем форму добавления проекта
+		/// </summary>
+		public void AddNewProject()
 		{
 			//Такой тане с бубнами нужен чтобы зарегистрировать DragDrop в противном случае Exception
 			Thread t = new Thread(new ThreadStart(DragDropValidating));

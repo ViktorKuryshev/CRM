@@ -1,13 +1,7 @@
 ﻿using CRM_GTMK.Control;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual
@@ -28,7 +22,7 @@ namespace CRM_GTMK.Visual
             InitializeComponent();
             phoneTypeComboBox.SelectedIndex = 0;
         }
-
+        // Сохраняем введенные данные после нажатия на кнопку "Сохранить и закрыть"
         private void savePhoneButton_Click(object sender, EventArgs e)
         {
             NewPhoneType = phoneTypeComboBox.Text;
@@ -37,7 +31,7 @@ namespace CRM_GTMK.Visual
                 return;
             if (checkPhoneTextBoxesFilledIn())
                 return;
-            if (formatPhoneNumber() == "")
+            if (checkPhoneNumberTextBoxForMaxDigits())
                 return;
 
             NewPhoneNumber = formatPhoneNumber();
@@ -46,7 +40,12 @@ namespace CRM_GTMK.Visual
             this.Dispose();
         }
 
+        /// <summary>
+        /// Методы, предназначенные для проверки ввода номера телефона
+        /// </summary>
         #region Checkers
+
+        // Проверка отсутствия букв
         private bool checkPhoneTextBoxesWithoutLetters()
         {
             if (phoneCountryCodeTextBox.Text.Any(char.IsLetter) ||
@@ -59,7 +58,7 @@ namespace CRM_GTMK.Visual
             }
             return false;
         }
-
+        // Проверка наличия ввода
         private bool checkPhoneTextBoxesFilledIn()
         {
             if (!phoneCountryCodeTextBox.Text.Any(char.IsDigit) ||
@@ -71,23 +70,29 @@ namespace CRM_GTMK.Visual
             }
             return false;
         }
-        #endregion
-        
-        private string formatPhoneNumber() // Check the case when all the digits put in are 0.
+
+        // Проверка максимального количества введенных цифр в поле phoneNumberTextBox (должно быть не более 10 цифр)
+        private bool checkPhoneNumberTextBoxForMaxDigits()
         {
-            try
+            if(phoneNumberTextBox.Text.Length >= 11)
             {
-                string phoneNumber = phoneCountryCodeTextBox.Text + " (" +
-                                     phoneCityCodeTextBox.Text + ") " +
-                                     string.Format("{0:###-##-##}", 
-                                     Int32.Parse(phoneNumberTextBox.Text));
-                return phoneNumber;
+                MessageBox.Show("Номер телефона должен содержать не более 10 цифр.");
+                return true;
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Номер телефона должен содержать от 1 до 10 цифр.");
-                return "";
-            }
+            return false;
+        }
+        #endregion
+
+        // Форматируем введенный номер телефона в виде +1 (234) 567-89-00
+        private string formatPhoneNumber()
+        {
+            string phoneNumber = Regex.Replace(phoneNumberTextBox.Text, @"(\d{3})(\d{2})(\d{2})", "$1-$2-$3");
+
+            phoneNumber = phoneCountryCodeTextBox.Text + " (" +
+                             phoneCityCodeTextBox.Text + ") " +
+                             phoneNumber;
+
+            return phoneNumber;
         }
     }
 }
