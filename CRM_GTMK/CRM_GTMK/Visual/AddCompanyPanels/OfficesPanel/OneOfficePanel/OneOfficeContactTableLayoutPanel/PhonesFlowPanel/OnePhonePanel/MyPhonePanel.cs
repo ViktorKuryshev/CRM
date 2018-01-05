@@ -1,13 +1,13 @@
 ﻿using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using System.Windows.Forms;
 
-namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel
+namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel
 {
 	public class MyPhonePanel : Panel
 	{
 		public MyPhoneTextBox MyPhoneTextBox { get; set; }
 
-		public MyPhonePanel(AddNewCompanyForm form, MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
+        public MyPhonePanel(AddNewCompanyForm form, MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
 		{
 			Panel phonesPanel = form.GetPhonePanel();
 
@@ -20,7 +20,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 			
 			MyPhoneTextBox = new MyPhoneTextBox(form);
 			MyMorePhonesButton myMorePhonesButton = new MyMorePhonesButton(form, myOneOfficeContactTableLayoutPanel);
-			MyPhoneLabel myPhoneLabel = new MyPhoneLabel(form);
+            MyPhoneLabel myPhoneLabel = new MyPhoneLabel(form);
 
 			Controls.Add(myMorePhonesButton);
 			Controls.Add(MyPhoneTextBox);

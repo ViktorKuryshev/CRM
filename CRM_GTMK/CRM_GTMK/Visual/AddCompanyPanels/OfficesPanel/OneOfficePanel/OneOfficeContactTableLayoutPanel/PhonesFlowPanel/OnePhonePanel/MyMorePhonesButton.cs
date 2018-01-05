@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel
+namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel
 {
 	public class MyMorePhonesButton : Button
 	{
@@ -22,7 +22,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralCo
 			Text = morePhonesButton.Text;
 			UseVisualStyleBackColor = morePhonesButton.UseVisualStyleBackColor;
 
-			Click += new System.EventHandler(IsClicked);
+			Click += new EventHandler(IsClicked);
 		}
 
 		public void IsClicked(object sender, EventArgs e)

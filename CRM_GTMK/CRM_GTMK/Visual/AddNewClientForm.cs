@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRM_GTMK.Control;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.GeneralContactInfoPanel.PhonesFlowPanel.OnePhonePanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.ContactPersonTablePanel.OneContactPersonTablePanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
+using System.Collections.Generic;
 
 namespace CRM_GTMK.Visual
 {
-	public partial class AddNewCompanyForm : Form
+    public partial class AddNewCompanyForm : Form
 	{
 		private Controller _controller;
 
@@ -22,11 +18,11 @@ namespace CRM_GTMK.Visual
         public int OfficeNumber { get; set; }
         public TextBox NewCompanyNameTextBox;
 
-		public AddNewCompanyForm(Controller controller)
+        public AddNewCompanyForm(Controller controller)
 		{
 			_controller = controller;
 			InitializeComponent();
-			ResetForms();
+			resetForms();
 		}
 
 		#region Getters
@@ -123,17 +119,17 @@ namespace CRM_GTMK.Visual
 
         public LinkLabel GetContactPersonLinkLabel()
         {
-            return contactPersonLinkLabel;
+            return contactPersonFullnameLinkLabel;
         }
 
-        public Label GetContactPersonLabel1()
+        public Label GetContactPersonPositionLabel()
         {
-            return contactPersonLabel1;
+            return contactPersonPositionLabel;
         }
 
-        public Label GetContactPersonLabel2()
+        public Label GetContactPersonPhoneLabel()
         {
-            return contactPersonLabel2;
+            return contactPersonPhoneLabel;
         }
 
 		public Panel GetNewCompanyActionMenuPanel()
@@ -161,9 +157,14 @@ namespace CRM_GTMK.Visual
             return officeNumberLabel;
         }
 
+        public Label GetFullnameLabel()
+        {
+            return fullnameLabel;
+        }
+
         #endregion
 
-        private void ResetForms()
+        private void resetForms()
 		{
             this.Controls.Remove(allOfficesFlowLayoutPanel);
 
@@ -173,23 +174,6 @@ namespace CRM_GTMK.Visual
             MyAllOfficesFlowLayoutPanel = myAllOfficesFlowLayoutPanel;
 		}
 
-		private void CompanyActivityLabel_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void AddNewClientForm_Load(object sender, EventArgs e)
-		{
-
-		}
-
-        private void button1_Click(object sender, EventArgs e)
-		{
-			NewCompanyNameTextBox = companyNameTextBox;
-		    _controller.SaveNewCompanyData();
-			
-		}
-
         public void AddClientDataButton_Click()
         {
             NewCompanyNameTextBox = companyNameTextBox;
@@ -197,24 +181,18 @@ namespace CRM_GTMK.Visual
             this.Dispose();
         }
 
-        // Здесь заменил метод CreateNewPhonePanel() на создание объекта типа MyPhonePanel.
-  //      private void MorePhonesButton_Click(object sender, EventArgs e)
-		//{
-		//	phonesFlowLayoutPanel.Controls.Add(new MyPhonePanel(this, _myOneOfficeContactTableLayoutPanel));
-		//}
-
         public void AddOneMorePhonePanel(MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
         {
             myOneOfficeContactTableLayoutPanel
-                .MyPhonesFlowLayoutPanel
-                .Add(new MyPhonePanel(this, myOneOfficeContactTableLayoutPanel));
+           .MyPhonesFlowLayoutPanel
+           .Add(new MyPhonePanel(this, myOneOfficeContactTableLayoutPanel));
         }
 
         private void addOfficeButton_Click(object sender, EventArgs e)
         {
             OfficeNumber++;
             MyAllOfficesFlowLayoutPanel.Controls.Remove(MyAllOfficesFlowLayoutPanel
-                                                            .MyNewCompanyActionMenuPanel);
+                                                       .MyNewCompanyActionMenuPanel);
 
             MyOneOfficeContactTableLayoutPanel tableLayoutPanel = new MyOneOfficeContactTableLayoutPanel(this);
 
@@ -222,81 +200,32 @@ namespace CRM_GTMK.Visual
 
             MyAllOfficesFlowLayoutPanel.Controls.Add(tableLayoutPanel);
             MyAllOfficesFlowLayoutPanel.Controls.Add(MyAllOfficesFlowLayoutPanel
-                                                         .MyNewCompanyActionMenuPanel);
+                                                    .MyNewCompanyActionMenuPanel);
         }
 
-        private void PhonePanel_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
-        /*
-		private Panel CreateNewPhonePanel()
-		{
-			Panel PhonePanel = new Panel();
-			PhonePanel.Controls.Add(CreateNewMorePhonesButton());
-		    PhonePanel.Controls.Add(CreateNewPhoneTextBox());
-		    PhonePanel.Controls.Add(CreatePhoneLabel());
-		    PhonePanel.Location = new System.Drawing.Point(3, 3);
-		    PhonePanel.Name = "PhonePanel";
-		    PhonePanel.Size = new System.Drawing.Size(254, 51);
-		    PhonePanel.TabIndex = 9;
-		    PhonePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PhonePanel_Paint);
-			return PhonePanel;
-		}
-		
-		private Label CreatePhoneLabel()
-		{
-			Label PhoneLabel = new Label();
-			PhoneLabel.AutoSize = true;
-			PhoneLabel.Location = new System.Drawing.Point(5, 18);
-			PhoneLabel.Name = "PhoneLabel";
-			PhoneLabel.Size = new System.Drawing.Size(29, 13);
-			PhoneLabel.TabIndex = 6;
-			PhoneLabel.Text = "Тел:";
-			return PhoneLabel;
-		}
-		
-		// 
-		// PhoneTextBox
-		// 
-		private TextBox CreateNewPhoneTextBox()
-		{
-			TextBox NewPhoneTextBox = new TextBox();
-
-			NewPhoneTextBox.Location = new System.Drawing.Point(61, 15);
-			NewPhoneTextBox.Name = "PhoneTextBox";
-			NewPhoneTextBox.Size = new System.Drawing.Size(100, 20);
-			NewPhoneTextBox.TabIndex = 7;
-			return NewPhoneTextBox;
-		}
-
-		private Button CreateNewMorePhonesButton()
-		{
-			Button NewMorePhonesButton = new Button();
-			NewMorePhonesButton.Location = new System.Drawing.Point(187, 12);
-			NewMorePhonesButton.Name = "MorePhonesButton";
-			NewMorePhonesButton.Size = new System.Drawing.Size(47, 23);
-			NewMorePhonesButton.TabIndex = 8;
-			NewMorePhonesButton.Text = "Ещё";
-			NewMorePhonesButton.UseVisualStyleBackColor = true;
-			NewMorePhonesButton.Click += new System.EventHandler(this.MorePhonesButton_Click);
-			return NewMorePhonesButton;
-		}
-        */
-		private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
-        //private void oneOfficeContactTableLayoutPanel_Paint(object sender, PaintEventArgs e)
-        //{
-
-        //}
-
-        private void allOfficesFlowLayoutPanel_Paint(object sender, PaintEventArgs e)
+        public void AddNewContactPerson(MyOneOfficeContactTableLayoutPanel panel)
         {
+            _controller.ShowAddNewContactPersonDialog(panel);
+        }
 
+        public void AddAndDisplayNewContactPerson(AddNewContactPersonForm form, int officeNumber)
+        {
+            MyContactPersonFullnameLinkLabel contactPersonFullnameLinkLabel = new MyContactPersonFullnameLinkLabel(this);
+            contactPersonFullnameLinkLabel.Text = form.NameContactPerson;
+            MyContactPersonPositionLabel contactPersonPositionLabel = new MyContactPersonPositionLabel(this);
+            contactPersonPositionLabel.Text = form.PositionContactPerson;
+            MyContactPersonPhoneLabel contactPersonPhoneLabel = new MyContactPersonPhoneLabel(this);
+
+            // Здесь нужно определить, какой номер телефона выводить в таблицу.
+            contactPersonPhoneLabel.Text = form.MyContactPersonPhoneFormList[0].NewPhoneNumber;
+
+            var myContactPersonTableLayoutPanel = MyAllOfficesFlowLayoutPanel
+                                                 .MyOneOfficeContactTableLayoutPanelList[officeNumber]
+                                                 .MyContactPersonTableLayoutPanel;
+
+            myContactPersonTableLayoutPanel.Controls.Add(contactPersonFullnameLinkLabel);
+            myContactPersonTableLayoutPanel.Controls.Add(contactPersonPositionLabel);
+            myContactPersonTableLayoutPanel.Controls.Add(contactPersonPhoneLabel);
         }
     }
 }
