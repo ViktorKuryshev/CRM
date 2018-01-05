@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CRM_GTMK.Model
 {
-	public class LocalValues
+	public static class LocalValues
 	{
 
-		public List<Project> CurrentProjects { get; set; } 
-		public Project focusedProject { get; set; }
-		public Company focusedCompany { get; set; }
+		public static List<Project> CurrentProjects { get; set; } 
+		public static Project focusedProject { get; set; }
+		public static Company focusedCompany { get; set; }
 	}
 }

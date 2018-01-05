@@ -15,12 +15,12 @@ namespace CRM_GTMK.Visual
 	{
 		private NewProjectForm _form;
 		
-		public string ProjectName { get { return projectNameTextBox.Text; } set { projectNameTextBox.Text = value; } }
+		public string ProjectName { get { return projectNameTextBox.Text; } }
 		
-		public DateTimePicker ProjectDeadline { get; set; }
-		public ComboBox ClientName { get; set; }
-		public ComboBox SourceLanguage { get; set; }
-		public ComboBox TargetLanguage { get; set; }
+		public DateTime ProjectDeadline { get { return deadLineDate.Value; } }
+		public string ClientName { get { return clientNameBox.Text; } }
+		public string SourceLanguage { get { return sourceLanguageBox.Text; } }
+		public string TargetLanguage { get { return targetLanguageBox.Text; } }
 
 		private List<string> clientsList = new List<string>()
 		{
@@ -60,7 +60,7 @@ namespace CRM_GTMK.Visual
 
 			sourceLanguageBox.DataSource = sLangsList;
 			targetLanguageBox.DataSource = tLangsList;
-		
+			
 			
 	
 		}
