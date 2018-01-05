@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Testing_Async_and_Await;
 
 namespace StudyCollections
 {
@@ -17,6 +15,8 @@ namespace StudyCollections
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new HashSet.Form1());
+			CountCharactersInFile newWindow = new CountCharactersInFile();
+			newWindow.ShowDialog();
 		}
 	}
 }
