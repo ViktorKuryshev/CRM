@@ -33,14 +33,14 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.deadLineDate = new System.Windows.Forms.DateTimePicker();
 			this.label3 = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.clientNameBox = new System.Windows.Forms.ComboBox();
 			this.label4 = new System.Windows.Forms.Label();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
+			this.sourceLanguageBox = new System.Windows.Forms.ComboBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.label5 = new System.Windows.Forms.Label();
-			this.comboBox3 = new System.Windows.Forms.ComboBox();
+			this.targetLanguageBox = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.commentBox = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.goBackButton = new System.Windows.Forms.Button();
 			this.goOnButton = new System.Windows.Forms.Button();
@@ -99,14 +99,14 @@
 			this.label3.TabIndex = 5;
 			this.label3.Text = "Клиент";
 			// 
-			// comboBox1
+			// clientNameBox
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(64, 124);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(327, 21);
-			this.comboBox1.TabIndex = 6;
-			this.comboBox1.TextUpdate += new System.EventHandler(this.comboBox1_TextUpdate);
+			this.clientNameBox.FormattingEnabled = true;
+			this.clientNameBox.Location = new System.Drawing.Point(64, 124);
+			this.clientNameBox.Name = "clientNameBox";
+			this.clientNameBox.Size = new System.Drawing.Size(327, 21);
+			this.clientNameBox.TabIndex = 6;
+			this.clientNameBox.TextUpdate += new System.EventHandler(this.comboBox1_TextUpdate);
 			// 
 			// label4
 			// 
@@ -117,13 +117,13 @@
 			this.label4.TabIndex = 7;
 			this.label4.Text = "Язык оригинала";
 			// 
-			// comboBox2
+			// sourceLanguageBox
 			// 
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(64, 187);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(166, 21);
-			this.comboBox2.TabIndex = 8;
+			this.sourceLanguageBox.FormattingEnabled = true;
+			this.sourceLanguageBox.Location = new System.Drawing.Point(64, 187);
+			this.sourceLanguageBox.Name = "sourceLanguageBox";
+			this.sourceLanguageBox.Size = new System.Drawing.Size(166, 21);
+			this.sourceLanguageBox.TabIndex = 8;
 			// 
 			// button1
 			// 
@@ -143,13 +143,13 @@
 			this.label5.TabIndex = 10;
 			this.label5.Text = "Язык перевода";
 			// 
-			// comboBox3
+			// targetLanguageBox
 			// 
-			this.comboBox3.FormattingEnabled = true;
-			this.comboBox3.Location = new System.Drawing.Point(342, 187);
-			this.comboBox3.Name = "comboBox3";
-			this.comboBox3.Size = new System.Drawing.Size(335, 21);
-			this.comboBox3.TabIndex = 11;
+			this.targetLanguageBox.FormattingEnabled = true;
+			this.targetLanguageBox.Location = new System.Drawing.Point(342, 187);
+			this.targetLanguageBox.Name = "targetLanguageBox";
+			this.targetLanguageBox.Size = new System.Drawing.Size(335, 21);
+			this.targetLanguageBox.TabIndex = 11;
 			// 
 			// label6
 			// 
@@ -160,13 +160,13 @@
 			this.label6.TabIndex = 12;
 			this.label6.Text = "Комментарий";
 			// 
-			// textBox2
+			// commentBox
 			// 
-			this.textBox2.Location = new System.Drawing.Point(67, 257);
-			this.textBox2.Multiline = true;
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(610, 49);
-			this.textBox2.TabIndex = 13;
+			this.commentBox.Location = new System.Drawing.Point(67, 257);
+			this.commentBox.Multiline = true;
+			this.commentBox.Name = "commentBox";
+			this.commentBox.Size = new System.Drawing.Size(610, 49);
+			this.commentBox.TabIndex = 13;
 			// 
 			// label7
 			// 
@@ -271,14 +271,14 @@
 			this.Controls.Add(this.goBackButton);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.tabControl1);
-			this.Controls.Add(this.textBox2);
+			this.Controls.Add(this.commentBox);
 			this.Controls.Add(this.label6);
-			this.Controls.Add(this.comboBox3);
+			this.Controls.Add(this.targetLanguageBox);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.button1);
-			this.Controls.Add(this.comboBox2);
+			this.Controls.Add(this.sourceLanguageBox);
 			this.Controls.Add(this.label4);
-			this.Controls.Add(this.comboBox1);
+			this.Controls.Add(this.clientNameBox);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.deadLineDate);
 			this.Controls.Add(this.label2);
@@ -301,14 +301,14 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.DateTimePicker deadLineDate;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox clientNameBox;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.ComboBox comboBox2;
+		private System.Windows.Forms.ComboBox sourceLanguageBox;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.ComboBox comboBox3;
+		private System.Windows.Forms.ComboBox targetLanguageBox;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox commentBox;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Button goBackButton;
 		private System.Windows.Forms.Button goOnButton;

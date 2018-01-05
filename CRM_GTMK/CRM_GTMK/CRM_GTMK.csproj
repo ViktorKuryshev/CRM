@@ -84,10 +84,11 @@
     <Compile Include="Model\DataBase\XMLDBSimulator.cs" />
     <Compile Include="Model\Freelancer.cs" />
     <Compile Include="Model\FreelancerSearchParameters.cs" />
+    <Compile Include="Model\LocalValues.cs" />
     <Compile Include="Model\MyModel.cs" />
     <Compile Include="Model\Office.cs" />
     <Compile Include="Model\Person.cs" />
-    <Compile Include="Model\Projects.cs" />
+    <Compile Include="Model\Project.cs" />
     <Compile Include="Model\TestApi\ApiClient.cs" />
     <Compile Include="Model\TestApi\BilingualFileImportSetings.cs" />
     <Compile Include="Model\TestApi\Client.cs" />

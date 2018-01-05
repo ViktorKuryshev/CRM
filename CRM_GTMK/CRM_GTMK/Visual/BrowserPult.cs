@@ -32,8 +32,21 @@ namespace CRM_GTMK.Visual
 
 		private void loginButton_Click(object sender, EventArgs e)
 		{
+			AsyncStartBrousing();
+		}
+
+		private async void AsyncStartBrousing()
+		{
+			Task task = new Task(StartBrousing);
+			task.Start();
+			await task;
+		}
+
+		private void StartBrousing()
+		{
 			driver = new ChromeDriver();
 			driver.Navigate().GoToUrl("https://smartcat.ai/sign-in?");
+			Thread.Sleep(5000);
 			driver.Close();
 		}
 	}

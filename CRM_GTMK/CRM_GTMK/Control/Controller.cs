@@ -44,7 +44,7 @@ namespace CRM_GTMK.Control
 			//Если тестируем определенный шаг.
 			if (stepsTesting) { 
 				//Выбираем тестовый шаг
-				switch (TestStep.NewProjectForm)
+				switch (TestStep.AutoBrowser)
 				{
 					case TestStep.MainScreen:
 						ShowMainScreenDialog();

@@ -18,7 +18,7 @@ namespace CRM_GTMK.Visual
 		public WorkFlowsForm WorkFlowsForm { get; set; }
 
 		//Древовидный список для отрисовки наполнения данными
-		public List<FileOrFolder> FilesOrFolders { get; set; } = new List<FileOrFolder>();
+		private List<FileOrFolder> FilesOrFolders { get; set; } = new List<FileOrFolder>();
 		//Последовательный список для отрисовки и возврата
 		public List<FileOrFolderContainer> FilesAndFoldersPlainList { get; set; } = new List<FileOrFolderContainer>();
 
