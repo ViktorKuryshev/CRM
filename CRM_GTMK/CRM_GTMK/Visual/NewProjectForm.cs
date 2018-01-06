@@ -19,10 +19,23 @@ namespace CRM_GTMK.Visual
 		public WorkFlowsForm WorkFlowsForm { get; set; }
 
 		//Древовидный список для отрисовки наполнения данными
-		private List<FileOrFolder> FilesOrFolders { get; set; } = new List<FileOrFolder>();
+		public List<FileOrFolder> FilesOrFolders { get; set; } = new List<FileOrFolder>();
 		//Последовательный список для отрисовки и возврата
 		public List<FileOrFolderContainer> FilesAndFoldersPlainList { get; set; } = new List<FileOrFolderContainer>();
 		
+		public string[] FilesPaths { get
+			{
+				List<string> result = new List<string>();
+				foreach(var container in FilesAndFoldersPlainList)
+				{
+					if(!container.FileOrFolder.isFolder && container.FileOrFolder.isShown)
+					{
+						result.Add(container.FileOrFolder.Path);
+					}
+				}
+				return result.ToArray();
+			} }
+
 		public MyFilesAndFoldersFlowLayout MyFilesAndFoldersFlowLayout { get; set; }
 
 
@@ -253,7 +266,11 @@ namespace CRM_GTMK.Visual
 
 		public void SetProjectData()
 		{
-			
+			LocalValues.DocumentsPaths = new string[FilesPaths.Count()] ;
+			LocalValues.DocumentsPaths = FilesPaths;
+			LocalValues.FocusedProject = new Model.TestApi.CreateProject();
+			LocalValues.FocusedProject.Name = NewProjectSettingsForm.ProjectName;
+			_form.SendNewProject();
 		}
 
 

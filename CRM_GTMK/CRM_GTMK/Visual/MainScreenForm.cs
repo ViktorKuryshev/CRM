@@ -70,6 +70,10 @@ namespace CRM_GTMK.Visual
 			newContactPersonPhoneForm.ShowDialog();
 		}
 
+		public void SendNewProject()
+		{
+			_controller.SendNewProject();
+		}
 
 		#region NewProjectInicialize
 		/// <summary>

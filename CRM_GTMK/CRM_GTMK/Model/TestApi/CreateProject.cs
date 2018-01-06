@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace CRM_GTMK.Model.TestApi
 {
-	class CreateProject
+	public class CreateProject
 	{
 		[JsonProperty("id")]
 		public string Id { get; set; }
@@ -78,7 +78,7 @@ namespace CRM_GTMK.Model.TestApi
 			Id = id;
 			Name =  name;
 			Description = description;
-			SourceLanguage =  sourceLanguage;
+			SourceLanguage =  sourceLanguage ?? Language.English.Description();
 			TargetLanguages = targetLanguages ?? new[] { Language.Russian.Description() }; 
 		}
 	}

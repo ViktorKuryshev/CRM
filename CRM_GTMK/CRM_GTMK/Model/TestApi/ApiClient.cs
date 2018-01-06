@@ -14,8 +14,8 @@ namespace CRM_GTMK.Model.TestApi
 {
 	public class ApiClient
 	{
-		private const string accountId = "a86b2ca9-1e91-4658-b77b-44ec2b2333a7";
-		private const string ApiKey = "2_8Zt4FYNBGjZjkYeJgCBpM19Uk";
+		private const string accountId = "6b3b9c8f-55e7-486c-975b-21bcfef6ef5c";
+		private const string ApiKey = "3_QievMUh2JUpi6ET29bz308qTF";
 
 		public static string ProjectsListUrl { get; private set; } = "https://smartcat.ai/api/integration/v1/project/list";
 
@@ -30,8 +30,8 @@ namespace CRM_GTMK.Model.TestApi
 
 		public string GetAssignableExecutives()
 		{
-			var authorizationValue = takeKey(AuthorizationValues);
-			var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(authorizationValue));
+			
+			var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(AuthorizationValue));
 
 			var client = new RestClient(Url);
 			var request = new RestRequest(get_assignable_executives, Method.GET);
@@ -43,19 +43,18 @@ namespace CRM_GTMK.Model.TestApi
 
 			Console.WriteLine("Содержимое ответа от сервера: {0}", content);
 
-			returnKey(AuthorizationValues, authorizationValue);
-
+			
 			return content;
 		}
 
-		public string CreateProject(string[] filePaths = null)
+		public string CreateProject(string[] filePaths = null, CreateProject project = null)
 		{
-			var project = new CreateProject();
+			CreateProject newProject = project ?? new CreateProject();
 
 			Console.WriteLine("Имя проекта: {0}", project.Name);
 
-			var authorizationValue = takeKey(AuthorizationValues);
-			var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(authorizationValue));
+
+			var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(AuthorizationValue));
 
 			var client = new RestClient(Url);
 			var request = new RestRequest(post_project_create_url, Method.POST);
@@ -79,9 +78,7 @@ namespace CRM_GTMK.Model.TestApi
 
 			Console.WriteLine("Содержимое ответа от сервера: {0}", content);
 
-			returnKey(AuthorizationValues, authorizationValue);
-
-			return project.Name;
+			return content;
 		}
 
 		public string CreateTm(string tmxFilePath = null, bool replaceAllContent = true)
@@ -124,8 +121,8 @@ namespace CRM_GTMK.Model.TestApi
 
 			Console.WriteLine("Имя клиента: {0}", catClient.Name);
 
-			var authorizationValue = takeKey(AuthorizationValues);
-			var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(authorizationValue));
+			
+			var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(AuthorizationValue));
 
 			var client = new RestClient(Url);
 			var request = new RestRequest(post_client_url, Method.POST);
@@ -140,15 +137,14 @@ namespace CRM_GTMK.Model.TestApi
 
 			catClient.Id = content.Replace("\"", "");
 
-			returnKey(AuthorizationValues, authorizationValue);
-
+			
 			return catClient;
 		}
 
 		private HttpWebRequest createRequest(string url, HttpMethods method, object obj)
 		{
-			var authorizationValue = takeKey(AuthorizationValues);
-			var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(authorizationValue));
+			
+			var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(AuthorizationValue));
 			var request = (HttpWebRequest)WebRequest.Create(url);
 			Console.WriteLine("{0} запрос отправлен на адрес {1}", method, url);
 			var jsonString = JsonConvert.SerializeObject(obj, Formatting.None,
@@ -166,15 +162,14 @@ namespace CRM_GTMK.Model.TestApi
 			dataStream.Close();
 			dataStream.Dispose();
 
-			returnKey(AuthorizationValues, authorizationValue);
-
+			
 			return request;
 		}
 
 		private void httpUploadFile(string url, string filePath)
 		{
-			var authorizationValue = takeKey(AuthorizationValues);
-			var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(authorizationValue));
+			
+			var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(AuthorizationValue));
 
 			using (WebClient client = new WebClient())
 			{
@@ -183,7 +178,7 @@ namespace CRM_GTMK.Model.TestApi
 				client.Dispose();
 			}
 
-			returnKey(AuthorizationValues, authorizationValue);
+			
 		}
 
 		private string takeKey(ConcurrentBag<string> keys)
@@ -229,7 +224,7 @@ namespace CRM_GTMK.Model.TestApi
 		private static readonly string post_project_create_url = "/api/integration/v1/project/create";
 		private static readonly string get_assignable_executives = "/api/integration/v1/account/assignableExecutives";
 
-		public static ConcurrentBag<string> AuthorizationValues { get; set; } = new ConcurrentBag<string>();
+		
 
 		private enum HttpMethods
 		{

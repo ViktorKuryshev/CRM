@@ -2,7 +2,7 @@
 
 namespace CRM_GTMK.Model.TestApi
 {
-	class BilingualFileImportSetings
+	public class BilingualFileImportSetings
 	{
 		[JsonProperty("targetSubstitutionMode")]
 		public string TargetSubstitutionMode { get; set; }

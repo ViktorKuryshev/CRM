@@ -2,7 +2,7 @@
 
 namespace CRM_GTMK.Model.TestApi
 {
-	class DocumentProperties
+	public class DocumentProperties
 	{
 		[JsonProperty("externalId")]
 		public string ExternalId { get; set; }

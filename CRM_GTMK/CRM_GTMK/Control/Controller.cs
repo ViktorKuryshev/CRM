@@ -10,6 +10,8 @@ using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeCont
 using CRM_GTMK.Visual.MainScreenPanels;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
+using CRM_GTMK.Model.TestApi;
+using Newtonsoft.Json;
 
 namespace CRM_GTMK.Control
 {
@@ -68,13 +70,13 @@ namespace CRM_GTMK.Control
 						new BrowserPult().ShowDialog();
 						break;
 
-					case TestStep.API:
-						ApiClient client = new ApiClient();
-						foreach (var project in client.GetCurrentProjects())
-						{
-							Console.WriteLine(project.name);
-								}
-						break;
+					//case TestStep.API:
+					//	ApiClient client = new ApiClient();
+					//	foreach (var project in client.GetCurrentProjects())
+					//	{
+					//		Console.WriteLine(project.name);
+					//			}
+					//	break;
 				}
 			}
 
@@ -85,11 +87,16 @@ namespace CRM_GTMK.Control
 		#region SettingGlobals
 		private void SetLocalValues()
 		{
+
+			//Model.TestApi.ApiClient client = new Model.TestApi.ApiClient();
+			//MessageBox.Show(client.CreateProject(LocalValues.DocumentsPaths, LocalValues.FocusedProject));
 			//Todo если файл с данными существует, сделать десериализацию, учитывая то что статический файл не получится серриализовать
 			//Думаю можно передавать его поля в такой же только не статический класс а при дессиреализации возвращать поля в статический
 			LocalValues.CurrentProjects = new List<Project>();
-			LocalValues.FocusedProject = new Project();
+			
 			//Todo Проверить 
+
+
 		}
 		#endregion
 
@@ -104,6 +111,11 @@ namespace CRM_GTMK.Control
 
 		//Обработка данных проекта
 		#region ProjectDataMethods
+
+			public void SendNewProject()
+		{
+			
+		}
 
 		/// <summary>
 		/// Получаем список проектов
