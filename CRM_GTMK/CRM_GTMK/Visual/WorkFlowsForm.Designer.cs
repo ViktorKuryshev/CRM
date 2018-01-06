@@ -50,6 +50,7 @@
 			this.createProjectButton.TabIndex = 1;
 			this.createProjectButton.Text = "Завершить";
 			this.createProjectButton.UseVisualStyleBackColor = true;
+			this.createProjectButton.Click += new System.EventHandler(this.createProjectButton_Click);
 			// 
 			// WorkFlowsForm
 			// 

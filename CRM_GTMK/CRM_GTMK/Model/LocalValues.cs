@@ -10,7 +10,8 @@ namespace CRM_GTMK.Model
 	{
 
 		public static List<Project> CurrentProjects { get; set; } 
-		public static Project focusedProject { get; set; }
-		public static Company focusedCompany { get; set; }
+		public static Project FocusedProject { get; set; }
+		public static string[] DocumentsPaths { get; set; }
+		public static Company FocusedCompany { get; set; }
 	}
 }

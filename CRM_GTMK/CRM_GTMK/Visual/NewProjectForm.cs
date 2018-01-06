@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM_GTMK.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +22,7 @@ namespace CRM_GTMK.Visual
 		private List<FileOrFolder> FilesOrFolders { get; set; } = new List<FileOrFolder>();
 		//Последовательный список для отрисовки и возврата
 		public List<FileOrFolderContainer> FilesAndFoldersPlainList { get; set; } = new List<FileOrFolderContainer>();
-
+		
 		public MyFilesAndFoldersFlowLayout MyFilesAndFoldersFlowLayout { get; set; }
 
 
@@ -250,6 +251,10 @@ namespace CRM_GTMK.Visual
 		}
 		#endregion
 
+		public void SetProjectData()
+		{
+			
+		}
 
 
 	}

@@ -33,18 +33,25 @@ namespace CRM_GTMK.Control
 
 	    public Controller()
 	    {
-		    
-	    }
+			
+
+		}
 
 		public void Start(MyModel myModel, MainScreenForm mainScreenForm)
 		{
 			_myModel = myModel;
 			MainScreenForm = mainScreenForm;
 
+			//Создаем окружение
+			SetLocalValues();
+			//Todo Сформировать окружение. т.е. проверить есть ли таблицы с данными, если есть, то зарузить локальные переменные
+			//, загрузить данные из API и сравнить с таблицами, если с Данные с АПИ новее то обновить данные в базе
+
+
 			//Если тестируем определенный шаг.
 			if (stepsTesting) { 
 				//Выбираем тестовый шаг
-				switch (TestStep.AutoBrowser)
+				switch (TestStep.NewProjectForm)
 				{
 					case TestStep.MainScreen:
 						ShowMainScreenDialog();
@@ -71,11 +78,21 @@ namespace CRM_GTMK.Control
 				}
 			}
 
-			//Создаем окружение
-			//Todo Сформировать окружение. т.е. проверить есть ли таблицы с данными, если есть, то зарузить локальные переменные
-			//, загрузить данные из API и сравнить с таблицами, если с Данные с АПИ новее то обновить данные в базе
-
+			
 		}
+
+		//Загрузка окружения
+		#region SettingGlobals
+		private void SetLocalValues()
+		{
+			//Todo если файл с данными существует, сделать десериализацию, учитывая то что статический файл не получится серриализовать
+			//Думаю можно передавать его поля в такой же только не статический класс а при дессиреализации возвращать поля в статический
+			LocalValues.CurrentProjects = new List<Project>();
+			LocalValues.FocusedProject = new Project();
+			//Todo Проверить 
+		}
+		#endregion
+
 
 		/// <summary>
 		/// Показываем главный экран
@@ -84,6 +101,9 @@ namespace CRM_GTMK.Control
 		{
 			MainScreenForm.ShowDialog();
 		}
+
+		//Обработка данных проекта
+		#region ProjectDataMethods
 
 		/// <summary>
 		/// Получаем список проектов
@@ -118,6 +138,7 @@ namespace CRM_GTMK.Control
 			}
 			return allProjects;
 		}
+		#endregion
 
 		public void ShowAddNewCompanyDialog()
 		{

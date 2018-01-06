@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM_GTMK.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,11 @@ namespace CRM_GTMK.Visual
 		private void goBackButton_Click(object sender, EventArgs e)
 		{
 			_form.BackToProjectSettings();
+		}
+
+		private void createProjectButton_Click(object sender, EventArgs e)
+		{
+			_form.SetProjectData();
 		}
 	}
 }
