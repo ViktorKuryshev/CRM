@@ -273,7 +273,7 @@
             this.phonesContactPersonFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.phonesContactPersonFlowLayoutPanel.Location = new System.Drawing.Point(18, 247);
             this.phonesContactPersonFlowLayoutPanel.Name = "phonesContactPersonFlowLayoutPanel";
-            this.phonesContactPersonFlowLayoutPanel.Size = new System.Drawing.Size(357, 172);
+            this.phonesContactPersonFlowLayoutPanel.Size = new System.Drawing.Size(360, 172);
             this.phonesContactPersonFlowLayoutPanel.TabIndex = 38;
             this.phonesContactPersonFlowLayoutPanel.WrapContents = false;
             // 
@@ -300,7 +300,7 @@
             this.Controls.Add(this.lastnameContactPersonLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "AddNewContactPersonForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавить нового сотрудника";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddNewContactPersonForm_FormClosing);
             this.commentPanel.ResumeLayout(false);

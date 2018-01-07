@@ -4,15 +4,8 @@ using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsC
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
 using CRM_GTMK.Visual.MainScreenPanels;
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
-using CRM_GTMK.Visual.MainScreenPanels;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
-using CRM_GTMK.Model.TestApi;
-using Newtonsoft.Json;
 
 namespace CRM_GTMK.Control
 {
@@ -53,7 +46,7 @@ namespace CRM_GTMK.Control
 			//Если тестируем определенный шаг.
 			if (stepsTesting) { 
 				//Выбираем тестовый шаг
-				switch (TestStep.NewProjectForm)
+				switch (TestStep.AddCompanyForm)
 				{
 					case TestStep.MainScreen:
 						ShowMainScreenDialog();
