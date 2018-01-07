@@ -157,6 +157,7 @@
             this.Controls.Add(this.phoneTypeComboBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "AddNewContactPersonPhoneForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавить телефон";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddNewContactPersonPhoneForm_FormClosing);
             this.ResumeLayout(false);

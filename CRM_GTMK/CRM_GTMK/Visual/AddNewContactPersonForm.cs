@@ -3,6 +3,7 @@ using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsC
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel.OneContactPersonPhonePanel;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -42,6 +43,23 @@ namespace CRM_GTMK.Visual
             phonesContactPersonFlowLayoutPanel.Controls.Remove(phoneContactPersonPanel);
             commentsInnerFlowLayoutPanel.Controls.Remove(commentPanel);
             emailContactPersonComboBox.SelectedIndex = 0;
+            makeFormCollapse();
+        }
+
+        // Сжимаем окно добавления нового сотрудника при первом открытии, когда еще не добавлены
+        // комментарии и телефоны. Size(360, 31) это новые размеры панели 
+        // phonesContactPersonFlowLayoutPanel. Size(420, 376) это новые размеры окна добавления
+        // сотрудника. Point(283, 9) это новые координаты расположения кнопки "Добавить комментарий". 
+        // Point(165, 286) это новые координаты расположения кнопки "Добавить телефон".
+        private void makeFormCollapse()
+        {
+            phonesContactPersonFlowLayoutPanel.Size = new Size(360, 31);
+            phonesContactPersonFlowLayoutPanel.Hide();
+            commentsInnerFlowLayoutPanel.Hide();
+            commentsContactPersonFlowLayoutPanel.Hide();
+            this.Size = new Size(420, 376);
+            addNewCommentContactPersonButton.Location = new Point(283, 9);
+            saveNewContactPersonButton.Location = new Point(165, 286);
         }
 
         #region Getters
@@ -101,15 +119,57 @@ namespace CRM_GTMK.Visual
         // Кнопка добавления нового комментария.
         private void addNewCommentContactPersonButton_Click(object sender, EventArgs e)
         {
+            makeFormExpandForComments();
             MyCommentPanel newCommentPanel = new MyCommentPanel(this);
             MyCommentPanelList.Add(newCommentPanel);
             commentsInnerFlowLayoutPanel.Controls.Add(newCommentPanel);
+        }
+
+        // Увеличиваем размер окна при добавлении нового комментария. Size(806, 515) это новые
+        // размеры окна. Point(554, 9) это новые координаты расположения кнопки "Добавить 
+        // комментарий". Point(356, 425) это новые координаты расположения кнопки "Добавить
+        // телефон". 172 это высота панели phonesContactPersonFlowLayoutPanel, выбранная при
+        // при дизайне формы AddNewContactPersonForm.
+        private void makeFormExpandForComments()
+        {
+            if (commentsContactPersonFlowLayoutPanel.Visible == true)
+                return;
+
+            this.Size = new Size(806, 515);
+            commentsInnerFlowLayoutPanel.Show();
+            commentsContactPersonFlowLayoutPanel.Show();
+            addNewCommentContactPersonButton.Location = new Point(554, 9);
+            saveNewContactPersonButton.Location = new Point(356, 425);
+            phonesContactPersonFlowLayoutPanel.Height = 172;
         }
 
         // Кнопка добавления нового телефона сотрудника.
         private void addNewContactPersonPhoneButton_Click(object sender, EventArgs e)
         {
             _controller.ShowAddNewContactPersonPhoneForm(this);
+
+            if (commentsContactPersonFlowLayoutPanel.Visible == true)
+                return;
+            else
+            {
+                if (phonesContactPersonFlowLayoutPanel.Height +
+                    phoneContactPersonPanel.Height <= 172)
+                {
+                    this.Height += phoneContactPersonPanel.Height;
+                    phonesContactPersonFlowLayoutPanel.Height += phoneContactPersonPanel.Height;
+                }
+            }
+        }
+
+        // Увеличиваем размер окна при добавлении нового телефона. 
+        public void MakeFormExpandForPhones()
+        {
+            if (commentsContactPersonFlowLayoutPanel.Visible == true)
+                phonesContactPersonFlowLayoutPanel.Show();
+            else
+            {
+                phonesContactPersonFlowLayoutPanel.Show();
+            }
         }
 
         // Отображаем введенный телефон и комментарий на данной панели.

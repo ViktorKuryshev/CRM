@@ -36,6 +36,7 @@ namespace CRM_GTMK.Visual
                 if (assignPhoneComponents())
                     return;
                 _contactPersonForm.AddAndDisplayNewContactPersonPhone(this);
+                _contactPersonForm.MakeFormExpandForPhones();
             }
             this.Hide();
         }
