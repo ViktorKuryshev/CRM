@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CRM_GTMK.Model.TestApi
+namespace CRM_GTMK.Model.DataModels
 {
 	public class Tmx
 	{

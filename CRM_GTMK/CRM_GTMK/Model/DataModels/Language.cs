@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
 
-namespace CRM_GTMK.Model.TestApi
+namespace CRM_GTMK.Model.DataModels
 {
 	public enum Language
 	{

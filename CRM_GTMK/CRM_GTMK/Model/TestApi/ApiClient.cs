@@ -9,6 +9,8 @@ using System.Threading;
 
 using Newtonsoft.Json;
 using RestSharp;
+using CRM_GTMK.Model.DataModels;
+using System.Collections.Generic;
 
 namespace CRM_GTMK.Model.TestApi
 {
@@ -26,6 +28,26 @@ namespace CRM_GTMK.Model.TestApi
 		public ApiClient()
 		{
 			AuthorizationValue = accountId + ":" + ApiKey;
+		}
+
+		public List<Project> GetCurrentProjects()
+		{
+			
+				var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(AuthorizationValue));
+
+				var client = new RestClient(Url);
+				var request = new RestRequest(get_projects_list, Method.GET);
+
+				request.AddHeader("Authorization", "Basic " + authorizationValueBase64);
+
+				IRestResponse response = client.Execute(request);
+				var content = response.Content;
+
+
+			List<Project> projects = JsonConvert.DeserializeObject<List<Project>>(content);
+			
+
+			return projects;
 		}
 
 		public string GetAssignableExecutives()
@@ -47,9 +69,9 @@ namespace CRM_GTMK.Model.TestApi
 			return content;
 		}
 
-		public string CreateProject(string[] filePaths = null, CreateProject project = null)
+		public string CreateProject(string[] filePaths = null, Project project = null)
 		{
-			CreateProject newProject = project ?? new CreateProject();
+			Project newProject = project ?? new Project();
 
 			Console.WriteLine("Имя проекта: {0}", project.Name);
 
@@ -71,14 +93,18 @@ namespace CRM_GTMK.Model.TestApi
 				}
 			}
 
+			var requestString = JsonConvert.SerializeObject(project);
+
 			request.AddParameter("application/json", JsonConvert.SerializeObject(project), "application/json", ParameterType.RequestBody);
 
 			IRestResponse response = client.Execute(request);
 			var content = response.Content; // raw content as string
+			
 
 			Console.WriteLine("Содержимое ответа от сервера: {0}", content);
+			newProject = JsonConvert.DeserializeObject<Project>(content);
 
-			return content;
+			return newProject.Name;
 		}
 
 		public string CreateTm(string tmxFilePath = null, bool replaceAllContent = true)
@@ -223,8 +249,8 @@ namespace CRM_GTMK.Model.TestApi
 		private static readonly string post_client_url = "/api/integration/v1/client/create";
 		private static readonly string post_project_create_url = "/api/integration/v1/project/create";
 		private static readonly string get_assignable_executives = "/api/integration/v1/account/assignableExecutives";
+		private static readonly string get_projects_list = "/api/integration/v1/project/list";
 
-		
 
 		private enum HttpMethods
 		{
