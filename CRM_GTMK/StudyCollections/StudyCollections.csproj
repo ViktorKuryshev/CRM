@@ -52,6 +52,13 @@
     <Compile Include="CountCharactersInFile.designer.cs">
       <DependentUpon>CountCharactersInFile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dictionary\MorseTranslator.cs" />
+    <Compile Include="Dictionary\MorseTranslatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dictionary\MorseTranslatorForm.Designer.cs">
+      <DependentUpon>MorseTranslatorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HashSet\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +79,9 @@
     <Compile Include="List\Student.cs" />
     <EmbeddedResource Include="CountCharactersInFile.resx">
       <DependentUpon>CountCharactersInFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dictionary\MorseTranslatorForm.resx">
+      <DependentUpon>MorseTranslatorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HashSet\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

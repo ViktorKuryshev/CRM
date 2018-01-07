@@ -114,7 +114,8 @@ namespace CRM_GTMK.Control
 
 			public void SendNewProject()
 		{
-			
+			Model.TestApi.ApiClient client = new Model.TestApi.ApiClient();
+			MessageBox.Show(client.CreateProject(LocalValues.DocumentsPaths, LocalValues.FocusedProject));
 		}
 
 		/// <summary>

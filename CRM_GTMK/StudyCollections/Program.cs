@@ -14,7 +14,7 @@ namespace StudyCollections
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new HashSet.Form1());
+			Application.Run(new Dictionary.MorseTranslatorForm());
 			CountCharactersInFile newWindow = new CountCharactersInFile();
 			newWindow.ShowDialog();
 		}
