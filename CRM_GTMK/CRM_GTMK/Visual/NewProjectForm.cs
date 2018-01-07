@@ -1,4 +1,5 @@
 ﻿using CRM_GTMK.Model;
+using CRM_GTMK.Model.DataModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -266,24 +267,19 @@ namespace CRM_GTMK.Visual
 
 		public void SetProjectData()
 		{
-			LocalValues.DocumentsPaths = new string[FilesPaths.Count()] ;
-			LocalValues.DocumentsPaths = FilesPaths;
-			LocalValues.FocusedProject = new Model.TestApi.CreateProject();
-			LocalValues.FocusedProject.Name = NewProjectSettingsForm.ProjectName;
+			GlobalValues.DocumentsPaths = new string[FilesPaths.Count()] ;
+			GlobalValues.DocumentsPaths = FilesPaths;
+			GlobalValues.FocusedProject = new MyProject();
+			
+			GlobalValues.FocusedProject.SiteProject.Name = NewProjectSettingsForm.ProjectName;
+			GlobalValues.FocusedProject.ProjectStructure = FilesOrFolders;
 			_form.SendNewProject();
 		}
 
 
 	}
 
-	public class FileOrFolder
-	{
-		public string Path { get; set; }
-		public string Name { get; set; }
-		public bool isFolder { get; set; }
-		public bool isShown { get; set; } = true;
-		public List<FileOrFolder> FilesOrFolders { get; set; } = new List<FileOrFolder>();
-	}
+	
 
 	public class FileOrFolderContainer : FlowLayoutPanel
 	{

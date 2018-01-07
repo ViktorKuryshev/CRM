@@ -13,6 +13,7 @@ using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeCont
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
 using CRM_GTMK.Model.TestApi;
 using Newtonsoft.Json;
+using CRM_GTMK.Model.DataModels;
 
 namespace CRM_GTMK.Control
 {
@@ -92,7 +93,7 @@ namespace CRM_GTMK.Control
 			//MessageBox.Show(client.CreateProject(LocalValues.DocumentsPaths, LocalValues.FocusedProject));
 			//Todo если файл с данными существует, сделать десериализацию, учитывая то что статический файл не получится серриализовать
 			//Думаю можно передавать его поля в такой же только не статический класс а при дессиреализации возвращать поля в статический
-			LocalValues.CurrentProjects = new List<Project>();
+			GlobalValues.CurrentProjects = new List<Project>();
 			
 			//Todo Проверить 
 
@@ -114,8 +115,8 @@ namespace CRM_GTMK.Control
 
 			public void SendNewProject()
 		{
-			Model.TestApi.ApiClient client = new Model.TestApi.ApiClient();
-			MessageBox.Show(client.CreateProject(LocalValues.DocumentsPaths, LocalValues.FocusedProject));
+			ApiClient client = new ApiClient();
+			MessageBox.Show(client.CreateProject(GlobalValues.DocumentsPaths, GlobalValues.FocusedProject.SiteProject));
 		}
 
 		/// <summary>
@@ -124,24 +125,24 @@ namespace CRM_GTMK.Control
 		public List<ProjectControls> GetProjectsList()
 		{
 			//Если список проектов пуст получаем его с сайта
-			if (_myModel.CurrentProjects == null)
+			if (GlobalValues.CurrentProjects == null)
 			{
-				_myModel.CurrentProjects = _myModel.ApiClient.GetCurrentProjects();
-				_myModel.CurrentProjects.Sort();
+				GlobalValues.CurrentProjects = _myModel.ApiClient.GetCurrentProjects();
+				GlobalValues.CurrentProjects.Sort();
 			}
 
 			int numberOfShownProjects = 10; //Сколько проектов показываем
 
 			List<ProjectControls> allProjects = new List<ProjectControls>();
 
-			foreach (var project in _myModel.CurrentProjects)
+			foreach (var project in GlobalValues.CurrentProjects)
 			{
-				ProjectControls projectControls = new ProjectControls(MainScreenForm, project.name, project.deadline.ToString(), project.id);
+				ProjectControls projectControls = new ProjectControls(MainScreenForm, project.Name, project.Deadline.ToString(), project.Id);
 				allProjects.Add(projectControls);
 				//Создаем список документов
-				foreach (var document in project.documents)
+				foreach (var document in project.Documents)
 				{
-					DocumentControls documentControls = new DocumentControls(MainScreenForm, "**" + document.name, document.id);
+					DocumentControls documentControls = new DocumentControls(MainScreenForm, "**" + document.Name, document.Id);
 					projectControls.AllDocuments.Add(documentControls);
 				}
 	

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CRM_GTMK.Control;
+using CRM_GTMK.Model.TestApi;
+using CRM_GTMK.Model.DataModels;
 
 namespace CRM_GTMK.Model
 {
@@ -14,7 +16,7 @@ namespace CRM_GTMK.Model
 
 		public ApiClient ApiClient { get; } = new ApiClient(); 
 
-		public List<Project> CurrentProjects { get; set; }
+		
 
 
         public MyModel(Controller controller)

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace CRM_GTMK.Model.TestApi
+namespace CRM_GTMK.Model.DataModels
 {
-	public enum WorkflowTask
+	public enum Workflowstage
 	{
 		[Description("Translation")]
 		Translation,

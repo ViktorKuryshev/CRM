@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 
 
 
-namespace CRM_GTMK.Model.TestApi
+namespace CRM_GTMK.Model.DataModels
 {
-	public class CreateProject
+	public class Project
 	{
 		[JsonProperty("id")]
 		public string Id { get; set; }
@@ -20,11 +20,26 @@ namespace CRM_GTMK.Model.TestApi
 		[JsonProperty("deadline"), JsonIgnore]
 		public DateTime Deadline { get; set; }
 
+		[JsonProperty("creationDate"), JsonIgnore]
+		public DateTime CreationDate { get; set; }
+
+		[JsonProperty("createdByUserId"), JsonIgnore]
+		public string CreatedByUserId { get; set; }
+
+		[JsonProperty("modificationDate"), JsonIgnore]
+		public DateTime ModificationDate { get; set; }
+
 		[JsonProperty("sourceLanguage")]
 		public string SourceLanguage { get; set; }
 
 		[JsonProperty("targetLanguages")]
 		public string[] TargetLanguages { get; set; }
+
+		[JsonProperty("status"), JsonIgnore]
+		public string Status { get; set; }
+
+		[JsonProperty("statusModificationDate"), JsonIgnore]
+		public DateTime StatusModificationDate { get; set; }
 
 		[JsonProperty("domainId"), JsonIgnore]
 		public int DomainId { get; set; }
@@ -38,37 +53,16 @@ namespace CRM_GTMK.Model.TestApi
 		[JsonProperty("assignToVendor")]
 		public bool AssignToVendor { get; set; }
 
-		[JsonProperty("useMT"), JsonIgnore]
-		public bool UseMT { get; set; }
-
-		[JsonProperty("pretranslate"), JsonIgnore]
-		public bool Pretranslate { get; set; }
-
-		[JsonProperty("translationMemoryName"), JsonIgnore]
-		public string TranslationMemoryName { get; set; }
-
-		[JsonProperty("useTranslationMemory"), JsonIgnore]
-		public bool UseTranslationMemory { get; set; }
-
-		[JsonProperty("autoPropagateRepetitions"), JsonIgnore]
-		public bool AutoPropagateRepetitions { get; set; }
-
-		[JsonProperty("disassembleAlgorithmNames"), JsonIgnore]
-		public string[] DisassembleAlgorithmNames { get; set; }
-
-		[JsonProperty("documentProperties"), JsonIgnore]
-		public DocumentProperties[] DocumentProperties { get; set; }
-
 		[JsonProperty("workflowStages"), JsonIgnore]
-		public WorkflowTask[] WorkflowStages { get; set; }
+		public Workflowstage[] WorkflowStages { get; set; }
 
-		[JsonProperty("isForTesting"), JsonIgnore]
-		public bool IsForTesting { get; set; }
+		[JsonProperty("documents"), JsonIgnore]
+		public Document[] Documents { get; set; }
 
 		[JsonProperty("externalTag"), JsonIgnore]
 		public string ExternalTag { get; set; }
 
-		public CreateProject(
+		public Project(
 			string id = null,
 			string name = null,
 			string description = null,
@@ -76,10 +70,12 @@ namespace CRM_GTMK.Model.TestApi
 			string[] targetLanguages = null)
 		{
 			Id = id;
-			Name =  name;
+			Name = name;
 			Description = description;
-			SourceLanguage =  sourceLanguage ?? Language.English.Description();
-			TargetLanguages = targetLanguages ?? new[] { Language.Russian.Description() }; 
+			SourceLanguage = sourceLanguage ?? DictionaryCollections.Languages["English"];
+			TargetLanguages = targetLanguages ?? new[] { DictionaryCollections.Languages["Russian"] };
 		}
 	}
 }
+
+
