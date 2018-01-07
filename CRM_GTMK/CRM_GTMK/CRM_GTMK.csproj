@@ -80,7 +80,6 @@
     <Compile Include="Control\Controller.cs" />
     <Compile Include="Model\ApiClient.cs" />
     <Compile Include="Model\Company.cs" />
-    <Compile Include="Model\ContactPerson.cs" />
     <Compile Include="Model\DataBase\XMLDBSimulator.cs" />
     <Compile Include="Model\Freelancer.cs" />
     <Compile Include="Model\FreelancerSearchParameters.cs" />
@@ -121,13 +120,13 @@
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\PhonesContactPersonFlowLayoutPanel\MyPhonesContactPersonFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\PhonesContactPersonFlowLayoutPanel\OneContactPersonPhonePanel\ContactPersonPhonePanelElements\MyPhoneNumberLinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\PhonesContactPersonFlowLayoutPanel\OneContactPersonPhonePanel\MyContactPersonPhonePanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\PhonesContactPersonFlowLayoutPanel\OneContactPersonPhonePanel\ContactPersonPhonePanelElements\MyPhoneCommentTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\PhonesContactPersonFlowLayoutPanel\OneContactPersonPhonePanel\ContactPersonPhonePanelElements\MyPhoneNumberLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Visual\AddCompanyPanels\OfficesPanel\ContactPersonPanel\PhonesContactPersonFlowLayoutPanel\OneContactPersonPhonePanel\ContactPersonPhonePanelElements\MyPhoneTypeLabel.cs">

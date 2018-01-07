@@ -1,9 +1,4 @@
 ﻿using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel.OneContactPersonPhonePanel.ContactPersonPhonePanelElements;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel.OneContactPersonPhonePanel
@@ -11,10 +6,10 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.Phone
     public class MyContactPersonPhonePanel : Panel
     {
         public MyPhoneCommentTextBox MyPhoneCommentTextBox { get; set; }
-        public MyPhoneNumberLabel MyPhoneNumberLabel { get; set; }
+        public MyPhoneNumberLinkLabel MyPhoneNumberLinkLabel { get; set; }
         public MyPhoneTypeLabel MyPhoneTypeLabel { get; set; }
 
-        public MyContactPersonPhonePanel(AddNewContactPersonForm form)
+        public MyContactPersonPhonePanel(AddNewContactPersonForm form, AddNewContactPersonPhoneForm phoneForm)
         {
             Panel phonePanel = form.GetPhonePanel();
 
@@ -24,11 +19,11 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.Phone
             TabIndex = phonePanel.TabIndex;
 
             MyPhoneCommentTextBox = new MyPhoneCommentTextBox(form);
-            MyPhoneNumberLabel = new MyPhoneNumberLabel(form);
+            MyPhoneNumberLinkLabel = new MyPhoneNumberLinkLabel(form, phoneForm, this);
             MyPhoneTypeLabel = new MyPhoneTypeLabel(form);
 
             Controls.Add(MyPhoneCommentTextBox);
-            Controls.Add(MyPhoneNumberLabel);
+            Controls.Add(MyPhoneNumberLinkLabel);
             Controls.Add(MyPhoneTypeLabel);
         }
     }

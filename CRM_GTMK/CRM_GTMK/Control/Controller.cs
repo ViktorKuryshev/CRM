@@ -1,10 +1,11 @@
 ﻿using CRM_GTMK.Model;
 using CRM_GTMK.Visual;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
+using CRM_GTMK.Visual.MainScreenPanels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using CRM_GTMK.Visual.MainScreenPanels;
@@ -15,8 +16,8 @@ using Newtonsoft.Json;
 
 namespace CRM_GTMK.Control
 {
-	
-	public class Controller
+
+    public class Controller
 	{
 		enum TestStep
 		{
@@ -28,15 +29,14 @@ namespace CRM_GTMK.Control
 			AutoBrowser
 		}
 
-	    private MyModel _myModel;
-	    private MainScreenForm MainScreenForm;
+		private MyModel _myModel;
+		private MainScreenForm MainScreenForm;
 
 		private bool stepsTesting = true;
 
-	    public Controller()
-	    {
+		public Controller()
+		{
 			
-
 		}
 
 		public void Start(MyModel myModel, MainScreenForm mainScreenForm)
@@ -172,7 +172,7 @@ namespace CRM_GTMK.Control
 		}
 
 		/// <summary>
-		/// Добавляем данные по комании в базу
+		/// Добавляем данные по компании в базу
 		/// </summary>
 		public void SaveNewCompanyData()
 		{
@@ -186,18 +186,19 @@ namespace CRM_GTMK.Control
 			//Todo в форме добавить возможность вписывать название компании на другом языке
 			//Todo добавить в форму поле email
 			//Todo проверить компанию на уникальность.
-			//Todo проверить компанию по назвнию, по телефону, по имейлу
+			//Todo проверить компанию по названию, по телефону, по имейлу
 
 			//todo присвоить компании уникальный id для получить последний id
 			_myModel.NewCompany.Id = _myModel.XmlHelper.GetBigestCompanyId() + 1;
 			//new ClientsListForm(clientsInfo).ShowDialog();
 			_myModel.XmlHelper.AddNewCompanyInfo(_myModel.NewCompany);
 
-			//Todo Автоматически поставилась задача на проработку компании менеджеру по какойму-то принципу
+			//Todo Автоматически поставилась задача на проработку компании менеджеру по какому-то принципу
 
 			MainScreenForm.NewClientForm.Dispose();
 		}
 
+        // Передаем данные о компании из полей форм для ввода в соответствующие переменные.
 		private Company GetCompanyDataFromForm()
 		{
 			Company company = new Company();
@@ -206,7 +207,9 @@ namespace CRM_GTMK.Control
 			return company;
 		}
 
-		private void GetOfficeDataFromForm(Company company)
+        // Передаем данные об офисах компании из полей форм для ввода в соответствующие 
+        // переменные.
+        private void GetOfficeDataFromForm(Company company)
 		{
 			var officeList = MainScreenForm
 								.NewClientForm
@@ -219,14 +222,16 @@ namespace CRM_GTMK.Control
 				newOffice.Id = i + 1;
 
 				GetOfficeContactInfoFromForm(newOffice, officeList[i]);
-				getOfficeContactPersonInfoFromForm(newOffice, i, officeList);
-				GetOfficePhonesFromForm(newOffice, officeList[i]);
+				getOfficeContactPersonInfoFromForm(newOffice, officeList[i]);
+				getOfficePhonesFromForm(newOffice, officeList[i]);
 
 				company.Offices.Add(newOffice);
 			}
 		}
 
-		private void GetOfficeContactInfoFromForm(Office office, MyOneOfficeContactTableLayoutPanel officeList)
+        // Передаем данные об одном офисе компании из полей форм для ввода в соответствующие 
+        // переменные.
+        private void GetOfficeContactInfoFromForm(Office office, MyOneOfficeContactTableLayoutPanel officeList)
 		{
 			office.Country = officeList.MyOfficeContactInfoPanel.MyOfficeCountryComboBox.Text;
 			office.City = officeList.MyOfficeContactInfoPanel.MyOfficeCityTextBox.Text;
@@ -234,14 +239,15 @@ namespace CRM_GTMK.Control
 			office.Site = officeList.MyOfficeContactInfoPanel.MyOfficeSiteTextBox.Text;
 		}
 
-		private void getOfficeContactPersonInfoFromForm(Office office,
-													int officeNumberInTheList,
-													List<MyOneOfficeContactTableLayoutPanel> officeList)
+        // Передаем данные о сотрудниках одного офиса компании из полей форм для ввода 
+        // в соответствующие переменные.
+        private void getOfficeContactPersonInfoFromForm(Office office,
+                                                    MyOneOfficeContactTableLayoutPanel officePanel)
 		{
-			for (int i = 0; i < officeList[officeNumberInTheList]
-							   .MyContactPersonFormList.Count; i++)
+			for (int i = 0; i < officePanel
+                               .MyContactPersonFormList.Count; i++)
 			{
-				var form = officeList[officeNumberInTheList].MyContactPersonFormList[i];
+				var form = officePanel.MyContactPersonFormList[i];
 				Person person = new Person();
 				person.LastName = form.LastnameContactPerson;
 				person.FirstName = form.FirstnameContactPerson;
@@ -255,7 +261,9 @@ namespace CRM_GTMK.Control
 			}
 		}
 
-		private void getContactPersonPhonesFromForm(AddNewContactPersonForm form, Person person)
+        // Передаем данные о телефоне одного сотрудника одного офиса компании из полей форм 
+        // для ввода в соответствующие переменные.
+        private void getContactPersonPhonesFromForm(AddNewContactPersonForm form, Person person)
 		{
 			foreach (AddNewContactPersonPhoneForm phoneForm in form.MyContactPersonPhoneFormList)
 			{
@@ -267,7 +275,9 @@ namespace CRM_GTMK.Control
 			}
 		}
 
-		private void getContactPersonCommentsFromForm(AddNewContactPersonForm form, Person person)
+        // Передаем данные о комментариях одного сотрудника одного офиса компании из полей форм 
+        // для ввода в соответствующие переменные.
+        private void getContactPersonCommentsFromForm(AddNewContactPersonForm form, Person person)
 		{
 			foreach (MyCommentPanel panel in form.MyCommentPanelList)
 			{
@@ -281,7 +291,9 @@ namespace CRM_GTMK.Control
 			}
 		}
 
-		private void GetOfficePhonesFromForm(Office office,
+        // Передаем данные о телефонах одного офиса компании из полей форм 
+        // для ввода в соответствующие переменные.
+        private void getOfficePhonesFromForm(Office office,
 											 MyOneOfficeContactTableLayoutPanel officeList)
 		{
 			foreach (MyPhonePanel panel in officeList

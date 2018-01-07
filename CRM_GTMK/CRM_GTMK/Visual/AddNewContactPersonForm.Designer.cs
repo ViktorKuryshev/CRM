@@ -47,7 +47,7 @@
             this.saveNewContactPersonButton = new System.Windows.Forms.Button();
             this.phoneContactPersonPanel = new System.Windows.Forms.Panel();
             this.phoneCommentTextBox = new System.Windows.Forms.TextBox();
-            this.phoneNumberLabel = new System.Windows.Forms.Label();
+            this.phoneNumberLinkLabel = new System.Windows.Forms.LinkLabel();
             this.phoneTypeLabel = new System.Windows.Forms.Label();
             this.addNewContactPersonPhoneButton = new System.Windows.Forms.Button();
             this.phonesContactPersonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -221,7 +221,7 @@
             // 
             this.phoneContactPersonPanel.AutoSize = true;
             this.phoneContactPersonPanel.Controls.Add(this.phoneCommentTextBox);
-            this.phoneContactPersonPanel.Controls.Add(this.phoneNumberLabel);
+            this.phoneContactPersonPanel.Controls.Add(this.phoneNumberLinkLabel);
             this.phoneContactPersonPanel.Controls.Add(this.phoneTypeLabel);
             this.phoneContactPersonPanel.Location = new System.Drawing.Point(3, 3);
             this.phoneContactPersonPanel.Name = "phoneContactPersonPanel";
@@ -237,14 +237,15 @@
             this.phoneCommentTextBox.Size = new System.Drawing.Size(147, 20);
             this.phoneCommentTextBox.TabIndex = 2;
             // 
-            // phoneNumberLabel
+            // phoneNumberLinkLabel
             // 
-            this.phoneNumberLabel.AutoSize = true;
-            this.phoneNumberLabel.Location = new System.Drawing.Point(71, 5);
-            this.phoneNumberLabel.Name = "phoneNumberLabel";
-            this.phoneNumberLabel.Size = new System.Drawing.Size(97, 13);
-            this.phoneNumberLabel.TabIndex = 1;
-            this.phoneNumberLabel.Text = "+7 (950) 123-45-67";
+            this.phoneNumberLinkLabel.AutoSize = true;
+            this.phoneNumberLinkLabel.Location = new System.Drawing.Point(73, 6);
+            this.phoneNumberLinkLabel.Name = "phoneNumberLinkLabel";
+            this.phoneNumberLinkLabel.Size = new System.Drawing.Size(97, 13);
+            this.phoneNumberLinkLabel.TabIndex = 37;
+            this.phoneNumberLinkLabel.TabStop = true;
+            this.phoneNumberLinkLabel.Text = "+7 (950) 123-45-67";
             // 
             // phoneTypeLabel
             // 
@@ -301,6 +302,7 @@
             this.Name = "AddNewContactPersonForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить нового сотрудника";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddNewContactPersonForm_FormClosing);
             this.commentPanel.ResumeLayout(false);
             this.commentPanel.PerformLayout();
             this.commentsContactPersonFlowLayoutPanel.ResumeLayout(false);
@@ -334,11 +336,11 @@
         private System.Windows.Forms.Button saveNewContactPersonButton;
         private System.Windows.Forms.Panel phoneContactPersonPanel;
         private System.Windows.Forms.TextBox phoneCommentTextBox;
-        private System.Windows.Forms.Label phoneNumberLabel;
         private System.Windows.Forms.Label phoneTypeLabel;
         private System.Windows.Forms.Button addNewContactPersonPhoneButton;
         private System.Windows.Forms.FlowLayoutPanel phonesContactPersonFlowLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel commentsInnerFlowLayoutPanel;
         private System.Windows.Forms.ComboBox emailContactPersonComboBox;
+        private System.Windows.Forms.LinkLabel phoneNumberLinkLabel;
     }
 }

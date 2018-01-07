@@ -1,16 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.ContactPersonTablePanel.OneContactPersonTablePanel
 {
     public class MyContactPersonFullnameLinkLabel : LinkLabel
     {
-        public MyContactPersonFullnameLinkLabel(AddNewCompanyForm form)
+        private AddNewCompanyForm _form;
+        private AddNewContactPersonForm _contactPersonForm;
+        private MyContactPersonTableLayoutPanel _contactPersonTableLayoutPanel;
+
+        public MyContactPersonFullnameLinkLabel(AddNewCompanyForm form,
+                                                AddNewContactPersonForm contactPersonForm,
+                                                MyContactPersonTableLayoutPanel contactPersonTableLayoutPanel)
         {
+            _form = form;
+            _contactPersonForm = contactPersonForm;
+            _contactPersonTableLayoutPanel = contactPersonTableLayoutPanel;
+
             LinkLabel linkLabel = form.GetContactPersonLinkLabel();
 
             MaximumSize = linkLabel.MaximumSize;
@@ -23,6 +29,13 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
             TabStop = linkLabel.TabStop;
             Text = linkLabel.Text;
             TextAlign = linkLabel.TextAlign;
+            Click += new EventHandler(IsClicked);
+        }
+
+        private void IsClicked(object sender, EventArgs e)
+        {
+            _form.ReopenContactPersonForm(this, _contactPersonForm,
+                                          _contactPersonTableLayoutPanel);
         }
     }
 }

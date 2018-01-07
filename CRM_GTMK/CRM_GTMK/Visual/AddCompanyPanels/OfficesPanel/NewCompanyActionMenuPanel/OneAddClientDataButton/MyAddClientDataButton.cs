@@ -28,7 +28,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.NewCompanyActionMenuPane
 
         private void IsClicked(object sender, EventArgs e)
         {
-            _form.AddClientDataButton_Click();
+            _form.AddCompanyDataButton_Click();
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using CRM_GTMK.Control;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel.CommentPanelElements;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel.OneContactPersonPhonePanel;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel.OneContactPersonPhonePanel.ContactPersonPhonePanelElements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +12,7 @@ namespace CRM_GTMK.Visual
     {
         private Controller _controller;
         private AddNewCompanyForm _form;
+        private MyContactPersonPhonePanel _reopenedContactPersonPhonePanel;
 
         public int OfficeNumber { get; set; }
         public List<AddNewContactPersonPhoneForm> MyContactPersonPhoneFormList
@@ -36,6 +35,8 @@ namespace CRM_GTMK.Visual
             resetForms();
         }
 
+        // Удаляем формы, которые добавляются по нажатию на соответствующие кнопки.
+        // Задаем параметр для ComboBox с эл. почтой.
         private void resetForms()
         {
             phonesContactPersonFlowLayoutPanel.Controls.Remove(phoneContactPersonPanel);
@@ -80,9 +81,9 @@ namespace CRM_GTMK.Visual
             return phoneCommentTextBox;
         }
 
-        public Label GetPhoneNumberLabel()
+        public LinkLabel GetPhoneNumberLinkLabel()
         {
-            return phoneNumberLabel;
+            return phoneNumberLinkLabel;
         }
 
         public Label GetPhoneTypeLabel()
@@ -97,6 +98,7 @@ namespace CRM_GTMK.Visual
 
         #endregion
 
+        // Кнопка добавления нового комментария.
         private void addNewCommentContactPersonButton_Click(object sender, EventArgs e)
         {
             MyCommentPanel newCommentPanel = new MyCommentPanel(this);
@@ -104,40 +106,74 @@ namespace CRM_GTMK.Visual
             commentsInnerFlowLayoutPanel.Controls.Add(newCommentPanel);
         }
 
+        // Кнопка добавления нового телефона сотрудника.
         private void addNewContactPersonPhoneButton_Click(object sender, EventArgs e)
         {
             _controller.ShowAddNewContactPersonPhoneForm(this);
         }
 
+        // Отображаем введенный телефон и комментарий на данной панели.
         public void AddAndDisplayNewContactPersonPhone(AddNewContactPersonPhoneForm form)
         {
-            MyContactPersonPhonePanel contactPersonPhonePanel = new MyContactPersonPhonePanel(this);
+            MyContactPersonPhonePanel contactPersonPhonePanel = 
+                                    new MyContactPersonPhonePanel(this, form);
             contactPersonPhonePanel.MyPhoneTypeLabel.Text = form.NewPhoneType;
-            contactPersonPhonePanel.MyPhoneNumberLabel.Text = form.NewPhoneNumber;
+            contactPersonPhonePanel.MyPhoneNumberLinkLabel.Text = form.NewPhoneNumber;
             contactPersonPhonePanel.MyPhoneCommentTextBox.Text = form.NewPhoneComment;
-
             phonesContactPersonFlowLayoutPanel.Controls.Add(contactPersonPhonePanel);
         }
 
+        // Отображаем введенный телефон и комментарий повторно открытой формы для ввода телефона
+        // с учетом внесенных изменений.
+        public void RedisplayReopenedContactPersonPhonePanel(AddNewContactPersonPhoneForm form)
+        {
+            _reopenedContactPersonPhonePanel.MyPhoneTypeLabel.Text = form.NewPhoneType;
+            _reopenedContactPersonPhonePanel.MyPhoneNumberLinkLabel.Text = form.NewPhoneNumber;
+            _reopenedContactPersonPhonePanel.MyPhoneCommentTextBox.Text = form.NewPhoneComment;
+        }
+
+        // Сохраняем введенные данные по нажатию на кнопку "Сохранить и закрыть".
         private void saveNewContactPersonButton_Click(object sender, EventArgs e)
+        {
+            if (LastnameContactPerson != null)
+            {
+                if (assignContactPersonComponents(sender, e))
+                    return;
+                _form.RedisplayReopenedContactPersonForm(this);
+            }
+            else
+            {
+                if (assignContactPersonComponents(sender, e))
+                    return;
+                _controller.AddAndDisplayNewContactPerson(this, OfficeNumber);
+            }
+            this.Hide();
+        }
+
+        /// <summary>
+        /// Методы, передающие введенные данные в переменные и
+        /// проверяющие правильность введенной информации.
+        /// </summary>
+        #region Checkers
+
+        // Передаем данные из полей для ввода в соответствующие переменные.
+        private bool assignContactPersonComponents(object sender, EventArgs e)
         {
             emailContactPersonComboBox_DropDown(sender, e);
 
             setContactPersonNameParts();
 
             if (checkIfInputValid())
-                return;
+                return true;
 
-            NameContactPerson = lastnameContactPersonTextBox.Text + " " +
-                                firstnameContactPersonTextBox.Text + " " +
+            NameContactPerson = lastnameContactPersonTextBox  .Text + " " +
+                                firstnameContactPersonTextBox .Text + " " +
                                 middleNameContactPersonTextBox.Text;
             PositionContactPerson = positionContactPersonTextBox.Text;
-            
-            _controller.AddAndDisplayNewContactPerson(this, OfficeNumber);
-
-            this.Close();
+            return false;
         }
 
+        // Передаем введенное ФИО в соответствующие переменные.
         private void setContactPersonNameParts()
         {
             LastnameContactPerson = lastnameContactPersonTextBox.Text;
@@ -145,7 +181,7 @@ namespace CRM_GTMK.Visual
             MiddleNameContactPerson = middleNameContactPersonTextBox.Text;
         }
 
-        #region Checkers
+        // Общий метод проверки правильности ввода.
         private bool checkIfInputValid()
         {
             if (checkNameAndPosiotionInputWithoutDigits())
@@ -160,6 +196,7 @@ namespace CRM_GTMK.Visual
             return false;
         }
 
+        // Проверка наличия ввода в поля "Фамилия", "Имя" и "Должность".
         private bool checkNameAndPosiotionInputWasMade()
         {
             if (lastnameContactPersonTextBox.Text == "" ||
@@ -172,6 +209,8 @@ namespace CRM_GTMK.Visual
             return false;
         }
 
+        // Проверка отсутствия цифр в полях "Фамилия", "Имя", "Отчество"
+        //и "Должность".
         private bool checkNameAndPosiotionInputWithoutDigits()
         {
             if (lastnameContactPersonTextBox.Text.Any(char.IsDigit) ||
@@ -186,6 +225,7 @@ namespace CRM_GTMK.Visual
             return false;
         }
 
+        // Проверка ввода эл. почты.
         private bool checkEmailInput()
         {
             if (EmailContactPerson.All(email => email == ""))//Need to change it to match all the cases
@@ -206,6 +246,7 @@ namespace CRM_GTMK.Visual
             return false;
         }
 
+        // Проверка наличия введенного телефона (не менее одного).
         private bool checkPhoneInput()
         {
             if (MyContactPersonPhoneFormList.Count == 0)
@@ -217,6 +258,7 @@ namespace CRM_GTMK.Visual
         }
         #endregion
 
+        // Вывод значения эл. почты из соответствующей позиции множества при закрытии ComboBox.
         private void emailContactPersonComboBox_DropDownClosed(object sender, EventArgs e)
         {
             int chosenItem = emailContactPersonComboBox
@@ -236,6 +278,7 @@ namespace CRM_GTMK.Visual
             }
         }
 
+        // Записываем введенную эл. почту в соответствующую позицию множества при открытии ComboBox.
         private void emailContactPersonComboBox_DropDown(object sender, EventArgs e)
         {
             int chosenItem = emailContactPersonComboBox
@@ -252,6 +295,27 @@ namespace CRM_GTMK.Visual
                 default:
                     EmailContactPerson[2] = emailContactPersonTextBox.Text;
                     break;
+            }
+        }
+
+        // Повторно открываем закрытую форму ввода телефона по нажатию на LinkLabel.
+        public void ReopenContactPersonPhone(AddNewContactPersonPhoneForm phoneForm,
+                                             MyContactPersonPhonePanel phonePanel)
+        {
+            _reopenedContactPersonPhonePanel = phonePanel;
+            phoneForm.Show();
+        }
+
+        // При закрытии окна по нажатию на красный крестик выбираем,
+        //что нужно сделать с формой: удалить или скрыть.
+        private void AddNewContactPersonForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (NameContactPerson == null)
+                this.Dispose();
+            else
+            {
+                e.Cancel = true;
+                this.Hide();
             }
         }
     }

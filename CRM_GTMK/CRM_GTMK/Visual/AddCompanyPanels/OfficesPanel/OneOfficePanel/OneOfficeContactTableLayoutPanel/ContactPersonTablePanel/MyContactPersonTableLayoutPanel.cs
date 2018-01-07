@@ -1,9 +1,5 @@
 ﻿using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.ContactPersonTablePanel.OneContactPersonTablePanel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.ContactPersonTablePanel
@@ -14,7 +10,7 @@ namespace CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOffice
         {
             TableLayoutPanel tableLayoutPanel = form.GetContactPersonTableLayoutPanel();
 
-            MinimumSize = new System.Drawing.Size(tableLayoutPanel.MinimumSize.Width, tableLayoutPanel.MinimumSize.Height);
+            MinimumSize = new Size(tableLayoutPanel.MinimumSize.Width, tableLayoutPanel.MinimumSize.Height);
             AutoSize = tableLayoutPanel.AutoSize;
             CellBorderStyle = tableLayoutPanel.CellBorderStyle;
             ColumnCount = tableLayoutPanel.ColumnCount;

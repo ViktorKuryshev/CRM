@@ -1,18 +1,19 @@
-﻿using System;
-using System.Windows.Forms;
-using CRM_GTMK.Control;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
+﻿using CRM_GTMK.Control;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.ContactPersonTablePanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.ContactPersonTablePanel.OneContactPersonTablePanel;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
-using System.Collections.Generic;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
+using System;
+using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual
 {
     public partial class AddNewCompanyForm : Form
 	{
 		private Controller _controller;
+        private MyContactPersonTableLayoutPanel _contactPersonTableLayoutPanel;
+        private MyContactPersonFullnameLinkLabel _contactPersonFullnameLinkLabel;
 
         public MyAllOfficesFlowLayoutPanel MyAllOfficesFlowLayoutPanel { get; set; }
         public int OfficeNumber { get; set; }
@@ -164,6 +165,8 @@ namespace CRM_GTMK.Visual
 
         #endregion
 
+        // Удаляем формы, которые добавляются по нажатию на соответствующие кнопки.
+        // Добавляем свои формы.
         private void resetForms()
 		{
             this.Controls.Remove(allOfficesFlowLayoutPanel);
@@ -174,13 +177,16 @@ namespace CRM_GTMK.Visual
             MyAllOfficesFlowLayoutPanel = myAllOfficesFlowLayoutPanel;
 		}
 
-        public void AddClientDataButton_Click()
+        // Сохраняем введенные данные о компании.
+        public void AddCompanyDataButton_Click()
         {
             NewCompanyNameTextBox = companyNameTextBox;
             _controller.SaveNewCompanyData();
             this.Dispose();
         }
 
+        // Добавляем новую форму для телефона в форме для офиса, на котором была нажата
+        // кнопка "Еще".
         public void AddOneMorePhonePanel(MyOneOfficeContactTableLayoutPanel myOneOfficeContactTableLayoutPanel)
         {
             myOneOfficeContactTableLayoutPanel
@@ -188,6 +194,7 @@ namespace CRM_GTMK.Visual
            .Add(new MyPhonePanel(this, myOneOfficeContactTableLayoutPanel));
         }
 
+        // Добавляем новую форму для очередного офиса на данную панель.
         private void addOfficeButton_Click(object sender, EventArgs e)
         {
             OfficeNumber++;
@@ -203,29 +210,72 @@ namespace CRM_GTMK.Visual
                                                     .MyNewCompanyActionMenuPanel);
         }
 
+        // Открываем окно с формой ввода данных для нового сотрудника.
         public void AddNewContactPerson(MyOneOfficeContactTableLayoutPanel panel)
         {
             _controller.ShowAddNewContactPersonDialog(panel);
         }
 
+        // Отображаем введенные данные по сотруднику на данной панели.
         public void AddAndDisplayNewContactPerson(AddNewContactPersonForm form, int officeNumber)
         {
-            MyContactPersonFullnameLinkLabel contactPersonFullnameLinkLabel = new MyContactPersonFullnameLinkLabel(this);
+            MyContactPersonTableLayoutPanel myContactPersonTableLayoutPanel =
+                                                  MyAllOfficesFlowLayoutPanel
+                                                 .MyOneOfficeContactTableLayoutPanelList[officeNumber]
+                                                 .MyContactPersonTableLayoutPanel;
+
+            MyContactPersonFullnameLinkLabel contactPersonFullnameLinkLabel = 
+                new MyContactPersonFullnameLinkLabel(this, form, myContactPersonTableLayoutPanel);
             contactPersonFullnameLinkLabel.Text = form.NameContactPerson;
             MyContactPersonPositionLabel contactPersonPositionLabel = new MyContactPersonPositionLabel(this);
             contactPersonPositionLabel.Text = form.PositionContactPerson;
             MyContactPersonPhoneLabel contactPersonPhoneLabel = new MyContactPersonPhoneLabel(this);
 
-            // Здесь нужно определить, какой номер телефона выводить в таблицу.
+            // TODO Здесь нужно определить, какой номер телефона выводить в таблицу.
             contactPersonPhoneLabel.Text = form.MyContactPersonPhoneFormList[0].NewPhoneNumber;
-
-            var myContactPersonTableLayoutPanel = MyAllOfficesFlowLayoutPanel
-                                                 .MyOneOfficeContactTableLayoutPanelList[officeNumber]
-                                                 .MyContactPersonTableLayoutPanel;
 
             myContactPersonTableLayoutPanel.Controls.Add(contactPersonFullnameLinkLabel);
             myContactPersonTableLayoutPanel.Controls.Add(contactPersonPositionLabel);
             myContactPersonTableLayoutPanel.Controls.Add(contactPersonPhoneLabel);
         }
+
+        // TODO Попробовать переделать данный метод с использованием GetNextControl метод.
+        // Отображаем введенные ФИО, должность и телефон из повторно открытой формы для добавления
+        // нового сотрудника с учетом внесенных изменений после ее очередного закрытия.
+        public void RedisplayReopenedContactPersonForm(AddNewContactPersonForm contactPersonForm)
+        {
+            _contactPersonFullnameLinkLabel.Text = contactPersonForm.NameContactPerson;
+
+            // Цифра 1 в выражении "IndexOf(_contactPersonFullnameLinkLabel) + 1" означает 
+            // следующий индекс объекта типа "MyContactPersonPositionLabel" (поле с должностью 
+            // сотрудника) относительно индекса объекта типа "MyContactPersonFullnameLinkLabel"
+            // (поле с ФИО сотрудника).
+            MyContactPersonPositionLabel positionLabel =
+                (MyContactPersonPositionLabel)_contactPersonTableLayoutPanel
+                .Controls[_contactPersonTableLayoutPanel.Controls
+                .IndexOf(_contactPersonFullnameLinkLabel) + 1];
+
+            positionLabel.Text = contactPersonForm.PositionContactPerson;
+
+            MyContactPersonPhoneLabel phoneLabel =
+                (MyContactPersonPhoneLabel)_contactPersonTableLayoutPanel
+                .Controls[_contactPersonTableLayoutPanel.Controls
+                .IndexOf(positionLabel) + 1];
+
+            // TODO Здесь нужно определить, какой номер телефона выводить в таблицу.
+            phoneLabel.Text = contactPersonForm.MyContactPersonPhoneFormList[0].NewPhoneNumber;
+        }
+
+        // Повторно открываем закрытую форму добавления нового сотрудника при нажатии на
+        // LinkLabel с ФИО конкретного сотрудника.
+        public void ReopenContactPersonForm(MyContactPersonFullnameLinkLabel contactPersonFullnameLinkLabel,
+                                            AddNewContactPersonForm contactPersonForm,
+                                            MyContactPersonTableLayoutPanel contactPersonTableLayoutPanel)
+        {
+            _contactPersonFullnameLinkLabel = contactPersonFullnameLinkLabel;
+            _contactPersonTableLayoutPanel = contactPersonTableLayoutPanel;
+            contactPersonForm.Show();
+        }
+
     }
 }
