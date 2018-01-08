@@ -195,7 +195,9 @@ namespace CRM_GTMK.Visual
         // Сохраняем введенные данные по нажатию на кнопку "Сохранить и закрыть".
         private void saveNewContactPersonButton_Click(object sender, EventArgs e)
         {
-            if (LastnameContactPerson != null)
+            // TODO Проверить условие NameContactPerson != null. Иногда происходит не верное
+            // сравнение.
+            if (NameContactPerson != null)
             {
                 if (assignContactPersonComponents(sender, e))
                     return;

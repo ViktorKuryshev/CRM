@@ -1,10 +1,13 @@
 ﻿using CRM_GTMK.Model;
+using CRM_GTMK.Model.DataModels;
+using CRM_GTMK.Model.TestApi;
 using CRM_GTMK.Visual;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
 using CRM_GTMK.Visual.MainScreenPanels;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using CRM_GTMK.Visual.MainScreenPanels;
 using CRM_GTMK.Model.TestApi;
@@ -188,14 +191,15 @@ namespace CRM_GTMK.Control
 			//todo присвоить компании уникальный id для получить последний id
 			_myModel.NewCompany.Id = _myModel.XmlHelper.GetBigestCompanyId() + 1;
 			//new ClientsListForm(clientsInfo).ShowDialog();
-			_myModel.XmlHelper.AddNewCompanyInfo(_myModel.NewCompany);
+			_myModel.XmlHelper.SaveNewCompanyInfoInXml(_myModel.NewCompany);
 
 			//Todo Автоматически поставилась задача на проработку компании менеджеру по какому-то принципу
 
 			MainScreenForm.NewClientForm.Dispose();
 		}
 
-        // Передаем данные о компании из полей форм для ввода в соответствующие переменные.
+        // Передаем данные о компании из полей форм для ввода в соответствующие переменные
+        // соответствующих классов.
 		private Company GetCompanyDataFromForm()
 		{
 			Company company = new Company();
@@ -215,10 +219,12 @@ namespace CRM_GTMK.Control
 
 			for (int i = 0; i < officeList.Count; i++)
 			{
+                if (checkIfOfficeInfoFilled(officeList[i]) == false)
+                    return;
 				Office newOffice = new Office();
 				newOffice.Id = i + 1;
 
-				GetOfficeContactInfoFromForm(newOffice, officeList[i]);
+				getOfficeContactInfoFromForm(newOffice, officeList[i]);
 				getOfficeContactPersonInfoFromForm(newOffice, officeList[i]);
 				getOfficePhonesFromForm(newOffice, officeList[i]);
 
@@ -226,9 +232,21 @@ namespace CRM_GTMK.Control
 			}
 		}
 
+        // Проверяем заполнены ли все поля. Если хотя бы одно поле заполнено, тогда добавляем
+        // офис в базу. В противном случае - пропускаем.
+        private bool checkIfOfficeInfoFilled(MyOneOfficeContactTableLayoutPanel panel)
+        {
+            return panel.MyOfficeContactInfoPanel.MyOfficeCountryComboBox.Text == "" &&
+                   panel.MyOfficeContactInfoPanel.MyOfficeCityTextBox.Text == "" &&
+                   panel.MyOfficeContactInfoPanel.MyOfficeAddressTextBox.Text == "" &&
+                   panel.MyOfficeContactInfoPanel.MyOfficeSiteTextBox.Text == "" &&
+                   panel.MyPhonesFlowLayoutPanel.MyPhonePanels.All(p => p.MyPhoneTextBox.Text == "") &&
+                   panel.MyContactPersonFormList.Count == 0 ? false : true;
+        }
+
         // Передаем данные об одном офисе компании из полей форм для ввода в соответствующие 
         // переменные.
-        private void GetOfficeContactInfoFromForm(Office office, MyOneOfficeContactTableLayoutPanel officeList)
+        private void getOfficeContactInfoFromForm(Office office, MyOneOfficeContactTableLayoutPanel officeList)
 		{
 			office.Country = officeList.MyOfficeContactInfoPanel.MyOfficeCountryComboBox.Text;
 			office.City = officeList.MyOfficeContactInfoPanel.MyOfficeCityTextBox.Text;
@@ -249,7 +267,7 @@ namespace CRM_GTMK.Control
 				person.LastName = form.LastnameContactPerson;
 				person.FirstName = form.FirstnameContactPerson;
 				person.MiddleName = form.MiddleNameContactPerson;
-				person.Email = form.EmailContactPerson;
+				person.Emails = form.EmailContactPerson.Where(e => !string.IsNullOrEmpty(e)).ToArray();
 				person.Position = form.PositionContactPerson;
 				person.Id = i + 1;
 				getContactPersonPhonesFromForm(form, person);
@@ -298,7 +316,7 @@ namespace CRM_GTMK.Control
 								.MyPhonePanels)
 			{
 				if (panel.MyPhoneTextBox.Text != "")
-					office.Phones.Add(panel.MyPhoneTextBox.Text);
+					office.OfficePhones.Add(panel.MyPhoneTextBox.Text);
 			}
 		}
 	}
