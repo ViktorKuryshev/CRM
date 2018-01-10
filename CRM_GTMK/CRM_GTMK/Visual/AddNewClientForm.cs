@@ -274,6 +274,7 @@ namespace CRM_GTMK.Visual
         {
             _contactPersonFullnameLinkLabel = contactPersonFullnameLinkLabel;
             _contactPersonTableLayoutPanel = contactPersonTableLayoutPanel;
+            contactPersonForm.StartPosition = FormStartPosition.Manual;
             contactPersonForm.Show();
         }
 

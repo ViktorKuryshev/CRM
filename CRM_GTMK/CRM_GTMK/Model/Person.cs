@@ -1,10 +1,5 @@
-﻿using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
-using RestSharp.Extensions;
-using System;
+﻿using RestSharp.Extensions;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace CRM_GTMK.Model
@@ -23,8 +18,8 @@ namespace CRM_GTMK.Model
         public bool IsMale { get; set; }
 
         public string BirthDate { get; set; }
-        [XmlArrayItem(ElementName = "Email", IsNullable = false)]
-        public string[] Emails { get; set; }
+        [XmlArrayItem(ElementName = "Email")]
+        public string[] EmailsList { get; set; }
         public string Address { get; set; }
         
         public List<PersonPhoneData> PersonPhonesList { get; set; } = new List<PersonPhoneData>();
@@ -33,7 +28,6 @@ namespace CRM_GTMK.Model
         public bool ShouldSerializeMiddleName() { return MiddleName.HasValue(); }
         public bool ShouldSerializePersonCommentList()
         { return PersonCommentList.Count != 0; }
-
     }
 
     public class PersonPhoneData

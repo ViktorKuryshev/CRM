@@ -23,9 +23,10 @@ namespace CRM_GTMK.Model
         public string City { get; set; }
         public string Site { get; set; }
         public string Address { get; set; }
-        public string[] Email { get; set; }
-        [XmlArray(ElementName = "OfficePhone")]
-        public List<string> OfficePhones { get; set; } = new List<string>();
+        [XmlArrayItem(ElementName = "Email")]
+        public string[] EmailsList { get; set; }
+        [XmlArrayItem(ElementName = "OfficePhone")]
+        public List<string> OfficePhonesList { get; set; } = new List<string>();
 
         public List<Person> ContactPersonList { get; set; } = new List<Person>();
 
@@ -34,7 +35,7 @@ namespace CRM_GTMK.Model
         public bool ShouldSerializeSite() { return Site.HasValue(); }
         public bool ShouldSerializeAddress() { return Address.HasValue(); }
         public bool ShouldSerializeOfficePhones()
-        { return OfficePhones.Any(p => p.HasValue()); }
+        { return OfficePhonesList.Any(p => p.HasValue()); }
         public bool ShouldSerializeContactPersonList()
         { return ContactPersonList.Any(p => p != null); }
     }

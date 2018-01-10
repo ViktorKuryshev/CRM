@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CRM_GTMK.Control;
-using CRM_GTMK.Visual.MainScreenPanels;
-using System.Threading;
+﻿using CRM_GTMK.Control;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
+using CRM_GTMK.Visual.MainScreenPanels;
+using System;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual
 {
-	public partial class MainScreenForm : Form
+    public partial class MainScreenForm : Form
 	{
 		private Controller _controller;
 
@@ -63,11 +56,13 @@ namespace CRM_GTMK.Visual
 			newContactPersonForm.ShowDialog();
 		}
 
+        // Создаем и отображаем новую форму для ввода телефона сотрудника.
 		public void ShowAddNewContactPersonPhoneForm(AddNewContactPersonForm form)
 		{
 			AddNewContactPersonPhoneForm newContactPersonPhoneForm = new AddNewContactPersonPhoneForm(_controller, form);
-			form.MyContactPersonPhoneFormList.Add(newContactPersonPhoneForm);
-			newContactPersonPhoneForm.ShowDialog();
+
+            form.MyContactPersonPhoneFormList.Add(newContactPersonPhoneForm);
+            newContactPersonPhoneForm.ShowDialog();
 		}
 
 		public void SendNewProject()
