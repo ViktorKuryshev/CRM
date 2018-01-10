@@ -1,139 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Companies>
-  <Company Id="1" Name="New 1">
+  <Company Id="1" Name="new">
     <Offices>
       <Office Id="1">
         <Country>Россия</Country>
-        <City>mmm1</City>
-        <Site>sss1</Site>
-        <Address>aaa1</Address>
-        <OfficePhone>
-          <string>11</string>
-          <string>12</string>
-        </OfficePhone>
+        <City>asdasdas</City>
+        <Site>cvbcvbcv</Site>
+        <Address>zxczxcz</Address>
+        <OfficePhonesList>
+          <OfficePhone>1212</OfficePhone>
+          <OfficePhone>12123</OfficePhone>
+          <OfficePhone>1212123</OfficePhone>
+        </OfficePhonesList>
         <ContactPersonList>
           <Person Id="1">
-            <FirstName>iiioneone</FirstName>
-            <MiddleName>ooooneone</MiddleName>
-            <LastName>ffffoneone</LastName>
-            <Position>ppponeone</Position>
+            <FirstName>asd</FirstName>
+            <MiddleName>zxc</MiddleName>
+            <LastName>qwe</LastName>
+            <Position>dfg</Position>
             <Emails>
               <Email>@2</Email>
             </Emails>
             <PersonPhonesList>
               <PersonPhoneData PhoneType="Рабочий">
                 <PhoneNumber>+1 (1) 1</PhoneNumber>
-                <PhoneComment>zcvzxcv</PhoneComment>
-              </PersonPhoneData>
-              <PersonPhoneData PhoneType="Рабочий">
-                <PhoneNumber>+2 (2) 2</PhoneNumber>
+                <PhoneComment>1</PhoneComment>
               </PersonPhoneData>
             </PersonPhonesList>
             <PersonCommentList>
               <PersonComment>
-                <Date>08.01.2018 19:27
+                <Date>11.01.2018 0:26
 Добавил Вася</Date>
-                <Comment>asdfa</Comment>
+                <Comment>asd</Comment>
               </PersonComment>
               <PersonComment>
-                <Date>08.01.2018 19:27
+                <Date>11.01.2018 0:27
 Добавил Вася</Date>
-                <Comment>sadf</Comment>
+                <Comment>zxc</Comment>
               </PersonComment>
             </PersonCommentList>
           </Person>
           <Person Id="2">
-            <FirstName>iiionetwo</FirstName>
-            <MiddleName>oooonetwo</MiddleName>
-            <LastName>fffonetwo</LastName>
-            <Position>ppponetwo</Position>
+            <FirstName>llllll</FirstName>
+            <MiddleName>pppppppppp</MiddleName>
+            <LastName>oooooo</LastName>
+            <Position>mmmmm</Position>
             <Emails>
               <Email>@3</Email>
             </Emails>
             <PersonPhonesList>
               <PersonPhoneData PhoneType="Рабочий">
-                <PhoneNumber>+3 (3) 3</PhoneNumber>
+                <PhoneNumber>+1 (1) 1</PhoneNumber>
+                <PhoneComment>1</PhoneComment>
               </PersonPhoneData>
             </PersonPhonesList>
-            <PersonCommentList>
-              <PersonComment>
-                <Date>08.01.2018 19:28
-Добавил Вася</Date>
-                <Comment>wwwwwwwwww</Comment>
-              </PersonComment>
-            </PersonCommentList>
           </Person>
         </ContactPersonList>
-      </Office>
-      <Office Id="2">
-        <Country>USA</Country>
-        <City>NNNNNN</City>
-        <Site>USAUSA</Site>
-        <Address>MMMMM</Address>
-        <OfficePhone>
-          <string>21</string>
-          <string>22</string>
-        </OfficePhone>
-        <ContactPersonList>
-          <Person Id="1">
-            <FirstName>iiitwoone</FirstName>
-            <MiddleName>oootwoone</MiddleName>
-            <LastName>ffftwoone</LastName>
-            <Position>ppptwoone</Position>
-            <Emails>
-              <Email>@1</Email>
-            </Emails>
-            <PersonPhonesList>
-              <PersonPhoneData PhoneType="Рабочий">
-                <PhoneNumber>+5 (5) 5</PhoneNumber>
-                <PhoneComment>555</PhoneComment>
-              </PersonPhoneData>
-            </PersonPhonesList>
-            <PersonCommentList>
-              <PersonComment>
-                <Date>08.01.2018 19:30
-Добавил Вася</Date>
-                <Comment>55555</Comment>
-              </PersonComment>
-              <PersonComment>
-                <Date>08.01.2018 19:30
-Добавил Вася</Date>
-                <Comment>7788</Comment>
-              </PersonComment>
-            </PersonCommentList>
-          </Person>
-          <Person Id="2">
-            <FirstName>iiitwotwo</FirstName>
-            <MiddleName>oootwotwo</MiddleName>
-            <LastName>ffftwotwo</LastName>
-            <Position>ppptwotwo</Position>
-            <Emails>
-              <Email>@2</Email>
-            </Emails>
-            <PersonPhonesList>
-              <PersonPhoneData PhoneType="Рабочий">
-                <PhoneNumber>+6 (6) 6</PhoneNumber>
-              </PersonPhoneData>
-            </PersonPhonesList>
-            <PersonCommentList>
-              <PersonComment>
-                <Date>08.01.2018 19:30
-Добавил Вася</Date>
-                <Comment>sdfasf</Comment>
-              </PersonComment>
-            </PersonCommentList>
-          </Person>
-        </ContactPersonList>
-      </Office>
-    </Offices>
-  </Company>
-  <Company Id="2" Name="New 2">
-    <Offices>
-      <Office Id="1">
-        <Country>sdf</Country>
-      </Office>
-      <Office Id="2">
-        <Country>asd</Country>
       </Office>
     </Offices>
   </Company>

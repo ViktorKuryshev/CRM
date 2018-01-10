@@ -12,11 +12,13 @@ namespace CRM_GTMK.Model
 		private const string BASE_DIRECTORY = "Model\\XMLBase";
 		private const string COMPANY_FILE_NAME = "companies.xml";
 
+        // Определяем наибольший Id среди всех компаний для назначения Id + 1 новой компании.
 		public int GetBigestCompanyId()
 		{
 			string path = GetXmlDocumentPath();
 			XDocument xDoc = XDocument.Load(path);
-			int id = 0;
+
+            int id = 0;
 
 			foreach (var element in xDoc.Element("Companies").Elements("Company"))
 			{
@@ -70,7 +72,6 @@ namespace CRM_GTMK.Model
 }
 
 #region Old method of appending a new company's data to the xml file.
-// TODO Переделать данный метод с использованием сериализации.
 //public void AddNewCompanyInfo(Company company)
 //{
 //	string path = GetXmlDocumentPath();

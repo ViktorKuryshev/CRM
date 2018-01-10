@@ -155,9 +155,9 @@
             // 
             // commentRichTextBox
             // 
-            this.commentRichTextBox.Location = new System.Drawing.Point(100, 3);
+            this.commentRichTextBox.Location = new System.Drawing.Point(101, 3);
             this.commentRichTextBox.Name = "commentRichTextBox";
-            this.commentRichTextBox.Size = new System.Drawing.Size(232, 84);
+            this.commentRichTextBox.Size = new System.Drawing.Size(231, 84);
             this.commentRichTextBox.TabIndex = 1;
             this.commentRichTextBox.Text = "";
             // 
@@ -179,7 +179,7 @@
             this.commentsContactPersonFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.commentsContactPersonFlowLayoutPanel.Location = new System.Drawing.Point(408, 51);
             this.commentsContactPersonFlowLayoutPanel.Name = "commentsContactPersonFlowLayoutPanel";
-            this.commentsContactPersonFlowLayoutPanel.Size = new System.Drawing.Size(366, 368);
+            this.commentsContactPersonFlowLayoutPanel.Size = new System.Drawing.Size(367, 368);
             this.commentsContactPersonFlowLayoutPanel.TabIndex = 33;
             this.commentsContactPersonFlowLayoutPanel.WrapContents = false;
             // 
@@ -236,6 +236,7 @@
             this.phoneCommentTextBox.ReadOnly = true;
             this.phoneCommentTextBox.Size = new System.Drawing.Size(147, 20);
             this.phoneCommentTextBox.TabIndex = 2;
+            this.phoneCommentTextBox.MouseHover += new System.EventHandler(this.phoneCommentTextBox_MouseHover);
             // 
             // phoneNumberLinkLabel
             // 
@@ -246,6 +247,7 @@
             this.phoneNumberLinkLabel.TabIndex = 37;
             this.phoneNumberLinkLabel.TabStop = true;
             this.phoneNumberLinkLabel.Text = "+7 (950) 123-45-67";
+            this.phoneNumberLinkLabel.Click += new System.EventHandler(this.phoneNumberLinkLabel_Click);
             // 
             // phoneTypeLabel
             // 
@@ -334,7 +336,6 @@
         private System.Windows.Forms.FlowLayoutPanel commentsContactPersonFlowLayoutPanel;
         private System.Windows.Forms.Button addNewCommentContactPersonButton;
         private System.Windows.Forms.Button saveNewContactPersonButton;
-        private System.Windows.Forms.Panel phoneContactPersonPanel;
         private System.Windows.Forms.TextBox phoneCommentTextBox;
         private System.Windows.Forms.Label phoneTypeLabel;
         private System.Windows.Forms.Button addNewContactPersonPhoneButton;
@@ -342,5 +343,6 @@
         private System.Windows.Forms.FlowLayoutPanel commentsInnerFlowLayoutPanel;
         private System.Windows.Forms.ComboBox emailContactPersonComboBox;
         private System.Windows.Forms.LinkLabel phoneNumberLinkLabel;
+        private System.Windows.Forms.Panel phoneContactPersonPanel;
     }
 }

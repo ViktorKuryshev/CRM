@@ -1,10 +1,10 @@
 ﻿using CRM_GTMK.Control;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.PhonesContactPersonFlowLayoutPanel.OneContactPersonPhonePanel;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual
@@ -13,12 +13,25 @@ namespace CRM_GTMK.Visual
     {
         private Controller _controller;
         private AddNewCompanyForm _form;
-        private MyContactPersonPhonePanel _reopenedContactPersonPhonePanel;
+
+        #region Getters
+        public Label DateLabel
+        {
+            get { return dateLabel; }
+            set { dateLabel = value; }
+        }
+        public RichTextBox CommentRichTextBox
+        {
+            get { return commentRichTextBox; }
+            set { commentRichTextBox = value; }
+        }
+        #endregion
 
         public int OfficeNumber { get; set; }
         public List<AddNewContactPersonPhoneForm> MyContactPersonPhoneFormList
         { get; set; } = new List<AddNewContactPersonPhoneForm>();
-        public List<MyCommentPanel> MyCommentPanelList { get; set; } = new List<MyCommentPanel>();
+        public List<Panel> MyPhonePanelList { get; set; } = new List<Panel>();
+        public List<Panel> MyCommentPanelList { get; set; } = new List<Panel>();
 
         public string NameContactPerson { get; set; }
         public string LastnameContactPerson { get; set; }
@@ -62,68 +75,68 @@ namespace CRM_GTMK.Visual
             saveNewContactPersonButton.Location = new Point(165, 286);
         }
 
-        #region Getters
-
-        public FlowLayoutPanel GetCommentsContactPersonFlowLayoutPanel()
-        {
-            return commentsContactPersonFlowLayoutPanel;
-        }
-
-        public Panel GetCommentPanel()
-        {
-            return commentPanel;
-        }
-
-        public Label GetDateLabel()
-        {
-            return dateLabel;
-        }
-
-        public RichTextBox GetCommentRichTextBox()
-        {
-            return commentRichTextBox;
-        }
-
-        public FlowLayoutPanel GetPhonesContactPersonFlowLayoutPanel()
-        {
-            return phonesContactPersonFlowLayoutPanel;
-        }
-
-        public Panel GetPhonePanel()
-        {
-            return phoneContactPersonPanel;
-        }
-
-        public TextBox GetPhoneCommentTextBox()
-        {
-            return phoneCommentTextBox;
-        }
-
-        public LinkLabel GetPhoneNumberLinkLabel()
-        {
-            return phoneNumberLinkLabel;
-        }
-
-        public Label GetPhoneTypeLabel()
-        {
-            return phoneTypeLabel;
-        }
-
-        public FlowLayoutPanel GetCommentsInnerFlowLayoutPanel()
-        {
-            return commentsInnerFlowLayoutPanel;
-        }
-
-        #endregion
-
         // Кнопка добавления нового комментария.
         private void addNewCommentContactPersonButton_Click(object sender, EventArgs e)
         {
             makeFormExpandForComments();
-            MyCommentPanel newCommentPanel = new MyCommentPanel(this);
+
+            Panel newCommentPanel = commentPanelConstructor();
+
             MyCommentPanelList.Add(newCommentPanel);
             commentsInnerFlowLayoutPanel.Controls.Add(newCommentPanel);
         }
+
+        /// <summary>
+        /// Конструкторы для создания новой панели с лейблом и полем для ввода для комментария 
+        /// по сотруднику.
+        /// </summary>
+        #region CommentPanelConstructor
+        // Конструируем новый лейбл для комментария по сотруднику.
+        private Label dateLabelConstructor()
+        {
+            Label label = new Label();
+
+            label.AutoSize = dateLabel.AutoSize;
+            label.Location = dateLabel.Location;
+            label.Name = dateLabel.Name + MyCommentPanelList.Count;
+            label.Size = dateLabel.Size;
+            label.TabIndex = dateLabel.TabIndex;
+            DateTime currentTime = DateTime.Now;
+            CultureInfo russianCulture = new CultureInfo("ru-Ru");
+            label.Text = currentTime.ToString("g", russianCulture) + "\r\nДобавил Вася";
+
+            return label;
+        }
+
+        // Конструируем новое поле для ввода комментария по сотруднику.
+        private RichTextBox commentRichTextBoxConstructor()
+        {
+            RichTextBox richTextBox = new RichTextBox();
+
+            richTextBox.Location = commentRichTextBox.Location;
+            richTextBox.Name = commentRichTextBox.Name + MyCommentPanelList.Count;
+            richTextBox.Size = commentRichTextBox.Size;
+            richTextBox.TabIndex = commentRichTextBox.TabIndex;
+            richTextBox.Text = commentRichTextBox.Text;
+
+            return richTextBox;
+        }
+
+        // Конструируем новую панель для комментария по сотруднику.
+        private Panel commentPanelConstructor()
+        {
+            Panel panel = new Panel();
+
+            panel.Anchor = commentPanel.Anchor;
+            panel.Controls.Add(dateLabelConstructor());
+            panel.Controls.Add(commentRichTextBoxConstructor());
+            panel.Name = commentPanel.Name + MyContactPersonPhoneFormList.Count;
+            panel.Size = commentPanel.Size;
+            panel.TabIndex = commentPanel.TabIndex;
+
+            return panel;
+        }
+        #endregion
 
         // Увеличиваем размер окна при добавлении нового комментария. Size(806, 515) это новые
         // размеры окна. Point(554, 9) это новые координаты расположения кнопки "Добавить 
@@ -141,6 +154,17 @@ namespace CRM_GTMK.Visual
             addNewCommentContactPersonButton.Location = new Point(554, 9);
             saveNewContactPersonButton.Location = new Point(356, 425);
             phonesContactPersonFlowLayoutPanel.Height = 172;
+        }
+
+        // Увеличиваем размер окна при добавлении нового телефона. 
+        public void MakeFormExpandForPhones()
+        {
+            if (commentsContactPersonFlowLayoutPanel.Visible == true)
+                phonesContactPersonFlowLayoutPanel.Show();
+            else
+            {
+                phonesContactPersonFlowLayoutPanel.Show();
+            }
         }
 
         // Кнопка добавления нового телефона сотрудника.
@@ -161,35 +185,100 @@ namespace CRM_GTMK.Visual
             }
         }
 
-        // Увеличиваем размер окна при добавлении нового телефона. 
-        public void MakeFormExpandForPhones()
-        {
-            if (commentsContactPersonFlowLayoutPanel.Visible == true)
-                phonesContactPersonFlowLayoutPanel.Show();
-            else
-            {
-                phonesContactPersonFlowLayoutPanel.Show();
-            }
-        }
-
         // Отображаем введенный телефон и комментарий на данной панели.
         public void AddAndDisplayNewContactPersonPhone(AddNewContactPersonPhoneForm form)
         {
-            MyContactPersonPhonePanel contactPersonPhonePanel = 
-                                    new MyContactPersonPhonePanel(this, form);
-            contactPersonPhonePanel.MyPhoneTypeLabel.Text = form.NewPhoneType;
-            contactPersonPhonePanel.MyPhoneNumberLinkLabel.Text = form.NewPhoneNumber;
-            contactPersonPhonePanel.MyPhoneCommentTextBox.Text = form.NewPhoneComment;
-            phonesContactPersonFlowLayoutPanel.Controls.Add(contactPersonPhonePanel);
+            Panel newPhoneContactPersonPanel = phoneContactPersonPanelConstructor(form);
+
+            phonesContactPersonFlowLayoutPanel.Controls.Add(newPhoneContactPersonPanel);
+            MyPhonePanelList.Add(newPhoneContactPersonPanel);
         }
+
+        /// <summary>
+        /// Конструкторы для создания новой панели с отображением введенных данных о телефоне:
+        /// тип, номер, комментарий.
+        /// </summary>
+        #region PhonePanelConstructors
+        // Конструируем новый лейбл для типа телефона.
+        private Label phoneTypeLabelConstructor(AddNewContactPersonPhoneForm form)
+        {
+            Label label = new Label();
+
+            label.AutoSize = phoneTypeLabel.AutoSize;
+            label.Location = phoneTypeLabel.Location;
+            label.Name = phoneTypeLabel.Name + MyContactPersonPhoneFormList.IndexOf(form);
+            label.Size = phoneTypeLabel.Size;
+            label.TabIndex = phoneTypeLabel.TabIndex;
+            label.Text = form.NewPhoneType;
+
+            return label;
+        }
+
+        // Конструируем новый лейбл со ссылкой для номера телефона.
+        private LinkLabel phoneNumberLinkLabelConstructor(AddNewContactPersonPhoneForm form)
+        {
+            LinkLabel linkLabel = new LinkLabel();
+
+            linkLabel.AutoSize = phoneNumberLinkLabel.AutoSize;
+            linkLabel.Location = phoneNumberLinkLabel.Location;
+            linkLabel.Name = phoneNumberLinkLabel.Name + 
+                             MyContactPersonPhoneFormList.IndexOf(form);
+            linkLabel.Size = phoneNumberLinkLabel.Size;
+            linkLabel.TabIndex = phoneNumberLinkLabel.TabIndex;
+            linkLabel.TabStop = phoneNumberLinkLabel.TabStop;
+            linkLabel.Text = form.NewPhoneNumber;
+            linkLabel.Click += new EventHandler(phoneNumberLinkLabel_Click);
+
+            return linkLabel;
+        }
+
+        // Конструируем новое поле для комментария телефона.
+        private TextBox phoneCommentTextBoxConstructor(AddNewContactPersonPhoneForm form)
+        {
+            TextBox textBox = new TextBox();
+
+            textBox.Cursor = phoneCommentTextBox.Cursor;
+            textBox.Location = phoneCommentTextBox.Location;
+            textBox.Name = phoneCommentTextBox.Name + MyContactPersonPhoneFormList.IndexOf(form);
+            textBox.ReadOnly = phoneCommentTextBox.ReadOnly;
+            textBox.Size = phoneCommentTextBox.Size;
+            textBox.TabIndex = phoneCommentTextBox.TabIndex;
+            textBox.MouseHover += new EventHandler(phoneCommentTextBox_MouseHover);
+            textBox.Text = form.NewPhoneComment;
+
+            return textBox;
+        }
+
+        // Конструируем новую панель для отображения номера телефона.
+        private Panel phoneContactPersonPanelConstructor(AddNewContactPersonPhoneForm form)
+        {
+            Panel panel = new Panel();
+
+            panel.AutoSize = phoneContactPersonPanel.AutoSize;
+            panel.Controls.Add(phoneTypeLabelConstructor(form));
+            panel.Controls.Add(phoneNumberLinkLabelConstructor(form));
+            panel.Controls.Add(phoneCommentTextBoxConstructor(form));
+            panel.Name = phoneContactPersonPanel.Name + MyContactPersonPhoneFormList.Count;
+            panel.Size = phoneContactPersonPanel.Size;
+            panel.TabIndex = phoneContactPersonPanel.TabIndex;
+
+            return panel;
+        }
+
+        #endregion
 
         // Отображаем введенный телефон и комментарий повторно открытой формы для ввода телефона
         // с учетом внесенных изменений.
         public void RedisplayReopenedContactPersonPhonePanel(AddNewContactPersonPhoneForm form)
         {
-            _reopenedContactPersonPhonePanel.MyPhoneTypeLabel.Text = form.NewPhoneType;
-            _reopenedContactPersonPhonePanel.MyPhoneNumberLinkLabel.Text = form.NewPhoneNumber;
-            _reopenedContactPersonPhonePanel.MyPhoneCommentTextBox.Text = form.NewPhoneComment;
+            int index = MyContactPersonPhoneFormList.IndexOf(form);
+
+            int phoneTypeLabelIndex = MyPhonePanelList[index].Controls.IndexOfKey(phoneTypeLabel.Name + index);
+            MyPhonePanelList[index].Controls[phoneTypeLabelIndex].Text = form.NewPhoneType;
+            int phoneNumberLinkLabelIndex = MyPhonePanelList[index].Controls.IndexOfKey(phoneNumberLinkLabel.Name + index);
+            MyPhonePanelList[index].Controls[phoneNumberLinkLabelIndex].Text = form.NewPhoneNumber;
+            int phoneCommentTextBoxIndex = MyPhonePanelList[index].Controls.IndexOfKey(phoneCommentTextBox.Name + index);
+            MyPhonePanelList[index].Controls[phoneCommentTextBoxIndex].Text = form.NewPhoneComment;
         }
 
         // Сохраняем введенные данные по нажатию на кнопку "Сохранить и закрыть".
@@ -213,8 +302,8 @@ namespace CRM_GTMK.Visual
         }
 
         /// <summary>
-        /// Методы, передающие введенные данные в переменные и
-        /// проверяющие правильность введенной информации.
+        /// Методы, передающие введенные данные в переменные и проверяющие правильность 
+        /// введенной информации.
         /// </summary>
         #region Checkers
 
@@ -361,15 +450,19 @@ namespace CRM_GTMK.Visual
         }
 
         // Повторно открываем закрытую форму ввода телефона по нажатию на LinkLabel.
-        public void ReopenContactPersonPhone(AddNewContactPersonPhoneForm phoneForm,
-                                             MyContactPersonPhonePanel phonePanel)
+        private void phoneNumberLinkLabel_Click(object sender, EventArgs e)
         {
-            _reopenedContactPersonPhonePanel = phonePanel;
-            phoneForm.Show();
+            LinkLabel linkLabel = (LinkLabel)sender;
+
+            int contactPersonPhoneFormIndex = phonesContactPersonFlowLayoutPanel
+                                             .Controls.IndexOf(linkLabel.Parent);
+
+            MyContactPersonPhoneFormList[contactPersonPhoneFormIndex].StartPosition = FormStartPosition.Manual;
+            MyContactPersonPhoneFormList[contactPersonPhoneFormIndex].Show();
         }
 
         // При закрытии окна по нажатию на красный крестик выбираем,
-        //что нужно сделать с формой: удалить или скрыть.
+        // что нужно сделать с формой: удалить или скрыть.
         private void AddNewContactPersonForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (NameContactPerson == null)
@@ -379,6 +472,24 @@ namespace CRM_GTMK.Visual
                 e.Cancel = true;
                 this.Hide();
             }
+        }
+
+        // Выводим всплывающее окно при наведении мыши на текстовое поля комментария телефона.
+        // TODO Исправить баг в данном методе: при повторном открытии формы ввода телефона 
+        // по нажатии на поле с ссылкой (LinkLabel), внесении изменений в комментарий и
+        // сохранении и затем наведении курсора мыши на поле с комментарием ToolTip показывает 
+        // старые данные и затем новые. Нужно понять, где берутся старые данные.
+        private void phoneCommentTextBox_MouseHover(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            ToolTip toolTip = new ToolTip();
+            Regex rgx = new Regex("(.{10}\\s)");
+            string WrappedMessage = rgx.Replace(textBox.Text, "$1\n");
+
+            toolTip.ShowAlways = true;
+            toolTip.InitialDelay = 0;
+            
+            toolTip.SetToolTip(textBox, WrappedMessage);
         }
     }
 }

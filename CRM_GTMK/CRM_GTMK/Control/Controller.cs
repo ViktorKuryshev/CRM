@@ -2,7 +2,6 @@
 using CRM_GTMK.Model.DataModels;
 using CRM_GTMK.Model.TestApi;
 using CRM_GTMK.Visual;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.ContactPersonPanel.CommentsContactPersonFlowLayoutPanel.CommentsInnerFlowLayoutPanel.OneCommentPanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel.PhonesFlowPanel.OnePhonePanel;
 using CRM_GTMK.Visual.MainScreenPanels;
@@ -158,11 +157,15 @@ namespace CRM_GTMK.Control
 		{
 			MainScreenForm.ShowAddNewContactPersonDialog(panel);
 		}
-		public void ShowAddNewContactPersonPhoneForm(AddNewContactPersonForm form)
+
+        // Вызываем метод для создания и отображения новой формы для ввода телефона сотрудника.
+        public void ShowAddNewContactPersonPhoneForm(AddNewContactPersonForm form)
 		{
 			MainScreenForm.ShowAddNewContactPersonPhoneForm(form);
 		}
-		public void AddAndDisplayNewContactPerson(AddNewContactPersonForm form, int officeNumber)
+
+        // Вызываем метод для отображения заполненных данных по новому сотруднику.
+        public void AddAndDisplayNewContactPerson(AddNewContactPersonForm form, int officeNumber)
 		{
 			MainScreenForm.NewClientForm.AddAndDisplayNewContactPerson(form, officeNumber);
 		}
@@ -263,7 +266,7 @@ namespace CRM_GTMK.Control
 				person.LastName = form.LastnameContactPerson;
 				person.FirstName = form.FirstnameContactPerson;
 				person.MiddleName = form.MiddleNameContactPerson;
-				person.Emails = form.EmailContactPerson.Where(e => !string.IsNullOrEmpty(e)).ToArray();
+				person.EmailsList = form.EmailContactPerson.Where(e => !string.IsNullOrEmpty(e)).ToArray();
 				person.Position = form.PositionContactPerson;
 				person.Id = i + 1;
 				getContactPersonPhonesFromForm(form, person);
@@ -290,13 +293,19 @@ namespace CRM_GTMK.Control
         // для ввода в соответствующие переменные.
         private void getContactPersonCommentsFromForm(AddNewContactPersonForm form, Person person)
 		{
-			foreach (MyCommentPanel panel in form.MyCommentPanelList)
+			foreach (Panel panel in form.MyCommentPanelList)
 			{
-				if (panel.MyCommentRichTextBox.Text != "")
+                int dateLabelIndex =          panel.Controls.IndexOfKey(form.DateLabel.Name +
+                                                                        form.MyCommentPanelList.IndexOf(panel));
+                int commentRichTextBoxIndex = panel.Controls.IndexOfKey(form.CommentRichTextBox.Name +
+                                                                        form.MyCommentPanelList.IndexOf(panel));
+
+
+                if (panel.Controls[commentRichTextBoxIndex].Text != "")
 				{
 					PersonComment personComment = new PersonComment();
-					personComment.Date = panel.MyDateLabel.Text;
-					personComment.Comment = panel.MyCommentRichTextBox.Text;
+					personComment.Date = panel.Controls[dateLabelIndex].Text;
+					personComment.Comment = panel.Controls[commentRichTextBoxIndex].Text;
 					person.PersonCommentList.Add(personComment);
 				}
 			}
@@ -312,7 +321,7 @@ namespace CRM_GTMK.Control
 								.MyPhonePanels)
 			{
 				if (panel.MyPhoneTextBox.Text != "")
-					office.OfficePhones.Add(panel.MyPhoneTextBox.Text);
+					office.OfficePhonesList.Add(panel.MyPhoneTextBox.Text);
 			}
 		}
 	}
