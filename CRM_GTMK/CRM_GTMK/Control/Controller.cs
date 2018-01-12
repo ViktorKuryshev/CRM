@@ -53,7 +53,7 @@ namespace CRM_GTMK.Control
 			//Если тестируем определенный шаг.
 			if (stepsTesting) { 
 				//Выбираем тестовый шаг
-				switch (TestStep.AddCompanyForm)
+				switch (TestStep.MainScreen)
 				{
 					case TestStep.MainScreen:
 						ShowMainScreenDialog();
@@ -92,7 +92,7 @@ namespace CRM_GTMK.Control
 			//MessageBox.Show(client.CreateProject(LocalValues.DocumentsPaths, LocalValues.FocusedProject));
 			//Todo если файл с данными существует, сделать десериализацию, учитывая то что статический файл не получится серриализовать
 			//Думаю можно передавать его поля в такой же только не статический класс а при дессиреализации возвращать поля в статический
-			GlobalValues.CurrentProjects = new List<Project>();
+			
 			
 			//Todo Проверить 
 
@@ -115,7 +115,7 @@ namespace CRM_GTMK.Control
 			public void SendNewProject()
 		{
 			ApiClient client = new ApiClient();
-			MessageBox.Show(client.CreateProject(GlobalValues.DocumentsPaths, GlobalValues.FocusedProject.SiteProject));
+			//MessageBox.Show(client.CreateProject(GlobalValues.DocumentsPaths, GlobalValues.FocusedProject.SiteProject));
 		}
 
 		/// <summary>
@@ -126,6 +126,7 @@ namespace CRM_GTMK.Control
 			//Если список проектов пуст получаем его с сайта
 			if (GlobalValues.CurrentProjects == null)
 			{
+				
 				GlobalValues.CurrentProjects = _myModel.ApiClient.GetCurrentProjects();
 				GlobalValues.CurrentProjects.Sort();
 			}
@@ -138,6 +139,7 @@ namespace CRM_GTMK.Control
 			{
 				ProjectControls projectControls = new ProjectControls(MainScreenForm, project.Name, project.Deadline.ToString(), project.Id);
 				allProjects.Add(projectControls);
+				if (project.Documents == null) continue;
 				//Создаем список документов
 				foreach (var document in project.Documents)
 				{

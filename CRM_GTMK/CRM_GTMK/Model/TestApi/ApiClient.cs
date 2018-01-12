@@ -30,7 +30,7 @@ namespace CRM_GTMK.Model.TestApi
 			AuthorizationValue = accountId + ":" + ApiKey;
 		}
 
-		public List<Project> GetCurrentProjects()
+		public List<RecievedProject> GetCurrentProjects()
 		{
 			
 				var authorizationValueBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(AuthorizationValue));
@@ -44,7 +44,7 @@ namespace CRM_GTMK.Model.TestApi
 				var content = response.Content;
 
 
-			List<Project> projects = JsonConvert.DeserializeObject<List<Project>>(content);
+			List<RecievedProject> projects = JsonConvert.DeserializeObject<List<RecievedProject>>(content);
 			
 
 			return projects;

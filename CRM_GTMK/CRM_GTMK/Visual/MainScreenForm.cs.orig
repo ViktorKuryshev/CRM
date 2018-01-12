@@ -1,6 +1,10 @@
 ﻿using CRM_GTMK.Control;
+<<<<<<< HEAD
+=======
 using CRM_GTMK.Model;
 using CRM_GTMK.Model.DataModels;
+using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
+>>>>>>> RefactV - 025 - Зацепил все 3 формы диалога добавления проекта на главную форму, перенс навиагцию, убрал лишнии классы. Добавил комментарии. Разнес данные на создание проекта и на получение в разные классы. Стабильная версия.
 using CRM_GTMK.Visual.MainScreenPanels;
 using System;
 using System.Threading;

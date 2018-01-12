@@ -13,7 +13,7 @@ namespace CRM_GTMK.Visual
 {
 	public partial class NewProjectSettingsForm : Form
 	{
-		private NewProjectForm _form;
+		private MainScreenForm _form;
 		
 		public string ProjectName { get { return projectNameTextBox.Text; } }
 		
@@ -50,7 +50,7 @@ namespace CRM_GTMK.Visual
 
 	
 
-		public NewProjectSettingsForm(NewProjectForm form)
+		public NewProjectSettingsForm(MainScreenForm form)
 		{
 			_form = form;
 
@@ -89,15 +89,14 @@ namespace CRM_GTMK.Visual
 		private void goOnButton_Click(object sender, EventArgs e)
 		{
 			
-			_form.ShowWorkflowForm();
+			_form.SwitchProjectDialogForm(2, true);
 
 		}
 
 		private void goBackButton_Click(object sender, EventArgs e)
 		{
-			this.Visible = false;
-			_form.Visible = true;
-			
+			_form.SwitchProjectDialogForm(2, false);
+
 		}
 	}
 }
