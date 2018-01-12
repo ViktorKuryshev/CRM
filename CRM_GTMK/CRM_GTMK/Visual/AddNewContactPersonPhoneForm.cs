@@ -11,9 +11,18 @@ namespace CRM_GTMK.Visual
         private Controller _controller;
         private AddNewContactPersonForm _contactPersonForm;
 
-        public string NewPhoneType { get; set; }
         public string NewPhoneNumber { get; set; }
-        public string NewPhoneComment { get; set; }
+
+        public ComboBox PhoneTypeComboBox
+        {
+            get { return phoneTypeComboBox; }
+            set { phoneTypeComboBox = value; }
+        }
+        public RichTextBox PhoneCommentRichTextBox
+        {
+            get { return phoneCommentRichTextBox; }
+            set { phoneCommentRichTextBox = value; }
+        }
 
         public AddNewContactPersonPhoneForm(Controller controller, AddNewContactPersonForm contactPersonForm)
         {
@@ -22,6 +31,7 @@ namespace CRM_GTMK.Visual
             InitializeComponent();
             phoneTypeComboBox.SelectedIndex = 0;
         }
+        
         // Сохраняем введенные данные после нажатия на кнопку "Сохранить и закрыть".
         private void savePhoneButton_Click(object sender, EventArgs e)
         {
@@ -50,8 +60,6 @@ namespace CRM_GTMK.Visual
         // Передаем данные из полей для ввода в соответствующие переменные.
         private bool assignPhoneComponents()
         {
-            NewPhoneType = phoneTypeComboBox.Text;
-
             if (checkPhoneTextBoxesFilledIn())
                 return true;
             if (checkPhoneTextBoxesWithoutLetters())
@@ -60,7 +68,6 @@ namespace CRM_GTMK.Visual
                 return true;
 
             NewPhoneNumber = formatPhoneNumber();
-            NewPhoneComment = phoneCommentRichTextBox.Text;
             return false;
         }
 

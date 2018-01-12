@@ -1,5 +1,4 @@
 ﻿using CRM_GTMK.Control;
-using CRM_GTMK.Visual.AddCompanyPanels.OfficesPanel.OneOfficePanel.OneOfficeContactTableLayoutPanel;
 using CRM_GTMK.Visual.MainScreenPanels;
 using System;
 using System.Threading;
@@ -46,24 +45,29 @@ namespace CRM_GTMK.Visual
 
 		}
 
-		public void ShowAddNewContactPersonDialog(MyOneOfficeContactTableLayoutPanel panel)
+		public void ShowAddNewContactPersonDialog(TableLayoutPanel parentOfficePanel)
 		{
-			AddNewContactPersonForm newContactPersonForm = new AddNewContactPersonForm(_controller,
-															panel.MyOfficeNumberLabel.OfficeNumber,
-															NewClientForm);
+            int parentOfficePanelIndex = NewClientForm.OneOfficeContactTableLayoutPanelList
+                                        .IndexOf(parentOfficePanel);
 
-			panel.MyContactPersonFormList.Add(newContactPersonForm);
+            AddNewContactPersonForm newContactPersonForm = 
+                new AddNewContactPersonForm(_controller, NewClientForm, parentOfficePanelIndex);
+
 			newContactPersonForm.ShowDialog();
-		}
+            if (newContactPersonForm.IsDisposed)
+                return;
+        }
 
         // Создаем и отображаем новую форму для ввода телефона сотрудника.
-		public void ShowAddNewContactPersonPhoneForm(AddNewContactPersonForm form)
+		public bool ShowAddNewContactPersonPhoneForm(AddNewContactPersonForm form)
 		{
 			AddNewContactPersonPhoneForm newContactPersonPhoneForm = new AddNewContactPersonPhoneForm(_controller, form);
 
-            form.MyContactPersonPhoneFormList.Add(newContactPersonPhoneForm);
             newContactPersonPhoneForm.ShowDialog();
-		}
+            if (newContactPersonPhoneForm.IsDisposed)
+                return false;
+            return true;
+        }
 
 		public void SendNewProject()
 		{
