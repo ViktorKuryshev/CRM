@@ -92,6 +92,7 @@
             this.addClientDataButton.TabIndex = 3;
             this.addClientDataButton.Text = "Сохранить данные";
             this.addClientDataButton.UseVisualStyleBackColor = true;
+            this.addClientDataButton.Click += new System.EventHandler(this.addClientDataButton_Click);
             // 
             // officeSiteLabel
             // 
@@ -296,6 +297,7 @@
             this.allOfficesFlowLayoutPanel.Name = "allOfficesFlowLayoutPanel";
             this.allOfficesFlowLayoutPanel.Size = new System.Drawing.Size(760, 413);
             this.allOfficesFlowLayoutPanel.TabIndex = 16;
+            this.allOfficesFlowLayoutPanel.WrapContents = false;
             // 
             // oneOfficeContactTableLayoutPanel
             // 
@@ -329,6 +331,7 @@
             this.phonesFlowLayoutPanel.Name = "phonesFlowLayoutPanel";
             this.phonesFlowLayoutPanel.Size = new System.Drawing.Size(341, 46);
             this.phonesFlowLayoutPanel.TabIndex = 10;
+            this.phonesFlowLayoutPanel.WrapContents = false;
             // 
             // onePhonePanel
             // 
@@ -349,6 +352,7 @@
             this.morePhonesButton.TabIndex = 8;
             this.morePhonesButton.Text = "Ещё";
             this.morePhonesButton.UseVisualStyleBackColor = true;
+            this.morePhonesButton.Click += new System.EventHandler(this.morePhonesButton_Click);
             // 
             // phoneTextBox
             // 
@@ -397,6 +401,7 @@
             this.Controls.Add(this.companyNameLabel);
             this.Controls.Add(this.companyNameTextBox);
             this.Name = "AddNewCompanyForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddNewClientForm";
             this.officeContactInfoPanel.ResumeLayout(false);
             this.officeContactInfoPanel.PerformLayout();
