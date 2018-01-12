@@ -15,7 +15,7 @@ namespace CRM_GTMK.Visual
 {
 	public partial class NewProjectForm : Form
 	{
-
+		
 		public NewProjectSettingsForm NewProjectSettingsForm { get; set; }
 		public WorkFlowsForm WorkFlowsForm { get; set; }
 
