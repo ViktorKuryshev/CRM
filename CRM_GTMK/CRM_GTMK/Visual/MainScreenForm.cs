@@ -4,6 +4,7 @@ using CRM_GTMK.Model.DataModels;
 using CRM_GTMK.Visual.MainScreenPanels;
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual
@@ -175,7 +176,8 @@ namespace CRM_GTMK.Visual
 			switch(e.Node.Name)
 			{
 				case "ProjectsRoot":
-					SwitchToProjectsPanel();
+					Task task = SwitchToProjectsPanelAsync();
+					task.Wait();
 					break;
 				case "CompaniesNode":
 					SwitchToCompaniesPanel();
@@ -198,7 +200,7 @@ namespace CRM_GTMK.Visual
 		/// <summary>
 		/// Переключение на панель "Проекты"
 		/// </summary>
-		private void SwitchToProjectsPanel()
+		private async Task SwitchToProjectsPanelAsync()
 		{
 			CurrentPanel.Visible = false;
 
