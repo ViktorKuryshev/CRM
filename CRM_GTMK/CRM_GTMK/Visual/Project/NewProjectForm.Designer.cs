@@ -28,23 +28,26 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+			this.filesLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.selectFilesButton = new System.Windows.Forms.Button();
 			this.showFoldersCheckBox = new System.Windows.Forms.CheckBox();
 			this.showDeleteCheckBox = new System.Windows.Forms.CheckBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.goOnButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// flowLayoutPanel1
+			// filesLayoutPanel
 			// 
-			this.flowLayoutPanel1.AccessibleRole = System.Windows.Forms.AccessibleRole.DropList;
-			this.flowLayoutPanel1.AllowDrop = true;
-			this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-			this.flowLayoutPanel1.Location = new System.Drawing.Point(173, 12);
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-			this.flowLayoutPanel1.Size = new System.Drawing.Size(744, 416);
-			this.flowLayoutPanel1.TabIndex = 0;
+			this.filesLayoutPanel.AccessibleRole = System.Windows.Forms.AccessibleRole.DropList;
+			this.filesLayoutPanel.AllowDrop = true;
+			this.filesLayoutPanel.AutoScroll = true;
+			this.filesLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.filesLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+			this.filesLayoutPanel.Location = new System.Drawing.Point(173, 12);
+			this.filesLayoutPanel.Name = "filesLayoutPanel";
+			this.filesLayoutPanel.Size = new System.Drawing.Size(744, 416);
+			this.filesLayoutPanel.TabIndex = 0;
+			this.filesLayoutPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.filesLayoutPanel_DragDrop);
+			this.filesLayoutPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.filesLayoutPanel_DragEnter);
 			// 
 			// selectFilesButton
 			// 
@@ -81,26 +84,26 @@
 			this.showDeleteCheckBox.UseVisualStyleBackColor = true;
 			this.showDeleteCheckBox.CheckedChanged += new System.EventHandler(this.showDeleteCheckBox_CheckedChanged);
 			// 
-			// button1
+			// goOnButton
 			// 
-			this.button1.Location = new System.Drawing.Point(37, 392);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 4;
-			this.button1.Text = "Далее";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.goOnButton.Location = new System.Drawing.Point(37, 392);
+			this.goOnButton.Name = "goOnButton";
+			this.goOnButton.Size = new System.Drawing.Size(75, 23);
+			this.goOnButton.TabIndex = 4;
+			this.goOnButton.Text = "Далее";
+			this.goOnButton.UseVisualStyleBackColor = true;
+			this.goOnButton.Click += new System.EventHandler(this.goOnButton_Click);
 			// 
 			// NewProjectForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(929, 440);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.goOnButton);
 			this.Controls.Add(this.showDeleteCheckBox);
 			this.Controls.Add(this.showFoldersCheckBox);
 			this.Controls.Add(this.selectFilesButton);
-			this.Controls.Add(this.flowLayoutPanel1);
+			this.Controls.Add(this.filesLayoutPanel);
 			this.Name = "NewProjectForm";
 			this.Text = "NewProjectForm";
 			this.ResumeLayout(false);
@@ -110,10 +113,10 @@
 
 		#endregion
 
-		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+		private System.Windows.Forms.FlowLayoutPanel filesLayoutPanel;
 		private System.Windows.Forms.Button selectFilesButton;
 		private System.Windows.Forms.CheckBox showFoldersCheckBox;
 		private System.Windows.Forms.CheckBox showDeleteCheckBox;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button goOnButton;
 	}
 }

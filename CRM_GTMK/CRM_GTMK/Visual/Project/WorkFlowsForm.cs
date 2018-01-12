@@ -13,9 +13,9 @@ namespace CRM_GTMK.Visual
 {
 	public partial class WorkFlowsForm : Form
 	{
-		private NewProjectForm _form;
+		private MainScreenForm _form;
 
-		public WorkFlowsForm(NewProjectForm form)
+		public WorkFlowsForm(MainScreenForm form)
 		{
 			_form = form;
 
@@ -24,7 +24,7 @@ namespace CRM_GTMK.Visual
 
 		private void goBackButton_Click(object sender, EventArgs e)
 		{
-			_form.BackToProjectSettings();
+			_form.SwitchProjectDialogForm(3);
 		}
 
 		private void createProjectButton_Click(object sender, EventArgs e)

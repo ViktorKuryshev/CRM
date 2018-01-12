@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace CRM_GTMK.Model.DataModels
 {
-	public class Project
+	public class Project : IComparable<Project>
 	{
 		[JsonProperty("id")]
 		public string Id { get; set; }
@@ -56,7 +56,7 @@ namespace CRM_GTMK.Model.DataModels
 		[JsonProperty("workflowStages"), JsonIgnore]
 		public Workflowstage[] WorkflowStages { get; set; }
 
-		[JsonProperty("documents"), JsonIgnore]
+		[JsonProperty("documents")]
 		public Document[] Documents { get; set; }
 
 		[JsonProperty("externalTag"), JsonIgnore]
@@ -75,6 +75,12 @@ namespace CRM_GTMK.Model.DataModels
 			SourceLanguage = sourceLanguage ?? DictionaryCollections.Languages["English"];
 			TargetLanguages = targetLanguages ?? new[] { DictionaryCollections.Languages["Russian"] };
 		}
+
+		public int CompareTo(Project that)
+		{
+			return this.CreationDate.CompareTo(that.CreationDate) * -1;
+		}
+
 	}
 }
 
