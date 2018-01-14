@@ -65,6 +65,7 @@
     <Compile Include="HashSet\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LINQ\BirdWatcher.cs" />
     <Compile Include="List\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,69 +80,27 @@
     <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonPanel\MyContactPersonPanel.cs" />
     <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonPanel\OneContactPersonPanel\MyContactPersonsButton.cs" />
     <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonPanel\OneContactPersonPanel\MyContactPersonsLabel.cs" />
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\MyContactPersonTableLayoutPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonFullnameLinkLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonPhoneLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonPositionLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyFullnameLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\MyOneOfficeContactTableLayoutPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\MyOfficeContactInfoPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeAddressLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeAddressTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCityLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCityTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCountryComboBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCountryLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeSiteLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeSiteTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeNumberLabel\MyOfficeNumberLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\PhonesFlowPanel\MyPhonesFlowLayout.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\PhonesFlowPanel\OnePhonePanel\MyMorePhonesButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\PhonesFlowPanel\OnePhonePanel\MyPhoneLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\PhonesFlowPanel\OnePhonePanel\MyPhonePanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\PhonesFlowPanel\OnePhonePanel\MyPhoneTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\MyContactPersonTableLayoutPanel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonFullnameLinkLabel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonPhoneLabel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyContactPersonPositionLabel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\ContactPersonTablePanel\OneContactPersonTablePanel\MyFullnameLabel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\MyOneOfficeContactTableLayoutPanel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\MyOfficeContactInfoPanel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeAddressLabel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeAddressTextBox.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCityLabel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCityTextBox.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCountryComboBox.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeCountryLabel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeSiteLabel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeContactInfoPanel\OneOfficeContactInfoPanel\MyOfficeSiteTextBox.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\OfficeNumberLabel\MyOfficeNumberLabel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\PhonesFlowPanel\MyPhonesFlowLayout.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\PhonesFlowPanel\OnePhonePanel\MyMorePhonesButton.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\PhonesFlowPanel\OnePhonePanel\MyPhoneLabel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\PhonesFlowPanel\OnePhonePanel\MyPhonePanel.cs" />
+    <Compile Include="OfficesPanel\OneOfficePanel\OneOfficeContactTableLayoutPanel\PhonesFlowPanel\OnePhonePanel\MyPhoneTextBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="List\SchoolRoll.cs" />
@@ -180,6 +139,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
