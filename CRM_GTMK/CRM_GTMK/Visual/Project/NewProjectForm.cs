@@ -45,7 +45,7 @@ namespace CRM_GTMK.Visual
 		public bool ShowFolders { get; set; }
 		public bool ShowDelete { get; set; }
 
-		//Конструктов
+		//Конструктор
 		public NewProjectForm(MainScreenForm form)
 		{
 			_form = form;
@@ -146,6 +146,7 @@ namespace CRM_GTMK.Visual
 					FileOrFolder file = new FileOrFolder();
 					file.Path = path;
 					file.Name = Path.GetFileName(path);
+					if (CheckIfFileIsInTheList(file.Name)) continue;
 					file.isFolder = false;
 					file.isShown = true;
 					FilesOrFolders.Add(file);
@@ -169,6 +170,20 @@ namespace CRM_GTMK.Visual
 					GenerateListOfDirectoriesAndFiles(newPaths, folder.FilesOrFolders);
 				}
 			}
+		}
+
+		//Проверяем, есть ли уже такой файл в списке
+		private bool CheckIfFileIsInTheList(string fileName)
+		{
+			bool isInList = false;
+			foreach(var file in FilesAndFoldersPlainList)
+			{
+				if(file.FileOrFolder.Name == fileName)
+				{
+					isInList = true;
+				}
+			}
+			return isInList;
 		}
 
 
