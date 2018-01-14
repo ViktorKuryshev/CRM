@@ -3,6 +3,7 @@ using CRM_GTMK.Model;
 using CRM_GTMK.Model.DataModels;
 using CRM_GTMK.Visual.MainScreenPanels;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -204,28 +205,32 @@ namespace CRM_GTMK.Visual
 		{
 			CurrentPanel.Visible = false;
 
-			if (MyAllProjectsFlowLayoutPanel == null)
-			{
-				MyAllProjectsFlowLayoutPanel = new MyAllProjectsFlowLayoutPanel(this);
-				MyAllProjectsFlowLayoutPanel.SuspendLayout();
-				this.Controls.Add(MyAllProjectsFlowLayoutPanel);
+            if (MyAllProjectsFlowLayoutPanel == null)
+            {
+                MyAllProjectsFlowLayoutPanel = new MyAllProjectsFlowLayoutPanel(this);
+                MyAllProjectsFlowLayoutPanel.SuspendLayout();
+                this.Controls.Add(MyAllProjectsFlowLayoutPanel);
 
-				MyAllProjectsFlowLayoutPanel.AllProjects = _controller.GetProjectsList();
+                Task<List<ProjectControls>> newTask = new Task<List<ProjectControls>>(_controller.GetProjectsList);
+                newTask.Start();
 
-				MyAllProjectsFlowLayoutPanel.ShowProjectsList();
+                MyAllProjectsFlowLayoutPanel.AllProjects = await newTask;
 
-				CurrentPanel = MyAllProjectsFlowLayoutPanel;
-				CurrentPanel.Visible = true;
+                MyAllProjectsFlowLayoutPanel.ShowProjectsList();
 
-				MyAllProjectsFlowLayoutPanel.ResumeLayout(false);
-				MyAllProjectsFlowLayoutPanel.PerformLayout();
-			}
-			else
-			{
-				CurrentPanel = MyAllProjectsFlowLayoutPanel;
-				CurrentPanel.Visible = true;
-			}
-		}
+                CurrentPanel = MyAllProjectsFlowLayoutPanel;
+                CurrentPanel.Visible = true;
+
+                MyAllProjectsFlowLayoutPanel.ResumeLayout(false);
+                MyAllProjectsFlowLayoutPanel.PerformLayout();
+            }
+            else
+            {
+                CurrentPanel = MyAllProjectsFlowLayoutPanel;
+                CurrentPanel.Visible = true;
+            }
+
+        }
 		#endregion
 
 
