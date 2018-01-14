@@ -176,8 +176,8 @@ namespace CRM_GTMK.Visual
 			switch(e.Node.Name)
 			{
 				case "ProjectsRoot":
-					Task task = SwitchToProjectsPanelAsync();
-					task.Wait();
+					SwitchToProjectsPanel();
+					
 					break;
 				case "CompaniesNode":
 					SwitchToCompaniesPanel();
@@ -200,7 +200,7 @@ namespace CRM_GTMK.Visual
 		/// <summary>
 		/// Переключение на панель "Проекты"
 		/// </summary>
-		private async Task SwitchToProjectsPanelAsync()
+		private async Task SwitchToProjectsPanel()
 		{
 			CurrentPanel.Visible = false;
 
