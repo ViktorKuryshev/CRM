@@ -167,6 +167,8 @@ namespace CRM_GTMK.Visual
         // Добавляем свои формы.
         private void resetForms()
 		{
+            AllOfficesFlowLayoutPanel.SuspendLayout();
+
             this.AllOfficesFlowLayoutPanel.Controls.Remove(OneOfficeContactTableLayoutPanel);
             this.AllOfficesFlowLayoutPanel.Controls.Remove(NewCompanyActionMenuPanel);
 
@@ -174,6 +176,10 @@ namespace CRM_GTMK.Visual
 
             this.AllOfficesFlowLayoutPanel.Controls.Add(officesFlowLayoutPanel);
             this.AllOfficesFlowLayoutPanel.Controls.Add(NewCompanyActionMenuPanel);
+
+            officesFlowLayoutPanel.ResumeLayout(false);
+
+            AllOfficesFlowLayoutPanel.ResumeLayout();
         }
 
         /// <summary>
@@ -185,7 +191,7 @@ namespace CRM_GTMK.Visual
         {
             TableLayoutPanel newParentTableLayoutPanel = new TableLayoutPanel();
             int newOfficeNumber = ++OfficeNumber;
-
+            newParentTableLayoutPanel.SuspendLayout();
             newParentTableLayoutPanel.AutoScroll = OneOfficeContactTableLayoutPanel.AutoScroll;
             newParentTableLayoutPanel.AutoSize = OneOfficeContactTableLayoutPanel.AutoSize;
             newParentTableLayoutPanel.ColumnCount = OneOfficeContactTableLayoutPanel.ColumnCount;
@@ -205,6 +211,12 @@ namespace CRM_GTMK.Visual
             newParentTableLayoutPanel.Controls.Add(newPhonesFlowLayoutPanel, 0, 3);
             newParentTableLayoutPanel.Controls.Add(newContactPersonPanel, 1, 1);
             newParentTableLayoutPanel.Controls.Add(newContactPersonTableLayoutPanel, 1, 2);
+
+            newOfficeNumberLabel.ResumeLayout(false);
+            newOfficeContactInfoPanel.ResumeLayout(false);
+            newPhonesFlowLayoutPanel.ResumeLayout(false);
+            newContactPersonPanel.ResumeLayout(false);
+            newContactPersonTableLayoutPanel.ResumeLayout();
 
             newParentTableLayoutPanel.Location = OneOfficeContactTableLayoutPanel.Location;
             newParentTableLayoutPanel.Name = OneOfficeContactTableLayoutPanel.Name;
@@ -227,7 +239,7 @@ namespace CRM_GTMK.Visual
                                                    int newOfficeNumber)
         {
             Label newOfficeNumberLabel = new Label();
-
+            newOfficeNumberLabel.SuspendLayout();
             newOfficeNumberLabel.Anchor = OfficeNumberLabel.Anchor;
             SetSpans(newOfficeNumberLabel, newParentTableLayoutPanel);
             SetFont(newOfficeNumberLabel);
@@ -271,7 +283,7 @@ namespace CRM_GTMK.Visual
         private Panel officeContactInfoPanelConstructor(TableLayoutPanel newParentTableLayoutPanel)
         {
             Panel panel = new Panel();
-
+            panel.SuspendLayout();
             panel.BorderStyle = OfficeContactInfoPanel.BorderStyle;
             panel.Location = OfficeContactInfoPanel.Location;
             panel.Name = OfficeContactInfoPanel.Name + OneOfficeContactTableLayoutPanelList.Count;
@@ -284,7 +296,7 @@ namespace CRM_GTMK.Visual
             TextBox newOfficeCityTextBox = officeTextBoxConstructor(OfficeCityTextBox);
             Label newOfficeAddressLabel = officeLabelConstructor(OfficeAddressLabel);
             TextBox newOfficeAddressTextBox = officeTextBoxConstructor(OfficeAddressTextBox);
-            Label neOfficeSiteLabel = officeLabelConstructor(OfficeSiteLabel);
+            Label newOfficeSiteLabel = officeLabelConstructor(OfficeSiteLabel);
             TextBox newOfficeSiteTextBox = officeTextBoxConstructor(OfficeSiteTextBox);
 
             panel.Controls.Add(newOfficeCountryLabel);
@@ -293,8 +305,17 @@ namespace CRM_GTMK.Visual
             panel.Controls.Add(newOfficeCityTextBox);
             panel.Controls.Add(newOfficeAddressLabel);
             panel.Controls.Add(newOfficeAddressTextBox);
-            panel.Controls.Add(neOfficeSiteLabel);
+            panel.Controls.Add(newOfficeSiteLabel);
             panel.Controls.Add(newOfficeSiteTextBox);
+
+            newOfficeCountryLabel.ResumeLayout(false);
+            newOfficeCountryComboBox.ResumeLayout(false);
+            newOfficeCityLabel.ResumeLayout(false);
+            newOfficeCityTextBox.ResumeLayout(false);
+            newOfficeAddressLabel.ResumeLayout(false);
+            newOfficeAddressTextBox.ResumeLayout(false);
+            newOfficeSiteLabel.ResumeLayout(false);
+            newOfficeSiteTextBox.ResumeLayout(false);
 
             SetSpans(panel, newParentTableLayoutPanel, OfficeContactInfoPanel);
 
@@ -305,7 +326,7 @@ namespace CRM_GTMK.Visual
         private ComboBox officeCountryComboBoxConstructor()
         {
             ComboBox comboBox = new ComboBox();
-
+            comboBox.SuspendLayout();
             comboBox.FormattingEnabled = OfficeCountryComboBox.FormattingEnabled;
             // TODO Здесь необходимо автоматизировать получение количества элементов в списке.
             comboBox.Items.AddRange(new object[] { "Россия" });
@@ -326,7 +347,7 @@ namespace CRM_GTMK.Visual
         public FlowLayoutPanel phonesFlowLayoutPanelConstructor(TableLayoutPanel newParentTableLayoutPanel)
         {
             FlowLayoutPanel newFlowLayoutPanel = new FlowLayoutPanel();
-
+            newFlowLayoutPanel.SuspendLayout();
             newFlowLayoutPanel.AutoSize = PhonesFlowLayoutPanel.AutoSize;
             newFlowLayoutPanel.AutoScroll = PhonesFlowLayoutPanel.AutoScroll;
             newFlowLayoutPanel.BorderStyle = PhonesFlowLayoutPanel.BorderStyle;
@@ -343,8 +364,8 @@ namespace CRM_GTMK.Visual
             Panel myPhonePanel = phonePanelConstructor(newFlowLayoutPanel);
 
             newFlowLayoutPanel.Controls.Add(myPhonePanel);
+            myPhonePanel.ResumeLayout(false);
             SetSpans(newFlowLayoutPanel, newParentTableLayoutPanel);
-            
 
             return newFlowLayoutPanel;
         }
@@ -367,7 +388,7 @@ namespace CRM_GTMK.Visual
         private Panel phonePanelConstructor(FlowLayoutPanel parentFlowLayoutPanel)
         {
             Panel newPhonesPanel = new Panel();
-
+            newPhonesPanel.SuspendLayout();
             newPhonesPanel.BorderStyle = OnePhonePanel.BorderStyle;
             newPhonesPanel.Location = OnePhonePanel.Location;
             newPhonesPanel.Name = OnePhonePanel.Name +
@@ -380,13 +401,18 @@ namespace CRM_GTMK.Visual
             TextBox newPhoneTextBox = officePhoneTextBoxConstructor(PhoneTextBox, parentFlowLayoutPanel);
             Button myMorePhonesButton = morePhonesButtonConstructor(parentFlowLayoutPanel);
 
-            newPhonesPanel.Controls.Add(myMorePhonesButton);
-            newPhonesPanel.Controls.Add(newPhoneTextBox);
             newPhonesPanel.Controls.Add(myPhoneLabel);
+            newPhonesPanel.Controls.Add(newPhoneTextBox);
+            newPhonesPanel.Controls.Add(myMorePhonesButton);
 
+            myPhoneLabel.ResumeLayout(false);
+            newPhoneTextBox.ResumeLayout(false);
+            myMorePhonesButton.ResumeLayout(false);
+            
             int parentOfficeTableLayoutPanelIndex = Int32.Parse(Regex.Match(parentFlowLayoutPanel.Name, @"\d+").Value);
 
             GeneralPhonePanelList[parentOfficeTableLayoutPanelIndex].Add(newPhonesPanel);
+
             return newPhonesPanel;
         }
 
@@ -394,7 +420,7 @@ namespace CRM_GTMK.Visual
         private Label officePhoneLabelConstructor(Label originalLabel, FlowLayoutPanel parentFlowLayoutPanel)
         {
             Label newLabel = new Label();
-
+            newLabel.SuspendLayout();
             newLabel.AutoSize = originalLabel.AutoSize;
             newLabel.Location = originalLabel.Location;
             newLabel.Name = originalLabel.Name +
@@ -410,7 +436,7 @@ namespace CRM_GTMK.Visual
         private TextBox officePhoneTextBoxConstructor(TextBox originalBox, FlowLayoutPanel parentFlowLayoutPanel)
         {
             TextBox newTextBox = new TextBox();
-
+            newTextBox.SuspendLayout();
             newTextBox.Location = originalBox.Location;
             newTextBox.Name = originalBox.Name +
                parentFlowLayoutPanel.Controls.Count;
@@ -424,7 +450,7 @@ namespace CRM_GTMK.Visual
         private Button morePhonesButtonConstructor(FlowLayoutPanel parentFlowLayoutPanel)
         {
             Button newMorePhonesButton = new Button();
-
+            newMorePhonesButton.SuspendLayout();
             newMorePhonesButton.Location = MorePhonesButton.Location;
             newMorePhonesButton.Name = MorePhonesButton.Name +
                parentFlowLayoutPanel.Controls.Count;
@@ -444,8 +470,21 @@ namespace CRM_GTMK.Visual
         {
             Button button = (Button)sender;
             Panel parentPanel = (Panel)button.Parent;
-            FlowLayoutPanel parentTableLayoutPanel = (FlowLayoutPanel)parentPanel.Parent;
-            parentTableLayoutPanel.Controls.Add(phonePanelConstructor(parentTableLayoutPanel));
+            FlowLayoutPanel parentFlowLayoutPanel = (FlowLayoutPanel)parentPanel.Parent;
+            TableLayoutPanel parentTableLayoutPanel = (TableLayoutPanel)parentFlowLayoutPanel.Parent;
+
+            //this.SuspendLayout();
+            //AllOfficesFlowLayoutPanel.SuspendLayout();
+            parentTableLayoutPanel.SuspendLayout();
+            parentFlowLayoutPanel.SuspendLayout();
+            Panel newParentPanel = phonePanelConstructor(parentFlowLayoutPanel);
+            parentFlowLayoutPanel.Controls.Add(newParentPanel);
+
+            newParentPanel.ResumeLayout(false);
+            parentFlowLayoutPanel.ResumeLayout();
+            parentTableLayoutPanel.ResumeLayout();
+            //AllOfficesFlowLayoutPanel.ResumeLayout();
+            //this.ResumeLayout();
         }
 
         #endregion
@@ -459,7 +498,7 @@ namespace CRM_GTMK.Visual
         private Panel contactPersonPanelConstructor(TableLayoutPanel newParentTableLayoutPanel)
         {
             Panel newPanel = new Panel();
-
+            newPanel.SuspendLayout();
             newPanel.Location = ContactPersonPanel.Location;
             newPanel.Name = ContactPersonPanel.Name + OneOfficeContactTableLayoutPanelList.Count;
             newPanel.Size = ContactPersonPanel.Size;
@@ -470,6 +509,8 @@ namespace CRM_GTMK.Visual
 
             newPanel.Controls.Add(newContactPersonsLabel);
             newPanel.Controls.Add(newContactPersonsButton);
+            newContactPersonsLabel.ResumeLayout(false);
+            newContactPersonsButton.ResumeLayout(false);
 
             SetSpans(newPanel, newParentTableLayoutPanel, ContactPersonPanel);
 
@@ -480,7 +521,7 @@ namespace CRM_GTMK.Visual
         private Button contactPersonsButtonConstructor()
         {
             Button newButton = new Button();
-
+            newButton.SuspendLayout();
             newButton.Location = ContactPersonsButton.Location;
             newButton.Name = ContactPersonsButton.Name + OneOfficeContactTableLayoutPanelList.Count;
             newButton.Size = ContactPersonsButton.Size;
@@ -511,7 +552,7 @@ namespace CRM_GTMK.Visual
         private TableLayoutPanel contactPersonTableLayoutPanelConstructor(TableLayoutPanel newParentTableLayoutPanel)
         {
             TableLayoutPanel newTableLayoutPanel = new TableLayoutPanel();
-
+            newTableLayoutPanel.SuspendLayout();
             newTableLayoutPanel.MinimumSize = new Size(ContactPersonTableLayoutPanel.MinimumSize.Width,
                                                     ContactPersonTableLayoutPanel.MinimumSize.Height);
             newTableLayoutPanel.AutoSize = ContactPersonTableLayoutPanel.AutoSize;
@@ -534,6 +575,9 @@ namespace CRM_GTMK.Visual
             newTableLayoutPanel.Controls.Add(newFullnameLabel, 0, 0);
             newTableLayoutPanel.Controls.Add(newPositionLabelLabel, 1, 0);
             newTableLayoutPanel.Controls.Add(newPhoneLabel, 2, 0);
+            newFullnameLabel.ResumeLayout(false);
+            newPositionLabelLabel.ResumeLayout(false);
+            newPhoneLabel.ResumeLayout(false);
 
             SetSpans(newTableLayoutPanel, newParentTableLayoutPanel);
             GeneralContactPersonFormList.Add(new List<AddNewContactPersonForm>());
@@ -557,7 +601,7 @@ namespace CRM_GTMK.Visual
         private Label contactPersonTableLabelConstructor(Label originalLabel)
         {
             Label newLabel = new Label();
-
+            newLabel.SuspendLayout();
             newLabel.MaximumSize = originalLabel.MaximumSize;
             newLabel.Anchor = originalLabel.Anchor;
             newLabel.AutoSize = originalLabel.AutoSize;
@@ -582,7 +626,7 @@ namespace CRM_GTMK.Visual
 
             int contactPersonFormIndex = GeneralContactPersonFormList[parentOfficeTableLayoutPanel]
                                         .IndexOf(contactPersonForm);
-
+            newLabel.SuspendLayout();
             newLabel.MaximumSize = originalLabel.MaximumSize;
             newLabel.Anchor = originalLabel.Anchor;
             newLabel.AutoSize = originalLabel.AutoSize;
@@ -609,7 +653,7 @@ namespace CRM_GTMK.Visual
 
             int contactPersonFormIndex = GeneralContactPersonFormList[parentOfficeTableLayoutPanelIndex]
                                         .IndexOf(contactPersonForm);
-
+            newLinkLabel.SuspendLayout();
             newLinkLabel.MaximumSize = СontactPersonFullnameLinkLabel.MaximumSize;
             newLinkLabel.Anchor = СontactPersonFullnameLinkLabel.Anchor;
             newLinkLabel.AutoSize = СontactPersonFullnameLinkLabel.AutoSize;
@@ -642,7 +686,7 @@ namespace CRM_GTMK.Visual
         private Label officeLabelConstructor(Label originalLabel)
         {
             Label newLabel = new Label();
-
+            newLabel.SuspendLayout();
             newLabel.AutoSize = originalLabel.AutoSize;
             newLabel.Location = originalLabel.Location;
             newLabel.Name = originalLabel.Name + OneOfficeContactTableLayoutPanelList.Count;
@@ -658,7 +702,7 @@ namespace CRM_GTMK.Visual
         private TextBox officeTextBoxConstructor(TextBox originalBox)
         {
             TextBox newTextBox = new TextBox();
-
+            newTextBox.SuspendLayout();
             newTextBox.Location = originalBox.Location;
             newTextBox.Name = originalBox.Name + OneOfficeContactTableLayoutPanelList.Count;
             newTextBox.Size = originalBox.Size;
@@ -706,13 +750,15 @@ namespace CRM_GTMK.Visual
         // We need to fix it.
         private void addOfficeButton_Click(object sender, EventArgs e)
         {
+            AllOfficesFlowLayoutPanel.SuspendLayout();
             AllOfficesFlowLayoutPanel.Controls.Remove(NewCompanyActionMenuPanel);
 
             TableLayoutPanel newTableLayoutPanel = oneOfficeContactTableLayoutPanelConstructor();
 
             AllOfficesFlowLayoutPanel.Controls.Add(newTableLayoutPanel);
             AllOfficesFlowLayoutPanel.Controls.Add(NewCompanyActionMenuPanel);
-            this.StartPosition = FormStartPosition.Manual;
+            newTableLayoutPanel.ResumeLayout();
+            AllOfficesFlowLayoutPanel.ResumeLayout();
         }
 
         // Открываем окно с формой ввода данных для нового сотрудника.
@@ -740,6 +786,8 @@ namespace CRM_GTMK.Visual
                 (TableLayoutPanel)OneOfficeContactTableLayoutPanelList[officeNumber]
                 .Controls[contactPersonTableLayoutPanelIndex];
 
+            originContactPersonTableLayoutPanel.SuspendLayout();
+
             LinkLabel contactPersonFullnameLinkLabel =
                 contactPersonFullnameLinkLabelConctructor(form, officeNumber);
 
@@ -757,6 +805,11 @@ namespace CRM_GTMK.Visual
             originContactPersonTableLayoutPanel.Controls.Add(contactPersonFullnameLinkLabel);
             originContactPersonTableLayoutPanel.Controls.Add(contactPersonPositionLabel);
             originContactPersonTableLayoutPanel.Controls.Add(contactPersonPhoneLabel);
+            contactPersonFullnameLinkLabel.ResumeLayout(false);
+            contactPersonPositionLabel.ResumeLayout(false);
+            contactPersonPhoneLabel.ResumeLayout(false);
+
+            originContactPersonTableLayoutPanel.ResumeLayout();
         }
 
         // TODO Попробовать переделать данный метод с использованием GetNextControl метод.
