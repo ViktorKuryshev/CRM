@@ -122,6 +122,7 @@ namespace CRM_GTMK.Visual
 				case 1:
 					NewProjectForm.Visible = false;
 					NewProjectSettingsForm.ShowDialog();
+					//Todo при клике по крестику вылетает эксепшен, нужно обработать закрытие формы.
 					break;
 				case 2:
 					NewProjectSettingsForm.Visible = false;

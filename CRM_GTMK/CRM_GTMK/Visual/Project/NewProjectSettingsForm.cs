@@ -1,4 +1,5 @@
-﻿using CRM_GTMK.Model.TestApi;
+﻿using CRM_GTMK.Model;
+using CRM_GTMK.Model.TestApi;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,14 +22,12 @@ namespace CRM_GTMK.Visual
 		public string ClientName { get { return clientNameBox.Text; } }
 		public string SourceLanguage { get { return sourceLanguageBox.Text; } }
 		public string TargetLanguage { get { return targetLanguageBox.Text; } }
+		public string ClientNameItem { set
+			{
+				clientNameBox.Items.Add(value);
+			} }
 
-		private List<string> clientsList = new List<string>()
-		{
-			"",
-			"Андрей",
-			"Вася",
-			"Коля"
-		};
+		
 
 		private List<string> sLangsList = new List<string>()
 		{
@@ -55,8 +54,8 @@ namespace CRM_GTMK.Visual
 			_form = form;
 
 			InitializeComponent();
-			bs.DataSource = clientsList;
-			clientNameBox.DataSource = bs;
+
+			foreach (var clientName in clientsList) ClientNameItem = clientName;
 
 			sourceLanguageBox.DataSource = sLangsList;
 			targetLanguageBox.DataSource = tLangsList;
@@ -69,17 +68,24 @@ namespace CRM_GTMK.Visual
 		{
 			string text = clientNameBox.Text;
 
-				List<string> newClientsList = new List<string>();
-				foreach (var client in clientsList)
-				{
-					if (client.Contains(clientNameBox.Text))
-					{
-						newClientsList.Add(client);
-					}
-				}
-				clientNameBox.DataSource = newClientsList;
-			clientNameBox.Text = text;
+			IEnumerable<string> restClients = from client in clientsList where client.ToLower().Contains(text.ToLower()) select client;
+
+			clientNameBox.Items.Clear();
+			foreach(var clientName in restClients)  ClientNameItem = clientName;
+
 			clientNameBox.SelectionStart = text.Length;
+
+			//	List<string> newClientsList = new List<string>();
+			//	foreach (var client in clientsList)
+			//	{
+			//		if (client.Contains(clientNameBox.Text))
+			//		{
+			//			newClientsList.Add(client);
+			//		}
+			//	}
+			//	clientNameBox.DataSource = newClientsList;
+			//clientNameBox.Text = text;
+			//clientNameBox.SelectionStart = text.Length;
 			/*string text = cb.Text;
 			bs.Filter = "Name LIKE '*" + text + "*'"; //это действие изменяет свойство Text, т. е. затирает то что было введено юзером
 			cb.Text = text; //тут восстанавливаем последствия предыдущей строки
@@ -98,5 +104,25 @@ namespace CRM_GTMK.Visual
 			_form.SwitchProjectDialogForm(2, false);
 
 		}
+
+		private List<string> clientsList = new List<string>()
+		{
+			"ООО Арсенал-комплект",
+			"ПК Спектр Плюс",
+			"ООО Рускана Инжиниринг",
+
+			"ОАО Кувандыкский завод КПО \"Долина\"",
+			"ООО ETA Technology Pvt. - представительство в России",
+			"ООО СтанТех-М",
+			"ООО Промтехноснаб",
+
+			"ООО «ТД «ХимСтальКомплект»",
+
+			"ООО Компания Ливил - Профилегибочное оборудование",
+
+			"ООО БашПромТоргИндустрия",
+		};
+
+
 	}
 }
