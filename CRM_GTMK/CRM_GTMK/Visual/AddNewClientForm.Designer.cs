@@ -400,6 +400,7 @@
             this.Controls.Add(this.addOfficeButton);
             this.Controls.Add(this.companyNameLabel);
             this.Controls.Add(this.companyNameTextBox);
+            this.DoubleBuffered = true;
             this.Name = "AddNewCompanyForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddNewClientForm";
