@@ -179,11 +179,14 @@ namespace CRM_GTMK.Visual
 			{
 				case "ProjectsRoot":
 					SwitchToProjectsPanel();
-					
+					break;
+				case "TranslationMemoriesNode":
+					//Todo Выбор панели управления базами перевода
 					break;
 				case "CompaniesNode":
 					SwitchToCompaniesPanel();
 					break;
+										
 			}
 			
 		}

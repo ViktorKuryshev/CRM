@@ -28,15 +28,18 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Компании");
-			System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Физ. лица");
-			System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Благотворительность");
-			System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Клиенты", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14,
-            treeNode15});
-			System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Проекты");
-			System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Задачи");
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Компании");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Физ. лица");
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Благотворительность");
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Клиенты", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
+			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Проекты");
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("TM");
+			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Ресурсы", new System.Windows.Forms.TreeNode[] {
+            treeNode6});
+			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Задачи");
 			this.navigationTreeView = new System.Windows.Forms.TreeView();
 			this.clientsPanel = new System.Windows.Forms.Panel();
 			this.companiesDefaultListDataGridView = new System.Windows.Forms.DataGridView();
@@ -54,23 +57,28 @@
 			// 
 			this.navigationTreeView.Location = new System.Drawing.Point(12, 57);
 			this.navigationTreeView.Name = "navigationTreeView";
-			treeNode13.Name = "CompaniesNode";
-			treeNode13.Text = "Компании";
-			treeNode14.Name = "PhisicalPersonsNode";
-			treeNode14.Text = "Физ. лица";
-			treeNode15.Name = "CharityNode";
-			treeNode15.Text = "Благотворительность";
-			treeNode16.Checked = true;
-			treeNode16.Name = "ClientsRoot";
-			treeNode16.Text = "Клиенты";
-			treeNode17.Name = "ProjectsRoot";
-			treeNode17.Text = "Проекты";
-			treeNode18.Name = "TasksRoot";
-			treeNode18.Text = "Задачи";
+			treeNode1.Name = "CompaniesNode";
+			treeNode1.Text = "Компании";
+			treeNode2.Name = "PhisicalPersonsNode";
+			treeNode2.Text = "Физ. лица";
+			treeNode3.Name = "CharityNode";
+			treeNode3.Text = "Благотворительность";
+			treeNode4.Checked = true;
+			treeNode4.Name = "ClientsRoot";
+			treeNode4.Text = "Клиенты";
+			treeNode5.Name = "ProjectsRoot";
+			treeNode5.Text = "Проекты";
+			treeNode6.Name = "TranslationMemoriesNode";
+			treeNode6.Text = "TM";
+			treeNode7.Name = "ResoursesRoot";
+			treeNode7.Text = "Ресурсы";
+			treeNode8.Name = "TasksRoot";
+			treeNode8.Text = "Задачи";
 			this.navigationTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode16,
-            treeNode17,
-            treeNode18});
+            treeNode4,
+            treeNode5,
+            treeNode7,
+            treeNode8});
 			this.navigationTreeView.Size = new System.Drawing.Size(165, 517);
 			this.navigationTreeView.TabIndex = 0;
 			this.navigationTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.navigationTreeView_AfterSelect);
