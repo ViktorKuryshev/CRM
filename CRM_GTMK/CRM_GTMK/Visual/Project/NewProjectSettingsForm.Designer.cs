@@ -106,7 +106,7 @@
 			this.clientNameBox.Name = "clientNameBox";
 			this.clientNameBox.Size = new System.Drawing.Size(327, 21);
 			this.clientNameBox.TabIndex = 6;
-			this.clientNameBox.TextUpdate += new System.EventHandler(this.comboBox1_TextUpdate);
+			this.clientNameBox.TextUpdate += new System.EventHandler(this.clientNameBox_TextUpdate);
 			// 
 			// label4
 			// 
@@ -124,6 +124,8 @@
 			this.sourceLanguageBox.Name = "sourceLanguageBox";
 			this.sourceLanguageBox.Size = new System.Drawing.Size(166, 21);
 			this.sourceLanguageBox.TabIndex = 8;
+			this.sourceLanguageBox.TextUpdate += new System.EventHandler(this.sourceLanguageBox_TextUpdate);
+			this.sourceLanguageBox.SelectedValueChanged += new System.EventHandler(this.sourceLanguageBox_SelectedValueChanged);
 			// 
 			// button1
 			// 
