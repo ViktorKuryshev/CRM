@@ -255,7 +255,6 @@ namespace CRM_GTMK.Visual
 		{
 			_form.SwitchProjectDialogForm(1, true);
 		}
-		
 
 
 		public void SetProjectData()
@@ -264,7 +263,7 @@ namespace CRM_GTMK.Visual
 			GlobalValues.DocumentsPaths = FilesPaths;
 			GlobalValues.FocusedProject = new MyProject();
 
-			GlobalValues.FocusedProject.SiteProject.Name = NewProjectSettingsForm.ProjectName;
+			GlobalValues.FocusedProject.Name = NewProjectSettingsForm.ProjectName;
 			GlobalValues.FocusedProject.ProjectStructure = FilesOrFolders;
 			_form.SendNewProject();
 		}

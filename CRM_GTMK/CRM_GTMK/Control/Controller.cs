@@ -119,7 +119,9 @@ namespace CRM_GTMK.Control
 			public void SendNewProject()
 		{
 			ApiClient client = new ApiClient();
-			//MessageBox.Show(client.CreateProject(GlobalValues.DocumentsPaths, GlobalValues.FocusedProject.SiteProject));
+			CreateProject newProject = new CreateProject();
+			newProject.SetDataFromLocalProject(GlobalValues.FocusedProject);
+			MessageBox.Show(client.CreateProject(GlobalValues.DocumentsPaths, newProject));
 		}
 
 		/// <summary>

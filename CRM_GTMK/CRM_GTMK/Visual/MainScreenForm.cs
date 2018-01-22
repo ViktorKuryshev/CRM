@@ -149,7 +149,7 @@ namespace CRM_GTMK.Visual
 			GlobalValues.DocumentsPaths = NewProjectForm.FilesPaths;
 			GlobalValues.FocusedProject = new MyProject();
 
-			GlobalValues.FocusedProject.SiteProject.Name = NewProjectSettingsForm.ProjectName;
+			GlobalValues.FocusedProject.Name = NewProjectSettingsForm.ProjectName;
 			GlobalValues.FocusedProject.ProjectStructure = NewProjectForm.FilesOrFolders;
 			SendNewProject();
 		}

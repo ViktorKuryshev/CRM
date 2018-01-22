@@ -87,7 +87,6 @@
     <Compile Include="Model\DataModels\Local\DictionaryCollections.cs" />
     <Compile Include="Model\DataModels\Local\MyProject.cs" />
     <Compile Include="Model\DataModels\Post\CreateProject.cs" />
-    <Compile Include="Model\DataModels\Project.cs" />
     <Compile Include="Model\DataModels\FileOrFolder.cs" />
     <Compile Include="Model\Freelancer.cs" />
     <Compile Include="Model\FreelancerSearchParameters.cs" />

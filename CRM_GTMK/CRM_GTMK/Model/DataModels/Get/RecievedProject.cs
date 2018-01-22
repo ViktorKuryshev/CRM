@@ -11,29 +11,54 @@ namespace CRM_GTMK.Model.DataModels
 	{
 		[JsonProperty("id")]
 		public string Id { get; set; }
+
 		[JsonProperty("name")]
 		public string Name { get; set; }
-		public string description { get; set; }
+
+		[JsonProperty("description")]
+		public string Description { get; set; }
 
 		[JsonProperty("deadline")]
 		public DateTime Deadline { get; set; }
+
 		[JsonProperty("creationDate")]
 		public DateTime CreationDate { get; set; }
-		public string createdByUserId { get; set; }
-		public DateTime modificationDate { get; set; }
-		public string sourceLanguage { get; set; }
-		public string[] targetLanguages { get; set; }
-		public string status { get; set; }
-		public DateTime statusModificationDate { get; set; }
-		public int domainId { get; set; }
-		public string clientId { get; set; }
-		public string vendorAccountId { get; set; }
+
+		[JsonProperty("createdByUserId")]
+		public string CreatedByUserId { get; set; }
+
+		[JsonProperty("modificationDate")]
+		public DateTime ModificationDate { get; set; }
+
+		[JsonProperty("sourceLanguage")]
+		public string SourceLanguage { get; set; }
+
+		[JsonProperty("targetLanguages")]
+		public string[] TargetLanguages { get; set; }
+
+		[JsonProperty("status")]
+		public string Status { get; set; }
+
+		[JsonProperty("statusModificationDate")]
+		public DateTime StatusModificationDate { get; set; }
+
+		[JsonProperty("domainId")]
+		public int DomainId { get; set; }
+
+		[JsonProperty("clientId")]
+		public string ClientId { get; set; }
+
+		[JsonProperty("vendorAccountId")]
+		public string VendorAccountId { get; set; }
 
 		[JsonProperty("workflowStages"), JsonIgnore]
-		public Workflowstage1[] workflowStages { get; set; }
+		public ProjectWorkflowstage[] WorkflowStages { get; set; }
+
 		[JsonProperty("documents")]
 		public Document1[] Documents { get; set; }
-		public string externalTag { get; set; }
+		
+		[JsonProperty("externalTag")]
+		public string ExternalTag { get; set; }
 
 		public int CompareTo(RecievedProject that)
 		{
@@ -41,7 +66,7 @@ namespace CRM_GTMK.Model.DataModels
 		}
 	}
 
-	public class Workflowstage1
+	public class ProjectWorkflowstage
 	{
 		public int progress { get; set; }
 		public string stageType { get; set; }

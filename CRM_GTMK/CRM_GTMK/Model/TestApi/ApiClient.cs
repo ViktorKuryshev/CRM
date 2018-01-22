@@ -69,9 +69,9 @@ namespace CRM_GTMK.Model.TestApi
 			return content;
 		}
 
-		public string CreateProject(string[] filePaths = null, Project project = null)
+		public string CreateProject(string[] filePaths = null, CreateProject project = null)
 		{
-			Project newProject = project ?? new Project();
+			CreateProject newProject = project ?? new CreateProject();
 
 			Console.WriteLine("Имя проекта: {0}", project.Name);
 
@@ -102,9 +102,9 @@ namespace CRM_GTMK.Model.TestApi
 			
 
 			Console.WriteLine("Содержимое ответа от сервера: {0}", content);
-			newProject = JsonConvert.DeserializeObject<Project>(content);
+			var recievedProject = JsonConvert.DeserializeObject<RecievedProject>(content);
 
-			return newProject.Name;
+			return recievedProject.Name;
 		}
 
 		public string CreateTm(string tmxFilePath = null, bool replaceAllContent = true)
