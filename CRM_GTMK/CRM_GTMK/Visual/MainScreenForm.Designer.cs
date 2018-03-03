@@ -28,66 +28,74 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Компании");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Физ. лица");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Благотворительность");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Клиенты", new System.Windows.Forms.TreeNode[] {
+			System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Компании");
+			System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Физ. лица");
+			System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Благотворительность");
+			System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Клиенты", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Проекты");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Задачи");
-            this.navigationTreeView = new System.Windows.Forms.TreeView();
-            this.clientsPanel = new System.Windows.Forms.Panel();
-            this.companiesDefaultListDataGridView = new System.Windows.Forms.DataGridView();
-            this.CompanyNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CompanyCityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CompanyStatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastContactDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddingDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addNewCompanyButton = new System.Windows.Forms.Button();
-            this.clientsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.companiesDefaultListDataGridView)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // navigationTreeView
-            // 
-            this.navigationTreeView.Location = new System.Drawing.Point(12, 57);
-            this.navigationTreeView.Name = "navigationTreeView";
-            treeNode1.Name = "CompaniesNode";
-            treeNode1.Text = "Компании";
-            treeNode2.Name = "PhisicalPersonsNode";
-            treeNode2.Text = "Физ. лица";
-            treeNode3.Name = "CharityNode";
-            treeNode3.Text = "Благотворительность";
-            treeNode4.Checked = true;
-            treeNode4.Name = "ClientsRoot";
-            treeNode4.Text = "Клиенты";
-            treeNode5.Name = "ProjectsRoot";
-            treeNode5.Text = "Проекты";
-            treeNode6.Name = "TasksRoot";
-            treeNode6.Text = "Задачи";
-            this.navigationTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+			System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Проекты");
+			System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("TM");
+			System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Ресурсы", new System.Windows.Forms.TreeNode[] {
+            treeNode6});
+			System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Задачи");
+			this.navigationTreeView = new System.Windows.Forms.TreeView();
+			this.clientsPanel = new System.Windows.Forms.Panel();
+			this.companiesDefaultListDataGridView = new System.Windows.Forms.DataGridView();
+			this.CompanyNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CompanyCityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CompanyStatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.LastContactDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.AddingDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.addNewCompanyButton = new System.Windows.Forms.Button();
+			this.clientsPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.companiesDefaultListDataGridView)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// navigationTreeView
+			// 
+			this.navigationTreeView.Location = new System.Drawing.Point(12, 57);
+			this.navigationTreeView.Name = "navigationTreeView";
+			treeNode1.Name = "CompaniesNode";
+			treeNode1.Text = "Компании";
+			treeNode2.Name = "PhisicalPersonsNode";
+			treeNode2.Text = "Физ. лица";
+			treeNode3.Name = "CharityNode";
+			treeNode3.Text = "Благотворительность";
+			treeNode4.Checked = true;
+			treeNode4.Name = "ClientsRoot";
+			treeNode4.Text = "Клиенты";
+			treeNode5.Name = "ProjectsRoot";
+			treeNode5.Text = "Проекты";
+			treeNode6.Name = "TranslationMemoriesNode";
+			treeNode6.Text = "TM";
+			treeNode7.Name = "ResoursesRoot";
+			treeNode7.Text = "Ресурсы";
+			treeNode8.Name = "TasksRoot";
+			treeNode8.Text = "Задачи";
+			this.navigationTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode5,
-            treeNode6});
-            this.navigationTreeView.Size = new System.Drawing.Size(165, 517);
-            this.navigationTreeView.TabIndex = 0;
-            this.navigationTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.navigationTreeView_AfterSelect);
-            // 
-            // clientsPanel
-            // 
-            this.clientsPanel.Controls.Add(this.companiesDefaultListDataGridView);
-            this.clientsPanel.Controls.Add(this.addNewCompanyButton);
-            this.clientsPanel.Location = new System.Drawing.Point(211, 57);
-            this.clientsPanel.Name = "clientsPanel";
-            this.clientsPanel.Size = new System.Drawing.Size(1075, 517);
-            this.clientsPanel.TabIndex = 1;
-            // 
-            // companiesDefaultListDataGridView
-            // 
-            this.companiesDefaultListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.companiesDefaultListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            treeNode7,
+            treeNode8});
+			this.navigationTreeView.Size = new System.Drawing.Size(165, 517);
+			this.navigationTreeView.TabIndex = 0;
+			this.navigationTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.navigationTreeView_AfterSelect);
+			// 
+			// clientsPanel
+			// 
+			this.clientsPanel.Controls.Add(this.companiesDefaultListDataGridView);
+			this.clientsPanel.Controls.Add(this.addNewCompanyButton);
+			this.clientsPanel.Location = new System.Drawing.Point(211, 57);
+			this.clientsPanel.Name = "clientsPanel";
+			this.clientsPanel.Size = new System.Drawing.Size(1075, 517);
+			this.clientsPanel.TabIndex = 1;
+			// 
+			// companiesDefaultListDataGridView
+			// 
+			this.companiesDefaultListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.companiesDefaultListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CompanyNameColumn,
             this.CompanyCityColumn,
             this.CompanyStatusColumn,

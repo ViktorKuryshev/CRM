@@ -1,4 +1,5 @@
 ﻿using CRM_GTMK.Model;
+using CRM_GTMK.Model.DataModels;
 using CRM_GTMK.Model.TestApi;
 using System;
 using System.Collections.Generic;
@@ -22,32 +23,10 @@ namespace CRM_GTMK.Visual
 		public string ClientName { get { return clientNameBox.Text; } }
 		public string SourceLanguage { get { return sourceLanguageBox.Text; } }
 		public string TargetLanguage { get { return targetLanguageBox.Text; } }
-		public string ClientNameItem { set
-			{
-				clientNameBox.Items.Add(value);
-			} }
+		public string ClientNameItem { set  {clientNameBox.Items.Add(value);} }
+		public string SourceLanguageItem { set { sourceLanguageBox.Items.Add(value); } }
+		public string TargetLanguageItem { set { targetLanguageBox.Items.Add(value); } }
 
-		
-
-		private List<string> sLangsList = new List<string>()
-		{
-			"English",
-			"Russian",
-			"German",
-			"French"
-		};
-
-		private List<string> tLangsList = new List<string>()
-		{
-			"English",
-			"Russian",
-			"German",
-			"French"
-		};
-
-		BindingSource bs = new BindingSource();
-
-	
 
 		public NewProjectSettingsForm(MainScreenForm form)
 		{
@@ -57,39 +36,44 @@ namespace CRM_GTMK.Visual
 
 			foreach (var clientName in clientsList) ClientNameItem = clientName;
 
-			sourceLanguageBox.DataSource = sLangsList;
-			targetLanguageBox.DataSource = tLangsList;
-			
-			
-	
+			foreach (var language in DictionaryCollections.Languages.Keys)
+			{ 
+				sourceLanguageBox.Items.Add(language);
+				targetLanguageBox.Items.Add(language);
+			}
 		}
 
-		private void comboBox1_TextUpdate(object sender, EventArgs e)
+		private void clientNameBox_TextUpdate(object sender, EventArgs e)
 		{
-			string text = clientNameBox.Text;
-
-			IEnumerable<string> restClients = from client in clientsList where client.ToLower().Contains(text.ToLower()) select client;
+			IEnumerable<string> restClients = from client in clientsList where client.ToLower().Contains(ClientName.ToLower()) select client;
 
 			clientNameBox.Items.Clear();
-			foreach(var clientName in restClients)  ClientNameItem = clientName;
+			foreach (var clientName in restClients) ClientNameItem = clientName;
 
-			clientNameBox.SelectionStart = text.Length;
+			clientNameBox.SelectionStart = ClientName.Length;
+		}
 
-			//	List<string> newClientsList = new List<string>();
-			//	foreach (var client in clientsList)
-			//	{
-			//		if (client.Contains(clientNameBox.Text))
-			//		{
-			//			newClientsList.Add(client);
-			//		}
-			//	}
-			//	clientNameBox.DataSource = newClientsList;
-			//clientNameBox.Text = text;
-			//clientNameBox.SelectionStart = text.Length;
-			/*string text = cb.Text;
-			bs.Filter = "Name LIKE '*" + text + "*'"; //это действие изменяет свойство Text, т. е. затирает то что было введено юзером
-			cb.Text = text; //тут восстанавливаем последствия предыдущей строки
-			cb.SelectionStart = text.Length; */
+		private void sourceLanguageBox_TextUpdate(object sender, EventArgs e)
+		{
+			IEnumerable<string> restLanguages = from language in DictionaryCollections.Languages.Keys where language.ToLower().Contains(SourceLanguage.ToLower()) select language;
+
+			sourceLanguageBox.Items.Clear();
+			foreach (var language in restLanguages)
+			{
+				SourceLanguageItem = language;
+			}
+			
+			sourceLanguageBox.SelectionStart = SourceLanguage.Length;
+		}
+
+		private void sourceLanguageBox_SelectedValueChanged(object sender, EventArgs e)
+		{
+			targetLanguageBox.Items.Clear();
+			foreach (var language in DictionaryCollections.Languages.Keys)
+			{
+				TargetLanguageItem = language;
+			}
+			targetLanguageBox.Items.Remove(SourceLanguage);
 		}
 
 		private void goOnButton_Click(object sender, EventArgs e)
@@ -123,6 +107,6 @@ namespace CRM_GTMK.Visual
 			"ООО БашПромТоргИндустрия",
 		};
 
-
+		
 	}
 }

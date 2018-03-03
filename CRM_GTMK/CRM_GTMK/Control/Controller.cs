@@ -108,11 +108,13 @@ namespace CRM_GTMK.Control
         //Обработка данных проекта
         #region ProjectDataMethods
 
-        public void SendNewProject()
-        {
-            ApiClient client = new ApiClient();
-            //MessageBox.Show(client.CreateProject(GlobalValues.DocumentsPaths, GlobalValues.FocusedProject.SiteProject));
-        }
+			public void SendNewProject()
+		{
+			ApiClient client = new ApiClient();
+			CreateProject newProject = new CreateProject();
+			newProject.SetDataFromLocalProject(GlobalValues.FocusedProject);
+			MessageBox.Show(client.CreateProject(GlobalValues.DocumentsPaths, newProject));
+		}
 
         /// Получаем список проектов
         public List<ProjectControls> GetProjectsList()
