@@ -1,5 +1,8 @@
-﻿using System;
+﻿using CRM_GTMK.Model.DataModels;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -11,11 +14,15 @@ namespace CRM_GTMK.Model
 		private const string TEST_BASE_DIRECTORY = "..\\..\\Model\\XMLBase";
 		private const string BASE_DIRECTORY = "Model\\XMLBase";
 		private const string COMPANY_FILE_NAME = "companies.xml";
-
+        private const string CURRENTPROJECTS_FILE_NAME = "CurrentProjects.xml";
+        private const string FOCUSEDPROJECT_FILE_NAME = "FocusedProject.xml";
+        private const string DOCUMENTSPATHS_FILE_NAME = "DocumentsPaths.xml";
+        private const string FOCUSEDCOMPANY_FILE_NAME = "FocusedCompany.xml";
+        
         // Определяем наибольший Id среди всех компаний для назначения Id + 1 новой компании.
-		public int GetBigestCompanyId()
+        public int GetBigestCompanyId()
 		{
-			string path = GetXmlDocumentPath();
+			string path = GetXmlDocumentPath(COMPANY_FILE_NAME);
 			XDocument xDoc = XDocument.Load(path);
 
             int id = 0;
@@ -29,20 +36,112 @@ namespace CRM_GTMK.Model
 			}
 			return id;
 		}
+        
+        // Передаем созданную новую компанию в метод сериализации.
+        public void SaveNewCompanyToFile(Company company)
+        {
+            SerializeObjectInfoInXml(company, GetXmlDocumentPath(COMPANY_FILE_NAME));
+        }
+
+        // Передаем объекты из класса GlobalValues в метод сериализации.
+        public void SaveGlobalValuesToFile()
+        {
+            string currentProjectsPath = GetXmlDocumentPath(CURRENTPROJECTS_FILE_NAME);
+            IEnumerable<XElement> currentProjectsIdNodes = GetDescendants(currentProjectsPath);
+            foreach (RecievedProject project in GlobalValues.CurrentProjects)
+            {
+                if (currentProjectsIdNodes.Any(id => id.Value == project.Id))
+                    continue;
+                SerializeObjectInfoInXml(project, currentProjectsPath);
+            }
+
+            string focusedProjectPath = GetXmlDocumentPath(FOCUSEDPROJECT_FILE_NAME);
+            FlushXmlFile(focusedProjectPath);
+            if (GlobalValues.ShouldSerializeFocusedProject())
+                SerializeObjectInfoInXml(GlobalValues.FocusedProject, focusedProjectPath);
+
+            string documentsPathsPath = GetXmlDocumentPath(DOCUMENTSPATHS_FILE_NAME);
+            FlushXmlFile(documentsPathsPath);
+            foreach (string documentPath in GlobalValues.DocumentsPaths)
+                SerializeObjectInfoInXml(documentPath, documentsPathsPath);
+
+
+            string focusedCompanyPath = GetXmlDocumentPath(FOCUSEDCOMPANY_FILE_NAME);
+            FlushXmlFile(focusedCompanyPath);
+            if (GlobalValues.ShouldSerializeFocusedCompany())
+                SerializeObjectInfoInXml(GlobalValues.FocusedCompany, focusedCompanyPath);
+        }
+
+        // Получаем коллекцию элементов корневого узла xml файла.
+        private IEnumerable<XElement> GetDescendants(string filePath)
+        {
+            string nodeName = filePath.Contains(CURRENTPROJECTS_FILE_NAME) ? "Id" : null;
+
+            XDocument doc = XDocument.Load(filePath);
+            return from el in doc.Root.Descendants(nodeName)
+                   select el;
+        }
+
+        // Очищаем xml файл перед сериализацией. 
+        private void FlushXmlFile(string path)
+        {
+            XDocument documentsPathsDoc = XDocument.Load(path);
+            documentsPathsDoc.Root.RemoveNodes();
+            documentsPathsDoc.Save(path);
+        }
+
+        // Вызываем метод десериализации DeserializeObjectInfoFromXml для объектов класса GlobalValues.
+        public void RestoreGlobalValuesFromFile()
+        {
+            string currentProjectsPath = GetXmlDocumentPath(CURRENTPROJECTS_FILE_NAME);
+            if (CheckIfXmlEmpty(currentProjectsPath))
+                GlobalValues.CurrentProjects =
+                    DeserializeObjectInfoFromXml<List<RecievedProject>>(currentProjectsPath);
+            
+            GlobalValues.CurrentProjects.Sort();
+            
+            string focusedProjectPath = GetXmlDocumentPath(FOCUSEDPROJECT_FILE_NAME);
+            if (CheckIfXmlEmpty(focusedProjectPath))
+            {
+                List<MyProject> myProjectList = 
+                    DeserializeObjectInfoFromXml<List<MyProject>>(focusedProjectPath);
+                // Число ноль в myProjectList[0] используется для доступа к первому объекту
+                // типа MyProject в списке, при чем он будет единственным элементом списка.
+                // Список приходится использовать, т. к. метод десериализации DeserializeObjectInfoFromXml
+                // работает только со списками. Для companyList[0] тоже самое.
+                GlobalValues.FocusedProject = myProjectList[0];
+            }
+
+            string documentsPathsPath = GetXmlDocumentPath(DOCUMENTSPATHS_FILE_NAME);
+            if (CheckIfXmlEmpty(documentsPathsPath))
+                GlobalValues.DocumentsPaths =
+                    DeserializeObjectInfoFromXml<string[]>(GetXmlDocumentPath(documentsPathsPath));
+
+            string focusedCompanyPath = GetXmlDocumentPath(FOCUSEDCOMPANY_FILE_NAME);
+            if (CheckIfXmlEmpty(focusedCompanyPath))
+            {
+                List<Company> companyList =
+                    DeserializeObjectInfoFromXml<List<Company>>(GetXmlDocumentPath(focusedCompanyPath));
+                GlobalValues.FocusedCompany = companyList[0];
+            }
+        }
+
+        // Проверяем пустой ли xml файл.
+        private bool CheckIfXmlEmpty(string filePath)
+        {
+            XDocument doc = XDocument.Load(filePath);
+            return doc.Root.Descendants().Count() != 0 ? true : false;
+        }
 
         // Передаем данные из классов (Company, Office, Person, и т. д.) в xml файл.
-        public void SaveNewCompanyInfoInXml(Company company)
+        private void SerializeObjectInfoInXml<T>(T obj, string path)
         {
-            if (company.ShouldSerializeOffices() == false)
-                return;
-
-            string path = GetXmlDocumentPath();
             XmlDocument doc = new XmlDocument();
             XmlWriter writer = doc.CreateNavigator().AppendChild();
-            XmlSerializer serializer = new XmlSerializer(typeof(Company));
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
             ns.Add("", "");
-            serializer.Serialize(writer, company, ns);
+            serializer.Serialize(writer, obj, ns);
             writer.Close();
 
             XmlDocument parentDocument = new XmlDocument();
@@ -52,18 +151,32 @@ namespace CRM_GTMK.Model
             parentDocument.Save(path);
         }
 
-        private string GetXmlDocumentPath()
+        // Восстанавливаем объекты из xml файлов.
+        private T DeserializeObjectInfoFromXml<T>(string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            FileStream fs = new FileStream(path, FileMode.Open);
+            XmlReader reader = XmlReader.Create(fs);
+            T obj;
+            obj = (T)serializer.Deserialize(reader);
+            fs.Close();
+
+            return obj;
+        }
+
+        // Формируем путь к файлу в папке XMLBase.
+        private string GetXmlDocumentPath(string fileName)
 		{
 			string path = "";
 			XDocument xDoc = new XDocument();
 			try
 			{
-				path = Path.Combine(TEST_BASE_DIRECTORY, COMPANY_FILE_NAME);
+				path = Path.Combine(TEST_BASE_DIRECTORY, fileName);
 				xDoc = XDocument.Load(path);
 			}
 			catch (DirectoryNotFoundException)
 			{
-				path = Path.Combine(BASE_DIRECTORY, COMPANY_FILE_NAME);
+				path = Path.Combine(BASE_DIRECTORY, fileName);
 				xDoc = XDocument.Load(path);
 			}
 			return  path;

@@ -101,58 +101,59 @@
             this.CompanyStatusColumn,
             this.LastContactDateColumn,
             this.AddingDateColumn});
-			this.companiesDefaultListDataGridView.Location = new System.Drawing.Point(18, 62);
-			this.companiesDefaultListDataGridView.Name = "companiesDefaultListDataGridView";
-			this.companiesDefaultListDataGridView.Size = new System.Drawing.Size(589, 275);
-			this.companiesDefaultListDataGridView.TabIndex = 1;
-			// 
-			// CompanyNameColumn
-			// 
-			this.CompanyNameColumn.HeaderText = "Название";
-			this.CompanyNameColumn.Name = "CompanyNameColumn";
-			// 
-			// CompanyCityColumn
-			// 
-			this.CompanyCityColumn.HeaderText = "Город";
-			this.CompanyCityColumn.Name = "CompanyCityColumn";
-			// 
-			// CompanyStatusColumn
-			// 
-			this.CompanyStatusColumn.HeaderText = "Статус";
-			this.CompanyStatusColumn.Name = "CompanyStatusColumn";
-			// 
-			// LastContactDateColumn
-			// 
-			this.LastContactDateColumn.HeaderText = "Дата крайнего контакта";
-			this.LastContactDateColumn.Name = "LastContactDateColumn";
-			// 
-			// AddingDateColumn
-			// 
-			this.AddingDateColumn.HeaderText = "Дата внесения в базу";
-			this.AddingDateColumn.Name = "AddingDateColumn";
-			// 
-			// addNewCompanyButton
-			// 
-			this.addNewCompanyButton.Location = new System.Drawing.Point(210, 22);
-			this.addNewCompanyButton.Name = "addNewCompanyButton";
-			this.addNewCompanyButton.Size = new System.Drawing.Size(135, 23);
-			this.addNewCompanyButton.TabIndex = 0;
-			this.addNewCompanyButton.Text = "Добавить компанию";
-			this.addNewCompanyButton.UseVisualStyleBackColor = true;
-			this.addNewCompanyButton.Click += new System.EventHandler(this.addNewCompanyButton_Click);
-			// 
-			// MainScreenForm
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1298, 586);
-			this.Controls.Add(this.clientsPanel);
-			this.Controls.Add(this.navigationTreeView);
-			this.Name = "MainScreenForm";
-			this.Text = "MainScreenForm";
-			this.clientsPanel.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.companiesDefaultListDataGridView)).EndInit();
-			this.ResumeLayout(false);
+            this.companiesDefaultListDataGridView.Location = new System.Drawing.Point(18, 62);
+            this.companiesDefaultListDataGridView.Name = "companiesDefaultListDataGridView";
+            this.companiesDefaultListDataGridView.Size = new System.Drawing.Size(589, 275);
+            this.companiesDefaultListDataGridView.TabIndex = 1;
+            // 
+            // CompanyNameColumn
+            // 
+            this.CompanyNameColumn.HeaderText = "Название";
+            this.CompanyNameColumn.Name = "CompanyNameColumn";
+            // 
+            // CompanyCityColumn
+            // 
+            this.CompanyCityColumn.HeaderText = "Город";
+            this.CompanyCityColumn.Name = "CompanyCityColumn";
+            // 
+            // CompanyStatusColumn
+            // 
+            this.CompanyStatusColumn.HeaderText = "Статус";
+            this.CompanyStatusColumn.Name = "CompanyStatusColumn";
+            // 
+            // LastContactDateColumn
+            // 
+            this.LastContactDateColumn.HeaderText = "Дата крайнего контакта";
+            this.LastContactDateColumn.Name = "LastContactDateColumn";
+            // 
+            // AddingDateColumn
+            // 
+            this.AddingDateColumn.HeaderText = "Дата внесения в базу";
+            this.AddingDateColumn.Name = "AddingDateColumn";
+            // 
+            // addNewCompanyButton
+            // 
+            this.addNewCompanyButton.Location = new System.Drawing.Point(210, 22);
+            this.addNewCompanyButton.Name = "addNewCompanyButton";
+            this.addNewCompanyButton.Size = new System.Drawing.Size(135, 23);
+            this.addNewCompanyButton.TabIndex = 0;
+            this.addNewCompanyButton.Text = "Добавить компанию";
+            this.addNewCompanyButton.UseVisualStyleBackColor = true;
+            this.addNewCompanyButton.Click += new System.EventHandler(this.addNewCompanyButton_Click);
+            // 
+            // MainScreenForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1298, 586);
+            this.Controls.Add(this.clientsPanel);
+            this.Controls.Add(this.navigationTreeView);
+            this.Name = "MainScreenForm";
+            this.Text = "MainScreenForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainScreenForm_FormClosing);
+            this.clientsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.companiesDefaultListDataGridView)).EndInit();
+            this.ResumeLayout(false);
 
 		}
 

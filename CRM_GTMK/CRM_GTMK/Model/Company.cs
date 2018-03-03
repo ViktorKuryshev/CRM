@@ -21,4 +21,11 @@ namespace CRM_GTMK.Model
 
         //Todo Comments
     }
+
+
+    public class Companies
+    {
+        [XmlElement("Company")]
+        public List<Company> companyList { get; set; }
+    }
 }

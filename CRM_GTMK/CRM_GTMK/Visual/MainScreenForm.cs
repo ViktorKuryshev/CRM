@@ -7,15 +7,17 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace CRM_GTMK.Visual
 {
     public partial class MainScreenForm : Form
 	{
 		private Controller _controller;
+        private MyModel _myModel;
 
-		//Формы диалогов
-		public NewProjectForm NewProjectForm { get; set; }
+        //Формы диалогов
+        public NewProjectForm NewProjectForm { get; set; }
 		public NewProjectSettingsForm NewProjectSettingsForm { get; set; }
 		public WorkFlowsForm WorkFlowsForm { get; set; }
 
@@ -29,10 +31,12 @@ namespace CRM_GTMK.Visual
 		public Panel CurrentPanel { get; set; }
 
 		//Конструктор
-		public MainScreenForm(Controller controller)
+		public MainScreenForm(Controller controller, MyModel myModel)
 		{
 			_controller = controller;
-			InitializeComponent();
+            _myModel = myModel;
+
+            InitializeComponent();
 
 			//Заменяем дефолтные данные нашими
 			MyClientsPanel = new MyClientsPanel(this);
@@ -106,7 +110,7 @@ namespace CRM_GTMK.Visual
 			WorkFlowsForm = new WorkFlowsForm(this);
 
 
-		NewProjectForm.ShowDialog();
+		    NewProjectForm.ShowDialog();
 		}
 
 		//Навигация по формам диалога
@@ -205,13 +209,13 @@ namespace CRM_GTMK.Visual
 		/// <summary>
 		/// Переключение на панель "Проекты"
 		/// </summary>
-		private async Task SwitchToProjectsPanel()
+		private async void SwitchToProjectsPanel()
 		{
 			CurrentPanel.Visible = false;
 
             if (MyAllProjectsFlowLayoutPanel == null)
             {
-                MyAllProjectsFlowLayoutPanel = new MyAllProjectsFlowLayoutPanel(this);
+                MyAllProjectsFlowLayoutPanel = new MyAllProjectsFlowLayoutPanel(this, _controller);
                 MyAllProjectsFlowLayoutPanel.SuspendLayout();
                 this.Controls.Add(MyAllProjectsFlowLayoutPanel);
 
@@ -235,8 +239,15 @@ namespace CRM_GTMK.Visual
             }
 
         }
-		#endregion
+
+        #endregion
+
+        // Вызываем метод сохранение элементов класса GlobalValue в файлы при закрытии окна MainScreenForm.
+        private void MainScreenForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _myModel.XmlHelper.SaveGlobalValuesToFile();
+        }
 
 
-	}
+    }
 }
