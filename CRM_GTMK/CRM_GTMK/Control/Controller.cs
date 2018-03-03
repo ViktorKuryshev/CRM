@@ -1,19 +1,13 @@
 ﻿using CRM_GTMK.Model;
-using CRM_GTMK.Model.DataModels;
 using CRM_GTMK.Model.TestApi;
 using CRM_GTMK.Visual;
 using CRM_GTMK.Visual.MainScreenPanels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using CRM_GTMK.Visual.MainScreenPanels;
-using CRM_GTMK.Model.TestApi;
-using Newtonsoft.Json;
-using CRM_GTMK.Model.DataModels;
 
 namespace CRM_GTMK.Control
 {
-
     public class Controller
 	{
 		enum TestStep
@@ -28,6 +22,7 @@ namespace CRM_GTMK.Control
 
 		private MyModel _myModel;
 		private MainScreenForm MainScreenForm;
+        private bool stepsTesting = true;
 
         string _checkOfOfficeCountryComboBoxText;
         string _checkOfOfficeCityTextBoxText;
@@ -35,8 +30,6 @@ namespace CRM_GTMK.Control
         string _checkOfOfficeSiteTextBoxText;
         List<TextBox> _checkOfPhoneTextBoxList = new List<TextBox>();
         List<AddNewContactPersonForm> _checkOfContactPersonFormList;
-
-        private bool stepsTesting = true;
 
 		public Controller()
 		{
@@ -48,8 +41,8 @@ namespace CRM_GTMK.Control
 			_myModel = myModel;
 			MainScreenForm = mainScreenForm;
 
-			//Создаем окружение
-			SetLocalValues();
+            //Создаем окружение
+            myModel.XmlHelper.RestoreGlobalValuesFromFile();
 			//Todo Сформировать окружение. т.е. проверить есть ли таблицы с данными, если есть, то зарузить локальные переменные
 			//, загрузить данные из API и сравнить с таблицами, если с Данные с АПИ новее то обновить данные в базе
 
@@ -104,7 +97,6 @@ namespace CRM_GTMK.Control
 		}
 		#endregion
 
-
 		/// <summary>
 		/// Показываем главный экран
 		/// </summary>
@@ -113,24 +105,21 @@ namespace CRM_GTMK.Control
 			MainScreenForm.ShowDialog();
 		}
 
-		//Обработка данных проекта
-		#region ProjectDataMethods
+        //Обработка данных проекта
+        #region ProjectDataMethods
 
-			public void SendNewProject()
-		{
-			ApiClient client = new ApiClient();
-			//MessageBox.Show(client.CreateProject(GlobalValues.DocumentsPaths, GlobalValues.FocusedProject.SiteProject));
-		}
+        public void SendNewProject()
+        {
+            ApiClient client = new ApiClient();
+            //MessageBox.Show(client.CreateProject(GlobalValues.DocumentsPaths, GlobalValues.FocusedProject.SiteProject));
+        }
 
-		/// <summary>
-		/// Получаем список проектов
-		/// </summary>
-		public List<ProjectControls> GetProjectsList()
+        /// Получаем список проектов
+        public List<ProjectControls> GetProjectsList()
 		{
 			//Если список проектов пуст получаем его с сайта
-			if (GlobalValues.CurrentProjects == null)
+			if (GlobalValues.CurrentProjects.Count == 0)
 			{
-				
 				GlobalValues.CurrentProjects = _myModel.ApiClient.GetCurrentProjects();
 				GlobalValues.CurrentProjects.Sort();
 			}
@@ -199,8 +188,11 @@ namespace CRM_GTMK.Control
 
             //todo присвоить компании уникальный id для получить последний id
             _myModel.NewCompany.Id = _myModel.XmlHelper.GetBigestCompanyId() + 1;
-			//new ClientsListForm(clientsInfo).ShowDialog();
-			_myModel.XmlHelper.SaveNewCompanyInfoInXml(_myModel.NewCompany);
+            //new ClientsListForm(clientsInfo).ShowDialog();
+
+            if (_myModel.NewCompany.ShouldSerializeOffices() == false)
+                return;
+            _myModel.XmlHelper.SaveNewCompanyToFile(_myModel.NewCompany);
 
 			//Todo Автоматически поставилась задача на проработку компании менеджеру по какому-то принципу
 
@@ -240,9 +232,7 @@ namespace CRM_GTMK.Control
 
                 getOfficeContactInfoFromForm(newOffice);
                 getOfficePhonesFromForm(newOffice);
-
 				getOfficeContactPersonInfoFromForm(newOffice);
-				
 
 				company.Offices.Add(newOffice);
 			}
@@ -314,15 +304,23 @@ namespace CRM_GTMK.Control
             return officeContactInfoPanel.Controls[officeTextBoxIndex].Text;
         }
 
+        /// <summary>
+        /// Методы передачи данных об офисе из форм в переменные классов.
+        /// </summary>
+        #region GetOfficeInfoMethods
         // Передаем данные об одном офисе компании из полей форм для ввода в соответствующие 
         // переменные.
         private void getOfficeContactInfoFromForm(Office office)
-		{
-			office.Country = _checkOfOfficeCountryComboBoxText;
-			office.City    = _checkOfOfficeCityTextBoxText;
-			office.Address = _checkOfOfficeAddressTextBoxText;
-			office.Site    = _checkOfOfficeSiteTextBoxText;
-		}
+        {
+            if (_checkOfOfficeCountryComboBoxText != "")
+            office.Country = _checkOfOfficeCountryComboBoxText;
+            if (_checkOfOfficeCityTextBoxText != "")
+                office.City = _checkOfOfficeCityTextBoxText;
+            if (_checkOfOfficeAddressTextBoxText != "")
+                office.Address = _checkOfOfficeAddressTextBoxText;
+            if (_checkOfOfficeSiteTextBoxText != "")
+                office.Site = _checkOfOfficeSiteTextBoxText;
+        }
 
         // Передаем данные о телефонах одного офиса компании из полей форм 
         // для ввода в соответствующие переменные.
@@ -340,57 +338,63 @@ namespace CRM_GTMK.Control
         // порядкового Id, начиная с 1, а не с 0, с которого начинается перечисление в
         // списке.
         private void getOfficeContactPersonInfoFromForm(Office office)
-		{
-			for (int i = 0; i < _checkOfContactPersonFormList.Count; i++)
-			{
-				AddNewContactPersonForm form = _checkOfContactPersonFormList[i];
-				Person person = new Person();
-				person.LastName = form.LastnameContactPersonTextBox.Text;
-				person.FirstName = form.FirstnameContactPersonTextBox.Text;
-				person.MiddleName = form.MiddleNameContactPersonTextBox.Text;
-				person.EmailsList = form.EmailContactPerson.Where(e => !string.IsNullOrEmpty(e)).ToArray();
-				person.Position = form.PositionContactPersonTextBox.Text;
-				person.Id = i + 1;
-				getContactPersonPhonesFromForm(form, person);
-				getContactPersonCommentsFromForm(form, person);
-				office.ContactPersonList.Add(person);
-			}
-		}
+        {
+            for (int i = 0; i < _checkOfContactPersonFormList.Count; i++)
+            {
+                AddNewContactPersonForm form = _checkOfContactPersonFormList[i];
+                Person person = new Person();
+                person.LastName = form.LastnameContactPersonTextBox.Text;
+                person.FirstName = form.FirstnameContactPersonTextBox.Text;
+                person.MiddleName = form.MiddleNameContactPersonTextBox.Text;
+                person.EmailsList = form.EmailContactPerson.Where(e => !string.IsNullOrEmpty(e)).ToArray();
+                person.Position = form.PositionContactPersonTextBox.Text;
+                person.Id = i + 1;
+                getContactPersonPhonesFromForm(form, person);
+                getContactPersonCommentsFromForm(form, person);
+                office.ContactPersonList.Add(person);
+            }
+        }
+        #endregion
 
+        /// <summary>
+        /// Методы передачи данных о сотруднике из форм в переменные классов.
+        /// </summary>
+        #region GetContactPersonInfoMethods
         // Передаем данные о телефоне одного сотрудника одного офиса компании из полей форм 
         // для ввода в соответствующие переменные.
         private void getContactPersonPhonesFromForm(AddNewContactPersonForm form, Person person)
-		{
-			foreach (AddNewContactPersonPhoneForm phoneForm in form.MyContactPersonPhoneFormList)
-			{
-				PersonPhoneData personPhoneData = new PersonPhoneData();
-				personPhoneData.PhoneType = phoneForm.PhoneTypeComboBox.Text;
-				personPhoneData.PhoneNumber = phoneForm.NewPhoneNumber;
-				personPhoneData.PhoneComment = phoneForm.PhoneCommentRichTextBox.Text;
-				person.PersonPhonesList.Add(personPhoneData);
-			}
-		}
+        {
+            foreach (AddNewContactPersonPhoneForm phoneForm in form.MyContactPersonPhoneFormList)
+            {
+                PersonPhoneData personPhoneData = new PersonPhoneData();
+                personPhoneData.PhoneType = phoneForm.PhoneTypeComboBox.Text;
+                personPhoneData.PhoneNumber = phoneForm.NewPhoneNumber;
+                personPhoneData.PhoneComment = phoneForm.PhoneCommentRichTextBox.Text;
+                person.PersonPhonesList.Add(personPhoneData);
+            }
+        }
 
         // Передаем данные о комментариях одного сотрудника одного офиса компании из полей форм 
         // для ввода в соответствующие переменные.
         private void getContactPersonCommentsFromForm(AddNewContactPersonForm form, Person person)
-		{
-			foreach (Panel panel in form.MyCommentPanelList)
-			{
-                int dateLabelIndex          = panel.Controls.IndexOfKey(form.DateLabel.Name +
+        {
+            foreach (Panel panel in form.MyCommentPanelList)
+            {
+                int dateLabelIndex = panel.Controls.IndexOfKey(form.DateLabel.Name +
                                                                         form.MyCommentPanelList.IndexOf(panel));
                 int commentRichTextBoxIndex = panel.Controls.IndexOfKey(form.CommentRichTextBox.Name +
                                                                         form.MyCommentPanelList.IndexOf(panel));
 
 
                 if (panel.Controls[commentRichTextBoxIndex].Text != "")
-				{
-					PersonComment personComment = new PersonComment();
-					personComment.Date          = panel.Controls[dateLabelIndex].Text;
-					personComment.Comment       = panel.Controls[commentRichTextBoxIndex].Text;
-					person.PersonCommentList.Add(personComment);
-				}
-			}
-		}
-	}
+                {
+                    PersonComment personComment = new PersonComment();
+                    personComment.Date = panel.Controls[dateLabelIndex].Text;
+                    personComment.Comment = panel.Controls[commentRichTextBoxIndex].Text;
+                    person.PersonCommentList.Add(personComment);
+                }
+            }
+        }
+        #endregion
+    }
 }

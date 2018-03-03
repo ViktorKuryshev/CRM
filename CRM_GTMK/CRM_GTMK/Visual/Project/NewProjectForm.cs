@@ -119,7 +119,8 @@ namespace CRM_GTMK.Visual
 			FolderBrowserDialog fbd = new FolderBrowserDialog();
 
 			if (fbd.ShowDialog() == DialogResult.OK)
-			{
+			{   // TODO Использовать метод, получающий пути, а не названия файлов, чтобы в
+                // дальнейшем можно было работать с путями и отображать папки на панели.
 				List<string> foldersAndFiles = Directory.GetFiles(fbd.SelectedPath).ToList<string>();
 				ShowDirectoriesAndFiles(foldersAndFiles);
 

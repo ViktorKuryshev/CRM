@@ -13,5 +13,8 @@ namespace CRM_GTMK.Model.DataModels
 		public bool isFolder { get; set; }
 		public bool isShown { get; set; } = true;
 		public List<FileOrFolder> FilesOrFolders { get; set; } = new List<FileOrFolder>();
-	}
+
+        public bool ShouldSerializeFilesOrFolders()
+        { return FilesOrFolders.Count != 0; }
+    }
 }

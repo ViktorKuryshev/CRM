@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace CRM_GTMK.Model.DataModels
 {
-	public class RecievedProject : IComparable<RecievedProject>
+    public class RecievedProject : IComparable<RecievedProject>
 	{
 		[JsonProperty("id")]
 		public string Id { get; set; }
@@ -39,7 +36,10 @@ namespace CRM_GTMK.Model.DataModels
 		{
 			return this.CreationDate.CompareTo(that.CreationDate) * -1;
 		}
-	}
+
+        public bool ShouldSerializedescription()
+        { return description != ""; }
+    }
 
 	public class Workflowstage1
 	{
@@ -49,6 +49,7 @@ namespace CRM_GTMK.Model.DataModels
 
 	public class Document1
 	{
+        [XmlElement("Document1Id")]
 		[JsonProperty("id")]
 		public string Id { get; set; }
 		[JsonProperty("name")]

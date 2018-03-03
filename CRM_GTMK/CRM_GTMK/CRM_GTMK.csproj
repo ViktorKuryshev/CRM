@@ -204,10 +204,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\XMLBase\companies.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Model\XMLBase\companies.xml" />
+    <Content Include="Model\XMLBase\CurrentProjects.xml" />
+    <Content Include="Model\XMLBase\DocumentsPaths.xml" />
+    <Content Include="Model\XMLBase\FocusedCompany.xml" />
+    <Content Include="Model\XMLBase\FocusedProject.xml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

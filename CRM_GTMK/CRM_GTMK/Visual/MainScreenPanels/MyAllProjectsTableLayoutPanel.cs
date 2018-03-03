@@ -1,26 +1,25 @@
 ﻿using CRM_GTMK.Control;
+using CRM_GTMK.Model;
 using CRM_GTMK.Visual.ModifiedComponents;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CRM_GTMK.Visual.MainScreenPanels
 {
-	public class MyAllProjectsFlowLayoutPanel : FlowLayoutPanel
+    public class MyAllProjectsFlowLayoutPanel : FlowLayoutPanel
 	{
 		public List<ProjectControls> AllProjects { get; set; } = new List<ProjectControls>();
 		private MainScreenForm _form;
 
-		public MyAllProjectsFlowLayoutPanel(MainScreenForm form) : base()
+		public MyAllProjectsFlowLayoutPanel(MainScreenForm form, Controller controller)
 		{
 			_form = form;
 
 			Controls.Add(new CreateNewProjectButton(form));
-			Controls.Add(new MyOneProjectTableLayoutPanel(form));
+            Controls.Add(new RefreshProjectListButton(form, controller, this));
+            Controls.Add(new MyOneProjectTableLayoutPanel(form));
 			
 			FlowDirection = FlowDirection.TopDown;
 			Location = new System.Drawing.Point(211, 57);
@@ -54,7 +53,7 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 				{
 					//Рисую панель документа
 					MyOneDocumentTableLayoutPanel oneDocumentPanel = new MyOneDocumentTableLayoutPanel(_form);
-					oneDocumentPanel.Controls.Add(document.DocumentSelected, 0, 0);
+                    oneDocumentPanel.Controls.Add(document.DocumentSelected, 0, 0);
 					oneDocumentPanel.Controls.Add(document.DocumentName, 1, 0);
 					oneDocumentPanel.Controls.Add(document.DocumentPogress, 2, 0);
 					this.Controls.Add(oneDocumentPanel);
@@ -89,7 +88,48 @@ namespace CRM_GTMK.Visual.MainScreenPanels
 		}
 	}
 
-	public class MyOneProjectTableLayoutPanel : TableLayoutPanel { 
+    public class RefreshProjectListButton : Button
+    {
+        private MainScreenForm _form;
+        private Controller _controller;
+        private MyAllProjectsFlowLayoutPanel _panel;
+
+        public RefreshProjectListButton(MainScreenForm form,
+                                        Controller controller,
+                                        MyAllProjectsFlowLayoutPanel panel)
+        {
+            _form = form;
+            _controller = controller;
+            _panel = panel;
+
+            this.Text = "Обновить список";
+            this.Click += new EventHandler(RefreshProjectListButton_isClicked);
+            this.Size = new System.Drawing.Size(175, 27);
+            this.BackColor = System.Drawing.Color.Purple;
+            this.ForeColor = System.Drawing.Color.White;
+        }
+
+        // Повторно загружаем список проектов с сайта при нажатии на кнопку "Обновить список".
+        private async void RefreshProjectListButton_isClicked(object sender, EventArgs e)
+        {
+            GlobalValues.CurrentProjects.Clear();
+            Task<List<ProjectControls>> newTask = new Task<List<ProjectControls>>(_controller.GetProjectsList);
+            newTask.Start();
+            _panel.AllProjects = await newTask;
+
+            // Неравенство i > 2 не дает пройтись по первым трем элементам списка Controls.
+            // Это сделано, потому что первые три элемента это заголовок таблицы и кнопки.
+            // Их не нужно удалять из списка. Удалению подлежат элементы, являющиеся проектами.
+            for (int i = _panel.Controls.Count - 1; i > 2; i--)
+            {
+                _panel.Controls.RemoveAt(i);
+            }
+
+            _panel.ShowProjectsList();
+        }
+    }
+
+    public class MyOneProjectTableLayoutPanel : TableLayoutPanel { 
 		
 		public MyOneProjectTableLayoutPanel(MainScreenForm form) : base()
 		{
